@@ -1,0 +1,88 @@
+<div class="col-10">
+  <div>
+    <div class="mt-4 pt-4">
+      <form class="border p-3">
+        <div class="d-flex justify-content-between">
+
+          <div class="d-flex flex-column">
+            <div class="mb-3">
+              <label class="label-text" >Tìm kiếm tài khoản</label>
+              <div class="d-flex">
+                <input class="width-input mr-2" type="text"  >
+                <select class="mr-2 selectFind">
+                  <option>Chọn</option>
+                  <option>Tên người dùng</option>
+                  <option>Mã người dùng</option>
+                  <option>Tên tài khoản</option>
+                  <option>Loại tài khoản</option>
+                </select>
+                <button class="btn-primary btn">
+                  <i class="ti-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="pb-3">
+      <table class="table table-bordered table-striped">
+        <thead class="thead">
+        <tr>
+          <th>Mã người dùng</th>
+          <th>Tên người dùng</th>
+          <th>Tên tài khoản</th>
+          <th>Loại tài khoản</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr role="button" id="btn1">
+          <td>NV-01</td>
+          <td>Lê Văn A</td>
+          <td>levana</td>
+          <td>Quản lý</td>
+
+        </tr>
+        <tr role="button" id="btn2">
+          <td>NV-02</td>
+          <td>Lê Văn B</td>
+          <td>levanb</td>
+          <td>Nhân viên</td>
+        </tr>
+        <tr role="button" id="btn3">
+          <td>NV-03</td>
+          <td>Lê Văn C</td>
+          <td>levanc</td>
+          <td>Ngoài hệ thống</td>
+        </tr>
+        <tr role="button" id="btn4">
+          <td>NV-04</td>
+          <td>Lê Văn D</td>
+          <td>levand</td>
+          <td>Nhân viên</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <script src="choose-record.js"></script>
+    </div>
+    <div class="d-flex justify-content-end pt-2 pb-5">
+      <a href="edit.html" style="text-decoration: none"><button class="mr-5 btn btn-pay" type="button" ><i class="fa fa-edit"></i> Chỉnh sửa tài khoản</button></a>
+      <a href="home.html" style="color: black;text-decoration: none"><button class="mr-5 btn btn-edit" type="button" ><i class="fa fa-undo"></i>Trở về</button></a>
+    </div>
+  </div>
+</div>
+</div>
