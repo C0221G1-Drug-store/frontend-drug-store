@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WarehouseRoutingModule } from './warehouse-routing.module';
+import { WarehouseImportComponent } from './warehouse-import/warehouse-import.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [WarehouseImportComponent],
   imports: [
     CommonModule,
     WarehouseRoutingModule
