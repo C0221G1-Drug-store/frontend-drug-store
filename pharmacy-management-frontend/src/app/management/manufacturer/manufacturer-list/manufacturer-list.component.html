@@ -160,12 +160,12 @@
 
   <div class="container mt-3 mb-5">
     <div class="row">
-      <a class="col-lg-3  " href="chi-tiet-nha-cung-cap.html">
-        <button class=" a btn btn-info" data-toggle="modal" data-target="#exampleModal2"><i
+
+        <button routerLink="/manufacturer/show" class=" a btn btn-info col-lg-3" data-toggle="modal" data-target="#exampleModal2"><i
           class="fa fa-window-restore" aria-hidden="true"></i> Thông tin
           chi tiết
         </button>
-      </a>
+
 
       <div class="col-lg-9">
         <div class="container">
@@ -178,7 +178,7 @@
                 </button>
               </a>
 
-              <button class=" a   btn btn-danger" data-toggle="modal"
+              <button (click)="openDialogDelete()" class=" a   btn btn-danger" data-toggle="modal"
                       data-target="#exampleModal1"><i
                 class="fa  fa-trash-o" aria-hidden="true"></i> Xóa
               </button>
@@ -188,7 +188,7 @@
                 aria-hidden="true"></i>
                 Chỉnh sửa
               </button>
-              <button class=" btn ve" type="button"><i class="icon-sidebar fa fa-reply"></i>
+              <button  class=" btn ve" type="button"><i class="icon-sidebar fa fa-reply"></i>
                 Trở về
               </button>
             </div>

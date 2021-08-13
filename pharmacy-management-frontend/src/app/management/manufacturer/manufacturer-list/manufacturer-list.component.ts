@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {ManufacturerUpdateComponent} from "../manufacturer-update/manufacturer-update.component";
+import {ManufacturerDeleteComponent} from "../manufacturer-delete/manufacturer-delete.component";
 
 @Component({
   selector: 'app-manufacturer-list',
@@ -24,4 +25,13 @@ export class ManufacturerListComponent implements OnInit {
     });
   }
 
+  openDialogDelete(): void {
+
+    let dialogRef = this.dialog.open(ManufacturerDeleteComponent, {
+
+    });
+    dialogRef.afterClosed().subscribe(() => {
+
+    });
+  }
 }
