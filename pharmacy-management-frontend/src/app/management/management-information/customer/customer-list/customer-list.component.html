@@ -1,0 +1,127 @@
+<h2 class="text-center">Chức năng hiển thị danh sách & xóa khách hàng </h2>
+<div class="container">
+  <div id="scroll">
+    <table class="table table- table-hover">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã khách hàng</th>
+        <th>Tên khách hàng</th>
+        <th>Tuổi</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Nhóm khách hàng</th>
+        <th>Ghi Chú</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of customers , index as i" role="button" (click)="sendId(c.id)">
+        <ng-container *ngIf="id===c.id">
+          <td style="background: darkgrey">{{i + 1}}</td>
+          <td style="background: darkgrey">{{c.idCustomer}}</td>
+          <td style="background: darkgrey">{{c.name}}</td>
+          <td style="background: darkgrey">{{c.age}}</td>
+          <td style="background: darkgrey">{{c.address}}</td>
+          <td style="background: darkgrey">{{c.phone}}</td>
+          <td style="background: darkgrey">{{c.customerGroup}}</td>
+          <td style="background: darkgrey">{{c.note}}</td>
+        </ng-container>
+        <ng-container *ngIf="id!==c.id">
+          <td>{{i + 1}}</td>
+          <td>{{c.idCustomer}}</td>
+          <td>{{c.name}}</td>
+          <td>{{c.age}}</td>
+          <td>{{c.address}}</td>
+          <td>{{c.phone}}</td>
+          <td>{{c.customerGroup}}</td>
+          <td>{{c.note}}</td>
+        </ng-container>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-end">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-info">
+        <i class="far fa-eye"></i>
+        Thông tin chi tiết
+      </button>
+    </div>
+    <div class="col-6 ">
+      <div class="row">
+        <div class="col-3">
+
+          <button class="btn btn-primary">
+            <i class="far fa-plus-square"></i>
+            Thêm
+          </button>
+        </div>
+        <div class="col-3">
+
+          <button class="btn btn-warning">
+            <i class="far fa-edit"></i>
+            Sửa
+          </button>
+        </div>
+        <div class="col-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                  (click)="getCustomerDelete()">
+            <i class="far fa-trash-alt"></i>
+            Xóa
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" *ngIf="customerDelete">
+                  Bạn có muốn xóa khách hàng <i> <b style="color: red">{{customerDelete.name}}  </b></i> không ?
+                </div>
+                <div *ngIf="!customerDelete" class="modal-body">
+                  Chưa chọn khách hàng để xóa
+                </div>
+                <div [hidden]="!customerDelete" class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reset()">Không
+                  </button>
+                  <button [hidden]="!customerDelete" [disabled]="!customerDelete" type="button" class="btn btn-danger" data-dismiss="modal"
+                          (click)="deleteCustomer()">Xóa
+                  </button>
+                </div>
+                <div [hidden]="customerDelete" class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="reset()" >Trở về
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-success">
+            <i class="fas fa-undo"></i>
+            Trở về
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
