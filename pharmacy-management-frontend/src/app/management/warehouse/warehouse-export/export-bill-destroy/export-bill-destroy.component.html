@@ -1,0 +1,184 @@
+<div id="content" class="container">
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      <h2 class="pt-3">Hóa Đơn Xuất Kho</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <form action="" method="post" style="width: 100%">
+      <div class="row ">
+        <div class="col-md-12 col-sm-12">
+          <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Thông tin hóa đơn</legend>
+            <div class="row ml-5">
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group" style="justify-content: flex-start">
+                  <label>Loại Hóa Đơn :</label>
+                  <select name="" id="" style="width: 300px">
+                    <option value="" selected>Xuất Hủy</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label>Loại Hóa Đơn :</label>
+                  <select name="" style="width: 300px;" disabled>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row ml-5">
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label>Số HD:</label>
+                  <input type="text" disabled placeholder="HDXH0021">
+                </div>
+              </div>
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label>Địa Chỉ:</label>
+                  <input type="text" disabled placeholder="ABC XYZ">
+                </div>
+              </div>
+            </div>
+            <div class="row ml-5">
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label>Ngày lập:</label>
+                  <input type="date" value="2021-08-12">
+                </div>
+                <div class="">
+                  <label>Nhân viên:</label>
+                  <input type="text" placeholder="Trần Văn Nghĩa" disabled>
+                </div>
+              </div>
+              <div class="col-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label style="vertical-align: top">Lí Do:</label>
+                  <textarea placeholder="Thuốc hết date"  cols="3" rows="3">Thuốc bị hỏng</textarea>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Danh sách thuốc</legend>
+        <div class="scroll outer">
+          <table class="table table-bordered"  style="height: 300px">
+            <thead class="head">
+            <tr>
+              <th>Tên thuốc</th>
+              <th>Đơn vị tính</th>
+              <th>Số lượng</th>
+              <th>Đơn giá</th>
+              <th>Thành tiền</th>
+              <th>Hạn dùng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <select class="selectpicker" data-live-search="true"  name="" style="width: 150px;color: white ">
+                  <option value="">Mời Chọn Thuốc</option>
+                  <option value="">Aspirin</option>
+                  <option value="">Vitamin B12</option>
+                  <option value="">Becnerin</option>
+                  <option value="">Fucaka</option>
+                  <option value="">Panadol</option>
+                </select>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr id="1" role="button" >
+              <td>Abintazin</td>
+              <td>Hộp</td>
+              <td>3</td>
+              <td>30.000 VND</td>
+              <td>90.000 VND</td>
+              <td>25/07/2021</td>
+            </tr>
+            <tr id="2" role="button" >
+              <td role="button">Vitamin B12</td>
+              <td>Chai</td>
+              <td>2</td>
+              <td>12.000 VND</td>
+              <td>24.000 VND</td>
+              <td>05/08/2021</td>
+            </tr>
+            <tr id="3" role="button" >
+              <td>Asperin</td>
+              <td>Chai</td>
+              <td>2</td>
+              <td>15.000 VND</td>
+              <td>30.000 VND</td>
+              <td>05/05/2021</td>
+            </tr>
+            <tr id="4" role="button" >
+              <td>Asperin</td>
+              <td>Chai</td>
+              <td>2</td>
+              <td>15.000 VND</td>
+              <td>30.000 VND</td>
+              <td>05/05/2021</td>
+            </tr>
+            <tr id="5" role="button" >
+              <td>Asperin</td>
+              <td>Chai</td>
+              <td>2</td>
+              <td>15.000 VND</td>
+              <td>30.000 VND</td>
+              <td>05/05/2021</td>
+            </tr>
+            <tr id="6" role="button">
+              <td>Asperin</td>
+              <td>Chai</td>
+              <td>2</td>
+              <td>15.000 VND</td>
+              <td>30.000 VND</td>
+              <td>05/05/2021</td>
+            </tr>
+            </tbody>
+
+          </table>
+          <div class="d-flex justify-content-end mt-4">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="form-group row text-right pt-3">
+          <div class="col">
+            <label>Tổng Tiền :</label>
+            <input type="text" disabled style="width:200px; height: 40px" placeholder="229.163 VND">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group row text-right pt-2">
+        <div class="col">
+          <button data-toggle="modal" data-target="#exampleModal" class="mr-4 btn btn-create button"
+                  type="button"><i class="fa fa-plus"></i> Hoàn tất
+          </button>
+          <button data-toggle="modal" data-target="#exampleModal1" class="mr-4 btn btn-danger button" type="button">
+            <i class="fa fa-trash-o"></i> Xóa thuôc
+          </button>
+          <button class="mr-4 btn btn-edit button" type="button"><i class="fa fa-print"></i> In phiếu</button>
+          <button data-toggle="modal" data-target="#exampleModal2" class="mr-4 btn btn-return button" type="button"><i
+            class="fa fa-undo"></i> Trở về
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
