@@ -1,0 +1,208 @@
+<!--        nơi đổ dữ liệu router-outlet              -->
+<div class="container">
+  <div class="container" style="background: #567FEA;height: 50px"><h2
+    style="text-align: center;line-height: 50px">DANH SÁNH NHÀ CUNG CẤP</h2></div>
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Bộ lọc</legend>
+    <form class="border p-3">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3">
+            <label for="sl2" class="label-text" style="">Sắp xếp</label>
+            <select id="sl2" style="height: 30px; width: 180px;border-radius: 4px;border: 2px solid"
+                    type="text">
+              <option>Mã nhà cung cấp</option>
+              <option> Tên nhà cung cấp</option>
+              <option> Địa chỉ</option>
+              <option> Số điện thoại</option>
+              <option> Công nợ</option>
+            </select>
+          </div>
+          <div class="col-lg-3">
+            <label for="sl1" class="label-text">Lọc theo</label>
+            <select id="sl1" style="height: 30px; width: 180px;border-radius: 4px; border: 2px solid"
+                    type="text">
+              <option> Mã mà cung cấp</option>
+              <option> Tên nhà cung cấp</option>
+              <option> Địa chỉ</option>
+              <option> Số điện thoại</option>
+              <option> Ghi chú</option>
+            </select>
+          </div>
+
+
+          <div class="col-lg-3">
+
+            <label for="search" class="label-text">Tên nhà cung cấp</label>
+            <input id="search" style="height: 30px;width: 180px" type="text"
+                   placeholder="Tên nhà...">
+
+          </div>
+
+          <div class="col-lg-3">
+
+            <button style="height: 30px;margin-top: 27px" class=" btn ve" type="button"><i
+              class="fa fa-search" aria-hidden="true"></i> Tìm kiếm
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>
+
+<div class="container pb-3">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Danh sánh</legend>
+    <div>
+
+      <table class="table table-bordered table-striped ">
+        <thead class="thead">
+        <tr class="ve">
+
+          <th>Mã nhà cung cấp</th>
+          <th>Tên nhà cung cấp</th>
+          <th>Địa chỉ</th>
+          <th>Số điện thoại</th>
+          <th>Công nợ</th>
+          <th>Ghi chú</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr id="btn1">
+          <td>DOMESCO</td>
+          <td>Công ty DOMESCO</td>
+          <td>Hai Bà Trưng, Hà Nội</td>
+          <td class="ct">0891361699</td>
+          <td class="ct">1200000</td>
+          <td></td>
+
+        </tr>
+        <tr id="btn2">
+          <td>Sutures</td>
+          <td>Công ty Sutures</td>
+          <td>Hai Bà Trưng, Hà Nội</td>
+          <td class="ct">0891361699</td>
+          <td class="ct">1200000</td>
+          <td></td>
+        </tr>
+        <tr id="btn3">
+          <td>Traphaco</td>
+          <td>Công ty Traphaco</td>
+          <td>Ba Đình, Hà Nội</td>
+          <td class="ct">18006612</td>
+          <td class="ct">12200000</td>
+          <td></td>
+        </tr>
+        <tr id="btn4">
+          <td>HG</td>
+          <td>Công ty dược Hậu Giang</td>
+          <td>Tâm Tiến, Hậu Giang</td>
+          <td class="ct">07103891433</td>
+          <td class="ct">1400000</td>
+          <td></td>
+        </tr>
+        <tr id="btn5">
+          <td>Traphaco</td>
+          <td>Công ty Traphaco</td>
+          <td> Hoàng Mai, Hà Nội</td>
+          <td class="ct">08937763135</td>
+          <td class="ct">1200000</td>
+          <td></td>
+        </tr>
+        <tr id="btn6">
+          <td>Vinamed</td>
+          <td>Công ty Vinamed</td>
+          <td>Hai Bà Trưng, Hà Nội</td>
+          <td class="ct">0891361699</td>
+          <td class="ct">1200000</td>
+          <td></td>
+        </tr>
+        <tr id="btn7">
+          <td>PYMEPHARCO</td>
+          <td>Công ty PYMEPHARCO</td>
+          <td> Tuy Hòa, Phú Yên</td>
+          <td class="ct">083 820 663</td>
+          <td class="ct">1600000</td>
+          <td></td>
+        </tr>
+        <tr id="btn8">
+          <td>Sutures</td>
+          <td>Công ty Sutures</td>
+          <td>Hai Bà Trưng, Hà Nội</td>
+          <td class="ct">0891361699</td>
+          <td class="ct">1200000</td>
+          <td></td>
+        </tr>
+
+
+        </tbody>
+
+      </table>
+      <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="container mt-3 mb-5">
+    <div class="row">
+      <a class="col-lg-3  " href="chi-tiet-nha-cung-cap.html">
+        <button class=" a btn btn-info" data-toggle="modal" data-target="#exampleModal2"><i
+          class="fa fa-window-restore" aria-hidden="true"></i> Thông tin
+          chi tiết
+        </button>
+      </a>
+
+      <div class="col-lg-9">
+        <div class="container">
+          <div class="row ">
+            <div class="col-lg-12 text-right">
+              <a routerLink="/manufacturer/create">
+                <button class="btn ve" style="width: 100px;background: #2fc1a6"
+                        type="button"><i
+                  class="fa fa-plus-circle" aria-hidden="true"></i> Thêm
+                </button>
+              </a>
+
+              <button class=" a   btn btn-danger" data-toggle="modal"
+                      data-target="#exampleModal1"><i
+                class="fa  fa-trash-o" aria-hidden="true"></i> Xóa
+              </button>
+              <button (click)="openDialogUpdate()" data-toggle="modal" data-target="#exampleModal"
+                      class="a   btn btn-warning"><i
+                class="fa fa-pencil-square-o"
+                aria-hidden="true"></i>
+                Chỉnh sửa
+              </button>
+              <button class=" btn ve" type="button"><i class="icon-sidebar fa fa-reply"></i>
+                Trở về
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
