@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'information-lookup',
     loadChildren: () => import('./information-lookup/information-lookup.module').then(module => module.InformationLookupModule)
+  },
+  {
+    path: 'wholesale',
+    loadChildren: () => import('./wholesale/wholesale.module').then(module => module.WholesaleModule)
   }
 ];
 

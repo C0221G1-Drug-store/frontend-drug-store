@@ -9,6 +9,7 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import {WholesaleModule} from './management/wholesale/wholesale.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SaleRetailModule,
+    WholesaleModule,
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,
