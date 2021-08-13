@@ -1,1 +1,75 @@
-<p>login-register works!</p>
+<!-- Button trigger modal -->
+<button type="button" style="width: 150px" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Đăng nhập
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 385px;margin-left: 80px;height: 520px">
+      <div class="modal-body" >
+        <div class="to-card" >
+          <div class="to-inner-box" id="card" [ngStyle]="{'transform': flag? 'rotateY(-180deg)' : 'rotateY(0deg)'}">
+            <div class="to-card-front">
+              <h2 style="color: black">Đăng Nhập</h2>
+              <form>
+                <div class="to-div-input">
+                  <input type="text" class="to-input-box" placeholder="Tên Đăng Nhập" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <div class="to-div-input">
+                  <input type="password" class="to-input-box" placeholder="Mật Khẩu" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <div class="to-div-input">
+                  <button type="submit" class="to-sign-submit" style="margin-top: 20px;margin-bottom: 10px">Đăng nhập
+                  </button>
+                  <small class="to-error-text to-error-sign" >Sai tên đăng nhập hoặc mật khẩu.Vui lòng đăng nhập lại!!!</small>
+                </div>
+                <input type="checkbox"><span  style="color: black">Nhớ tài khoản</span>
+              </form>
+              <p class="to-text" >Đăng nhập bằng</p>
+              <div class="to-social-icons">
+                <img src="fb2.png" style="margin-right: 5px">
+                <img src="gmail2.png" >
+              </div>
+              <button type="button"  class="to-change" style="margin-top: 30px" (click)="openRegister()">Đăng Ký
+              </button>
+            </div>
+            <div class="to-card-back" style="height: 500px">
+              <h2 style="color: black">Đăng Ký</h2>
+              <form >
+                <div class="to-div-input">
+                  <input type="text" class="to-input-box" placeholder="Họ và tên" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <div class="to-div-input">
+                  <input type="text" class="to-input-box" placeholder="Tên Đăng Nhập" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <div class="to-div-input">
+                  <input type="password" class="to-input-box" placeholder="Mật Khẩu" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <div class="to-div-input">
+                  <input type="password" class="to-input-box" placeholder="Nhập lại mật khẩu" required>
+                  <small class="to-error-text">Không được để trống!</small>
+                </div>
+                <button type="submit" class="to-sign-submit" style="margin-top: 20px;margin-bottom: 10px">Đăng ký
+                </button>
+              </form>
+              <p class="to-text">Đăng nhập bằng</p>
+              <div class="to-social-icons">
+                <img src="fb2.png" alt="">
+                <img src="gmail2.png" alt="">
+              </div>
+              <button type="button" class="to-change" style="margin-top: 30px" (click)="openRegister()">Đăng nhập
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
