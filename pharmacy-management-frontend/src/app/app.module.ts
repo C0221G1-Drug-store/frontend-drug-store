@@ -9,7 +9,10 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+<<<<<<< HEAD
 import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
+=======
+>>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
 
 @NgModule({
   declarations: [
@@ -23,8 +26,12 @@ import {WarehouseExportModule} from './management/warehouse/warehouse-export/war
     ManagementModule,
     CommonModule,
     MatDialogModule,
+<<<<<<< HEAD
     HttpClientModule,
     WarehouseExportModule
+=======
+    HttpClientModule
+>>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
   ],
   providers: [],
   bootstrap: [AppComponent]
