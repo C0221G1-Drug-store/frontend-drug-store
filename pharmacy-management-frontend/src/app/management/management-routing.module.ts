@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'information-lookup',
     loadChildren: () => import('./information-lookup/information-lookup.module').then(module => module.InformationLookupModule)
+  },
+  {
+    path: 'sales',
+    loadChildren: () => import('./sales-invoice-management/sales-invoice-management-routing.module').then(module => module.SalesInvoiceManagementRoutingModule)
   }
+
 ];
 
 @NgModule({
