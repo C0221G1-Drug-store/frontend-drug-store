@@ -1,0 +1,139 @@
+<div id="content" class="container ">
+  <br>
+  <div>
+    <h2>Nhóm Thuốc</h2>
+
+  </div>
+
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Danh Sách Nhóm Thuốc</legend>
+    <div class="scroll outer">
+      <table class="table table-striped">
+        <tr>
+          <th style="background: #567FEA; color: white">Mã Nhóm Thuốc</th>
+          <th style="background: #567FEA; color: white">Tên Nhóm Thuốc</th>
+        </tr>
+        <tbody>
+        <tr role="button" id="1" onclick="selectRow(this.id),getData(this.id)" >
+          <td id="id" hidden></td>
+          <td>NT001</td>
+          <td>An Thần</td>
+        </tr>
+        <tr role="button" id="2" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT002</td>
+          <td>Bổ</td>
+        </tr>
+        <tr role="button" id="3" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT003</td>
+          <td>Bổ Gan</td>
+        </tr>
+        <tr role="button" id="4" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT004</td>
+          <td>Bổ Canxi</td>
+        </tr>
+        <tr role="button" id="5" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT005</td>
+          <td>Bổ Khớp</td>
+        </tr>
+        <tr role="button" id="6" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT006</td>
+          <td>Bổ Thần Kinh</td>
+        </tr>
+        <tr role="button" id="7" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT007</td>
+          <td>Cảm Cúm</td>
+        </tr>
+        <tr role="button" id="8" onclick="selectRow(this.id),getData(this.id)">
+          <td>NT008</td>
+          <td>Dạ Dày</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="d-flex justify-content-end">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Trước</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
+        </ul>
+      </nav>
+    </div>
+  </fieldset>
+
+
+  <div class="mt-1 pt-1">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">Thông Tin Nhóm Thuốc</legend>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="mb-2 mt-4 col-5">
+          <label class="label-text">Mã Nhóm Thuốc</label>
+          <div class="d-flex">
+            <input class="thuoc form-control" type="text" id="code" >
+            <span class="ml-1 mt-2">(*)</span>
+          </div>
+          <p>Mã nhóm thuốc không được để trống.</p>
+
+        </div>
+
+        <div class="mb-2 mt-4 col-5">
+          <label class="label-text ">Tên Nhóm Thuốc</label>
+          <div class="d-flex">
+            <input  class="thuoc form-control" id="name" type="text" >
+            <span class="ml-1 mt-2">(*)</span>
+          </div>
+          <p>Tên nhóm thuốc không được để trống.</p>
+
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div>
+
+    <div class="d-flex justify-content-end pt-4 pb-5">
+      <button class="mr-4 btn btn-create"  type="button"><i class="fa fa-plus" aria-hidden="true"></i>
+        Thêm
+      </button>
+      <button class="mr-4 btn btn-edit" type="button"><i class="fa fa-pencil-square-o"
+                                                         aria-hidden="true"></i> Sửa
+      </button>
+      <button class="mr-4 btn btn-danger" type="button" data-toggle="modal"
+              data-target="#exampleModal"><i
+        class="fa fa-trash-o" aria-hidden="true"></i> Xóa
+      </button>
+      <button class="mr-1 btn btn-back" type="button"><i class="icon-sidebar fa fa-reply text-warning">
+      </i> về
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xóa nhóm thuốc</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          bạn có muốn xóa nhóm thuốc NT001 không ???
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-back" data-dismiss="modal">
+            <i class="icon-sidebar fa fa-reply text-warning"></i>Trở về
+          </button>
+          <button type="button" class="btn btn-danger " data-dismiss="modal"><i
+            class="fa fa-trash-o" aria-hidden="true"></i> xóa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
