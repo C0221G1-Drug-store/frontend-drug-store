@@ -5,11 +5,11 @@ import { DrugRoutingModule } from './drug-routing.module';
 import { DrugCreateComponent } from './drug-create/drug-create.component';
 import { DrugEditComponent } from './drug-edit/drug-edit.component';
 import { DrugListComponent } from './drug-list/drug-list.component';
-import { DrugDeleteComponent } from './drug-delete/drug-delete.component';
+
 
 
 @NgModule({
-  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent, DrugDeleteComponent],
+  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent],
   imports: [
     CommonModule,
     DrugRoutingModule
