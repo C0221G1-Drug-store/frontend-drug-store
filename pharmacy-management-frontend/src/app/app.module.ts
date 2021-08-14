@@ -9,21 +9,23 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import {WarehouseExportModule} from "./management/warehouse/warehouse-export/warehouse-export.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SaleRetailModule,
-    BrowserAnimationsModule,
-    ManagementModule,
-    CommonModule,
-    MatDialogModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SaleRetailModule,
+        BrowserAnimationsModule,
+        ManagementModule,
+        CommonModule,
+        MatDialogModule,
+        HttpClientModule,
+        WarehouseExportModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

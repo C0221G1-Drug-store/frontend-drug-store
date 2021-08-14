@@ -113,18 +113,17 @@
       </div>
       <div class="row">
         <form action="" method="post">
-          <!--                              <div class="row">-->
-          <div class="col-md-12 col-sm-12 ">
-            <fieldset class="scheduler-border">
-              <legend class="scheduler-border"><h3>Bộ lọc</h3></legend>
+          <div class="col-md-12 col-sm-12" style="align-content: center; margin-left: 5%">
+            <fieldset class="scheduler-border" >
+              <legend class="scheduler-border"><h3>Bộ lọc</h3> </legend>
               <div class="row">
                 <div class="col-2">
                   <label class="label-text">Loại hóa đơn</label>
                   <div>
-                    <select class="date"
+                    <select class="date" #type
                             style="width:80%; height: 33px; border-width: 2px; border-radius: 3px">
-                      <option>Xuất hoàn trả</option>
-                      <option>Xuất hủy</option>
+                      <option value="1">Xuất hoàn trả</option>
+                      <option value="2">Xuất hủy</option>
                     </select>
                     <!--                        <p style="color: red; font-size: 12px">số phiếu không dc để trống</p>-->
                   </div>
@@ -133,7 +132,7 @@
                   <div class="mb-12">
                     <label class="label-text">Ngày lập</label>
                     <div>
-                      <input class="date" type="date">
+                      <input #date1 class="date" type="date">
                       <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
                     </div>
                   </div>
@@ -142,7 +141,7 @@
                   <div class="mb-3">
                     <label class="label-text">Đến ngày</label>
                     <div>
-                      <input class="date" type="date">
+                      <input #date2 class="date" type="date">
                       <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
                     </div>
                   </div>
@@ -151,7 +150,7 @@
                   <div class="mb-3">
                     <label class="label-text">Từ giờ</label>
                     <div>
-                      <input class="date" type="time" style="width:80%">
+                      <input #time1 class="date" type="time" style="width:80%">
                       <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
                     </div>
                   </div>
@@ -160,8 +159,8 @@
                   <div class="mb-3">
                     <label class="label-text">Đến giờ</label>
                     <div>
-                      <input class="date" type="time" style="width:80%">
-                      <!--      <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
+                      <input #time2 class="date" type="time" style="width:80%">
+                      <!--                                                                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
                     </div>
                   </div>
                 </div>
@@ -169,8 +168,8 @@
                   <div class="mb-3">
                     <label class="label-text"></label>
                     <div>
-                      <button class="btn-search btn" style="margin-top: 5%; margin-right: -5%">
-                        <i class="ti-search" style="position: sticky; bottom: 0px;"></i>
+                      <button class="btn-search btn" style="margin-top: 1%; margin-right: 15%">
+                        <i class="fa fa-search" style="position: sticky; bottom: 0px;"></i>
                         Tìm kiếm
                       </button>
                     </div>
@@ -181,7 +180,7 @@
               </div>
             </fieldset>
             <fieldset class="scheduler-border">
-              <legend class="scheduler-border"><h3>Danh sách</h3></legend>
+              <legend class="scheduler-border"> <h3>Danh sách</h3></legend>
               <div class="scheduler-border">
                 <table class="table table-bordered">
                   <thead class="headOfQLXK">
@@ -196,119 +195,20 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="trow" id="r1">
-                    <td>HT001</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>A</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm Omega3</td>
-                    <td>Thuốc lỗi</td>
+                  <tr class="trow" *ngFor="let exportBill of exportBillList, index as i">
+                    <td>{{exportBill.exportBillCode}}</td>
+                    <td>{{exportBill.exportBillDateCreate | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{exportBill.exportBillDateCreate | date: 'HH:mm'}}</td>
+<!--                    <td>{{exportBill.employee.employeeName}}</td>-->
+<!--                    <td>{{totalMoney}}</td>-->
+<!--                    <td>{{exportBill.manufacturer.manufacturerName}}</td>-->
+                    <td>{{exportBill.exportBillReason}}</td>
                   </tr>
-                  <tr class="trow" id="r2">
-                    <td>HT002</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>B</td>
-                    <td>3200000</td>
-                    <td>Công ty TNHH Hugo</td>
-                    <td>Thuốc kém chất lượng</td>
-                  </tr>
-                  <tr class="trow" id="r3">
-                    <td>HT003</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>C</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm HERO</td>
-                    <td>Không bán được</td>
-                  </tr>
-                  <tr class="trow" id="r4">
-                    <td>HT004</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>A</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm Omega3</td>
-                    <td>Thuốc lỗi</td>
-                  </tr>
-                  <tr class="trow" id="r5">
-                    <td>HT005</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>B</td>
-                    <td>3200000</td>
-                    <td>Công ty TNHH Hugo</td>
-                    <td>Thuốc kém chất lượng</td>
-                  </tr>
-                  <tr class="trow" id="r6">
-                    <td>HT006</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>C</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm HERO</td>
-                    <td>Không bán được</td>
-                  </tr>
-                  <tr class="trow" id="r7">
-                    <td>HT007</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>A</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm Omega3</td>
-                    <td>Thuốc lỗi</td>
-                  </tr>
-                  <tr class="trow" id="r8">
-                    <td>HT008</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>B</td>
-                    <td>3200000</td>
-                    <td>Công ty TNHH Hugo</td>
-                    <td>Thuốc kém chất lượng</td>
-                  </tr>
-                  <tr class="trow" id="r9">
-                    <td>HT009</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>C</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm HERO</td>
-                    <td>Không bán được</td>
-                  </tr>
-                  <tr class="trow" id="r10">
-                    <td>HT010</td>
-                    <td>25/12/2014</td>
-                    <td>08:25:23</td>
-                    <td>A</td>
-                    <td>3200000</td>
-                    <td>Công ty Dược phẩm Omega3</td>
-                    <td>Thuốc lỗi</td>
-                  </tr>
-                  <!--                                        <tr class="trow" id="r11">-->
-                  <!--                                            <td>HT011</td>-->
-                  <!--                                            <td>25/12/2014</td>-->
-                  <!--                                            <td>08:25:23</td>-->
-                  <!--                                            <td>B</td>-->
-                  <!--                                            <td>3200000</td>-->
-                  <!--                                            <td>Công ty TNHH Hugo</td>-->
-                  <!--                                            <td>Thuốc kém chất lượng</td>-->
-                  <!--                                        </tr>-->
-                  <!--                                        <tr class="trow" id="r12">-->
-                  <!--                                            <td>HT012</td>-->
-                  <!--                                            <td>25/12/2014</td>-->
-                  <!--                                            <td>08:25:23</td>-->
-                  <!--                                            <td>C</td>-->
-                  <!--                                            <td>3200000</td>-->
-                  <!--                                            <td>Công ty Dược phẩm HERO</td>-->
-                  <!--                                            <td>Không bán được</td>-->
-                  <!--                                        </tr>-->
                   </tbody>
                 </table>
               </div>
 
-              <div class="d-flex justify-content-end" >
+              <div class="d-flex justify-content-end" style="margin-right: 0px">
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -320,20 +220,18 @@
                 </nav>
               </div>
             </fieldset>
-            <div class="d-flex justify-content-end pt-2 pb-5" >
-              <button class="btn mr-5 btn-pay " ><i class="fa fa-plus"></i> Thanh toán
+            <div class="d-flex justify-content-end pt-4 pb-5" style="margin-right: -50%">
+              <button class="mr-5  btn btn-pay" type="button"><i class="fa fa-plus"></i> Thanh toán
               </button>
-              <button class="btn mr-5 btn-print" ><i class="fa fa-print"></i> In phiếu
+              <button class="mr-5  btn btn-print" type="button"><i class="fa fa-print"></i> In phiếu
               </button>
-              <button class="btn mr-5 btn-delete"><i class="fa fa-trash"></i> xóa hóa
+              <button class="mr-5  btn btn-delete" type="button"><i class="fa fa-trash"></i> xóa hóa
                 đơn
               </button>
-              <button class="btn mr-5 btn-search"><i class="fa fa-undo"></i> Trở về
+              <button class="mr-5  btn btn-nav" type="button"><i class="fa fa-undo"></i> Trở về
               </button>
             </div>
           </div>
-
-          <!--                              </div>-->
         </form>
       </div>
 
