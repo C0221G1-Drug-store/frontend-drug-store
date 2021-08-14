@@ -1,106 +1,77 @@
-<div class="container pb-3">
-  <fieldset class="scheduler-border ">
-    <legend class="scheduler-border">Danh sách thuốc</legend>
-    <table id="tb1" class="table table-bordered table-striped">
-      <thead class="thead">
-      <tr>
-        <th class="text-center">Tên thuốc</th>
-        <th>Đơn vị tính</th>
-        <th>Số lượng</th>
-        <th>Đơn giá</th>
-        <th>%CK</th>
-        <th>VAT</th>
-        <th>Thành tiền (VNĐ)</th>
-        <th>Số lô</th>
-        <th>Hạn dùng</th>
+<form (ngSubmit)="submit()">
+  <div class="container pb-3">
+    <fieldset class="scheduler-border ">
+      <legend class="scheduler-border">Danh sách thuốc</legend>
+      <table id="tb1" class="table table-bordered table-striped">
+        <thead class="thead">
+        <tr>
+          <th class="text-center">Tên thuốc</th>
+          <th>Đơn vị tính</th>
+          <th>Số lượng</th>
+          <th>Đơn giá</th>
+          <th>%CK</th>
+          <th>VAT</th>
+          <th>Thành tiền (VNĐ)</th>
+          <th>Số lô</th>
+          <th>Hạn dùng</th>
 
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          <form class="w-100">
-            <select class="form-control select2">
-              <option>Chọn thuốc</option>
-              <option>Panadol</option>
-              <option>Amoxicillin</option>
-              <option>Ambicilin</option>
-              <option>Hoạt huyết dưỡng não</option>
-              <option>ff</option>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <select class="form-control select2" (change)="choiceDrug($event.target)">
+              <option value="0"> CHọn thuốc</option>
+              <option *ngFor="let drug of drugs" value="{{drug.drugId}}"> {{drug.drugName}}</option>
             </select>
-          </form>
+          </td>
+        </tr>
+        <ng-container [formGroup]="form">
+          <ng-container formArrayName="formArrayDrugs">
+            <tr class="onRow" *ngFor="let importBilDurg of formArrayDrugs.controls; let i = index">
+              <ng-container [formGroupName]="i">
+                <td>{{importBilDurg.value.drug.drugName}}</td>
+                <td>{{importBilDurg.value.drug.conversionUnit}}</td>
+                <td><input class="form-control" type="number" formControlName="importAmount"></td>
+                <td>20.000</td>
+                <td>0</td>
+                <td>0</td>
+                <td>40.000</td>
+                <td>111222</td>
+                <td>12/12/2012</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </ng-container>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </fieldset>
+  </div>
+  <div class="container d-flex justify-content-end pt-4 pb-5">
+    <button class="mr-4 btn btn-primary button"
+            type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Hoàn tất
+    </button>
+    <button class="mr-4 btn btn-danger" id="delete" type="button" (click)="confirmBox()"><i class="fa fa-times-circle-o"
+                                                                                            aria-hidden="true"></i> Xóa
+      thuốc
+    </button>
+    <button class="mr-4 btn btn-return button" type="button"><i class="fa fa-arrow-circle-o-left"
+                                                                aria-hidden="true"></i>
+      Trở về
+    </button>
 
-        </td>
-      </tr>
-      <tr class="onRow">
-        <td>Panadol</td>
-        <td>Vỉ</td>
-        <td>2</td>
-        <td>20.000 </td>
-        <td>0</td>
-        <td>0</td>
-        <td>40.000</td>
-        <td>111222</td>
-        <td>12/12/2012</td>
 
-      </tr>
-      <tr class="onRow">
-        <td>Amoxicillin</td>
-        <td>Vỉ</td>
-        <td>2</td>
-        <td>15.000 </td>
-        <td>0</td>
-        <td>0</td>
-        <td>30.000 </td>
-        <td>134564</td>
-        <td>16/02/2012</td>
-      </tr>
-      <tr class="onRow">
-        <td>Ambicilin</td>
-        <td>VỈ</td>
-        <td>1</td>
-        <td>22.000 </td>
-        <td>0</td>
-        <td>0</td>
-        <td>22.000 </td>
-        <td>453456</td>
-        <td>13/07/2012</td>
-      </tr>
-      <tr class="onRow">
-        <td>Hoạt huyết dưỡng não</td>
-        <td>Hộp</td>
-        <td>2</td>
-        <td>120.000 </td>
-        <td>0</td>
-        <td>0</td>
-        <td>240.000 </td>
-        <td>567423</td>
-        <td>13/07/2012</td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-end">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
-  </fieldset>
-</div>
-<div class="container d-flex justify-content-end pt-4 pb-5">
-  <button class="mr-4 btn btn-primary button"
-          type="button"><i class="fa fa-plus" aria-hidden="true"></i> Hoàn tất
-  </button>
-  <button class="mr-4 btn btn-danger" id="delete" type="button" (click)="confirmBox()"><i class="fa fa-times-circle-o"
-                                                                                          aria-hidden="true"></i> Xóa
-    thuốc
-  </button>
-  <button class="mr-4 btn btn-return button" type="button"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Trở về
-  </button>
-</div>
+  </div>
 
+</form>

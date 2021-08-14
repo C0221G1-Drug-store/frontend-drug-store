@@ -9,7 +9,6 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
     ManagementModule,
     CommonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
