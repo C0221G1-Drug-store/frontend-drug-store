@@ -1,9 +1,9 @@
 <div class="container">
   <h3>
-    <span>Giỏ hàng</span> > <a href="#">Thanh toán</a> > Hoàn tất
+    <span [style]="!resultMsg? 'color: #000': 'color: #bfbfbf'">Giỏ hàng</span> > <a [style]="resultMsg? 'color: #000': 'color: #bfbfbf'">Hoàn tất</a>
+    <small class="pl-5 text-primary text-sm-center">{{resultMsg}}</small>
   </h3>
-  <small class="pl-5 text-primary text-sm-center">Thanh toán thành công</small>
-  <small class="text-danger text-sm-center">(Mã phiếu ưu đãi không tồn tại)</small>
+
   <div id="main">
     <div id="left">
       <table class="table">
@@ -16,85 +16,43 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let medicine of medicines, index as i">
           <td class="d-flex">
-            <a href="#"><i class="fa fa-times bi" aria-hidden="true"></i></a>
-            <img src="image/thuoc1.jpg" alt=""
+            <a (click)="delMedicine(i)"><i class="fa fa-times bi" aria-hidden="true"></i></a>
+            <img [src]="medicine.img" alt=""
                  width="70px"
                  height="70px">
-
             <div>
-              <a href="#">Tăm bông kháng khuẩn đầu xoán Sakura(Lọ 200 que giấy)</a>
+              <a href="#">{{medicine.info}}</a>
             </div>
           </td>
-          <td>44,000</td>
+          <td>{{medicine.unit | currency: 'VND' : '' : '1.0-0' }} </td>
           <td>
             <div>
-              <input type="button" value="-">
-              <input type="text" value="20">
-              <input type="button" value="+">
+              <input type="button" value="-" (click)="medicineSub(i)">
+              <input type="text" [value]="medicine.amount">
+              <input type="button" value="+" (click)="medicineAdd(i)">
             </div>
           </td>
-          <td>880,000</td>
-        </tr>
-        <tr>
-          <td class="d-flex">
-            <a href="#"><i class="fa fa-times bi" aria-hidden="true"></i></a>
-            <img src="image/thuoc2.jpg" alt=""
-                 width="70px"
-                 height="70px">
-
-            <div>
-              <a href="#">Dầu gió xanh Thiên Thảo (Chai12ml)</a>
-            </div>
-          </td>
-          <td>19,500</td>
-          <td>
-            <div>
-              <input type="button" value="-">
-              <input type="text" value="10">
-              <input type="button" value="+">
-            </div>
-          </td>
-          <td>195,000</td>
-        </tr>
-        <tr>
-          <td class="d-flex">
-            <a href="#"><i class="fa fa-times bi" aria-hidden="true"></i></a>
-            <img src="image/thuoc3.jpg" alt="" width="70px"
-                 height="70px">
-
-            <div>
-              <a href="#">Fugacar Mebendazole (500mg)</a>
-            </div>
-          </td>
-          <td>19,000</td>
-          <td>
-            <div>
-              <input type="button" value="-">
-              <input type="text" value="5">
-              <input type="button" value="+">
-            </div>
-          </td>
-          <td>95,000</td>
+          <td>{{medicine.price | currency: 'VND' : '' : '1.0-0'}} ₫</td>
         </tr>
         <tr>
           <td colspan="4">
             <a href="#" class="btn btn-outline-primary">TIẾP TỤC XEM SẢN PHẨM</a>
-            <a href="#" class="btn btn-primary">CẬP NHẬT GIỎ HÀNG</a>
+            <a class="btn btn-primary" (click)="update()">CẬP NHẬT GIỎ HÀNG</a>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
-    
+
     <div id="right">
       <table class="table">
         <thead>
         <tr>
           <th>
             <div>Tổng số lượng</div>
-            <div>35</div>
+            <div>{{medicineTotal}}</div>
           </th>
         </tr>
         </thead>
@@ -102,42 +60,56 @@
         <tr>
           <td>
             <div>Tạm tính</div>
-            <div>1,170,000 VND</div>
+            <div>{{moneyTotal | currency: 'VND' : '' : '1.0-0' }} ₫</div>
           </td>
         </tr>
         <tr>
           <td>
             <div>Phí vận chuyển</div>
-            <div>30,000 VND </div>
+            <div>{{30000 | currency: 'VND' : '' : '1.0-0'}} ₫</div>
           </td>
         </tr>
         <tr>
           <td>
             <div>Tổng tiền</div>
-            <div>1,140,000 VND</div>
+                        <div>{{(moneyTotal != 0) ? moneyTotal + 30000: 0 | currency: 'VND' : '' : '1.0-0'}} ₫</div>
+<!--            <div>{{456000 + 30000 | currency: 'VND' :'' : '1.0-0'}} ₫</div>-->
           </td>
         </tr>
         <tr>
           <td>
-            <div>Thanh toán Paypal</div>
-            <div>$49,56</div>
+            <div>Tỷ giá USD ({{currencyDateNow | date :'dd/MM/yyy' }})</div>
+            <div>{{currencyMoney | currency: 'VND' : '' : '1.0-0'}} ₫</div>
+          </td>
+        <tr>
+          <td>
+            <div>Tổng tiền Paypal</div>
+            <!--            <div>{{moneyPayPal |  currency : "USD" :'$': '1.0-2': 'fr'}}</div>-->
+            <div>{{12.5555 |  currency : "USD" :'$': '1.0-2': 'fr'}}</div>
           </td>
         </tr>
         </tbody>
       </table>
-      <a href="#" class="btn btn-warning">Tiến hành thanh toán</a>
+      <div class="text-center" id="myPaypalButton">
+      </div>
       <table class="table">
         <thead>
         <tr>
-          <th><i class="bi bi-tag"></i> Phiếu ưu đãi</th>
+          <th class="d-flex justify-content-between">
+            <div><i class="bi bi-tag"></i> Phiếu ưu đãi </div>
+            <div class="text-right {{isVoucher? 'text-primary':'text-danger'}}">{{voucherMsg}}</div>
+          </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td><input type="text" placeholder="Mã ưu đãi" class="form-control"></td>
-        </tr>
-        <tr>
-          <td><a href="#" class="btn btn-primary">Áp dụng</a></td>
+          <td>
+            <form [formGroup] ="voucherForm">
+              <input  formControlName="code" type="text" placeholder="Mã ưu đãi" class="form-control" name="voucher" maxlength="10">
+              <hr style="margin: 10px 0">
+              <button type="submit" class="btn btn-primary rounded-pill form-control" (click)="checkVoucher()">Áp dụng</button>
+            </form>
+          </td>
         </tr>
         </tbody>
       </table>
