@@ -9,8 +9,7 @@ import {DrugRoutingModule} from './drug/drug-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    WarehouseRoutingModule,
-    DrugRoutingModule
+    WarehouseRoutingModule
   ]
 })
 export class WarehouseModule { }
