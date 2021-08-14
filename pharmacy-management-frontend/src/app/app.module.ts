@@ -9,6 +9,10 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import { ClientModule } from './client/client.module';
+import { HeaderClientComponent } from './client/header-client/header-client.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
+import { FooterClientComponent } from './client/footer-client/footer-client.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     ManagementModule,
     CommonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
