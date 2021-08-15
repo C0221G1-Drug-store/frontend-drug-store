@@ -13,4 +13,7 @@ export class DrugService {
   getAll(): Observable<any> {
     return this.http.get(this.URl);
   }
+  save(drug): Observable<any> {
+    return this.http.post<any>(this.URl, drug);
+  }
 }
