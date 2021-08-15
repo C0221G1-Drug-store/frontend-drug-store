@@ -1,5 +1,16 @@
 export interface Drug {
-  id?: number;
-  name?: string;
-  price?: number;
+  drugId?;
+  drugCode?;
+  drugName?;
+  activeElement?;
+  drugAmount?;
+  unit?;
+  conversionUnit?;
+  conversionRate?;
+  wholesaleProfitRate?;
+  retailProfitRate?;
+  drugFaculty?;
+  drugSideEffect?;
+  price?;
+  flag?: true;
 }

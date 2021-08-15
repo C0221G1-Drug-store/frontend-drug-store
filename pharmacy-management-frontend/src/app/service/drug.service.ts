@@ -13,4 +13,5 @@ export class DrugService {
   getAll(): Observable<any> {
     return this.http.get(this.URl);
   }
+
 }
