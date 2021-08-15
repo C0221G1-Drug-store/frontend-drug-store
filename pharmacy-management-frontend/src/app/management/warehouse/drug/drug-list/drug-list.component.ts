@@ -13,12 +13,11 @@ export class DrugListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll();
-    console.log(this.drugs);
+    this.getAll(0);
   }
 
-  getAll() {
-    this.drugService.getAll().subscribe(drugs => {
+  getAll(index: number) {
+    this.drugService.getAll(index).subscribe(drugs => {
       this.drugs = drugs;
     });
   }
