@@ -9,16 +9,19 @@ import { ManufacturerShowComponent } from './manufacturer-show/manufacturer-show
 import {MatDialogModule} from "@angular/material/dialog";
 import { ImportBillShowComponent } from './import-bill-show/import-bill-show.component';
 import {ManufacturerCreateComponent} from "./manufacturer-create/manufacturer-create.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
 
 @NgModule({
   declarations: [ManufacturerListComponent, ManufacturerUpdateComponent, ManufacturerDeleteComponent, ManufacturerShowComponent, ImportBillShowComponent, ManufacturerCreateComponent],
-    imports: [
-        CommonModule,
-        ManufacturerRoutingModule,
-        MatDialogModule,
-    ]
+  imports: [
+    CommonModule,
+    ManufacturerRoutingModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ]
 })
 export class ManufacturerModule { }

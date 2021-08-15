@@ -4,30 +4,30 @@
     style="text-align: center;line-height: 50px">DANH SÁNH NHÀ CUNG CẤP</h2></div>
   <fieldset class="scheduler-border">
     <legend class="scheduler-border">Bộ lọc</legend>
-    <form class="border p-3">
+    <div class="border p-3">
       <div class="container">
         <div class="row">
 
           <div class="col-lg-3">
             <label for="sl2" class="label-text" style="">Sắp xếp</label>
-            <select id="sl2" style="height: 30px; width: 180px;border-radius: 4px;border: 2px solid"
+            <select [(ngModel)]="sort" (change)="sortManufacturer()" id="sl2" style="height: 30px; width: 180px;border-radius: 4px;border: 2px solid"
                     type="text">
-              <option>Mã nhà cung cấp</option>
-              <option> Tên nhà cung cấp</option>
-              <option> Địa chỉ</option>
-              <option> Số điện thoại</option>
-              <option> Công nợ</option>
+              <option value="code" > Mã mà cung cấp</option>
+              <option value="name"> Tên nhà cung cấp</option>
+              <option value="address"> Địa chỉ</option>
+              <option value="phoneNumber"> Số điện thoại</option>
+              <option value="note"> Ghi chú</option>
             </select>
           </div>
           <div class="col-lg-3">
             <label for="sl1" class="label-text">Lọc theo</label>
-            <select id="sl1" style="height: 30px; width: 180px;border-radius: 4px; border: 2px solid"
+            <select [(ngModel)]="selects" id="sl1" style="height: 30px; width: 180px;border-radius: 4px; border: 2px solid"
                     type="text">
-              <option> Mã mà cung cấp</option>
-              <option> Tên nhà cung cấp</option>
-              <option> Địa chỉ</option>
-              <option> Số điện thoại</option>
-              <option> Ghi chú</option>
+              <option value="code" > Mã mà cung cấp</option>
+              <option value="name"> Tên nhà cung cấp</option>
+              <option value="address"> Địa chỉ</option>
+              <option value="phoneNumber"> Số điện thoại</option>
+              <option value="note"> Ghi chú</option>
             </select>
           </div>
 
@@ -35,20 +35,21 @@
           <div class="col-lg-3">
 
             <label for="search" class="label-text">Tên nhà cung cấp</label>
-            <input id="search" style="height: 30px;width: 180px" type="text"
+            <input value="{{search}}" [(ngModel)]="search" id="search" style="height: 30px;width: 180px" type="text"
                    placeholder="Tên nhà...">
 
           </div>
 
+
           <div class="col-lg-3">
 
-            <button style="height: 30px;margin-top: 27px" class=" btn ve" type="button"><i
+            <button (click)="searchManufacturer()" style="height: 30px;margin-top: 27px" class=" btn ve" type="button"><i
               class="fa fa-search" aria-hidden="true"></i> Tìm kiếm
             </button>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </fieldset>
 </div>
 
@@ -60,7 +61,7 @@
       <table class="table table-bordered table-striped ">
         <thead class="thead">
         <tr class="ve">
-
+<th>#</th>
           <th>Mã nhà cung cấp</th>
           <th>Tên nhà cung cấp</th>
           <th>Địa chỉ</th>
@@ -72,86 +73,25 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody *ngFor="let m of manufacturers; index as i">
 
-        <tr id="btn1">
-          <td>DOMESCO</td>
-          <td>Công ty DOMESCO</td>
-          <td>Hai Bà Trưng, Hà Nội</td>
-          <td class="ct">0891361699</td>
-          <td class="ct">1200000</td>
-          <td></td>
-
+        <tr (click)="getId(m.manufacturerId,m.manufacturerName)" >
+          <td>{{page*2 +1+i}}</td>
+          <td>{{m.manufacturerCode}}</td>
+          <td>{{m.manufacturerName}}</td>
+          <td>{{m.manufacturerAddress}}</td>
+          <td >{{m.manufacturerPhoneNumber}}</td>
+          <td >{{m.manufacturerDebts}}</td>
+          <td>{{m.manufacturerNote}}</td>
         </tr>
-        <tr id="btn2">
-          <td>Sutures</td>
-          <td>Công ty Sutures</td>
-          <td>Hai Bà Trưng, Hà Nội</td>
-          <td class="ct">0891361699</td>
-          <td class="ct">1200000</td>
-          <td></td>
-        </tr>
-        <tr id="btn3">
-          <td>Traphaco</td>
-          <td>Công ty Traphaco</td>
-          <td>Ba Đình, Hà Nội</td>
-          <td class="ct">18006612</td>
-          <td class="ct">12200000</td>
-          <td></td>
-        </tr>
-        <tr id="btn4">
-          <td>HG</td>
-          <td>Công ty dược Hậu Giang</td>
-          <td>Tâm Tiến, Hậu Giang</td>
-          <td class="ct">07103891433</td>
-          <td class="ct">1400000</td>
-          <td></td>
-        </tr>
-        <tr id="btn5">
-          <td>Traphaco</td>
-          <td>Công ty Traphaco</td>
-          <td> Hoàng Mai, Hà Nội</td>
-          <td class="ct">08937763135</td>
-          <td class="ct">1200000</td>
-          <td></td>
-        </tr>
-        <tr id="btn6">
-          <td>Vinamed</td>
-          <td>Công ty Vinamed</td>
-          <td>Hai Bà Trưng, Hà Nội</td>
-          <td class="ct">0891361699</td>
-          <td class="ct">1200000</td>
-          <td></td>
-        </tr>
-        <tr id="btn7">
-          <td>PYMEPHARCO</td>
-          <td>Công ty PYMEPHARCO</td>
-          <td> Tuy Hòa, Phú Yên</td>
-          <td class="ct">083 820 663</td>
-          <td class="ct">1600000</td>
-          <td></td>
-        </tr>
-        <tr id="btn8">
-          <td>Sutures</td>
-          <td>Công ty Sutures</td>
-          <td>Hai Bà Trưng, Hà Nội</td>
-          <td class="ct">0891361699</td>
-          <td class="ct">1200000</td>
-          <td></td>
-        </tr>
-
-
         </tbody>
-
       </table>
       <div class="d-flex justify-content-end">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" (click)="previous()">Trang trước</a></li>
+           <li  class="page-item" *ngFor="let p of pages;let i=index"><a class="page-link" (click)="setPage(i)" >{{i+1}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="next()">Trang sau</a></li>
           </ul>
         </nav>
       </div>
