@@ -6,7 +6,9 @@
 html{
   font-family: Tahoma;
 }
-
+.button{
+  width: 80px;
+}
 .btn-delete{
   background-color: #dc3545;
 }

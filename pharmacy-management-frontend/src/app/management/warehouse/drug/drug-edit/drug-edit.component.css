@@ -307,7 +307,9 @@ input{
   }
 
 }
-
+.button{
+  width: 80px;
+}
 .btn-create {
   background-color: #2fc1a6;
   color: white;
