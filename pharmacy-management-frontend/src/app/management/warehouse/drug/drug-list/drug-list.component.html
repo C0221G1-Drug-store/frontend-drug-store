@@ -1,16 +1,16 @@
-<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 right-content ">
-  <div class="row white-block"></div>
-  <div id="content" class="container ">
-    <div class="container">
-      <div class="tittle">
-        <h2 class="text-justify text-center pt-1 pb-1">Danh sách thuốc</h2>
-      </div>
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border">Bộ lọc</legend>
-        <form>
-          <div class="d-flex justify-content-between pl-lg-5 pr-lg-5">
-            Lọc theo
-            <select class="form-control-sm">
+<div class="container">
+  <div class="container" style="background: #567FEA;height: 50px">
+    <h2 style="text-align: center;line-height: 50px">Danh sách thuốc</h2></div>
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Bộ lọc</legend>
+    <form class="border p-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-1">Lọc theo</div>
+          <div class="col-lg-3">
+            <select class="form-control"
+                    style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
+                    type="text">
               <option>Mã thuốc</option>
               <option>Nhóm thuốc</option>
               <option>Tên thuốc</option>
@@ -19,7 +19,11 @@
               <option>Gía bán lẻ</option>
               <option>Gía bán sỉ</option>
             </select>
-            <select class="form-control-sm">
+          </div>
+          <div class="col-lg-3">
+            <select class="form-control"
+                    style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
+                    type="text">
               <option>- Điều kiện -</option>
               <option>Bằng</option>
               <option>Lớn hơn</option>
@@ -28,92 +32,119 @@
               <option>Khác</option>
               <option>Tất cả</option>
             </select>
-            <input class="form-control-sm input">
-            <button class="mr-3 btn btn-search" type="button"><i class="fa fa-search"></i> Lọc kết
+          </div>
+          <div class="col-lg-3">
+            <input class="form-control"
+                   style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
+                   type="text">
+          </div>
+          <div class="col-lg-2">
+            <button style="height: 30px" class=" btn btn-search" type="button"><i
+              class="fa fa-search" aria-hidden="true"></i> Lọc
+              kết
               quả
             </button>
           </div>
-        </form>
-      </fieldset>
-    </div>
-    <div class="container pb-3">
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border">Danh sách thuốc</legend>
-        <table class="table table-bordered table-striped">
-          <thead class="thead">
-          <tr>
-            <td>STT</td>
-            <th>Mã thuốc</th>
-            <th>Nhóm thuốc</th>
-            <th>Tên thuốc</th>
-            <th>Hoạt chất</th>
-            <th>ĐVT</th>
-            <th>ĐV QB</th>
-            <th>Số lượng</th>
-            <th>Gía nhập</th>
-            <th>Gía sỉ</th>
-            <th>Gía lẻ</th>
-            <th>%CK</th>
-            <th>%LN XS</th>
-            <th>%LN XL</th>
-            <th>VAT</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr role="button" id="btn1">
-            <td>1</td>
-            <td>T00001</td>
-            <td>Bổ gan</td>
-            <td>OTIV</td>
-            <td>Blueberry Extract</td>
-            <td>Hộp</td>
-            <td>Lọ</td>
-            <td>85</td>
-            <td>128.3</td>
-            <td>142.43</td>
-            <td>142.565</td>
-            <td>3</td>
-            <td>9</td>
-            <td>9.1</td>
-            <td>5</td>
-          </tr>
-          <tr role="button" id="btn2">
-            <td>2</td>
-            <td>T00002</td>
-            <td>Bổ</td>
-            <td>MAT ONG</td>
-            <td></td>
-            <td>Hộp</td>
-            <td>Lọ</td>
-            <td>100</td>
-            <td>158.663</td>
-            <td>183.256</td>
-            <td>18.492</td>
-            <td>0</td>
-            <td>10</td>
-            <td>10.1</td>
-            <td>5</td>
-          </tr>
-          <tr role="button" id="btn3">
-            <td>3</td>
-            <td>T00003</td>
-            <td>Bổ</td>
-            <td>BLACKSMORES MILK THISTLE</td>
-            <td>Silybum marianum</td>
-            <td>Hộp</td>
-            <td>Lọ</td>
-            <td>300</td>
-            <td>126.43</td>
-            <td>152.98</td>
-            <td>4.098</td>
-            <td>0</td>
-            <td>10</td>
-            <td>10.1</td>
-            <td>10</td>
-          </tr>
-          </tbody>
-        </table>
-      </fieldset>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>
+<div class="container pb-3">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Danh sách thuốc</legend>
+    <div>
+      <table class="table table-bordered table-striped">
+        <thead class="thead">
+        <tr>
+          <td>STT</td>
+          <th>Mã thuốc</th>
+          <th>Nhóm thuốc</th>
+          <th>Tên thuốc</th>
+          <th>Hoạt chất</th>
+          <th>ĐVT</th>
+          <th>ĐV QB</th>
+          <th>Số lượng</th>
+          <th>Gía nhập</th>
+          <th>Gía sỉ</th>
+          <th>Gía lẻ</th>
+          <th>%CK</th>
+          <th>%LN XS</th>
+          <th>%LN XL</th>
+          <th>VAT</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        <tr *ngFor="let drug of drugs, index as i">-->
+<!--          <td>{{i}}</td>-->
+<!--          <td>{{drug.drugCode}}</td>-->
+<!--          <td>{{drug.drugGroup.drugGroupName}}</td>-->
+<!--          <td>{{drug.drugName}}</td>-->
+<!--          <td>{{drug.activeElement}}</td>-->
+<!--          <td>{{drug.unit}}</td>-->
+<!--          <td>{{drug.conversionUnit}}</td>-->
+<!--          <td>{{drug.drugAmount}}</td>-->
+<!--          <td></td>-->
+<!--          <td></td>-->
+<!--          <td></td>-->
+<!--          <td></td>-->
+<!--          <td>{{drug.wholesaleProfitRate}}</td>-->
+<!--          <td>{{drug.retailProfitRate}}</td>-->
+<!--          <td></td>-->
+<!--        </tr>-->
+        <tr role="button" id="btn1">
+          <td> 1</td>
+          <td>T00001</td>
+          <td>Bổ gan</td>
+          <td>OTIV</td>
+          <td>Blueberry Extract</td>
+          <td>Hộp</td>
+          <td>Lọ</td>
+          <td>85</td>
+          <td>128.3</td>
+          <td>142.43</td>
+          <td>142.565</td>
+          <td>3</td>
+          <td>9</td>
+          <td>9.1</td>
+          <td>5</td>
+        </tr>
+        <tr role="button" id="btn2">
+          <td scope="row">2</td>
+          <td>T00002</td>
+          <td>Bổ</td>
+          <td>MAT ONG</td>
+          <td></td>
+          <td>Hộp</td>
+          <td>Lọ</td>
+          <td>100</td>
+          <td>158.663</td>
+          <td>183.256</td>
+          <td>18.492</td>
+          <td>0</td>
+          <td>10</td>
+          <td>10.1</td>
+          <td>5</td>
+        </tr>
+        <tr role="button" id="btn3">
+          <td scope="row">3</td>
+          <td>T00003</td>
+          <td>Bổ</td>
+          <td>BLACKSMORES MILK THISTLE</td>
+          <td>Silybum marianum</td>
+          <td>Hộp</td>
+          <td>Lọ</td>
+          <td>300</td>
+          <td>126.43</td>
+          <td>152.98</td>
+          <td>4.098</td>
+          <td>0</td>
+          <td>10</td>
+          <td>10.1</td>
+          <td>10</td>
+        </tr>
+        </tbody>
+      </table>
       <div class="d-flex justify-content-end">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
@@ -126,34 +157,57 @@
         </nav>
       </div>
     </div>
-    <div class="d-flex justify-content-end pb-5">
-      <button class="mr-3 btn btn-create button" type="button"><i class="fa fa-plus"></i> Thêm</button>
-      <button class="mr-3 btn btn-edit button" type="button"><i class="fa fa-edit"></i> Sửa</button>
-      <button class="mr-3 btn btn-danger button" data-toggle="modal" data-target="#exampleModal"><i
-        class="fa fa-trash-o"></i> Xóa
-      </button>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Xóa mã thuốc</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+  </fieldset>
+  <div class="container mt-3 mb-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-right">
+              <button class="mr-3 btn btn-create button" type="button"><i
+                class="fa fa-plus"></i> Thêm
               </button>
-            </div>
-            <div class="modal-body">
-              Bạn có muốn xóa mã thuốc này hay không ?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn button btn-return" data-dismiss="modal">Không
+              <button class="mr-3 btn btn-edit button" type="button"><i
+                class="fa fa-edit"></i> Sửa
               </button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
+              <button class="mr-3 btn btn-danger button" data-toggle="modal"
+                      data-target="#exampleModal"><i
+                class="fa fa-trash-o"></i> Xóa
+              </button>
+              <div class="modal fade" id="exampleModal" tabindex="-1"
+                   aria-labelledby="exampleModalLabel"
+                   aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Xóa mã thuốc</h5>
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn có chắc muốn xóa mã thuốc <span
+                      class="text-danger font-weight-bold">T00002</span> ?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn button btn-return"
+                              data-dismiss="modal">Không
+                      </button>
+                      <button type="button" class="btn btn-danger"
+                              data-dismiss="modal">Xóa
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class=" btn btn-return button " type="button"><i
+                class="fa fa-reply"></i> Trở về
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <button class="mr-3 btn btn-return button " type="button"><i class="fa fa-reply"></i> Trở về</button>
     </div>
   </div>
 </div>
