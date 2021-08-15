@@ -10,8 +10,8 @@ export class DrugService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any> {
-    return this.http.get(this.URl);
+  getAll(index: number): Observable<any> {
+    return this.http.get(this.URl + '?index=' + index);
   }
   save(drug): Observable<any> {
     return this.http.post<any>(this.URl, drug);
