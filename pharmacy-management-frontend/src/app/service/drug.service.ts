@@ -13,4 +13,7 @@ export class DrugService {
   getAll(index: number): Observable<any> {
     return this.http.get(this.URl + '?index=' + index);
   }
+  save(drug): Observable<any> {
+    return this.http.post<any>(this.URl, drug);
+  }
 }
