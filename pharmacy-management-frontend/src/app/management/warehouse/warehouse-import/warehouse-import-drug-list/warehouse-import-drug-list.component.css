@@ -68,7 +68,7 @@ input{
 input[type=text] {
   border: 2px solid;
   border-radius: 4px;
-
+  width: 150px;
 }
 
 table {
@@ -83,7 +83,7 @@ input[type=date] {
 input[type=time] {
   border: 2px solid ;
   border-radius: 4px;
-  width: 100px
+  width: 150px
 }
 
 select {
