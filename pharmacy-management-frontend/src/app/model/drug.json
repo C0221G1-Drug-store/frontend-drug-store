@@ -1,0 +1,21 @@
+{
+  "drug": [
+    {
+      "drugName": "kkk",
+      "drugFaculty": "kkk",
+      "activeElement": "kkk",
+      "drugSideEffect": "kkkk",
+      "conversionRate": "5",
+      "drugAmount": 5,
+      "wholesaleProfitRate": 5,
+      "retailProfitRate": 5,
+      "unit": "hộp",
+      "conversionUnit": "vỉ",
+      "manufacturer": "kkkk",
+      "origin": "mỹ",
+      "drugGroup": "kháng sinh",
+      "note": "kkk",
+      "id": 1
+    }
+  ]
+}
