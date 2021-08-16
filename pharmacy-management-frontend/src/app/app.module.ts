@@ -9,14 +9,11 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
-import { AccountListComponent } from './account/account-list/account-list.component';
-import { AccountEditComponent } from './account/account-edit/account-edit.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AccountListComponent,
-    AccountEditComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
