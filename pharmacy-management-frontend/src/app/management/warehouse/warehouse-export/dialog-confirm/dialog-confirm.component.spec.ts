@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExportBillReturnComponent } from './export-bill-return.component';
+import { DialogConfirmComponent } from './dialog-confirm.component';
 
-describe('ExportBillReturnComponent', () => {
-  let component: ExportBillReturnComponent;
-  let fixture: ComponentFixture<ExportBillReturnComponent>;
+describe('DialogConfirmComponent', () => {
+  let component: DialogConfirmComponent;
+  let fixture: ComponentFixture<DialogConfirmComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExportBillReturnComponent ]
+      declarations: [ DialogConfirmComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExportBillReturnComponent);
+    fixture = TestBed.createComponent(DialogConfirmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,9 +13,6 @@ export class ExportBillService {
   getListDrugImportBill(): Observable<any>{
     return this.http.get<any>(this.URL+'/drug-import-bills');
   }
-  findDrugById(id : number): Observable<any>{
-    return this.http.get(this.URL+'/drug-import-bills/'+id);
-  }
   getExportBillType(): Observable<any>{
     return this.http.get<any>(this.URL+'/export-bill-types');
   }
@@ -24,5 +21,8 @@ export class ExportBillService {
   }
   createExportBillDetail(exportBillDetail : ExportBillDetail): Observable<any>{
     return this.http.post<any>(this.URL+ '/export-bill-details',exportBillDetail);
+  }
+  createCodeExportBill():Observable<String>{
+    return this.http.get<String>(this.URL+ '/export-bills/code');
   }
 }

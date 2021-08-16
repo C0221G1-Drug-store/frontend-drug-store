@@ -7,7 +7,7 @@
   <div class="row justify-content-center">
     <form style="width: 100%"  [formGroup]="exportBillForm" (ngSubmit)="createExportBill()">
       <div class="row ">
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12" style="padding: 0 30px">
           <fieldset class="scheduler-border">
             <legend class="scheduler-border">Thông tin hóa đơn</legend>
             <div class="row ml-5">
@@ -22,7 +22,7 @@
               <div class="col-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Nhà cung cấp :</label>
-                  <select name="" style="width: 300px;" disabled>
+                  <select style="width: 300px;" formControlName="manufacturer" disabled>
                   </select>
                 </div>
               </div>
@@ -32,12 +32,17 @@
                 <div class="form-group">
                   <label>Số HD:</label>
                   <input type="text" formControlName="exportBillCode" readonly>
+                  <div class='form-text error' *ngIf='exportBillForm.controls.exportBillCode.touched'>
+                    <div *ngIf="exportBillForm.controls.exportBillCode.hasError('required')">
+                      <small>Mã hóa đơn không dươc để trống.</small>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Địa Chỉ:</label>
-                  <input type="text" disabled>
+                  <input type="text" style="border: 2px solid " formControlName="exportBillAddress" disabled>
                 </div>
               </div>
             </div>
@@ -46,6 +51,11 @@
                 <div class="form-group">
                   <label>Ngày lập:</label>
                   <input type="date" formControlName="exportBillDate">
+                  <div class='form-text error' *ngIf='exportBillForm.controls.exportBillDate.touched'>
+                    <div *ngIf="exportBillForm.controls.exportBillDate.hasError('required')">
+                      <small>Ngày lập không dươc để trống.</small>
+                    </div>
+                  </div>
                 </div>
                 <div class="">
                   <label>Nhân viên:</label>
@@ -56,57 +66,45 @@
                 <div class="form-group">
                   <label style="vertical-align: top">Lí Do:</label>
                   <textarea formControlName="exportBillReason" cols="3" rows="3" ></textarea>
+                  <div class='form-text error' *ngIf='exportBillForm.controls.exportBillReason.touched || exportBillForm.controls.exportBillReason.dirty'>
+                    <div *ngIf="exportBillForm.controls.exportBillReason.hasError('required')">
+                      <small style="margin-left: 120px">Lý do không dươc để trống.</small>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </fieldset>
         </div>
       </div>
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border">Danh sách thuốc</legend>
-        <div class="scroll outer">
-          <table class="table table-bordered"  style="height: 300px">
-            <thead class="head">
-            <tr>
-              <th>Tên thuốc</th>
-              <th>Đơn vị tính</th>
-              <th>Số lượng</th>
-              <th>Đơn giá</th>
-              <th>Thành tiền</th>
-              <th>Ngày lập</th>
-              <th>Hạn dùng</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <select #d  style="width: 300px;color: white; margin-left: 30px" (change)="selectDrug(d.value)">
-                  <option hidden>---Select drug---</option>
-                  <ng-container *ngIf="drugs.length !== 0" >
-                    <option  *ngFor="let d of drugs" [value]="d.importBillDrugId">{{d.drug.drugName+ "-"+ d.importBill.importSystemCode}}</option>
-                  </ng-container>
-                </select>
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr [id]="d.importBillDrugId" *ngFor="let d of drugDestroys | paginate: { itemsPerPage: 5,
-                                                      currentPage: p }" role="button" (click)="selectRow(d.importBillDrugId, d.drug.drugName)">
-              <td>{{d.drug.drugName}}</td>
-              <td>{{d.drug.unit}}</td>
-              <td>{{d.importAmount}}</td>
-              <td>{{d.importPrice  | currency:'VND':''}}</td>
-              <td>{{d.importAmount * d.importPrice  | currency:'VND':''}}</td>
-              <td>{{d.importBill.invoiceDate| date: 'dd/MM/yyyy'}}</td>
-              <td>{{d.expiry | date: 'dd/MM/yyyy'}}</td>
-            </tr>
-            <ng-container *ngFor="let i of a">
-              <tr *ngIf="i > drugDestroys.length % 5">
-                <td></td>
+      <div class="col-md-12 col-sm-12">
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border">Danh sách thuốc</legend>
+          <div class="scroll outer">
+            <table class="table table-bordered"  style="height: 300px">
+              <thead class="head">
+              <tr>
+                <th>Tên thuốc</th>
+                <th>Đơn vị tính</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+                <th>Ngày lập</th>
+                <th>Hạn dùng</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <mat-select [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
+                    <mat-option>
+                      <ngx-mat-select-search [formControl]="bankFilterCtrl" placeholderLabel="Search..."></ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let drug of filteredBanks | async" [value]="drug">
+                      {{drug.drug.drugName+"-"+ drug.importBill.importSystemCode }}
+                    </mat-option>
+                  </mat-select>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -114,31 +112,52 @@
                 <td></td>
                 <td></td>
               </tr>
-            </ng-container>
-            </tbody>
+              <tr [id]="d.importBillDrugId" *ngFor="let d of drugDestroys | paginate: { itemsPerPage: 5,
+                                                      currentPage: p }" role="button" (click)="selectRow(d.importBillDrugId, d.drug.drugName)">
+                <td>{{d.drug.drugName}}</td>
+                <td>{{d.drug.unit}}</td>
+                <td>{{d.importAmount}}</td>
+                <td>{{d.importPrice  | currencyVND}}</td>
+                <td>{{d.importAmount * d.importPrice  | currencyVND}}</td>
+                <td>{{d.importBill.invoiceDate| date: 'dd/MM/yyyy'}}</td>
+                <td>{{d.expiry | date: 'dd/MM/yyyy'}}</td>
+              </tr>
+              <ng-container *ngFor="let i of a">
+                <tr *ngIf="i > (drugDestroys.length - 5*(p-1)) % 5 ">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </ng-container>
+              </tbody>
 
-          </table>
-          <div class="d-flex justify-content-end">
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </table>
+            <div class="d-flex justify-content-end">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
           </div>
-        </div>
-        <div class="form-group row text-right pt-3">
-          <div class="col">
-            <label>Tổng Tiền :</label>
-            <input type="text" disabled style="width:200px; height: 40px" [value]="totalMoney">
+          <div class="form-group row text-right pt-3">
+            <div class="col">
+              <label>Tổng Tiền : </label>
+              <input type="text" disabled style="width:200px; height: 40px; text-align: right; padding-right: 5px; margin-left: 10px" [value]="totalMoney|currencyVND">
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
+      </div>
       <div class="form-group row text-right pt-2">
         <div class="col">
-          <button data-toggle="modal" data-target="#exampleModal" class="mr-4 btn btn-create button"
+          <button class="mr-4 btn btn-create button"
                   type="submit"><i class="fa fa-plus"></i> Hoàn tất
           </button>
-          <button data-toggle="modal" data-target="#exampleModal1" class="mr-4 btn btn-danger button" type="button">
+          <button  class="mr-4 btn btn-danger button" type="button" (click)="deleteDrug()">
             <i class="fa fa-trash-o"></i> Xóa thuôc
           </button>
-          <button class="mr-4 btn btn-edit button" type="button"><i class="fa fa-print"></i> In phiếu</button>
-          <button data-toggle="modal" data-target="#exampleModal2" class="mr-4 btn btn-return button" type="button"><i
+          <button class="mr-4 btn btn-edit button" type="button" (click)="htmlToPDF()"><i class="fa fa-print"></i> In phiếu</button>
+          <button class="mr-4 btn btn-return button" type="button" (click)="returnList()"><i
             class="fa fa-undo"></i> Trở về
           </button>
         </div>
@@ -146,3 +165,4 @@
     </form>
   </div>
 </div>
+
