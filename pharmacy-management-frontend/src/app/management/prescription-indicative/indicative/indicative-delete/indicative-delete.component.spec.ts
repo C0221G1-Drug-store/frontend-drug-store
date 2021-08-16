@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrescriptionDetailComponent } from './prescription-detail.component';
+import { IndicativeDeleteComponent } from './indicative-delete.component';
 
-describe('PrescriptionDetailComponent', () => {
-  let component: PrescriptionDetailComponent;
-  let fixture: ComponentFixture<PrescriptionDetailComponent>;
+describe('IndicativeDeleteComponent', () => {
+  let component: IndicativeDeleteComponent;
+  let fixture: ComponentFixture<IndicativeDeleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrescriptionDetailComponent ]
+      declarations: [ IndicativeDeleteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrescriptionDetailComponent);
+    fixture = TestBed.createComponent(IndicativeDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
