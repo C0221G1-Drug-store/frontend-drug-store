@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { EmployeeRoutingModule } from './employee-routing.module';
-import { ListEmployeeComponent } from './list-employee/list-employee.component';
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import {EmployeeRoutingModule} from './employee-routing.module';
+import {ListEmployeeComponent} from './list-employee/list-employee.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {EmployeeCreateComponent} from './employee-create/employee-create.component';
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 
 
 @NgModule({
-  declarations: [ListEmployeeComponent, CreateEmployeeComponent],
+  declarations: [ListEmployeeComponent, EmployeeCreateComponent, EmployeeUpdateComponent],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    ReactiveFormsModule
   ]
 })
-export class EmployeeModule { }
+export class EmployeeModule {
+}

@@ -1,0 +1,111 @@
+<!--        nơi đổ dữ liệu router-outlet              -->
+<fieldset class="scheduler-border">
+  <legend class="scheduler-border text-center align-content-center"><h2>Thêm mới nhân viên</h2></legend>
+  <br>
+  <form [formGroup]="employeeForm" (ngSubmit)="addNewEmployee()" class="form-group col-12">
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Mã nhân viên <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <div class="d-flex align-items-center">
+          <input formControlName="employeeCode" class="form-control" type="text" value="NV028">
+        </div>
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Tên nhân viên <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input formControlName="employeeName" class="form-control" type="text" value="Nguyễn Văn A">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Địa chỉ <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input formControlName="employeeAddress" class="form-control" type="text" value="Đà Nẵng">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Điện thoại <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input formControlName="employeePhone" class="form-control" type="text" value="0905111113">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Ngày vào làm <label>(*)</label></span>
+      </div>
+      <div class="col-4">
+        <input formControlName="employeeStartDate" type="date" class="form-control" value="2015-05-06">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Tên tài khoản <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input formControlName="accountName" class="form-control" type="text" value="nguyenvana">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <br>
+<!--    <div class="row input-group">-->
+<!--      <div class="col-3 folow-right">-->
+<!--        <span>Ảnh nhân viên <label>(*)</label></span>-->
+<!--      </div>-->
+<!--      <div class="col-8">-->
+<!--        <input class="btn btn-sm" style="background: #adb5bd" type="file" (change)="showPreview()">-->
+<!--        <br>-->
+<!--        <small style="color: red">Trường này không được để trống. (*)</small>-->
+<!--      </div>-->
+<!--    </div>-->
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Chức vụ <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <select class="form-control" formControlName="position">
+          <option value="Nhân viên">Nhân viên</option>
+          <option value="Quản lý">Quản lý</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Ghi chú <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input formControlName="employeeNote" class="form-control" type="text">
+        <small style="color: red">Trường này không được để trống. (*)</small>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end margin">
+      <button class="mr-5 btn btn-success" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Thêm
+      </button>
+      <button class="mr-5 btn btn-danger" type="reset" data-toggle="modal" data-target="#exampleModal"><i
+        class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+      </button>
+      <a href="/employee" class="mr-5 btn btn-back"><i class="icon-sidebar fa fa-reply text-warning"></i> Trở về</a>
+    </div>
+  </form>
+</fieldset>
+
+
