@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
@@ -17,7 +17,6 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SaleRetailModule,
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,

@@ -3,10 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path: 'sale-retail',
-    loadChildren: () => import('./sale-retail/sale-retail.module').then(module => module.SaleRetailModule)
-  },
+
   {
     path: 'common',
     loadChildren: () => import('./common/common.module').then(module => module.CommonModule)
@@ -26,6 +23,14 @@ const routes: Routes = [
   {
     path: 'information-lookup',
     loadChildren: () => import('./information-lookup/information-lookup.module').then(module => module.InformationLookupModule)
+  },
+  {
+    path: 'prescription',
+    loadChildren: () => import('./prescription-indicative/prescription/prescription.module').then(module => module.PrescriptionModule)
+  },
+  {
+    path: 'indicative',
+    loadChildren: () => import('./prescription-indicative/indicative/indicative.module').then(module => module.IndicativeModule)
   }
 ];
 
