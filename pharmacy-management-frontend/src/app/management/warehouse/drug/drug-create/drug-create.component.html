@@ -1,434 +1,492 @@
 <div class="container mb-5">
-  <form [formGroup]="drugForm" (ngSubmit)="submit()" novalidate>
-    <table id="form">
-      <tr>
-        <td>Name:</td>
-        <td><input type="text" formControlName="drugName"></td>
-      </tr>
-      <div *ngIf="drugForm.get('drugName')?.invalid && (drugForm.get('drugName')?.dirty || drugForm.get('drugName')?.touched)">
-        <p style="color: red">Name is invalid!</p>
-      </div>
-      <tr>
-        <td>Faculty:</td>
-        <td><input type="text" formControlName="drugFaculty"></td>
-      </tr>
-      <div *ngIf="drugForm.get('drugFaculty')?.invalid && (drugForm.get('drugFaculty')?.dirty || drugForm.get('drugFaculty')?.touched)">
-        <p style="color: red">Falcuty is invalid!</p>
-      </div>
-      <tr>
-        <td>Active Element</td>
-        <td><input type="text" formControlName="activeElement"></td>
-      </tr>
-      <div *ngIf="drugForm.get('activeElement')?.invalid && (drugForm.get('activeElement')?.dirty || drugForm.get('activeElement')?.touched)">
-        <p style="color: red">Active Element is invalid!</p>
-      </div>
-      <tr>
-        <td>Side Effect</td>
-        <td><input type="text" formControlName="drugSideEffect"></td>
-      </tr>
-      <div *ngIf="drugForm.get('drugSideEffect')?.invalid && (drugForm.get('drugSideEffect')?.dirty || drugForm.get('drugSideEffect')?.touched)">
-        <p style="color: red">Side Effect is invalid!</p>
-      </div>
-      <tr>
-        <td>Conversion Rate</td>
-        <td><input type="text" formControlName="conversionRate"></td>
-      </tr>
-      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">
-        <p style="color: red">Conversion Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Amount</td>
-        <td><input type="number" formControlName="drugAmount"></td>
-      </tr>
-      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">
-        <p style="color: red">Amount is invalid!</p>
-      </div>
-      <tr>
-        <td>Wholesale Profit Rate</td>
-        <td><input type="number" formControlName="wholesaleProfitRate"></td>
-      </tr>
-      <div *ngIf="drugForm.get('wholesaleProfitRate')?.invalid && (drugForm.get('wholesaleProfitRate')?.dirty || drugForm.get('wholesaleProfitRate')?.touched)">
-        <p style="color: red">Wholesale Profit Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Retail Profit Rate</td>
-        <td><input type="number" formControlName="retailProfitRate"></td>
-      </tr>
-      <div *ngIf="drugForm.get('retailProfitRate')?.invalid && (drugForm.get('retailProfitRate')?.dirty || drugForm.get('retailProfitRate')?.touched)">
-        <p style="color: red">Retail Profit Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Unit</td>
-        <td><select formControlName="unit">
-          <option selected value="" disabled>Select</option>
-          <option value="hop">Hộp</option>
-          <option value="thung">Thùng</option>
-          <option value="vi">Vỉ</option>
-          <option value="bich">Bịch</option>
-        </select></td>
-      </tr>
-      <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">
-        <p style="color: red">Unit Profit Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Conversion Unit</td>
-        <td><select formControlName="conversionUnit">
-          <option selected value="" disabled>Select</option>
-          <option value="hop">Thùng</option>
-          <option value="vi">Vỉ</option>
-          <option value="bich">Bịch</option>
-        </select></td>
-      </tr>
-      <div *ngIf="drugForm.get('conversionUnit')?.invalid && (drugForm.get('conversionUnit')?.dirty || drugForm.get('conversionUnit')?.touched)">
-        <p style="color: red">Conversion Unit Profit Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Manufacturer</td>
-        <td><input type="text" formControlName="manufacturer"></td>
-      </tr>
-      <div *ngIf="drugForm.get('manufacturer')?.invalid && (drugForm.get('manufacturer')?.dirty || drugForm.get('manufacturer')?.touched)">
-        <p style="color: red">Retail Profit Rate is invalid!</p>
-      </div>
-      <tr>
-        <td>Origin</td>
-        <td><select formControlName="origin">
-          <option selected value="" disabled>Select</option>
-          <option value="my">Mỹ</option>
-          <option value="trung quoc">Trung Quốc</option>
-          <option value="lao">Lào</option>
-          <option value="viet nam">Việt Nam</option>
-        </select></td>
-      </tr>
-      <div *ngIf="drugForm.get('origin')?.invalid && (drugForm.get('origin')?.dirty || drugForm.get('origin')?.touched)">
-        <p style="color: red">Origin is invalid!</p>
-      </div>
-      <tr>
-        <td>Drug Group</td>
-        <td><select formControlName="drugGroup">
-          <option selected value="" disabled>Select</option>
-          <option value="1">Thuốc Kháng Sinh</option>
-          <option value="2">Thuốc Kháng Viêm</option>
-          <option value="3">Thuốc giảm đau hạ sốt</option>
-        </select></td>
-      </tr>
-      <div *ngIf="drugForm.get('drugGroup')?.invalid && (drugForm.get('drugGroup')?.dirty || drugForm.get('drugGroup')?.touched)">
-        <p style="color: red">Origin is invalid!</p>
-      </div>
-      <tr>
-        <td>Note</td>
-        <td><input type="text" formControlName="note"></td>
-      </tr>
-      <div *ngIf="drugForm.get('note')?.invalid && (drugForm.get('note')?.dirty || drugForm.get('note')?.touched)">
-        <p style="color: red">Origin is invalid!</p>
-      </div>
-
-      <tr>
-        <td></td>
-        <td><button type="submit" [disabled]="!drugForm.valid">Create</button></td>
-      </tr>
-    </table>
-  </form>
-<!--  <form id="form">-->
-<!--    <div class="row mx-0 d-flex justify-content-center">-->
-<!--      <div class="col-lg-12 d-flex justify-content-start ml-0 px-0">-->
-<!--        <h2 class="mt-2 font-weight-bold">Thông tin thuốc</h2>-->
+<!--  <form [formGroup]="drugForm" (ngSubmit)="submit()" novalidate>-->
+<!--    <table id="form">-->
+<!--      <tr>-->
+<!--        <td>Name:</td>-->
+<!--        <td><input type="text" formControlName="drugName"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('drugName')?.invalid && (drugForm.get('drugName')?.dirty || drugForm.get('drugName')?.touched)">-->
+<!--        <p style="color: red">Name is invalid!</p>-->
 <!--      </div>-->
-<!--    </div>-->
-<!--    <div class="border border-dark mx-0 mt-2 pt-2 px-2">-->
-
-<!--      <div class="row d-flex align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Tên thuốc <span style="color: red">(*)</span></label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-10">-->
-<!--          <input class="form-control border border-dark" type="text">-->
-<!--        </div>-->
-<!--        &lt;!&ndash;                            <div class="col-lg-1 px-0">&ndash;&gt;-->
-<!--        &lt;!&ndash;                                <label class="label-text" style="color: red">(*)</label>&ndash;&gt;-->
-<!--        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--      <tr>-->
+<!--        <td>Faculty:</td>-->
+<!--        <td><input type="text" formControlName="drugFaculty"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('drugFaculty')?.invalid && (drugForm.get('drugFaculty')?.dirty || drugForm.get('drugFaculty')?.touched)">-->
+<!--        <p style="color: red">Falcuty is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
+<!--      <tr>-->
+<!--        <td>Active Element</td>-->
+<!--        <td><input type="text" formControlName="activeElement"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('activeElement')?.invalid && (drugForm.get('activeElement')?.dirty || drugForm.get('activeElement')?.touched)">-->
+<!--        <p style="color: red">Active Element is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Hoạt chất <span style="color: red">(*)</span></label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-10">-->
-<!--          <input class="form-control border border-dark" type="text">-->
-<!--        </div>-->
-
+<!--      <tr>-->
+<!--        <td>Side Effect</td>-->
+<!--        <td><input type="text" formControlName="drugSideEffect"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('drugSideEffect')?.invalid && (drugForm.get('drugSideEffect')?.dirty || drugForm.get('drugSideEffect')?.touched)">-->
+<!--        <p style="color: red">Side Effect is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
+<!--      <tr>-->
+<!--        <td>Conversion Rate</td>-->
+<!--        <td><input type="text" formControlName="conversionRate"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">-->
+<!--        <p style="color: red">Conversion Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Công dụng <span style="color: red">(*)</span></label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-10">-->
-<!--          <input class="form-control border border-dark" type="text">-->
-<!--        </div>-->
-
+<!--&lt;!&ndash;      <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        <td>Amount</td>&ndash;&gt;-->
+<!--&lt;!&ndash;        <td><input type="number" formControlName="drugAmount"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;      </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">&ndash;&gt;-->
+<!--&lt;!&ndash;        <p style="color: red">Amount is invalid!</p>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--      <tr>-->
+<!--        <td>Wholesale Profit Rate</td>-->
+<!--        <td><input type="number" formControlName="wholesaleProfitRate"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('wholesaleProfitRate')?.invalid && (drugForm.get('wholesaleProfitRate')?.dirty || drugForm.get('wholesaleProfitRate')?.touched)">-->
+<!--        <p style="color: red">Wholesale Profit Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
+<!--      <tr>-->
+<!--        <td>Retail Profit Rate</td>-->
+<!--        <td><input type="number" formControlName="retailProfitRate"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('retailProfitRate')?.invalid && (drugForm.get('retailProfitRate')?.dirty || drugForm.get('retailProfitRate')?.touched)">-->
+<!--        <p style="color: red">Retail Profit Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Tác dụng phụ <span style="color: red">(*)</span></label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-10">-->
-<!--          <input class="form-control border border-dark" type="text">-->
-<!--        </div>-->
-
+<!--      <tr>-->
+<!--        <td>Unit</td>-->
+<!--        <td><select formControlName="unit">-->
+<!--          <option selected value="" disabled>Select</option>-->
+<!--          <option value="Hộp">Hộp</option>-->
+<!--          <option value="Thùng">Thùng</option>-->
+<!--          <option value="Vỉ">Vỉ</option>-->
+<!--          <option value="Bịch">Bịch</option>-->
+<!--        </select></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">-->
+<!--        <p style="color: red">Unit Profit Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
+<!--      <tr>-->
+<!--        <td>Conversion Unit</td>-->
+<!--        <td><select formControlName="conversionUnit">-->
+<!--          <option selected value="" disabled>Select</option>-->
+<!--          <option value="Hộp">Hộp</option>-->
+<!--          <option value="Vỉ">Vỉ</option>-->
+<!--          <option value="Bịch">Bịch</option>-->
+<!--        </select></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('conversionUnit')?.invalid && (drugForm.get('conversionUnit')?.dirty || drugForm.get('conversionUnit')?.touched)">-->
+<!--        <p style="color: red">Conversion Unit Profit Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Nhóm thuốc <span style="color: red">(*)</span></label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-10">-->
-<!--          <select style="min-width: 100%;height: 33px">-->
-<!--            <option>Thuốc bổ</option>-->
-<!--            <option>Thuốc kháng sinh</option>-->
-<!--            <option>Thuốc kháng viêm</option>-->
-<!--          </select>-->
-<!--        </div>-->
-
+<!--      <tr>-->
+<!--        <td>Manufacturer</td>-->
+<!--        <td><input type="text" formControlName="manufacturer"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('manufacturer')?.invalid && (drugForm.get('manufacturer')?.dirty || drugForm.get('manufacturer')?.touched)">-->
+<!--        <p style="color: red">Retail Profit Rate is invalid!</p>-->
 <!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải chọn!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
+<!--      <tr>-->
+<!--        <td>Origin</td>-->
+<!--        <td><select formControlName="origin">-->
+<!--          <option selected value="" disabled>Select</option>-->
+<!--          <option value="Mỹ">Mỹ</option>-->
+<!--          <option value="Trung Quốc">Trung Quốc</option>-->
+<!--          <option value="Lào">Lào</option>-->
+<!--          <option value="Việt Nam">Việt Nam</option>-->
+<!--        </select></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('origin')?.invalid && (drugForm.get('origin')?.dirty || drugForm.get('origin')?.touched)">-->
+<!--        <p style="color: red">Origin is invalid!</p>-->
+<!--      </div>-->
+<!--      <tr>-->
+<!--        <td>Drug Group</td>-->
+<!--        <td><select formControlName="drugGroup">-->
+<!--          <option selected value="" disabled>Select</option>-->
+<!--          <option value="Thuốc Kháng Sinh">Thuốc Kháng Sinh</option>-->
+<!--          <option value="Thuốc Kháng Viêm">Thuốc Kháng Viêm</option>-->
+<!--          <option value="Thuốc giảm đau hạ sốt">Thuốc giảm đau hạ sốt</option>-->
+<!--        </select></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('drugGroup')?.invalid && (drugForm.get('drugGroup')?.dirty || drugForm.get('drugGroup')?.touched)">-->
+<!--        <p style="color: red">Origin is invalid!</p>-->
+<!--      </div>-->
+<!--      <tr>-->
+<!--        <td>Note</td>-->
+<!--        <td><input type="text" formControlName="note"></td>-->
+<!--      </tr>-->
+<!--      <div *ngIf="drugForm.get('note')?.invalid && (drugForm.get('note')?.dirty || drugForm.get('note')?.touched)">-->
+<!--        <p style="color: red">Origin is invalid!</p>-->
 <!--      </div>-->
 
-<!--      <hr style="color: black">-->
-<!--      <div class="row align-items-center">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row">-->
-<!--            <div class="col-lg-4">-->
-<!--              <label class="label-text">Đơn vị <span style="color: red">(*)</span></label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <select style="min-width: 100%;height: 33px">-->
-<!--                <option>Hộp</option>-->
-<!--                <option>Thùng</option>-->
-<!--                <option>Vỉ</option>-->
-<!--                <option>Bịch</option>-->
-<!--              </select>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6"></div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <small style="color: red">Thông tin này bắt buộc phải chọn!</small>-->
-<!--        </div>-->
-<!--        <div class="col-lg-1 px-0">-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex ">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-<!--              <label class="label-text">ĐVT Quy đổi <span style="color: red">(*)</span></label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <select style="min-width: 100%;height: 33px">-->
-<!--                <option>Gói</option>-->
-<!--                <option>Lọ</option>-->
-<!--                <option>Viên</option>-->
-<!--              </select>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-<!--              <label class="label-text">Tỷ lệ quy đổi <span style="color: red">(*)</span></label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <input class="form-control border border-dark" type="text">-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex mb-3 ">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-
-<!--            </div>-->
-<!--            <div class="col-lg-8">-->
-<!--              <small style="color: red">Thông tin này bắt buộc phải chọn!</small>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-
-<!--            </div>-->
-<!--            <div class="col-lg-8">-->
-<!--              <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="row d-flex ">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4 d-flex">-->
-<!--              <label class="label-text">% Lợi nhuận XC<span style="color: red">(*)</span></label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <input class="form-control border border-dark" type="text">-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-<!--              <label class="label-text">% Lợi nhuận XL</label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <input class="form-control border border-dark" type="text">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex mb-3 ">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-
-<!--            </div>-->
-<!--            <div class="col-lg-8">-->
-<!--              <small style="color: red">Thông tin này bắt buộc phải nhập!</small>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--      <hr style="color: black">-->
-
-<!--      <div class="row d-flex ">-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4 d-flex">-->
-<!--              <label class="label-text">Nhà sản xuất</label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <input class="form-control border border-dark" type="text">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-<!--              <label class="label-text">Xuất xứ <span style="color: red">(*)</span></label>-->
-<!--            </div>-->
-<!--            <div class="col-lg-6">-->
-<!--              <select style="min-width: 100%;height: 33px">-->
-<!--                <option>Việt Nam</option>-->
-<!--                <option>Trung Quốc</option>-->
-<!--                <option>Mỹ</option>-->
-<!--              </select>-->
-<!--            </div>-->
-
-
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex mb-3 ">-->
-<!--        <div class="col-lg-6">-->
-
-<!--        </div>-->
-<!--        <div class="col-lg-6">-->
-<!--          <div class="row align-items-center">-->
-<!--            <div class="col-lg-4">-->
-
-<!--            </div>-->
-<!--            <div class="col-lg-8">-->
-<!--              <small style="color: red">Thông tin này bắt buộc phải chọn!</small>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex mb-3 align-items-center">-->
-<!--        <div class="col-lg-2">-->
-<!--          <label class="label-text">Ghi chú</label>-->
-<!--        </div>-->
-<!--        <div class="col-lg-9">-->
-<!--          <input class="form-control border border-dark" style="height: 66px" type="text">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row d-flex pt-2">-->
-<!--      <div class="col-lg-4">-->
-<!--        <label class="label-text ml-0">(*) Thông tin bắt buộc</label>-->
-<!--      </div>-->
-<!--      <div class="col-lg-8 d-flex justify-content-end">-->
-<!--        <button class="mr-3 btn btn-create button" type="button"><i class="fa fa-plus"></i> Thêm </button>-->
-<!--        <button routerLink="/drug/list" class="mr-0 btn btn-return button " type="button"><i class="icon-sidebar fa fa-reply text-warning"></i> Trở về </button>-->
-<!--      </div>-->
-<!--    </div>-->
+<!--      <tr>-->
+<!--        <td></td>-->
+<!--        <td><button type="submit" [disabled]="!drugForm.valid">Create</button></td>-->
+<!--      </tr>-->
+<!--    </table>-->
 <!--  </form>-->
+  <form id="form" [formGroup]="drugForm" (ngSubmit)="submit()" novalidate>
+    <div class="row mx-0 d-flex justify-content-center">
+      <div class="col-lg-12 d-flex justify-content-start ml-0 px-0">
+        <h2 class="mt-2 font-weight-bold">Thông tin thuốc</h2>
+      </div>
+    </div>
+    <div class="border border-dark mx-0 mt-2 pt-2 px-2">
+
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Tên thuốc <span style="color: red">(*)</span></label>
+        </div>
+        <div class="col-lg-10">
+          <input class="form-control border border-dark" type="text" formControlName="drugName">
+        </div>
+        <!--                            <div class="col-lg-1 px-0">-->
+        <!--                                <label class="label-text" style="color: red">(*)</label>-->
+        <!--                            </div>-->
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('drugName')?.invalid && (drugForm.get('drugName')?.dirty || drugForm.get('drugName')?.touched)">
+            <small style="color: red">Name is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Hoạt chất <span style="color: red">(*)</span></label>
+        </div>
+        <div class="col-lg-10">
+          <input class="form-control border border-dark" type="text" formControlName="activeElement">
+        </div>
+
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('activeElement')?.invalid && (drugForm.get('activeElement')?.dirty || drugForm.get('activeElement')?.touched)">
+            <small style="color: red">Active Element is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Công dụng <span style="color: red">(*)</span></label>
+        </div>
+        <div class="col-lg-10">
+          <input class="form-control border border-dark" type="text" formControlName="drugFaculty">
+        </div>
+
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('drugFaculty')?.invalid && (drugForm.get('drugFaculty')?.dirty || drugForm.get('drugFaculty')?.touched)">
+            <small style="color: red">Falcuty is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Tác dụng phụ <span style="color: red">(*)</span></label>
+        </div>
+        <div class="col-lg-10">
+          <input class="form-control border border-dark" type="text" formControlName="drugSideEffect">
+        </div>
+
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('drugSideEffect')?.invalid && (drugForm.get('drugSideEffect')?.dirty || drugForm.get('drugSideEffect')?.touched)">
+            <small style="color: red">Side Effect is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Nhóm thuốc <span style="color: red">(*)</span></label>
+        </div>
+        <div class="col-lg-10">
+          <select style="min-width: 100%;height: 33px" formControlName="drugGroup">
+            <option selected value="" disabled>Select</option>
+            <option>Thuốc bổ</option>
+            <option>Thuốc kháng sinh</option>
+            <option>Thuốc kháng viêm</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('drugGroup')?.invalid && (drugForm.get('drugGroup')?.dirty || drugForm.get('drugGroup')?.touched)">
+            <small style="color: red">Origin is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+
+      <hr style="color: black">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-4">
+              <label class="label-text">Đơn vị <span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-6">
+              <select style="min-width: 100%;height: 33px" formControlName="unit">
+                <option selected value="" disabled>Select</option>
+                <option>Hộp</option>
+                <option>Thùng</option>
+                <option>Vỉ</option>
+                <option>Bịch</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6"></div>
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">
+            <small style="color: red">Unit Profit Rate is invalid!</small>
+          </div>
+        </div>
+        <div class="col-lg-1 px-0">
+
+        </div>
+      </div>
+      <div class="row d-flex ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <label class="label-text">ĐVT Quy đổi <span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-6">
+              <select style="min-width: 100%;height: 33px" formControlName="conversionUnit">
+                <option selected value="" disabled>Select</option>
+                <option>Gói</option>
+                <option>Lọ</option>
+                <option>Viên</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <label class="label-text">Tỷ lệ quy đổi <span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-6">
+              <input class="form-control border border-dark" type="text" formControlName="conversionRate">
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex mb-3 ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('conversionUnit')?.invalid && (drugForm.get('conversionUnit')?.dirty || drugForm.get('conversionUnit')?.touched)">
+                <small style="color: red">Conversion Unit Profit Rate is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">
+                <small style="color: red">Conversion Rate is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4 d-flex">
+              <label class="label-text">% Lợi nhuận XC<span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-6">
+              <input class="form-control border border-dark" type="text" formControlName="wholesaleProfitRate">
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <label class="label-text">% Lợi nhuận XL</label>
+            </div>
+            <div class="col-lg-6">
+              <input class="form-control border border-dark" type="text" formControlName="retailProfitRate">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex mb-3 ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('wholesaleProfitRate')?.invalid && (drugForm.get('wholesaleProfitRate')?.dirty || drugForm.get('wholesaleProfitRate')?.touched)">
+                <small style="color: red">Wholesale Profit Rate is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('retailProfitRate')?.invalid && (drugForm.get('retailProfitRate')?.dirty || drugForm.get('retailProfitRate')?.touched)">
+                <small style="color: red">Retail Profit Rate is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <hr style="color: black">
+
+      <div class="row d-flex ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4 d-flex">
+              <label class="label-text">Nhà sản xuất</label>
+            </div>
+            <div class="col-lg-6">
+              <input class="form-control border border-dark" type="text" formControlName="manufacturer">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <label class="label-text">Xuất xứ <span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-6">
+              <select style="min-width: 100%;height: 33px" formControlName="origin">
+                <option selected value="" disabled>Select</option>
+                <option>Việt Nam</option>
+                <option>Trung Quốc</option>
+                <option>Mỹ</option>
+              </select>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex mb-3 ">
+        <div class="col-lg-6">
+
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('manufacturer')?.invalid && (drugForm.get('manufacturer')?.dirty || drugForm.get('manufacturer')?.touched)">
+                <small style="color: red">Manufacturer is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('origin')?.invalid && (drugForm.get('origin')?.dirty || drugForm.get('origin')?.touched)">
+                <small style="color: red">Origin is invalid!</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+          <label class="label-text">Ghi chú</label>
+        </div>
+        <div class="col-lg-9">
+          <input class="form-control border border-dark" style="height: 66px" type="text" formControlName="note">
+        </div>
+      </div>
+      <div class="row d-flex mb-3 align-items-center">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-9">
+          <div *ngIf="drugForm.get('note')?.invalid && (drugForm.get('note')?.dirty || drugForm.get('note')?.touched)">
+            <p style="color: red">Origin is invalid!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row d-flex pt-2">
+      <div class="col-lg-4">
+        <label class="label-text ml-0">(*) Thông tin bắt buộc</label>
+      </div>
+      <div class="col-lg-8 d-flex justify-content-end">
+        <button class="mr-3 btn btn-create button" type="submit" [disabled]="!drugForm.valid"><i class="fa fa-plus"></i> Thêm </button>
+        <button routerLink="/drug/list" class="mr-0 btn btn-return button " type="button"><i class="icon-sidebar fa fa-reply text-warning"></i> Trở về </button>
+      </div>
+    </div>
+  </form>
 </div>

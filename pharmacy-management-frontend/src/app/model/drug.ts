@@ -4,7 +4,7 @@ export interface Drug {
   drugName?: string;
   drugFaculty?: string;
   activeElement?: string;
-  drugAmount?: number;
+  // drugAmount?: number;
   unit?: string;
   conversionUnit?: string;
   conversionRate?: string;
