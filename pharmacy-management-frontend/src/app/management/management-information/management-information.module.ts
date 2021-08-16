@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ManagementInformationRoutingModule} from './management-information-routing.module';
 import {CustomerListComponent} from './customer/customer-list/customer-list.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     ManagementInformationRoutingModule,
     NgbPaginationModule,
+    NgxPaginationModule,
 
   ]
 })

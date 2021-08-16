@@ -17,7 +17,7 @@
           </div>
           <div class="input-group mb-4 col-4 filter1">
             <input type="text" class="form-control"  #searchName
-                   (input)="search(searchName.value)"placeholder="từ khóa...."
+                   (input)="search(searchName.value)" placeholder="từ khóa...."
                    aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class=" btn btn-search">
               <i class="fa fa-search" aria-hidden="true"></i>
@@ -26,11 +26,11 @@
           <div class="col-4 filter1 ">
             <span>Sắp xếp</span>
             <select class="custom-select" style="width: 250px" (input)="sort(typeSort.value)" #typeSort>
-              <option value="">Mã khách hàng</option>
-              <option value="">Nhóm khách hàng</option>
-              <option value="">Tên khách hàng</option>
-              <option value="">Địa chỉ</option>
-              <option value="">Điện thoại</option>
+              <option value="customer_code">Mã khách hàng</option>
+              <option value="customer_group">Nhóm khách hàng</option>
+              <option value="customer_name">Tên khách hàng</option>
+              <option value="customer_address">Địa chỉ</option>
+              <option value="customer_phone">Điện thoại</option>
             </select>
           </div>
         </div>
@@ -54,8 +54,8 @@
         </tr>
         </thead>
         <tbody>
-        
-        <tr *ngFor="let c of customers  | slice: (page-1) * pageSize : page * pageSize ,  index as i " role="button"
+
+        <tr *ngFor="let c of customers  | paginate: { itemsPerPage: 5, currentPage: p },  index as i " role="button"
             (click)="sendId(c.customerId)">
           <ng-container *ngIf="id==c.customerId">
             <td style="background: darkgrey">{{i + 1}}</td>
@@ -81,21 +81,12 @@
         </tbody>
       </table>
     </fieldset>
-    <div class="clearfix">
-      <div class="hint-text">Hiển thị <b>{{pageSize}}</b> trên <b>{{customers.length}}</b> đối tượng</div>
-      <ngb-pagination class="d-flex justify-content-end"
-                      [(page)]="page"
-                      [pageSize]="pageSize"
-                      [collectionSize]="customers.length"
-                      [maxSize]="5"
-                      [rotate]="true"
-                      [ellipses]="true"
-                      [boundaryLinks]="true">
-        <ng-template ngbPaginationFirst>Trang đầu</ng-template>
-        <ng-template ngbPaginationLast>Trang cuối</ng-template>
-        <ng-template ngbPaginationEllipsis>...</ng-template>
-        <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-      </ngb-pagination>
+    <div class="row">
+      <div class="col-8">
+      </div>
+      <div class="clearfix col-4 float-right ">
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+      </div>
     </div>
     <div class="row">
       <div class="col-6">
@@ -171,3 +162,4 @@
     </div>
   </div>
 </div>
+

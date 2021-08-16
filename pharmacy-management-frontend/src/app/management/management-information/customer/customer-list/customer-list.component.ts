@@ -9,9 +9,7 @@ import {NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  page = 1;
-  pageSize = 5;
-  collectionSize = 0;
+  p = 1;
   id: number;
   customerDelete: Customer;
   customers: Customer[] = [];
@@ -26,8 +24,7 @@ export class CustomerListComponent implements OnInit {
 
   getAllCustomer() {
     this.customerService.getAll().subscribe(data => {
-      this.customers = data['content'];
-      this.collectionSize = data['totalPages'];
+      this.customers = data;
     });
   }
 
@@ -64,19 +61,46 @@ export class CustomerListComponent implements OnInit {
   }
 
   search(keyword: string) {
-    this.customerService.searchAllField(keyword).subscribe(data => {
-      if (data == null) {
-        this.customers = [];
-      } else {
-        this.customers = data['content'];
-        this.collectionSize = data['totalPages'];
-      }
-    }, error => {
-      console.log(error);
-    });
+    if (keyword !== '') {
+      this.customerService.searchAllField(keyword).subscribe(data => {
+        if (data != null) {
+          this.customers = data;
+          console.log(data);
+        } else {
+          this.customers = [];
+        }
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      this.getAllCustomer();
+    }
   }
 
-  sort( typeSort: string) {
-
+  sort(typeSort: string) {
+    if (typeSort === 'customer_group') {
+      this.customers = this.customers.sort((a, b) => a.customerGroup.customerGroupId - b.customerGroup.customerGroupId);
+    }
+    if (typeSort === 'customer_name') {
+      this.customers.sort(function(c1, c2) {
+        const a = c1.customerName.toLowerCase();
+        const b = c2.customerName.toLowerCase();
+        return a === b ? 0 : a > b ? 1 : -1;
+      });
+    }
+    if (typeSort === 'customer_address') {
+      this.customers.sort(function(c1, c2) {
+        const a = c1.customerAddress.toLowerCase();
+        const b = c2.customerAddress.toLowerCase();
+        return a === b ? 0 : a > b ? 1 : -1;
+      });
+    }
+    if (typeSort === 'customer_code') {
+      this.customers.sort(function(c1, c2) {
+        const a = c1.customerCode.toLowerCase();
+        const b = c2.customerCode.toLowerCase();
+        return a === b ? 0 : a > b ? 1 : -1;
+      });
+    }
   }
 }
