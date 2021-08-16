@@ -72,7 +72,7 @@
             <td>
               <select [ngModel]="null" (ngModelChange)="getDrug($event)"   >
                 <option  [selected]="true" [hidden]="true"   >Thêm thuốc</option>
-                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.name}}</option>
+                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.drugName}}</option>
               </select>
             </td>
             <td></td>
@@ -81,11 +81,11 @@
             <td></td>
           </tr>
           <tr *ngFor="let drugOfBill of data , let i = index">
-            <td>{{drugOfBill.drug.name}}</td>
+            <td>{{drugOfBill.drug.drugName}}</td>
             <td>vỉ</td>
             <td>{{drugOfBill.quantity}}</td>
-            <td>{{drugOfBill.drug.price}}</td>
-            <td>{{drugOfBill.drug.price * drugOfBill.quantity}} VND</td>
+            <td>{{drugOfBill.drug.retailProfitRate}}</td>
+            <td>{{drugOfBill.drug.retailProfitRate * drugOfBill.quantity}} VND</td>
 
           </tr>
           </tbody>
