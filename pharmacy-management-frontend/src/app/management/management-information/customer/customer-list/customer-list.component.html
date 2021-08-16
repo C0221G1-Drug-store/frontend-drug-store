@@ -1,127 +1,173 @@
-<h2 class="text-center">Chức năng hiển thị danh sách & xóa khách hàng </h2>
-<div class="container">
-  <div id="scroll">
-    <table class="table table- table-hover">
-      <thead>
-      <tr>
-        <th>STT</th>
-        <th>Mã khách hàng</th>
-        <th>Tên khách hàng</th>
-        <th>Tuổi</th>
-        <th>Địa chỉ</th>
-        <th>Số điện thoại</th>
-        <th>Nhóm khách hàng</th>
-        <th>Ghi Chú</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let c of customers , index as i" role="button" (click)="sendId(c.id)">
-        <ng-container *ngIf="id===c.id">
-          <td style="background: darkgrey">{{i + 1}}</td>
-          <td style="background: darkgrey">{{c.idCustomer}}</td>
-          <td style="background: darkgrey">{{c.name}}</td>
-          <td style="background: darkgrey">{{c.age}}</td>
-          <td style="background: darkgrey">{{c.address}}</td>
-          <td style="background: darkgrey">{{c.phone}}</td>
-          <td style="background: darkgrey">{{c.customerGroup}}</td>
-          <td style="background: darkgrey">{{c.note}}</td>
-        </ng-container>
-        <ng-container *ngIf="id!==c.id">
-          <td>{{i + 1}}</td>
-          <td>{{c.idCustomer}}</td>
-          <td>{{c.name}}</td>
-          <td>{{c.age}}</td>
-          <td>{{c.address}}</td>
-          <td>{{c.phone}}</td>
-          <td>{{c.customerGroup}}</td>
-          <td>{{c.note}}</td>
-        </ng-container>
-      </tr>
-      </tbody>
-    </table>
+<div class="container ">
+  <div class="container mt-5 pt-5">
+    <form>
+      <fieldset>
+        <legend>Bộ lọc</legend>
+        <div class="row text-center">
+          <div class="col-4 filter1 ">
+            <span>Lọc theo:</span>
+            <select class="custom-select" style="width: 250px" >
+              <option value="">Thông tin khách hàng</option>
+              <option value="">Nhà cung cấp</option>
+              <option value="">Thuốc</option>
+              <option value="">Toa thuốc</option>
+              <option value="">Nhân viên</option>
+              <option value="">Hóa đơn</option>
+            </select>
+          </div>
+          <div class="input-group mb-4 col-4 filter1">
+            <input type="text" class="form-control"  #searchName
+                   (input)="search(searchName.value)"placeholder="từ khóa...."
+                   aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class=" btn btn-search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-4 filter1 ">
+            <span>Sắp xếp</span>
+            <select class="custom-select" style="width: 250px" (input)="sort(typeSort.value)" #typeSort>
+              <option value="">Mã khách hàng</option>
+              <option value="">Nhóm khách hàng</option>
+              <option value="">Tên khách hàng</option>
+              <option value="">Địa chỉ</option>
+              <option value="">Điện thoại</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
-  <div class="d-flex justify-content-end">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <button class="btn btn-info">
-        <i class="far fa-eye"></i>
-        Thông tin chi tiết
-      </button>
+  <div class="container pb-3">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">Danh sách Khách hàng</legend>
+      <table class="table table-bordered table-striped ">
+        <thead  style="background: #567FEA ; color: white">
+        <tr>
+          <th>STT</th>
+          <th>Mã khách hàng</th>
+          <th>Tên khách hàng</th>
+          <th>Tuổi</th>
+          <th>Địa chỉ</th>
+          <th>Số điện thoại</th>
+          <th>Nhóm khách hàng</th>
+          <th>Ghi Chú</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        <tr *ngFor="let c of customers  | slice: (page-1) * pageSize : page * pageSize ,  index as i " role="button"
+            (click)="sendId(c.customerId)">
+          <ng-container *ngIf="id==c.customerId">
+            <td style="background: darkgrey">{{i + 1}}</td>
+            <td style="background: darkgrey">{{c.customerCode}}</td>
+            <td style="background: darkgrey">{{c.customerName}}</td>
+            <td style="background: darkgrey">{{c.customerAge}}</td>
+            <td style="background: darkgrey">{{c.customerAddress}}</td>
+            <td style="background: darkgrey">{{c.customerPhone}}</td>
+            <td style="background: darkgrey">{{c.customerGroup.customerGroupName}}</td>
+            <td style="background: darkgrey">{{c.customerNote}}</td>
+          </ng-container>
+          <ng-container *ngIf="id!==c.customerId">
+            <td>{{i + 1}}</td>
+            <td>{{c.customerCode}}</td>
+            <td>{{c.customerName}}</td>
+            <td>{{c.customerAge}}</td>
+            <td>{{c.customerAddress}}</td>
+            <td>{{c.customerPhone}}</td>
+            <td>{{c.customerGroup.customerGroupName}}</td>
+            <td>{{c.customerNote}}</td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    <div class="clearfix">
+      <div class="hint-text">Hiển thị <b>{{pageSize}}</b> trên <b>{{customers.length}}</b> đối tượng</div>
+      <ngb-pagination class="d-flex justify-content-end"
+                      [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="customers.length"
+                      [maxSize]="5"
+                      [rotate]="true"
+                      [ellipses]="true"
+                      [boundaryLinks]="true">
+        <ng-template ngbPaginationFirst>Trang đầu</ng-template>
+        <ng-template ngbPaginationLast>Trang cuối</ng-template>
+        <ng-template ngbPaginationEllipsis>...</ng-template>
+        <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+      </ngb-pagination>
     </div>
-    <div class="col-6 ">
-      <div class="row">
-        <div class="col-3">
-
-          <button class="btn btn-primary">
-            <i class="far fa-plus-square"></i>
-            Thêm
-          </button>
-        </div>
-        <div class="col-3">
-
-          <button class="btn btn-warning">
-            <i class="far fa-edit"></i>
-            Sửa
-          </button>
-        </div>
-        <div class="col-3">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                  (click)="getCustomerDelete()">
-            <i class="far fa-trash-alt"></i>
-            Xóa
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-               aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body" *ngIf="customerDelete">
-                  Bạn có muốn xóa khách hàng <i> <b style="color: red">{{customerDelete.name}}  </b></i> không ?
-                </div>
-                <div *ngIf="!customerDelete" class="modal-body">
-                  Chưa chọn khách hàng để xóa
-                </div>
-                <div [hidden]="!customerDelete" class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reset()">Không
-                  </button>
-                  <button [hidden]="!customerDelete" [disabled]="!customerDelete" type="button" class="btn btn-danger" data-dismiss="modal"
-                          (click)="deleteCustomer()">Xóa
-                  </button>
-                </div>
-                <div [hidden]="customerDelete" class="modal-footer">
-                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="reset()" >Trở về
-                  </button>
+    <div class="row">
+      <div class="col-6">
+      </div>
+      <div class="col-6 ">
+        <div class="row">
+          <div class="col-3">
+            <button class="btn btn-info" type="button">
+              <i class="fa fa-plus-square"></i>
+              Thêm
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-primary" type="button"><i class="fa fa-edit"></i>
+              Sửa
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                    (click)="getCustomerDelete()">
+              <i class="fa fa-trash"></i>
+              Xóa
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" *ngIf="customerDelete">
+                    Bạn có muốn xóa khách hàng <i> <b style="color: red">{{customerDelete.customerName}}  </b></i> không
+                    ?
+                  </div>
+                  <div *ngIf="!customerDelete" class="modal-body">
+                    Chưa chọn khách hàng để xóa
+                  </div>
+                  <div [hidden]="!customerDelete" class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reset()">Không
+                    </button>
+                    <button [hidden]="!customerDelete" [disabled]="!customerDelete" type="button" class="btn btn-danger"
+                            data-dismiss="modal"
+                            (click)="deleteCustomer()">Xóa
+                    </button>
+                  </div>
+                  <div [hidden]="customerDelete" class="modal-footer">
+                    <button type="button" class="mr-5 btn btn-success" data-dismiss="modal" (click)="reset()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                      </svg>
+                      Trở về
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-3">
-          <button class="btn btn-success">
-            <i class="fas fa-undo"></i>
-            Trở về
-          </button>
+          <div class="col-3">
+            <button class="btn btn-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+              </svg>
+              Trở về
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

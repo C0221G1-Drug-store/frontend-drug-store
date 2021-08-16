@@ -7,7 +7,7 @@ import { ManagementRoutingModule } from './management-routing.module';
   ],
   imports: [
     CommonModule,
-    ManagementRoutingModule
+    ManagementRoutingModule,
   ]
 })
 export class ManagementModule { }

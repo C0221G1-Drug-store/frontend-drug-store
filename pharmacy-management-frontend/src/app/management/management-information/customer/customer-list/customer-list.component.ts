@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CustomerService} from '../../../../service/customer.service';
 import {Customer} from '../../../../model/customer';
+import {NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,16 +9,25 @@ import {Customer} from '../../../../model/customer';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  page = 1;
+  pageSize = 5;
+  collectionSize = 0;
   id: number;
   customerDelete: Customer;
   customers: Customer[] = [];
-  constructor(private customerService: CustomerService) { }
+
+  constructor(private customerService: CustomerService,
+              config: NgbModalConfig) {
+  }
 
   ngOnInit(): void {
+    this.getAllCustomer();
   }
+
   getAllCustomer() {
     this.customerService.getAll().subscribe(data => {
-      this.customers = data;
+      this.customers = data['content'];
+      this.collectionSize = data['totalPages'];
     });
   }
 
@@ -27,9 +37,6 @@ export class CustomerListComponent implements OnInit {
     } else {
       this.id = id;
     }
-  }
-
-  getColor() {
   }
 
   getCustomerDelete() {
@@ -45,8 +52,8 @@ export class CustomerListComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerService.delete(this.id).subscribe(() => {
-      console.log('delete is success');
+    this.customerDelete.flag = false;
+    this.customerService.updateStatusDelete(this.id, this.customerDelete).subscribe(() => {
       this.getAllCustomer();
     });
   }
@@ -54,5 +61,22 @@ export class CustomerListComponent implements OnInit {
   reset() {
     this.id = null;
     this.customerDelete = null;
+  }
+
+  search(keyword: string) {
+    this.customerService.searchAllField(keyword).subscribe(data => {
+      if (data == null) {
+        this.customers = [];
+      } else {
+        this.customers = data['content'];
+        this.collectionSize = data['totalPages'];
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  sort( typeSort: string) {
+
   }
 }
