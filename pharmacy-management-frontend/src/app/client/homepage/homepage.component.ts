@@ -29,7 +29,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDrugGroup();
-    this.getAllDrug()
+    this.getAllDrug();
   }
 
   getAllDrug() {
@@ -42,13 +42,5 @@ export class HomepageComponent implements OnInit {
     this.drugGroupService.getAll().subscribe(next => {
       this.drugGroups = next;
     });
-  }
-
-  getDrugByDrugGroup(drugGroupId: any) {
-    let drugs: Drug[] = [];
-    this.drugService.findDrugByGroup(drugGroupId).subscribe(next => {
-      drugs = next;
-    });
-    return drugs;
   }
 }

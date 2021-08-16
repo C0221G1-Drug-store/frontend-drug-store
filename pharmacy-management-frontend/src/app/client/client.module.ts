@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 import {ClientRoutingModule} from './client-routing.module';
 import {HomepageComponent} from './homepage/homepage.component';
 import {SearchPageComponent} from './search-page/search-page.component';
@@ -9,12 +10,13 @@ import {LoginRegisterComponent} from './login-register/login-register.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderClientComponent} from './header-client/header-client.component';
 import {FooterClientComponent} from './footer-client/footer-client.component';
+import {GroupComponent} from './group/group.component';
 
 
 @NgModule({
   declarations: [
     HomepageComponent, SearchPageComponent, CartComponent, DrugDetailsComponent,
-    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent
+    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent, GroupComponent
   ],
   exports: [
     HeaderClientComponent,
@@ -24,8 +26,6 @@ import {FooterClientComponent} from './footer-client/footer-client.component';
     CommonModule,
     ClientRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule]
 })
-export class ClientModule {
-}
+export class ClientModule {}

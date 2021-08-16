@@ -11,14 +11,10 @@ export class DrugService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(this.URl);
+    return this.http.get(`${this.URl}/not-pagination`);
   }
 
   searchDrug(search: any): Observable<any> {
-    return this.http.get(`${this.URl}/search/${search}`);
-  }
-
-  findDrugByGroup(drugGroupId: number): Observable<any> {
-    return this.http.get(`${this.URl}/drug-group/${drugGroupId}`);
+    return this.http.get(`${this.URl}/search-drug/${search}`);
   }
 }
