@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ExportBillDestroyComponent} from "./export-bill-destroy/export-bill-destroy.component";
-import {ExportBillReturnComponent} from "./export-bill-return/export-bill-return.component";
+import {ExportBillRefundComponent} from "./export-bill-refund/export-bill-refund.component";
 
 
 const routes: Routes = [
@@ -10,8 +10,8 @@ const routes: Routes = [
     component: ExportBillDestroyComponent
   },
   {
-    path: 'export-bill-return',
-    component: ExportBillReturnComponent
+    path: 'export-bill-refund',
+    component: ExportBillRefundComponent
   }
 ];
 
