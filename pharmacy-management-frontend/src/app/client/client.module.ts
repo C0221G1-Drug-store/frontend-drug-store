@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 import {ClientRoutingModule} from './client-routing.module';
 import {HomepageComponent} from './homepage/homepage.component';
 import {SearchPageComponent} from './search-page/search-page.component';
