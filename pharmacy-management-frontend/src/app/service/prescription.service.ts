@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -9,7 +9,9 @@ export class PrescriptionService {
   private URL = 'http://localhost:8080/prescription';
   private URL1 = 'http://localhost:8080/drug-of-bill';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   getAll(): Observable<any> {
     return this.http.get(this.URL);
   }
@@ -20,6 +22,6 @@ export class PrescriptionService {
   }
 
   findPrescriptionById(id: number): Observable<any> {
-    return  this.http.get(`${this.URL}/${id}`);
+    return this.http.get(`${this.URL}/${id}`);
   }
 }
