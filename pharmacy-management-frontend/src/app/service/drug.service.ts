@@ -13,4 +13,12 @@ export class DrugService {
   getAll(): Observable<any> {
     return this.http.get(this.URl);
   }
+
+  searchDrug(search: any): Observable<any> {
+    return this.http.get(`${this.URl}/search/${search}`);
+  }
+
+  findDrugByGroup(drugGroupId: number): Observable<any> {
+    return this.http.get(`${this.URl}/drug-group/${drugGroupId}`);
+  }
 }

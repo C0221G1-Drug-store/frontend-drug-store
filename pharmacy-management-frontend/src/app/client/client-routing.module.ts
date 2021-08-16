@@ -5,14 +5,16 @@ import { DrugDetailsComponent } from './drug-details/drug-details.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import {GroupComponent} from './group/group.component';
 
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'search', component: SearchPageComponent},
-  {path: 'details', component: DrugDetailsComponent},
+  {path: 'search/:search', component: SearchPageComponent},
+  {path: 'details/:id', component: DrugDetailsComponent},
   {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginRegisterComponent},
+  {path: 'group/:id', component: GroupComponent}
 ];
 
 @NgModule({

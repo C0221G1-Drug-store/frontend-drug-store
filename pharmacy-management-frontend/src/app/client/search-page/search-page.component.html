@@ -1,9 +1,9 @@
-<app-header-client></app-header-client>
 <!--GIAO DIỆN KẾT QUẢ SEARCH-->
 <div class="py-lg-2">
   <div class="container">
     <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
-      <a href="/" class="navbar-brand d-flex w-50 mr-auto">Kết quả tìm kiếm cho &nbsp;<span style="color: #242a61"> "bo gan"</span></a>
+      <a href="/" class="navbar-brand d-flex w-50 mr-auto">Kết quả tìm kiếm cho &nbsp;<span
+        style="color: #242a61">"{{search}}"</span></a>
       <div class="navbar-collapse collapse navbar-toggle w-100" id="collapsingNavbar4">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li class="nav-item">
@@ -24,77 +24,96 @@
     <hr class="search-hr pb-lg-1">
   </div>
 </div>
+
+<!--  <p class="font-weight-bold text-danger pb-4 pl-3">Có 5 kết quả</p>-->
+<!--  <div class="row py-2">-->
+<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
+<!--      <div class="hovereffect">-->
+<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/boganic.jpeg" alt="">-->
+<!--        <div class="overlay" style="padding-top: 60px">-->
+<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
+<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
+<!--            VÀO GIỎ</a>-->
+<!--        </div>-->
+<!--        <div class="align-content-center pt-3">-->
+<!--          <h4 class="text-dark font-weight-bold">Boganic</h4>-->
+<!--          <h3 class="text-dark">Giá: 120000 VND / Hộp</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
+<!--      <div class="hovereffect">-->
+<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/hepalise.jpg" alt="">-->
+<!--        <div class="overlay" style="padding-top: 60px">-->
+<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
+<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>-->
+<!--        </div>-->
+<!--        <div class="align-content-center pt-3">-->
+<!--          <h4 class="text-dark font-weight-bold">Hepalise</h4>-->
+<!--          <h3 class="text-danger">HẾT HÀNG</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
+<!--      <div class="hovereffect">-->
+<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/kama.png" alt="">-->
+<!--        <div class="overlay" style="padding-top: 60px">-->
+<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
+<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
+<!--            VÀO GIỎ</a>-->
+<!--        </div>-->
+<!--        <div class="align-content-center pt-3">-->
+<!--          <h4 class="text-dark font-weight-bold">Kama</h4>-->
+<!--          <h3 class="text-dark">Giá: 100000 VND / Hộp</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
+<!--      <div class="hovereffect">-->
+<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/livernamvian.jpeg" alt="">-->
+<!--        <div class="overlay" style="padding-top: 60px">-->
+<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
+<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
+<!--            VÀO GIỎ</a>-->
+<!--        </div>-->
+<!--        <div class="align-content-center pt-3">-->
+<!--          <h4 class="text-dark font-weight-bold">Livernamvian</h4>-->
+<!--          <h3 class="text-dark">Giá: 115000 VND / Hộp</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
+<!--      <div class="hovereffect">-->
+<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/tonka.png" alt="">-->
+<!--        <div class="overlay" style="padding-top: 60px">-->
+<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
+<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>-->
+<!--        </div>-->
+<!--        <div class="align-content-center pt-3">-->
+<!--          <h4 class="text-dark font-weight-bold">Tonka</h4>-->
+<!--          <h3 class="text-danger">HẾT HÀNG</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 <div class="container">
-  <p class="font-weight-bold text-danger pb-4 pl-3">Có 5 kết quả</p>
-  <div class="row py-2">
-    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-      <div class="hovereffect">
-        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/boganic.jpeg" alt="">
-        <div class="overlay" style="padding-top: 60px">
-          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-            VÀO GIỎ</a>
-        </div>
-        <div class="align-content-center pt-3">
-          <h4 class="text-dark font-weight-bold">Boganic</h4>
-          <h3 class="text-dark">Giá: 120000 VND / Hộp</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-      <div class="hovereffect">
-        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/hepalise.jpg" alt="">
-        <div class="overlay" style="padding-top: 60px">
-          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>
-        </div>
-        <div class="align-content-center pt-3">
-          <h4 class="text-dark font-weight-bold">Hepalise</h4>
-          <h3 class="text-danger">HẾT HÀNG</h3>
+  <div class="row py-4">
+<ng-container *ngFor="let drug of drugs">
+      <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
+        <div class="hovereffect">
+          <img class="img-responsive" width="255" height="250" src="#"
+               alt="">
+          <div class="overlay" style="padding-top: 60px">
+            <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
+            <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
+              VÀO GIỎ</a>
+          </div>
+          <div class="align-content-center pt-3">
+            <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
+            <h3 class="text-dark">Giá: 120000 VND / Chai</h3>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-      <div class="hovereffect">
-        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/kama.png" alt="">
-        <div class="overlay" style="padding-top: 60px">
-          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-            VÀO GIỎ</a>
-        </div>
-        <div class="align-content-center pt-3">
-          <h4 class="text-dark font-weight-bold">Kama</h4>
-          <h3 class="text-dark">Giá: 100000 VND / Hộp</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-      <div class="hovereffect">
-        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/livernamvian.jpeg" alt="">
-        <div class="overlay" style="padding-top: 60px">
-          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-            VÀO GIỎ</a>
-        </div>
-        <div class="align-content-center pt-3">
-          <h4 class="text-dark font-weight-bold">Livernamvian</h4>
-          <h3 class="text-dark">Giá: 115000 VND / Hộp</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-      <div class="hovereffect">
-        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/tonka.png" alt="">
-        <div class="overlay" style="padding-top: 60px">
-          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>
-        </div>
-        <div class="align-content-center pt-3">
-          <h4 class="text-dark font-weight-bold">Tonka</h4>
-          <h3 class="text-danger">HẾT HÀNG</h3>
-        </div>
-      </div>
+</ng-container>
     </div>
   </div>
-</div>
-<app-footer-client></app-footer-client>
