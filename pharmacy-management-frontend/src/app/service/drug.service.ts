@@ -13,7 +13,9 @@ export class DrugService {
   getAllPagination(index: number): Observable<any> {
     return this.http.get(this.URl + '?index=' + index);
   }
+
   getAll(): Observable<any> {
     return this.http.get(this.URl + '/not-pagination');
+
   }
 }
