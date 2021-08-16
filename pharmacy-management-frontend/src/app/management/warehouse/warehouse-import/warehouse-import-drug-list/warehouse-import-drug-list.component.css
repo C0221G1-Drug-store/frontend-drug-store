@@ -634,3 +634,19 @@
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb
 }
+.choice-del{
+  background: #567FEA !important;
+}
+td input {
+  width: 3em;
+}
+.money {
+  width: 12em !important;
+}
+.total-money{
+  width: 12em !important;
+}
+.lot-num{
+  width: 5em !important;
+}
+
