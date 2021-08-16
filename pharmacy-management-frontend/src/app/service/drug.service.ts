@@ -18,4 +18,10 @@ export class DrugService {
     return this.http.get(this.URl + '/not-pagination');
 
   }
+  deleteDrug(id: number): Observable<any> {
+    return this.http.delete(`${this.URl}/delete/${id}`);
+  }
+  getDrugById(id: number): Observable<any> {
+    return this.http.get(`${this.URl}/${id}`);
+  }
 }
