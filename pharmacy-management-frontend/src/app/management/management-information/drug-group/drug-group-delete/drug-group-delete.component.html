@@ -1,0 +1,7 @@
+<h1>Delete</h1>
+<p>mã nhóm thuốc: {{data.drugGroupCode}}</p>
+<p>tên nhóm thuốc: {{data.drugGroupName}}</p>
+<p> bạn có muốn xóa không???</p>
+<button id="cancel" type="button" (click)="dialogRef.close(false)">cancel</button>
+<button id="delete"  type="button" (click)="dialogRef.close(true)">delete</button>
+

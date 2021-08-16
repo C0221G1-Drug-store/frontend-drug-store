@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { DrugGroupRoutingModule } from './drug-group-routing.module';
 import {DrugGroupListComponent} from './drug-group-list/drug-group-list.component';
+import {FormsModule} from "@angular/forms";
+import {DrugGroupDeleteComponent} from "./drug-group-delete/drug-group-delete.component";
 
 
 @NgModule({
-  declarations: [DrugGroupListComponent],
-  imports: [
-    CommonModule,
-    DrugGroupRoutingModule
-  ]
+  declarations: [DrugGroupListComponent,DrugGroupDeleteComponent],
+    imports: [
+        CommonModule,
+        DrugGroupRoutingModule,
+        FormsModule
+    ]
 })
 export class DrugGroupModule { }
