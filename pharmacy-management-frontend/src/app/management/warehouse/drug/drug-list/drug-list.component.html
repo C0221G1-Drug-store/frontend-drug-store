@@ -57,102 +57,51 @@
       <table class="table table-bordered table-striped">
         <thead class="thead">
         <tr>
-          <td>STT</td>
-          <th>Mã thuốc</th>
-          <th>Nhóm thuốc</th>
-          <th>Tên thuốc</th>
-          <th>Hoạt chất</th>
-          <th>ĐVT</th>
-          <th>ĐV QB</th>
-          <th>Số lượng</th>
-          <th>Gía nhập</th>
-          <th>Gía sỉ</th>
-          <th>Gía lẻ</th>
-          <th>%CK</th>
-          <th>%LN XS</th>
-          <th>%LN XL</th>
-          <th>VAT</th>
+          <th scope="col">STT</th>
+          <th scope="col">Mã thuốc</th>
+          <th scope="col">Nhóm thuốc</th>
+          <th scope="col">Tên thuốc</th>
+          <th scope="col">Hoạt chất</th>
+          <th scope="col">ĐVT</th>
+          <th scope="col">ĐV QB</th>
+          <th scope="col">Số lượng</th>
+          <th scope="col">Gía nhập</th>
+          <th scope="col">Gía sỉ</th>
+          <th scope="col">Gía lẻ</th>
+          <th scope="col">%CK</th>
+          <th scope="col">%LN XS</th>
+          <th scope="col">%LN XL</th>
+          <th scope="col">VAT</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let drug of drugs, index as i">
-          <td>{{i}}</td>
+          <td scope="row">{{i}}</td>
           <td>{{drug.drugCode}}</td>
-          <td>{{drug.drugGroup.drugGroupName}}</td>
+          <td>{{drug.drugGroup}}</td>
           <td>{{drug.drugName}}</td>
           <td>{{drug.activeElement}}</td>
           <td>{{drug.unit}}</td>
           <td>{{drug.conversionUnit}}</td>
           <td>{{drug.drugAmount}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{drug.importPrice| number: '1.2-2'}}</td>
+          <td>{{drug.wholesalePrice | number: '1.2-2'}}</td>
+          <td>{{drug.retailPrice | number: '1.2-2'}}</td>
+          <td>{{drug.discountRate}}</td>
           <td>{{drug.wholesaleProfitRate}}</td>
           <td>{{drug.retailProfitRate}}</td>
-          <td></td>
-        </tr>
-        <tr role="button" id="btn1">
-          <td> 1</td>
-          <td>T00001</td>
-          <td>Bổ gan</td>
-          <td>OTIV</td>
-          <td>Blueberry Extract</td>
-          <td>Hộp</td>
-          <td>Lọ</td>
-          <td>85</td>
-          <td>128.3</td>
-          <td>142.43</td>
-          <td>142.565</td>
-          <td>3</td>
-          <td>9</td>
-          <td>9.1</td>
-          <td>5</td>
-        </tr>
-        <tr role="button" id="btn2">
-          <td scope="row">2</td>
-          <td>T00002</td>
-          <td>Bổ</td>
-          <td>MAT ONG</td>
-          <td></td>
-          <td>Hộp</td>
-          <td>Lọ</td>
-          <td>100</td>
-          <td>158.663</td>
-          <td>183.256</td>
-          <td>18.492</td>
-          <td>0</td>
-          <td>10</td>
-          <td>10.1</td>
-          <td>5</td>
-        </tr>
-        <tr role="button" id="btn3">
-          <td scope="row">3</td>
-          <td>T00003</td>
-          <td>Bổ</td>
-          <td>BLACKSMORES MILK THISTLE</td>
-          <td>Silybum marianum</td>
-          <td>Hộp</td>
-          <td>Lọ</td>
-          <td>300</td>
-          <td>126.43</td>
-          <td>152.98</td>
-          <td>4.098</td>
-          <td>0</td>
-          <td>10</td>
-          <td>10.1</td>
-          <td>10</td>
+          <td>{{drug.vat}}</td>
         </tr>
         </tbody>
       </table>
       <div class="d-flex justify-content-end">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item" ><a class="page-link" (click)="previousPage()">Trước</a></li>
+            <li class="page-item" *ngIf="indexPagination -1 >= 1"><a class="page-link" (click)="previousPage()">{{indexPagination-1}}</a></li>
+            <li class="page-item" ><a class="page-link font-weight-bold">{{indexPagination}}</a></li>
+            <li class="page-item" *ngIf="indexPagination +1 <= totalPagination"><a class="page-link"  (click)="nextPage()">{{indexPagination+1}}</a></li>
+            <li class="page-item" ><a class="page-link" (click)="nextPage()">Sau</a></li>
           </ul>
         </nav>
       </div>

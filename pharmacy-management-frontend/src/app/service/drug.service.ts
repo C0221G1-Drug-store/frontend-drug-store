@@ -10,10 +10,12 @@ export class DrugService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(index: number): Observable<any> {
+  getAllPagination(index: number): Observable<any> {
     return this.http.get(this.URl + '?index=' + index);
   }
-  save(drug): Observable<any> {
-    return this.http.post<any>(this.URl, drug);
+
+  getAll(): Observable<any> {
+    return this.http.get(this.URl + '/not-pagination');
+
   }
 }
