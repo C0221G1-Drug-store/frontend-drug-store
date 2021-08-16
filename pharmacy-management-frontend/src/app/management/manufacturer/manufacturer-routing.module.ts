@@ -6,7 +6,7 @@ import {ManufacturerShowComponent} from "./manufacturer-show/manufacturer-show.c
 const routes: Routes = [
   {path:"list", component: ManufacturerListComponent},
   {path:"create", component: ManufacturerCreateComponent},
-  {path:"show", component: ManufacturerShowComponent},
+  {path:"show/:id", component: ManufacturerShowComponent},
   ];
 
 @NgModule({

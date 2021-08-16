@@ -461,6 +461,9 @@ legend.scheduler-border {
 .ct{
   text-align: center;
 }
+.selected{
+  background: #62b8ff !important;
+}
 
 
 

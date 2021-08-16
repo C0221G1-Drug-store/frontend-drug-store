@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {ManufacturerUpdateComponent} from "../manufacturer-update/manufacturer-update.component";
 import {ManufacturerDeleteComponent} from "../manufacturer-delete/manufacturer-delete.component";
 import {ManufacturerService} from "../../../service/manufacturer.service";
+import { Manufacturer } from 'src/app/model/manufacturer';
 
-// @ts-ignore
-import styled from 'styled-components'
+
 
 @Component({
   selector: 'app-manufacturer-list',
@@ -22,8 +22,12 @@ export class ManufacturerListComponent implements OnInit {
   selects: any;
   sort: any;
   max: number;
+
   idDialog: any;
   nameDialog: any;
+  background: string;
+
+
 
 
   constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService) {
@@ -39,9 +43,6 @@ export class ManufacturerListComponent implements OnInit {
     this.manufacturerService.getAll(this.page, this.search, this.selects, this.sort).subscribe(manufacturer => {
       this.manufacturers = manufacturer['content'];
       this.pages = new Array(manufacturer['totalPages']);
-      console.log(this.manufacturers)
-
-
     });
   }
 
@@ -103,9 +104,10 @@ export class ManufacturerListComponent implements OnInit {
   sortManufacturer() {
     this.getAll();
   }
-
-  getId(manufacturerId: any, manufacturerName: any) {
+selectedMovie: Manufacturer;
+  getId(manufacturerId: any, manufacturerName: any,movie:Manufacturer): void {
     this.idDialog = manufacturerId;
     this.nameDialog = manufacturerName;
+   this.selectedMovie=movie;
   }
 }

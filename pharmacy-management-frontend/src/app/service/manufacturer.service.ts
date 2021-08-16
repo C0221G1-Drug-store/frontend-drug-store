@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Manufacturer} from "../model/manufacturer";
 import {environment} from "../../environments/environment";
 import {Observable} from 'rxjs';
+import {ImportBill} from "../model/import-bill";
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -69,6 +70,9 @@ export class ManufacturerService {
   }
   findByIdManufacture(id: number){
     return this.http.get<Object>(API_URL +'/manufacturer/show?id='+id)
+  }
+  findImportBillByIdManufacturer(id:number, page:number){
+    return this.http.get<ImportBill[]>(API_URL + '/manufacturer/shows?id='+id+'&page='+page);
   }
 
 }

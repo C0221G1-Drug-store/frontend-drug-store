@@ -1,8 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ManufacturerService} from "../../../service/manufacturer.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Manufacturer} from "../../../model/manufacturer";
+
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Manufacturer } from 'src/app/model/manufacturer';
 
 @Component({
   selector: 'app-manufacturer-update',
