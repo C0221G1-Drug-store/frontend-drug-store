@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {DrugGroup} from '../../model/drug-group';
+import {DrugGroupService} from '../../service/drug-group.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-footer-client',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer-client.component.css']
 })
 export class FooterClientComponent implements OnInit {
-
-  constructor() { }
+  drugGroups: DrugGroup[] = [];
+  constructor(private drugGroupService: DrugGroupService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getAllDrugGroup();
   }
 
+  getAllDrugGroup() {
+    this.drugGroupService.getAll().subscribe(next => {
+      this.drugGroups = next;
+    });
+  }
 }
