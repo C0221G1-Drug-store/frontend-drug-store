@@ -12,7 +12,8 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 // @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
-// @ts-ignore
+import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     ManagementModule,
     CommonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ManufacturerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
