@@ -53,58 +53,86 @@
 <div class="container pb-3">
   <fieldset class="scheduler-border">
     <legend class="scheduler-border">Danh sách thuốc</legend>
-    <div>
-      <table class="table table-bordered table-striped">
-        <thead class="thead">
-        <tr>
-          <th scope="col">STT</th>
-          <th scope="col">Mã thuốc</th>
-          <th scope="col">Nhóm thuốc</th>
-          <th scope="col">Tên thuốc</th>
-          <th scope="col">Hoạt chất</th>
-          <th scope="col">ĐVT</th>
-          <th scope="col">ĐV QB</th>
-          <th scope="col">Số lượng</th>
-          <th scope="col">Gía nhập</th>
-          <th scope="col">Gía sỉ</th>
-          <th scope="col">Gía lẻ</th>
-          <th scope="col">%CK</th>
-          <th scope="col">%LN XS</th>
-          <th scope="col">%LN XL</th>
-          <th scope="col">VAT</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let drug of drugs, index as i">
-          <td scope="row">{{i}}</td>
-          <td>{{drug.drugCode}}</td>
-          <td>{{drug.drugGroup}}</td>
-          <td>{{drug.drugName}}</td>
-          <td>{{drug.activeElement}}</td>
-          <td>{{drug.unit}}</td>
-          <td>{{drug.conversionUnit}}</td>
-          <td>{{drug.drugAmount}}</td>
-          <td>{{drug.importPrice| number: '1.2-2'}}</td>
-          <td>{{drug.wholesalePrice | number: '1.2-2'}}</td>
-          <td>{{drug.retailPrice | number: '1.2-2'}}</td>
-          <td>{{drug.discountRate}}</td>
-          <td>{{drug.wholesaleProfitRate}}</td>
-          <td>{{drug.retailProfitRate}}</td>
-          <td>{{drug.vat}}</td>
-        </tr>
-        </tbody>
-      </table>
-      <div class="d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item" ><a class="page-link" (click)="previousPage()">Trước</a></li>
-            <li class="page-item" *ngIf="indexPagination -1 >= 1"><a class="page-link" (click)="previousPage()">{{indexPagination-1}}</a></li>
-            <li class="page-item" ><a class="page-link font-weight-bold">{{indexPagination}}</a></li>
-            <li class="page-item" *ngIf="indexPagination +1 <= totalPagination"><a class="page-link"  (click)="nextPage()">{{indexPagination+1}}</a></li>
-            <li class="page-item" ><a class="page-link" (click)="nextPage()">Sau</a></li>
-          </ul>
-        </nav>
+    <div class="container" style="height: 350px">
+      <div class="row">
+        <table class="table table-bordered table-striped">
+          <thead class="thead">
+          <tr>
+            <th class="col-lg-0.5">STT</th>
+            <th class="col-lg-0.5">Mã thuốc</th>
+            <th class="col-lg-1">Nhóm thuốc</th>
+            <th class="col-lg-1">Tên thuốc</th>
+            <th class="col-lg-1">Hoạt chất</th>
+            <th class="col-lg-1">ĐVT</th>
+            <th class="col-lg-1">ĐV QB</th>
+            <th class="col-lg-1">Số lượng</th>
+            <th class="col-lg-1">Gía nhập</th>
+            <th class="col-lg-1">Gía sỉ</th>
+            <th class="col-lg-1">Gía lẻ</th>
+            <th class="col-lg-0.5">%CK</th>
+            <th class="col-lg-0.5">%LN XS</th>
+            <th class="col-lg-0.5">%LN XL</th>
+            <th class="col-lg-0.5">VAT</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let drug of drugs, index as i" (click)="selectDrug(drug.drugId)"
+              [ngStyle]="{'background': drug.drugId == drugSelectedId ? selectedColor:''}">
+            <td>{{i+1+(indexPagination-1)*5}}</td>
+            <td>{{drug.drugCode}}</td>
+            <td>{{drug.drugGroup}}</td>
+            <td>{{drug.drugName}}</td>
+            <td>{{drug.activeElement}}</td>
+            <td>{{drug.unit}}</td>
+            <td>{{drug.conversionUnit}}</td>
+            <td>{{drug.drugAmount}}</td>
+            <td>{{drug.importPrice| number: '1.2-2'}}</td>
+            <td>{{drug.wholesalePrice | number: '1.2-2'}}</td>
+            <td>{{drug.retailPrice | number: '1.2-2'}}</td>
+            <td>{{drug.discountRate}}</td>
+            <td>{{drug.wholesaleProfitRate}}</td>
+            <td>{{drug.retailProfitRate}}</td>
+            <td>{{drug.vat}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" *ngIf="indexPagination > 1 && indexPagination<totalPagination">
+          <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
+          <li class="page-item" *ngIf="indexPagination -1 >= 1"><a class="page-link"
+                                                                   (click)="previousPage()">{{indexPagination - 1}}</a>
+          </li>
+          <li class="page-item"><a class="page-link font-weight-bold">{{indexPagination}}</a></li>
+          <li class="page-item" *ngIf="indexPagination +1 <= totalPagination"><a class="page-link"
+                                                                                 (click)="nextPage()">{{indexPagination + 1}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
+        </ul>
+        <ul class="pagination" *ngIf="indexPagination == 1">
+          <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
+          <li class="page-item"><a class="page-link font-weight-bold" (click)="previousPage()">{{indexPagination}}</a>
+          </li>
+          <li class="page-item" *ngIf="indexPagination +1 <= totalPagination"><a
+            class="page-link">{{indexPagination + 1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination +2 <= totalPagination"><a class="page-link"
+                                                                                 (click)="nextPage()">{{indexPagination + 2}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
+        </ul>
+        <ul class="pagination" *ngIf="indexPagination == totalPagination && indexPagination !=1">
+          <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
+          <li class="page-item" *ngIf="indexPagination -2 >= 1"><a class="page-link"
+                                                                   (click)="previousPage()">{{indexPagination - 2}}</a>
+          </li>
+          <li class="page-item"><a class="page-link">{{indexPagination -1}}</a></li>
+          <li class="page-item"><a class="page-link font-weight-bold" (click)="nextPage()">{{indexPagination}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
+        </ul>
+      </nav>
     </div>
   </fieldset>
   <div class="container mt-3 mb-5">
@@ -119,37 +147,12 @@
               <button class="mr-3 btn btn-edit button" type="button"><i
                 class="fa fa-edit"></i> Sửa
               </button>
-              <button class="mr-3 btn btn-danger button" data-toggle="modal"
-                      data-target="#exampleModal"><i
+              <button class="mr-3 btn btn-danger button" *ngIf="selected" (click)="deleteDialog()"><i
                 class="fa fa-trash-o"></i> Xóa
               </button>
-              <div class="modal fade" id="exampleModal" tabindex="-1"
-                   aria-labelledby="exampleModalLabel"
-                   aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Xóa mã thuốc</h5>
-                      <button type="button" class="close" data-dismiss="modal"
-                              aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Bạn có chắc muốn xóa mã thuốc <span
-                      class="text-danger font-weight-bold">T00002</span> ?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn button btn-return"
-                              data-dismiss="modal">Không
-                      </button>
-                      <button type="button" class="btn btn-danger"
-                              data-dismiss="modal">Xóa
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <button class="mr-3 btn btn-danger button" *ngIf="!selected" (click)="notSelectedDialog()"><i
+                class="fa fa-trash-o"></i> Xóa
+              </button>
               <button class=" btn btn-return button " type="button"><i
                 class="fa fa-reply"></i> Trở về
               </button>
