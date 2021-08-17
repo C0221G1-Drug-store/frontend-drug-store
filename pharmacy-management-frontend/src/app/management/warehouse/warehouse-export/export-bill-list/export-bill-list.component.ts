@@ -19,7 +19,7 @@ export class ExportBillListComponent implements OnInit {
   private nameDialog: string;
   private page: number;
   private max: any;
-  private pages: Array<number>;
+  pages: Array<number>;
 
   constructor(private exportBillService: ExportBillServiceService, private dialog: MatDialog) { }
 
