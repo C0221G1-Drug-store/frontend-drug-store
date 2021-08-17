@@ -27,7 +27,7 @@
       <ng-container formArrayName="formArrayDrugs">
         <tr class="onRow" *ngFor="let importBilDurg of formArrayDrugs.controls; let i = index"
             (click)="clickDelete($event)" [id]="i" (input)="totalMoneyCalculation()">
-          <ng-container [formGroupName]="i">
+          <ng-container [formGroupName]="i"  *ngIf="showList(i)">
             <td>{{importBilDurg.value.drug.drugName}}</td>
             <td>{{importBilDurg.value.drug.conversionUnit}}</td>
             <td class="px-1"><input class="form-control-sm text-right" type="number" formControlName="importAmount">
@@ -35,7 +35,7 @@
             <td class="px-1"><input class="form-control-sm text-right money" type="number"
                                     formControlName="importPrice">
             </td>
-            <td class="px-1"><input class="form-control-sm text-right" type="number" formControlName="discountRate">
+            <td class="px-1"><input class="form-control-sm text-right" type="text" maxlength="3" formControlName="discountRate">
             </td>
             <td class="px-1"><input class="form-control-sm text-right" type="number" formControlName="vat"></td>
             <td class="px-1">
@@ -50,14 +50,15 @@
     </ng-container>
     </tbody>
   </table>
-  <div class="d-flex justify-content-end">
+
+  <div class="d-flex justify-content-end mx-4">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item"><a class="page-link" (click)="previousPage()">Trang trước</a></li>
+        <li class="page-item"><a class="page-link">{{indexPagination}}</a></li>
+        <li class="page-item"><a class="page-link" >/</a></li>
+        <li class="page-item"><a class="page-link">{{totalPagination}}</a></li>
+        <li class="page-item"><a class="page-link" (click)="nextPage()">Trang tiếp</a></li>
       </ul>
     </nav>
   </div>

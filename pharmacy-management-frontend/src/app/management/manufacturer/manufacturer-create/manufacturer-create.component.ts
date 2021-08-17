@@ -35,12 +35,17 @@ export class ManufacturerCreateComponent implements OnInit {
       const manufacturer = this.manufacturerForm.value;
       console.log(manufacturer);
       this.manufacturerService.saveManufacturer(manufacturer).subscribe(  () => {
+        this.dialogRef.close(manufacturer);
         }
       );
       alert('Thêm  thành công');
-
     } else {
       alert('Thêm không thành công');
+      this.dialogRef.close();
     }
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 }

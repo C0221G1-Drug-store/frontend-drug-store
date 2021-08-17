@@ -9,6 +9,9 @@ import {Manufacturer} from '../../../../model/manufacturer';
 import {MatDialog} from '@angular/material/dialog';
 import {ManufacturerCreateComponent} from '../../../manufacturer/manufacturer-create/manufacturer-create.component';
 import {Employee} from '../../../../model/employee';
+import {PaymentService} from '../../../../service/payment.service';
+import {ImportBillService} from '../../../../service/import-bill.service';
+import {ImportBilDrugService} from '../../../../service/import-bil-drug.service';
 
 @Component({
   selector: 'app-warehouse-import-create',
@@ -25,9 +28,16 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     employeeName: 'Trần việt'
   };
   drugMoney;
-  payment: Payment;
 
-  constructor(private fb: FormBuilder, private manufacturerService: ManufacturerService, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder,
+              private manufacturerService: ManufacturerService,
+              public dialog: MatDialog,
+              private paymentService: PaymentService,
+              private importBillService: ImportBillService,
+              private importBillDrugService: ImportBilDrugService) {
+  }
+
+  ngOnInit(): void {
     this.manufacturerService.findAllNormal().subscribe(value => {
       this.manufacturers = value;
     });
@@ -37,10 +47,10 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       invoiceDate: ['', Validators.required],
       flag: true,
       payment: this.fb.group({
-        paymentId : [''],
-        totalMoney: [''],
-        prepayment: [''],
-        discount: [''],
+        paymentId: [''],
+        totalMoney: ['', [Validators.required, Validators.min(0), Validators.pattern('^(?:0|[1-9][0-9]*)\\.[0-9]+$')]],
+        prepayment: ['', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]+$')]],
+        discount: ['', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]+$'), Validators.max(100)]],
         status: [''],
       }),
       manufacturer: [''],
@@ -48,32 +58,29 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
   ngAfterViewInit() {
   }
 
   confirmBox() {
     Swal.fire({
-      title: 'Are you sure want to remove?',
-      text: 'You will not be able to recover this file!',
+      title: 'Bạn có muons xóa thuốc này không?',
+      text: 'thuốc trong danh sách sẽ bị xóa!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it'
+      confirmButtonText: 'Ok ',
+      cancelButtonText: 'Không '
     }).then((result) => {
       if (result.value) {
         this.childImportDrugList.remoteImportDrug(this.childImportDrugList.choiceDelete);
         Swal.fire(
-          'Deleted!',
-          'Your imaginary file has been deleted.',
+          'Xóa thành công!',
+          'Thuốc đã được xóa.',
           'success'
         );
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
+          'Không xóa',
+          'Thuốc vẫn nằm trong danh sách)',
           'error'
         );
       }
@@ -81,28 +88,50 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    console.log(this.childImportDrugList.formArrayDrugs.getRawValue());
+    console.log(this.form);
+    if (this.payment.valid) {
+      this.paymentService.create(this.payment.value).subscribe(value => {
+        this.payment.setValue(value);
+        this.importBillService.create(this.form.value).subscribe(importBill => {
+          if (this.childImportDrugList.formArrayDrugs.valid) {
+            this.childImportDrugList.formArrayDrugs.getRawValue().forEach(importBillDrug => {
+              importBillDrug.importBill = importBill;
+              this.importBillDrugService.create(importBillDrug).subscribe();
+            });
+          }
+        });
+      });
+    }
   }
-
-  get totalMoney() {
-    return this.form.controls.payment.get('totalMoney');
+  get payment() {
+    return this.form.controls.payment;
   }
 
   passTotalMonney(event: any) {
-    this.drugMoney = event;
-    this.chargeTotalMoney();
+    if (typeof event === 'number') {
+      this.drugMoney = event;
+      this.chargeTotalMoney();
+    }
   }
 
   chargeTotalMoney() {
-    const discount = this.form.controls.payment.get('discount').value;
-    console.log(discount);
-    this.totalMoney.setValue(this.drugMoney * (100 - discount) / 100);
+    const discount = this.payment.get('discount').value;
+    if (discount > 0 || discount === '') {
+      this.payment.get('totalMoney').setValue(this.drugMoney * (100 - discount) / 100);
+    } else {
+      this.payment.get('totalMoney').setValue('');
+    }
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(ManufacturerCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (typeof result !== 'undefined') {
+        this.manufacturerForm.setValue(result);
+      }
+      this.manufacturerService.findAllNormal().subscribe(value => {
+        this.manufacturers = value;
+      });
     });
   }
 
@@ -115,4 +144,5 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       this.manufacturerForm.setValue(value);
     });
   }
+
 }
