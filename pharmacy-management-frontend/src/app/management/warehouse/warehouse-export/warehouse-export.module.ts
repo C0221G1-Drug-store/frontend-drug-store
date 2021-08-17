@@ -6,6 +6,7 @@ import { ExportBillListComponent } from './export-bill-list/export-bill-list.com
 import {HttpClientModule} from "@angular/common/http";
 import { ExportBillDeleteComponent } from './export-bill-delete/export-bill-delete.component';
 import { ExportBillPrintComponent } from './export-bill-print/export-bill-print.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -13,11 +14,12 @@ import { ExportBillPrintComponent } from './export-bill-print/export-bill-print.
   exports: [
     ExportBillListComponent
   ],
-  imports: [
-    CommonModule,
-    WarehouseExportRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        CommonModule,
+        WarehouseExportRoutingModule,
+        HttpClientModule,
+        MatDialogModule,
+    ],
   providers: []
 })
 export class WarehouseExportModule { }
