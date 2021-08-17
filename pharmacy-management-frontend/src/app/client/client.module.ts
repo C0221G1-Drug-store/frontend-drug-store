@@ -20,7 +20,8 @@ import { HotDealsComponent } from './hot-deals/hot-deals.component';
 @NgModule({
   declarations: [
     HomepageComponent, SearchPageComponent, CartComponent, DrugDetailsComponent,
-    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent, GroupComponent, LocationComponent, HealthTipsComponent, HotDealsComponent
+    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent, GroupComponent,
+    LocationComponent, HealthTipsComponent, HotDealsComponent
   ],
   exports: [
     HeaderClientComponent,
@@ -30,7 +31,7 @@ import { HotDealsComponent } from './hot-deals/hot-deals.component';
     CommonModule,
     ClientRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ]
 })
-export class ClientModule {}
+export class ClientModule { }
