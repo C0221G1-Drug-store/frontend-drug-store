@@ -6,11 +6,11 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DrugGroupService {
-  private URl = 'http://localhost:8080/drug-group';
-
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<any> {
-    return this.http.get(this.URl);
-  }
+  // private URl = 'http://localhost:8080/drug-group';
+  //
+  // constructor(private http: HttpClient) { }
+  //
+  // getAll(): Observable<any> {
+  //   return this.http.get(this.URl);
+  // }
 }

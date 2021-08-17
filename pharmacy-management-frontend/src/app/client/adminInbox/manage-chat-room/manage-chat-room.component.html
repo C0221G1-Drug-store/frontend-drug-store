@@ -1,0 +1,21 @@
+<div class="container mt-5 ">
+  <div class="row chat-room">
+    <div class="col-xl-9 area_inbox">
+      <div class="header_inbox">
+        <div class="avatar_user_inbox">
+          <img src="assets/img.png" alt="">
+        </div>
+        <div class="name_user-inbox">Dương quang lâm</div>
+      </div>
+      <div #scroll class="container-fluid feed">
+        <app-manage-feed [roomname]="roomname"></app-manage-feed>
+      </div>
+      <div class="container-fluid area_msg">
+        <app-manage-chat-form [roomname]="roomname"></app-manage-chat-form>
+      </div>
+    </div>
+    <div class="col-xl-3 h-100 border-danger">
+      <app-list-room (currentRoom)="takeRoomName($event)"></app-list-room>
+    </div>
+  </div>
+</div>

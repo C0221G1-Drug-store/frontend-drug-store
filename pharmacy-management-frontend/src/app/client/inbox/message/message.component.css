@@ -1,0 +1,31 @@
+.right-msg{
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #567FEA;
+  color: #fff;
+  margin-left: auto;
+  max-width: 200px;
+  width: fit-content;
+  text-align: right;
+  height: fit-content;
+  overflow-wrap: break-word;
+}
+
+.left-msg{
+  max-width: 200px;
+  width: fit-content;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: rgba(80,61,60,0.8);
+  color: #fff;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.box{
+  margin-bottom: 8px;
+  width: 100%;
+}

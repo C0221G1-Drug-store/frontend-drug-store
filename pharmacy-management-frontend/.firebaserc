@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "chatapp1-e81e8": {
+      "hosting": {
+        "pharmacy-management-frontend": [
+          "chatapp1-e81e8"
+        ]
+      }
+    }
+  }
+}

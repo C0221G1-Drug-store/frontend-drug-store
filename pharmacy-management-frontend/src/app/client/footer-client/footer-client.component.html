@@ -51,17 +51,18 @@
       <p class="text-muted mb-0 py-2">© 2021 C0221G1 PHARMA - All rights reserved.</p>
     </div>
   </div>
+  <app-inbox-box [ngStyle]="{'display':displayFlat?'block':'none'}" class="inbox-box" (closeFlat)="closeBox($event)"></app-inbox-box>
 </footer>
 <!--CHAT BUTTON-->
-<nav class="navbar navbar-light fixed-bottom navbar-expand-md bg-transparent justify-content-center">
+<nav [ngStyle]="{'display':displayFlat?'none':'block'}" class="navbar navbar-light fixed-bottom navbar-expand-md bg-transparent justify-content-center">
   <div class="container">
     <ul class="nav navbar-nav w-100 justify-content-end mr-lg-3">
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <button class="btn chat-button">CHAT CÙNG C0221G1 &nbsp;<i class="fa fa-bell"
-                                                                    style="color: #ffffff"></i></button>
+          <button class="btn chat-button" (click)="controlInbox()">CHAT CÙNG C0221G1 &nbsp;<i class="fa fa-bell" style="color: #ffffff"></i></button>
         </a>
       </li>
     </ul>
   </div>
 </nav>
+

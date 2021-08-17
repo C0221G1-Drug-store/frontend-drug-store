@@ -1,0 +1,6 @@
+<div class="chat-form">
+  <input type="text" id="msg" (keydown)="handleKeyDow($event)" [(ngModel)]="msg">
+  <label for="msg" (click)="sendMessage()">
+    <i class="las la-paper-plane"></i>
+  </label>
+</div>

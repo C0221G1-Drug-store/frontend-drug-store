@@ -1,0 +1,19 @@
+.chat-form{
+  border-top:1px solid #ccc;
+  position: relative;
+}
+.chat-form input{
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+.chat-form label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}

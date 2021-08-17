@@ -15,6 +15,7 @@ export class HomepageComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
   config: any;
   data = '';
+  private displayFlat: boolean=true;
 
   constructor(private drugService: DrugService, private drugGroupService: DrugGroupService, private router: Router) {
     this.config = {
@@ -26,29 +27,35 @@ export class HomepageComponent implements OnInit {
       this.data = state.data;
     }
   }
-
+  displayBoxChat() {
+    if (this.displayFlat){
+      this.displayFlat=true;
+    }else {
+      this.displayFlat=false;
+    }
+  }
   ngOnInit(): void {
-    this.getAllDrugGroup();
-    this.getAllDrug()
+    // this.getAllDrugGroup();
+    // this.getAllDrug()
   }
 
-  getAllDrug() {
-    this.drugService.getAll().subscribe(next => {
-      this.drugs = next;
-    });
-  }
-
-  getAllDrugGroup() {
-    this.drugGroupService.getAll().subscribe(next => {
-      this.drugGroups = next;
-    });
-  }
-
-  getDrugByDrugGroup(drugGroupId: any) {
-    let drugs: Drug[] = [];
-    this.drugService.findDrugByGroup(drugGroupId).subscribe(next => {
-      drugs = next;
-    });
-    return drugs;
-  }
+  // getAllDrug() {
+  //   this.drugService.getAll().subscribe(next => {
+  //     this.drugs = next;
+  //   });
+  // }
+  //
+  // getAllDrugGroup() {
+  //   this.drugGroupService.getAll().subscribe(next => {
+  //     this.drugGroups = next;
+  //   });
+  // }
+  //
+  // getDrugByDrugGroup(drugGroupId: any) {
+  //   let drugs: Drug[] = [];
+  //   this.drugService.findDrugByGroup(drugGroupId).subscribe(next => {
+  //     drugs = next;
+  //   });
+  //   return drugs;
+  // }
 }

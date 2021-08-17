@@ -230,7 +230,13 @@ span.neon-text {
   }
 }
 
-
+.inbox-box{
+  width: 350px;
+  right: 40px;
+  position: fixed;
+  bottom: 40px;
+  transition: 400ms;
+}
 
 
 

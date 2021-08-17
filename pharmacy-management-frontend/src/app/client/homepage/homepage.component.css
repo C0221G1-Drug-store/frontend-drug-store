@@ -130,7 +130,12 @@ button.chat-button {
   width: 300px;
 }
 
-
+.inbox-box{
+  width: 350px;
+  right: 40px;
+  position: fixed;
+  bottom: 40px;
+}
 
 
 

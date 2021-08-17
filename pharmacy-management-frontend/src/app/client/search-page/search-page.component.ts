@@ -15,11 +15,11 @@ export class SearchPageComponent implements OnInit {
   constructor(private drugService: DrugService, private router: Router, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
-      this.search = paramMap.get('search');
-      this.drugService.searchDrug(this.search).subscribe(next => {
-        this.drugs = next;
-      });
-    });
+    // this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
+    //   this.search = paramMap.get('search');
+    //   this.drugService.searchDrug(this.search).subscribe(next => {
+    //     this.drugs = next;
+    //   });
+    // });
   }
 }

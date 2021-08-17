@@ -1,0 +1,22 @@
+.area_msg{
+  position:relative;
+}
+
+.area_msg input {
+  color: #222;
+  width: 90%;
+  outline: none;
+  border: 1px solid #cccccc;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.area_msg label{
+  position: absolute;
+  top: 0;
+  right: 30px;
+  font-size: 20px;
+}

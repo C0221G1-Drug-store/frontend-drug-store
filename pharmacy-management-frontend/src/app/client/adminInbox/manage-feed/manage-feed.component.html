@@ -1,0 +1,5 @@
+<div class="area_inbox-content">
+  <ng-container *ngFor="let message of messages|async">
+    <app-manage-message [message]="message"></app-manage-message>
+  </ng-container>
+</div>

@@ -5,20 +5,21 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DrugService {
-  private URl = 'http://localhost:8080/drug';
-
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<any> {
-    return this.http.get(this.URl);
-  }
-
-  searchDrug(search: any): Observable<any> {
-    return this.http.get(`${this.URl}/search/${search}`);
-  }
-
-  findDrugByGroup(drugGroupId: number): Observable<any> {
-    return this.http.get(`${this.URl}/drug-group/${drugGroupId}`);
-  }
+  // private URl = 'http://localhost:8080/drug';
+  //
+  // constructor(private http: HttpClient) { }
+  //
+  // getAll(): Observable<any> {
+  //   return this.http.get(this.URl);
+  // }
+  //
+  // searchDrug(search: any): Observable<any> {
+  //   return this.http.get(`${this.URl}/search/${search}`);
+  // }
+  //
+  // findDrugByGroup(drugGroupId: number): Observable<any> {
+  //   return this.http.get(`${this.URl}/drug-group/${drugGroupId}`);
+  // }
 }

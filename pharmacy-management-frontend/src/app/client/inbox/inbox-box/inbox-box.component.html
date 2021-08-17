@@ -1,0 +1,18 @@
+<div class="chat-room">
+  <div class="heading-inbox">
+    <img src="assets/img.png">
+    <p>Nha Thuoc C0221G1</p>
+    <span class="close-inbox" (click)="closeBox()"><i class="las la-times"></i></span>
+    <span class="contract-inbox" [ngStyle]="{'display':flat?'flex':'none'}">
+      <i class="las la-ellipsis-h" (click)="closeContract()"></i>
+     <div class="control-box" [ngStyle]="{'display':contractFlat?'block':'none'}">
+       <p (click)="logOut()">Thoát khỏi phần chat</p>
+     </div>
+    </span>
+  </div>
+  <app-signup [ngStyle]="{'display':flat?'none':'block'}" (control)="takeControl($event)"></app-signup>
+  <app-chat-room [ngStyle]="{'display':flat?'block':'none'}"></app-chat-room>
+</div>
+
+
+

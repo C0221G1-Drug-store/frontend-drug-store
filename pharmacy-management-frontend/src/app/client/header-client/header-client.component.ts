@@ -14,12 +14,12 @@ export class HeaderClientComponent implements OnInit {
   constructor(private drugGroupService: DrugGroupService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAllDrugGroup();
+    // this.getAllDrugGroup();
   }
-
-  getAllDrugGroup() {
-    this.drugGroupService.getAll().subscribe(next => {
-      this.drugGroups = next;
-    });
-  }
+  //
+  // getAllDrugGroup() {
+  //   this.drugGroupService.getAll().subscribe(next => {
+  //     this.drugGroups = next;
+  //   });
+  // }
 }

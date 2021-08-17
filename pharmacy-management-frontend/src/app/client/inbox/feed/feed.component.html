@@ -1,0 +1,5 @@
+<div class="feed">
+  <ng-container *ngFor="let message of messages|async">
+    <app-message [message]="message" style="height: 100px"></app-message>
+  </ng-container>
+</div>

@@ -1,0 +1,4 @@
+<div class="box">
+  <div [ngClass]="{'right-msg':message.nickname==ownNick,
+'left-msg':message.nickname!=ownNick}">{{message.msg}}</div>
+</div>

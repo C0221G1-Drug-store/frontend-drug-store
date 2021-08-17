@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
 import {DrugGroupService} from '../../service/drug-group.service';
 import {Router} from '@angular/router';
@@ -10,15 +10,30 @@ import {Router} from '@angular/router';
 })
 export class FooterClientComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
-  constructor(private drugGroupService: DrugGroupService, private router: Router) { }
+  displayFlat: boolean = false;
 
-  ngOnInit(): void {
-    this.getAllDrugGroup();
+  constructor(private drugGroupService: DrugGroupService, private router: Router) {
   }
 
-  getAllDrugGroup() {
-    this.drugGroupService.getAll().subscribe(next => {
-      this.drugGroups = next;
-    });
+  ngOnInit(): void {
+    // this.getAllDrugGroup();
+  }
+
+  // getAllDrugGroup() {
+  //   this.drugGroupService.getAll().subscribe(next => {
+  //     this.drugGroups = next;
+  //   });
+  // }
+
+  controlInbox() {
+    if (this.displayFlat) {
+      this.displayFlat = false;
+    } else {
+      this.displayFlat = true;
+    }
+  }
+
+  closeBox(e:boolean) {
+    this.displayFlat=e;
   }
 }
