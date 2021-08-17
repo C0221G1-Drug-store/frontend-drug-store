@@ -46,7 +46,7 @@
             <img class="img-responsive" width="255" height="250" src="{{drug.drugImageDetails}}"
                  alt="">
             <div class="overlay" style="padding-top: 60px">
-              <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
+              <a class="info" style="border-radius: 8px; background-color: #2FC1A6" [routerLink]="['details',drug.drugId]">CHI TIẾT</a>
               <div *ngIf="drug.drugAmount == 0; else elseBlockAmount">
                 <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred" disabled
                    href="#">HẾT HÀNG</a>
