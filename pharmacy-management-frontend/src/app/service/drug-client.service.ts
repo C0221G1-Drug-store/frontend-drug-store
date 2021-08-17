@@ -20,6 +20,9 @@ export class DrugClientService {
 
   findDrugByGroup(drugGroupName: any): Observable<any> {
     return this.http.get(`${this.URl}/drug-group/${drugGroupName}`);
+  }
 
+  findDrugById(drugId: any): Observable<any> {
+    return this.http.get(`${this.URl}/client/${drugId}`);
   }
 }
