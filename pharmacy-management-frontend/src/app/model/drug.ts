@@ -20,4 +20,5 @@ export interface Drug {
   drugGroup?: any;
   wholesalePrice?: number;
   retailPrice?: number;
+  drugImageDetails?: string;
 }

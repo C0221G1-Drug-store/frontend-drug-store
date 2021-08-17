@@ -10,13 +10,17 @@ import {LoginRegisterComponent} from './login-register/login-register.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderClientComponent} from './header-client/header-client.component';
 import {FooterClientComponent} from './footer-client/footer-client.component';
-import {GroupComponent} from './group/group.component';
+import {GroupComponent} from './view-by-drug-group/group.component';
+import { LocationComponent } from './location/location.component';
+import { HealthTipsComponent } from './health-tips/health-tips.component';
+import { HotDealsComponent } from './hot-deals/hot-deals.component';
+
 
 
 @NgModule({
   declarations: [
     HomepageComponent, SearchPageComponent, CartComponent, DrugDetailsComponent,
-    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent, GroupComponent
+    LoginRegisterComponent, HeaderClientComponent, FooterClientComponent, GroupComponent, LocationComponent, HealthTipsComponent, HotDealsComponent
   ],
   exports: [
     HeaderClientComponent,

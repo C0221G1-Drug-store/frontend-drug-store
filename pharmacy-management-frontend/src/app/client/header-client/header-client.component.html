@@ -7,7 +7,7 @@
       <ul class="navbar-nav w-100 ml-lg-5 justify-content-center">
         <div class="w-100">
           <div class="search-box w-100 ml-lg-5">
-            <input id="searchInput" [(ngModel)]="search"  type="text" class="search-term" placeholder="Tìm kiếm ...">
+            <input id="searchInput" (keydown.enter)="pressEnter($event)" [(ngModel)]="search" type="text" class="search-term" placeholder="Tìm kiếm ...">
             <button type="submit" id="searchButton" class="search-button" routerLinkActive="active" [routerLink]="['search',search]">
               <i class="fa fa-search text-white"></i>
             </button>
@@ -45,22 +45,22 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <div *ngFor="let drugGroup of drugGroups">
-            <a class="dropdown-item" href="#" style="text-transform: uppercase">THUỐC {{drugGroup.drugGroupName}}</a>
+            <a class="dropdown-item" [routerLink]="['drug-view-by-drug-group',drugGroup.drugGroupName]" routerLinkActive="active"  style="text-transform: uppercase">THUỐC {{drugGroup.drugGroupName}}</a>
             </div>
           </div>
         </li>
         <li>
-          <a class="nav-item nav-link mr-2 active " href="#">SỐNG KHỎE</a>
+          <a class="nav-item nav-link mr-2 active " [routerLink]="['health-tips']">SỐNG KHỎE</a>
         </li>
         <li>
-          <a class="nav-item nav-link  active" href="#"><span class="neon-text fa fa-bolt"
+          <a class="nav-item nav-link  active" [routerLink]="['hot-deals']" ><span class="neon-text fa fa-bolt"
                                                               style="color: yellow"></span>️
             DEAL HOT THÁNG 8</a>
         </li>
       </ul>
       <ul class="nav navbar-nav w-100 justify-content-end ">
         <li class="nav-item">
-          <a class="nav-item nav-link border-right-nav-item active " href="#">HỆ THỐNG NHÀ THUỐC</a>
+          <a class="nav-item nav-link border-right-nav-item active " [routerLink]="['location']" routerLinkActive="active" >HỆ THỐNG NHÀ THUỐC</a>
         </li>
         <li class="nav-item dropdown">
 
@@ -69,8 +69,8 @@
             HOTLINE
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-            <a class="dropdown-item" href="#">18002001 CSKH</a>
-            <a class="dropdown-item" href="#">18006821 ĐẶT HÀNG</a>
+            <a class="dropdown-item" disabled>18002001 CSKH</a>
+            <a class="dropdown-item" disabled>18006821 ĐẶT HÀNG</a>
           </div>
         </li>
       </ul>

@@ -1,4 +1,40 @@
-<!--PROTOTYPE-->
+<!--FROM DATABASE-->
+<div class="container py-2 mt-2" *ngFor="let drugGroup of drugGroups;">
+  <h2 class="text-center font-weight-bold py-2" style="color: #242a61;  text-transform: uppercase;">
+    THUỐC {{drugGroup.drugGroupName}}</h2>
+  <div class="row pt-2">
+    <ng-container *ngFor="let drug of drugs">
+      <div *ngIf="drug.drugGroup == drugGroup.drugGroupName" class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
+        <div class="hovereffect">
+          <img class="img-responsive" width="255" height="250" src="{{drug.drugImageDetails}}"
+               alt="">
+          <div class="overlay" style="padding-top: 60px">
+            <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
+            <div *ngIf="drug.drugAmount == 0; else elseBlockAmount">
+              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred" disabled href="#">HẾT HÀNG</a>
+            </div>
+            <ng-template #elseBlockAmount>
+              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
+                VÀO GIỎ</a>
+            </ng-template>
+          </div>
+          <div class="align-content-center pt-3">
+            <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
+            <div *ngIf="drug.wholesalePrice == 0; else elseBlockPrice">
+              <h3 class="text-danger">HẾT HÀNG</h3>
+            </div>
+            <ng-template #elseBlockPrice>
+              <h3 class="text-dark">Giá: {{drug.wholesalePrice | number:'1.0-0'}} VND / {{drug.unit}}</h3>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <button type="button" [routerLink]="['drug-view-by-drug-group',drugGroup.drugGroupName]" routerLinkActive="active" class="btn drug-group-toggle btn-lg btn-block" style="text-transform: uppercase">XEM THÊM
+    THUỐC {{drugGroup.drugGroupName}}</button>
+</div>
+<!--END FROM DATABASE-->
 <!--LIST THỰC PHẨM CHỨC NĂNG-->
 <div class="container py-2 mt-2">
   <h2 class="text-center font-weight-bold py-2" style="color: #242a61">THỰC PHẨM CHỨC NĂNG</h2>
@@ -164,53 +200,6 @@
   <button type="button" class="btn drug-group-toggle btn-lg btn-block">XEM THÊM THUỐC HÔ HẤP</button>
 </div>
 <!--END PROTOTYPE-->
-<!--FROM DATABASE-->
-<div class="container py-2 mt-2" *ngFor="let drugGroup of drugGroups;">
-    <h2 class="text-center font-weight-bold py-2" style="color: #242a61;  text-transform: uppercase;">
-      THUỐC {{drugGroup.drugGroupName}}</h2>
-    <div class="row pt-2">
-      <ng-container *ngFor="let drug of drugs">
-        <div *ngIf="drug.drugGroup == drugGroup.drugGroupName" class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-            <div class="hovereffect">
-              <img class="img-responsive" width="255" height="250" src="#"
-                   alt="">
-              <div class="overlay" style="padding-top: 60px">
-                <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-                <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-                  VÀO GIỎ</a>
-              </div>
-              <div class="align-content-center pt-3">
-                <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
-                <h3 class="text-dark">Giá: {{drug.wholesalePrice | number:'1.0-0'}} VND / {{drug.unit}}</h3>
-              </div>
-            </div>
-          </div>
-      </ng-container>
-    </div>
-    <button type="button" class="btn drug-group-toggle btn-lg btn-block" style="text-transform: uppercase">XEM THÊM
-      THUỐC {{drugGroup.drugGroupName}}</button>
-  </div>
-<!--END FROM DATABASE-->
-<div class="container">
-  <div class="row py-4">
-    <ng-container *ngFor="let drug of drugs">
-      <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-        <p>{{drug.drugGroup}}</p>
-        <div class="hovereffect">
-          <img class="img-responsive" width="255" height="250" src="#"
-               alt="">
-          <div class="overlay" style="padding-top: 60px">
-            <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-            <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-              VÀO GIỎ</a>
-          </div>
-          <div class="align-content-center pt-3">
-            <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
-            <h3 class="text-dark">Giá: {{drug.wholesalePrice | number:'1.0-0'}} VND / {{drug.unit}}</h3>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</div>
+
+
 

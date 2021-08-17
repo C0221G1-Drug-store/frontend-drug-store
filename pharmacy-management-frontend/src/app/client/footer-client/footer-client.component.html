@@ -21,16 +21,16 @@
       <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
         <h3 class="text-uppercase text-light font-weight-bold mb-4">Liên kết hữu ích</h3>
         <ul class="list-unstyled mb-0">
-          <li class="mb-2"><a href="#" class="text-light ">SỐNG KHỎE</a></li>
-          <li class="mb-2"><a href="#" class="text-light ">DEAL HOT</a></li>
-          <li class="mb-2"><a href="#" class="text-light ">TÌM NHÀ THUỐC GẦN BẠN</a></li>
+          <li class="mb-2"><a [routerLink]="['health-tips']"  class="text-light ">SỐNG KHỎE</a></li>
+          <li class="mb-2"><a [routerLink]="['hot-deals']" class="text-light ">DEAL HOT</a></li>
+          <li class="mb-2"><a [routerLink]="['location']" href="#" class="text-light ">TÌM NHÀ THUỐC GẦN BẠN</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
         <h3 class="text-uppercase text-light font-weight-bold mb-4">DANH MỤC</h3>
         <ul class="list-unstyled mb-0">
           <div *ngFor="let drugGroup of drugGroups">
-          <li class="mb-2"><a href="#" class="text-light" style="text-transform: uppercase">THUỐC {{drugGroup.drugGroupName}}</a></li>
+          <li class="mb-2"><a [routerLink]="['drug-view-by-drug-group',drugGroup.drugGroupName]" routerLinkActive="active" class="text-light" style="text-transform: uppercase">THUỐC {{drugGroup.drugGroupName}}</a></li>
           </div>
         </ul>
       </div>

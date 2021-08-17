@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
 import {DrugGroupService} from '../../service/drug-group.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header-client',
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class HeaderClientComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
   search: any;
-  constructor(private drugGroupService: DrugGroupService, private router: Router) { }
+  constructor(private drugGroupService: DrugGroupService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllDrugGroup();
@@ -21,5 +21,9 @@ export class HeaderClientComponent implements OnInit {
     this.drugGroupService.getAll().subscribe(next => {
       this.drugGroups = next;
     });
+  }
+
+  pressEnter($event: any) {
+    this.router.navigate(['search', this.search], { relativeTo: this.route });
   }
 }
