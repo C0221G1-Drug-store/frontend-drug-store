@@ -8,15 +8,15 @@
             <div class="mb-3">
               <label class="label-text" >Tìm kiếm tài khoản</label>
               <div class="d-flex">
-                <input class="width-input mr-2" type="text"  >
-                <select class="mr-2 selectFind">
-                  <option>Chọn</option>
-                  <option>Tên người dùng</option>
-                  <option>Mã người dùng</option>
-                  <option>Tên tài khoản</option>
-                  <option>Loại tài khoản</option>
+                <input [readOnly]="property==0" [(ngModel)]="keyWord" name="keyWord" class="width-input mr-2" type="text"  >
+                <select class="mr-2 selectFind" (ngModelChange)="onchangeProperty($event)" [(ngModel)]="property" name="property">
+                  <option value="0" selected>Chọn</option>
+                  <option value="1">Tên người dùng</option>
+                  <option value="2">Mã người dùng</option>
+                  <option value="3">Tên tài khoản</option>
+                  <option value="4">Loại tài khoản</option>
                 </select>
-                <button class="btn-primary btn">
+                <button class="btn-primary btn" (click)="searchAccount()">
                   <i class="ti-search"></i>
                 </button>
               </div>
@@ -37,43 +37,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr role="button" id="btn1">
-          <td>NV-01</td>
-          <td>Lê Văn A</td>
-          <td>levana</td>
-          <td>Quản lý</td>
-
-        </tr>
-        <tr role="button" id="btn2">
-          <td>NV-02</td>
-          <td>Lê Văn B</td>
-          <td>levanb</td>
-          <td>Nhân viên</td>
-        </tr>
-        <tr role="button" id="btn3">
-          <td>NV-03</td>
-          <td>Lê Văn C</td>
-          <td>levanc</td>
-          <td>Ngoài hệ thống</td>
-        </tr>
-        <tr role="button" id="btn4">
-          <td>NV-04</td>
-          <td>Lê Văn D</td>
-          <td>levand</td>
-          <td>Nhân viên</td>
+        <tr role="button" id="btn1"  *ngFor="let acc of accounts">
+          <td>{{acc.userCode}}</td>
+          <td>{{acc.userName}}</td>
+          <td>{{acc.accountName}}</td>
+          <td>{{acc.userRoles[0].role.roleName}}</td>
         </tr>
         </tbody>
       </table>
 
       <div class="d-flex justify-content-end">
         <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <p class="page-link page-item d-inline-block" (click)="backPage()">Previous</p>
+          <ul class="pagination d-inline-block">
+            <li class="page-item d-inline-block" *ngFor="let number of pages; index as i">
+              <p class="page-link" (click)="changePage(i)">{{i+1}}</p></li>
           </ul>
+          <p class="page-link page-item d-inline-block" (click)="nextPage()" >Next</p>
         </nav>
       </div>
 

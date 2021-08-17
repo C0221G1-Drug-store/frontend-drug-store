@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
+
+
+
+
+
+const API_URL = `${environment.apiUrl}`;
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountService {
+
+  constructor(private http: HttpClient) { }
+
+  getAllAccount(page: number, size: number, keyWord: string, property: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', `${page}`)
+      .set('size', `${size}`)
+      .set('keyWord', keyWord)
+      .set('property', `${property}`);
+    return this.http.get<any>(API_URL + '/users', {params});
+  }
+}
