@@ -1,3 +1,5 @@
+import {DrugGroup} from './drugGroup';
+
 export interface Drug {
   drugId?: number;
   drugCode?: number;
@@ -14,6 +16,6 @@ export interface Drug {
   origin?: string;
   note?: string;
   drugSideEffect?: string;
-  drugGroup?: number;
+  drugGroup?: DrugGroup;
   flag?: boolean;
 }
