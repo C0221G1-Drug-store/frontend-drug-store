@@ -71,8 +71,11 @@ export class ManufacturerService {
   findByIdManufacture(id: number){
     return this.http.get<Object>(API_URL +'/manufacturer/show?id='+id)
   }
-  findImportBillByIdManufacturer(id:number, page:number){
-    return this.http.get<ImportBill[]>(API_URL + '/manufacturer/shows?id='+id+'&page='+page);
+  findImportBillByIdManufacturer(id:number, startDate: string,endDate:string, page:number){
+      return this.http.get<ImportBill[]>(API_URL + '/manufacturer/importBill/shows?id='+id+'&startDate='+startDate+'&endDate='+endDate+'&page='+page);
+  }
+  findByIdImportBill(id: number){
+    return this.http.get<ImportBill>(API_URL + '/manufacturer/importBill?id='+id);
   }
 
 }

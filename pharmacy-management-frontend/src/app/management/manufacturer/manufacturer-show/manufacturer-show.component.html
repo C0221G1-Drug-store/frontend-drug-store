@@ -10,7 +10,7 @@
         <div class="row">
           <label class="label-text col-2 ">Mã nhà cung cấp</label>
           <div class="col-3">
-            <input [value]="manufacturer.manufacturerCode" disabled class="form-control " type="text">
+            <input [value]="manufacturer.manufacturerCode" disabled class="form-control" type="text">
           </div>
           <label class="label-text col">Tên nhà cung cấp</label>
           <div class="col-5">
@@ -55,27 +55,27 @@
 
         <div class="row">
 
-          <label for="startDate" class="col-lg-2">Từ ngày</label>
-          <input id="startDate" class="col-lg-3" style="height: 30px;width: 130px"
+          <label  for="startDate" class="col-lg-2">Từ ngày</label>
+          <input [(ngModel)]="sd"  name="sd" id="startDate" class="col-lg-3" style="height: 30px;width: 130px"
                  type="date"
                  placeholder="Tên nhà...">
 
 
           <label for="endDate" class="col-lg-2 ">Đến ngày</label>
-          <input id="endDate" class="col-lg-3" style="height: 30px;width: 130px"
+          <input [(ngModel)]="ed"  name="ed" id="endDate" class="col-lg-3" style="height: 30px;width: 130px"
                  type="date"
                  placeholder="Tên nhà...">
 
         </div >
         <div class="row mt-3">
           <label for="startTime" class=" col-lg-2">Từ giờ</label>
-          <input id="startTime" class=" col-lg-3" style="height: 30px;width: 130px" type="time"
-                 placeholder="Tên nhà...">
+          <input [(ngModel)]="st"  name="st" id="startTime" class=" col-lg-3" style="height: 30px;width: 130px" type="time"
+                >
           <label for="endTime" class=" col-lg-2 ">Đến giờ</label>
-          <input id="endTime" class="col-lg-3" style="height: 30px;width: 130px" type="time"
-                 placeholder="Tên nhà...">
+          <input [(ngModel)]="et"  name="et" id="endTime" class="col-lg-3" style="height: 30px;width: 130px" type="time"
+                 >
 
-          <div class="col-lg-2"><button style="height: 30px"  class="   btn ve " type="button"><i class="fa fa-search"
+          <div class="col-lg-2"><button (click)="searchDate()" style="height: 30px"  class="   btn ve " type="button"><i class="fa fa-search"
                                                                                                   aria-hidden="true"></i>
             Tìm kiếm
           </button></div>
@@ -111,10 +111,10 @@
           <td>{{page * 2 + 1 + i}}</td>
           <td>{{importBill.importSystemCode}}</td>
           <td class="ct">{{importBill.accountingVoucher}}</td>
-          <td class="ct" >{{importBill.invoiceDate| date:"dd/mm/yyyy"}}</td>
+          <td class="ct">{{importBill.invoiceDate| date:"dd/mm/yyyy"}}</td>
           <td class="ct">{{importBill.invoiceDate.substr(11,14)}}</td>
-          <td class="ct"></td>
-          <td class="ct"></td>
+          <td class="ct">{{importBill.payment.totalMoney}}</td>
+          <td class="ct">{{importBill.payment.totalMoney - importBill.payment.prepayment}}</td>
         </tr>
         </tbody>
       </table>

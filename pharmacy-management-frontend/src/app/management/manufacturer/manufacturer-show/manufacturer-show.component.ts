@@ -19,9 +19,14 @@ export class ManufacturerShowComponent implements OnInit {
   page:any=0;
   pages:Array<number>;
   max:any;
-importBills: ImportBill[];
-importBill: ImportBill;
-idDialog: number;
+  startDate: string="1000-01-01T11:11";
+  endDate: string="9999-11-11T11:11";
+ importBills: ImportBill[];
+ idDialog: number;
+ sd: string="1000-01-01";
+ ed:string="9999-11-11";
+ st:string="11:11";
+ et:string="11:11";
 
 
   constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService, private activatedRoute: ActivatedRoute) {
@@ -40,8 +45,9 @@ idDialog: number;
 
   }
   getAllImportBill(){
-     this.manufacturerService.findImportBillByIdManufacturer(this.id,this.page).subscribe(data =>{
+     this.manufacturerService.findImportBillByIdManufacturer(this.id,this.startDate,this.endDate,this.page).subscribe(data =>{
       this.importBills=data['content'];
+
       this.pages=new Array<number>(data['totalPages']);
     });
   }
@@ -49,8 +55,10 @@ idDialog: number;
 
 
   dialogShow(): void {
-
-    let dialogRef = this.dialog.open(ImportBillShowComponent, {});
+  const  id=this.idDialog;
+    let dialogRef = this.dialog.open(ImportBillShowComponent, {
+      data: {id}
+    });
     dialogRef.afterClosed().subscribe(() => {
 
     });
@@ -85,5 +93,13 @@ idDialog: number;
   getId(importBillId: any , movie:ImportBill): void {
     this.idDialog = importBillId;
     this.selectedMovie=movie;
+  }
+
+  searchDate() {
+    this.startDate=this.sd+'T'+this.st;
+    console.log(this.startDate);
+    this.endDate=this.ed+'T'+this.et;
+    console.log(this.endDate)
+    this.getAllImportBill()
   }
 }

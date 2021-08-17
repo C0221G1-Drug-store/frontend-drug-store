@@ -1,4 +1,5 @@
 import {Manufacturer} from "./manufacturer";
+import {Payment} from "./payment";
 
 export interface ImportBill {
   importBillId?;
@@ -7,7 +8,7 @@ export interface ImportBill {
   invoiceDate?;
   invoiceTime?;
   flag?: true;
-  payment?: string;
+  payment?: Payment;
   manufacturer?: Manufacturer;
   employee?;
 }
