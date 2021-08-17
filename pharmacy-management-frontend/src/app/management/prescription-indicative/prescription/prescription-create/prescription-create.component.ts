@@ -11,6 +11,7 @@ import {IndicativeService} from '../../../../service/indicative.service';
 })
 export class PrescriptionCreateComponent implements OnInit {
   drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
+  idPres = 0;
 
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
@@ -29,20 +30,24 @@ export class PrescriptionCreateComponent implements OnInit {
       numberOfDay: new FormControl(),
       note: new FormControl(),
       indicatives: this.fb.array([this.fb.group({
-        drug: '',
-        totalPill: '',
-        drinkDay: '',
-        drinkTime: ''
+        idPres: 0,
+        drug: new FormControl(),
+        totalPill: new FormControl(),
+        drinkDay: new FormControl(),
+        drinkTime: new FormControl()
       })])
     });
   }
 
   get indicatives() {
     return this.prescriptionForm.get('indicatives') as FormArray;
+    console.log(FormArray);
   }
+
 
   addIndicative() {
     this.indicatives.push(this.fb.group({
+      idPres: 0,
       drug: '',
       totalPill: '',
       drinkDay: '',
@@ -58,9 +63,9 @@ export class PrescriptionCreateComponent implements OnInit {
     const prescription = this.prescriptionForm.value;
     this.prescriptionService.savePrescription(prescription).subscribe(() => {
         this.prescriptionForm.reset();
-        this.router.navigateByUrl('/prescription/prescription-list')
+        this.router.navigateByUrl('/prescription/prescription-list');
         alert(' Thêm mới thành công ! ');
-      }, e => {
+      }, error => {
         alert(' Thêm mới thất bại !');
       }
     );

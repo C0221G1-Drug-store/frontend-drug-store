@@ -2,7 +2,7 @@ import {Prescription} from './prescription';
 import {Indicative} from './indicative';
 
 export interface PrescriptionIndicative {
-  prescriptionIndicative?: number;
+  prescriptionIndicativeId?: number;
   prescription?: Prescription;
-  indicatives?: Indicative[];
+  indicative?: Indicative;
 }

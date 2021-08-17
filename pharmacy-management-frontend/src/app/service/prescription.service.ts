@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Prescription} from '../model/prescription';
+import {Indicative} from '../model/indicative';
 
 const API_URL = 'http://localhost:8080';
 
@@ -12,10 +13,9 @@ export class PrescriptionService {
   constructor(private http: HttpClient) {
   }
 
-  getAllPrescription() {
-    return this.http.get<Prescription[]>(API_URL + '/prescriptions/prescription-list');
+  getAllPrescription(page: number) {
+    return this.http.get<Prescription[]>(API_URL + '/prescriptions/prescription-list?page=' + page);
   }
-
 
   savePrescription(prescription): Observable<Prescription> {
     return this.http.post<Prescription>(API_URL + '/prescriptions/prescription-create', prescription);
@@ -25,8 +25,8 @@ export class PrescriptionService {
     return this.http.get<Prescription>(`${API_URL}/prescription/${id}`);
   }
 
-  updatePrescription(prescription: Prescription): Observable<Prescription> {
-    return this.http.put<Prescription>(`${API_URL}/prescription/${prescription.prescriptionId}`, prescription);
+  updatePrescription(id: number, prescription: Prescription): Observable<Prescription> {
+    return this.http.put<Prescription>(`${API_URL}/prescription/${id}`, prescription);
   }
 
   deletePrescription(id: number): Observable<Prescription> {

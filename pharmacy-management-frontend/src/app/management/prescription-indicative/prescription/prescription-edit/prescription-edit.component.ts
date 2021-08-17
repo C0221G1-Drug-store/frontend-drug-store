@@ -59,7 +59,8 @@ export class PrescriptionEditComponent implements OnInit {
 
   submit(idEdit: number) {
     const prescription = this.prescriptionForm.value;
-    this.prescriptionService.savePrescription(prescription).subscribe(() => {
+    this.prescriptionService.updatePrescription(idEdit, prescription).subscribe(() => {
+
         this.prescriptionForm.reset();
         this.router.navigateByUrl('/prescription/prescription-list');
         alert(' Thêm mới thành công ! ');

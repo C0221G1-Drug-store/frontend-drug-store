@@ -7,4 +7,5 @@ export interface Indicative {
   drinkDay?: number;
   drinkTime?: number;
   drug?: Drug;
+  prescriptionId?: number;
 }
