@@ -73,32 +73,20 @@ export class WholesaleComponent implements OnInit {
       this.employeeList = next;
     });
   }
-  getDrug(tam) {
-    this.drugOfBill = {drug: tam , quantity : 5};
-    this.drugOfBillList.push(this.drugOfBill);
-    // tslint:disable-next-line:prefer-for-of
-    this.total = 0;
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.drugOfBillList.length; i++) {
-      this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
-    }
-  }
 
   submit() {
     // @ts-ignore
     this.billSaleForm.get('totalMoney').setValue(this.total);
     const billSale = this.billSaleForm.value;
-    // tslint:disable-next-line:no-unused-expression
     this.billSaleService.createBillSale(billSale).subscribe(() => {
-      alert('Thêm thành công');
+        // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < this.drugOfBillList.length; i++) {
         this.drugOfBill = this.drugOfBillList[i];
         console.log(this.drugOfBillList[i]);
         this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-          alert('Thêm thành công' + i);
-          this.drugOfBillList = [];
         });
       }
+      alert('thanh toán thành công');
     }
     );
     // tslint:disable-next-line:prefer-for-of
@@ -118,8 +106,7 @@ export class WholesaleComponent implements OnInit {
       for (let i = 0; i < this.drugOfBillList.length; i++) {
         this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
       }
-    })
-    console.log(drugOfBill);
+    });
   }
 
   addDrug(drug, number1) {
@@ -130,6 +117,5 @@ export class WholesaleComponent implements OnInit {
     for (let i = 0; i < this.drugOfBillList.length; i++) {
       this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
     }
-    console.log(this.drugOfBillList);
   }
 }

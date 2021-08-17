@@ -18,7 +18,7 @@
               </div>
               <div class="row mt-3">
                 <label for="inputNote" class="label-text">Ghi chú</label>
-                <textarea type="text" id="inputNote" class="height85px a" placeholder="Note..."></textarea>
+                <textarea type="text"*ngIf="billSale != null" value="{{billSale.billSaleNote}}" id="inputNote" class="height85px a" placeholder="Note..."></textarea>
               </div>
             </div>
             <div class="col-lg-1"></div>
@@ -61,7 +61,7 @@
           </tr>
           </thead>
           <tbody *ngFor="let drugOfBill of drugOfBillList , let i = index">
-          <tr id="{{i}}" (click)="send(drugOfBill) ">
+          <tr id="{{i}}" (click)="send(drugOfBill)" (click)="getID(drugOfBill.drugOfBillId)">
             <td>{{drugOfBill.drug.drugName}}</td>
             <td>{{drugOfBill.drug.unit}}</td>
             <td>{{drugOfBill.quantity}}</td>
@@ -71,17 +71,6 @@
           </tbody>
 
         </table>
-      </div>
-      <div class="d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
       </div>
       <div class="d-flex justify-content-end mt-3">
         <label class="mr-3">Tổng tiền </label>
