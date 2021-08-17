@@ -11,11 +11,11 @@
       <h2 class="text-center mb-3">Đơn thuốc</h2>
       <div class="d-flex mb-3">
         <label class="label-text">Tên đơn thuốc</label>
-        <input value="{{prescription.name}}"  class="form-control" type="text"><br>
+        <input *ngIf="prescription != null" value="{{prescription.name}}"  class="form-control" type="text"><br>
       </div>
       <div class="d-flex mb-3">
         <label class="label-text">Triệu chứng</label>
-        <input value="{{prescription.sign}}" class="form-control" type="text">
+        <input *ngIf="prescription != null" value="{{prescription.sign}}" class="form-control" type="text">
       </div>
       <div class="d-flex mb-3 justify-content-between">
         <label class="label-text-min">Đối tượng</label>
@@ -42,14 +42,14 @@
               <input [value]="drugOfBill.quantity" class="vien" type="text"> Viên
             </div>
 
-            <i class="fa fa-trash text-danger " (click)="openDeleteDialog()"></i>
+            <i class="fa fa-trash text-danger " (click)="openDeleteDialog(drugOfBill)"></i>
           </div>
         </li>
 
       </ul>
     </div>
     <div class="d-flex flex-row-reverse pt-4 pb-5">
-      <button class=" btn btn-danger huy" type="button" ><i class="fa fa-close"></i> Hủy</button>
+      <button class=" btn btn-danger huy" type="button" routerLink="/sale" ><i class="fa fa-close"></i> Hủy</button>
       <button class="mr-4 btn btn-print" type="button" ><i class="fa fa-print"></i> In toa</button>
       <button (click)="addToBill(drugOfbills)" class="mr-4 btn btn-success" type="button" ><i class="fa fa-plus"></i> Thêm vào hóa đơn</button>
     </div>
