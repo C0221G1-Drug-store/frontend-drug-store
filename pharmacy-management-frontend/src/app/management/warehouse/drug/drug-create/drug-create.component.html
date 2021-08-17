@@ -236,6 +236,7 @@
             <option>Thuốc bổ</option>
             <option>Thuốc kháng sinh</option>
             <option>Thuốc kháng viêm</option>
+            <option>Thuốc giảm đau hạ sốt</option>
           </select>
         </div>
 
@@ -254,7 +255,7 @@
         </div>
       </div>
 
-      <hr style="color: black">
+      <hr class="mb-3" style="color: black">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="row">
@@ -273,21 +274,47 @@
 
           </div>
         </div>
-        <div class="col-lg-6"></div>
-      </div>
-      <div class="row d-flex mb-3 align-items-center">
-        <div class="col-lg-2">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-4">
+              <label class="label-text">Ảnh thuốc <span style="color: red">(*)</span></label>
+            </div>
+            <div class="col-lg-8">
+              <input type="file" class="form-control-file pl-0" (change)="showPreview($event)">
+            </div>
+          </div>
 
         </div>
-        <div class="col-lg-9">
-          <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">
-            <small style="color: red">Unit Profit Rate is invalid!</small>
+      </div>
+      <div class="row d-flex mb-3 ">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">
+                <small style="color: red">Unit Profit Rate is invalid!</small>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div class="col-lg-1 px-0">
+        <div class="col-lg-6">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
 
+            </div>
+            <div class="col-lg-8">
+              <div *ngIf="drugForm.get('drugImageDetails')?.invalid && (drugForm.get('drugImageDetails')?.dirty || drugForm.get('drugImageDetails')?.touched)">
+                <small style="color: red">Conversion Rate is invalid!</small>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
+
       <div class="row d-flex ">
         <div class="col-lg-6">
           <div class="row align-items-center">

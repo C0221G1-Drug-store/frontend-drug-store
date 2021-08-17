@@ -42,7 +42,9 @@
 }
 .btn-search{
   background-color: #2fc1a6;
+  width: 100px;
   color: white;
+  height: 33px;
 }
 .date{
   padding-right: 16px;
@@ -52,6 +54,7 @@
 }
 .button{
   width: 80px;
+  height: 33px;
 }
 fieldset.scheduler-border {
   border: 1px groove !important;
@@ -435,6 +438,7 @@ html{
   }
   .text-content-right{
     font-size: 20px;
+    text-align: center;
     text-align: center;
   }
 

@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {DrugService} from '../../../../service/drug.service';
 import {DrugDTO} from '../../../../model/DrugDTO';
+import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
+import {MatDialog} from '@angular/material/dialog';
+import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.component';
 
 @Component({
   selector: 'app-drug-list',
@@ -10,20 +13,24 @@ import {DrugDTO} from '../../../../model/DrugDTO';
 export class DrugListComponent implements OnInit {
   drugs: DrugDTO[];
   drugsNotPagination: DrugDTO[];
-  indexPagination: number = 1;
+  indexPagination = 1;
   totalPagination: number;
-
-  constructor(private drugService: DrugService) {
+  drugSelectedId;
+  selected = false;
+  selectedColor = '';
+  constructor(private drugService: DrugService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.getAllPagination(0);
+    this.indexPagination = 1;
     this.drugService.getAll().subscribe((drugs: DrugDTO[]) => {
       this.drugsNotPagination = drugs;
-      if ((this.drugsNotPagination.length % 2) === 0) {
-        this.totalPagination = this.drugsNotPagination.length / 2;
+      if ((this.drugsNotPagination.length % 5) === 0) {
+        this.totalPagination = this.drugsNotPagination.length / 5;
       } else {
-        this.totalPagination = (Math.floor(this.drugsNotPagination.length / 2)) + 1;
+        this.totalPagination = (Math.floor(this.drugsNotPagination.length / 5)) + 1;
       }
     });
   }
@@ -33,7 +40,7 @@ export class DrugListComponent implements OnInit {
     if (this.indexPagination > this.totalPagination) {
       this.indexPagination = this.indexPagination - 1;
     }
-    this.drugService.getAllPagination((this.indexPagination * 2) - 2).subscribe((drugs: DrugDTO[]) => {
+    this.drugService.getAllPagination((this.indexPagination * 5) - 5).subscribe((drugs: DrugDTO[]) => {
       this.drugs = drugs;
     });
   }
@@ -44,20 +51,47 @@ export class DrugListComponent implements OnInit {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.drugService.getAllPagination((this.indexPagination * 2) - 2).subscribe((drugs: DrugDTO[]) => {
+      this.drugService.getAllPagination((this.indexPagination * 5) - 5).subscribe((drugs: DrugDTO[]) => {
         this.drugs = drugs;
       });
     }
-  }
-  findPagination() {
-  }
-
-  indexPaginationChange() {
   }
 
   getAllPagination(index: number) {
     this.drugService.getAllPagination(index).subscribe((drugs: DrugDTO[]) => {
       this.drugs = drugs;
     });
+  }
+  deleteDialog(): void {
+    this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
+      const dialogRef = this.dialog.open(DrugDeleteComponent, {
+        width: '500px',
+        data: {data1: drug}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+    });
+  }
+  notSelectedDialog(): void {
+      const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
+        width: '500px'
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+  }
+  selectDrug(drudId) {
+    if (this.drugSelectedId === drudId) {
+      this.drugSelectedId = '';
+      this.selectedColor = '';
+      this.selected = false;
+    } else {
+      this.drugSelectedId = drudId;
+      this.selected = true;
+      this.selectedColor = '#62b8ff';
+    }
   }
 }
