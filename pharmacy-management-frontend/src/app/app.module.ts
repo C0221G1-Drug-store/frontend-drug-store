@@ -9,6 +9,7 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent

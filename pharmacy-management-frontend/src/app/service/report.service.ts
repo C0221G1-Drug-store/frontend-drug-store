@@ -3,7 +3,7 @@ import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Report} from '../model/report';
+
 
 const API_URL = 'http://localhost:8080';
 
@@ -27,7 +27,7 @@ export class ReportService {
     FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + this.fileExtension);
   }
 
-  importDetails(choice: string, startDate: string, endDate: string): Observable<Report[]> {
-    return this.http.get<Report[]>(`${API_URL}/report/${choice}/${startDate}/${endDate}`);
+  importDetails(choice: string, startDate: string, endDate: string): Observable<[]> {
+    return this.http.get<[]>(`${API_URL}/report/${choice}/${startDate}/${endDate}`);
   }
 }
