@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DrugGroup} from "../../../../model/drug-group";
 import {DrugGroupService} from "../../../../service/drug-group.service";
 import {DrugGroupDeleteComponent} from "../drug-group-delete/drug-group-delete.component";
+import {Router} from "@angular/router";
 
 
 
@@ -18,15 +19,19 @@ export class DrugGroupListComponent implements OnInit {
   drugGroups: DrugGroup[];
   drugGroupIdColor: number;
   drugGroup: DrugGroup;
-  drugGroupObj: DrugGroup;
   code = "";
   name = "";
   id: number;
-  num=0;
+  smgCode = "";
+  smgName = "";
+  pages: Array<any>;
+  page = 0;
 
 
   constructor(private drugGroupService: DrugGroupService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private router:Router) {
+
 
   }
 
@@ -36,12 +41,34 @@ export class DrugGroupListComponent implements OnInit {
   }
 
   getAll() {
-    this.drugGroupService.getAll().subscribe(drugGroup => {
-      this.drugGroups = drugGroup;
+    this.drugGroupService.getAllPage(this.page).subscribe(next => {
+      this.drugGroups = next['content'];
+      this.pages = new Array<any>(next['totalPages']);
     });
-    console.log(this.drugGroups)
+
   }
 
+  previous() {
+    if (this.page === 0) {
+      alert('Khong tim thay trang');
+    } else {
+      this.page = this.page - 1;
+      this.getAll();
+    }
+  }
+
+  next() {
+    if (this.page > this.pages.length - 2) {
+      alert('ko tim thay trang');
+    } else {
+      this.page = this.page + 1;
+      this.getAll();
+    }
+  }
+  setPage(i: number) {
+    this.page = i;
+    this.getAll();
+  }
   color(drugGroupId: number) {
     this.drugGroupIdColor = drugGroupId
   }
@@ -50,30 +77,54 @@ export class DrugGroupListComponent implements OnInit {
   getObj(drugGroup: DrugGroup) {
     this.name = drugGroup.drugGroupName;
     this.code = drugGroup.drugGroupCode;
-    this.drugGroup = drugGroup;
+    this.drugGroup = drugGroup
   }
 
   update() {
-    this.drugGroup.drugGroupCode =this.code;
-    this.drugGroup.drugGroupName =this.name;
-    this.drugGroupService.update(this.drugGroup.drugGroupId, this.drugGroup).subscribe(() => {
-      console.log(this.id)
-      alert("cập nhật thành công")
-    }, e => {
-      console.log(e);
-    });
+    if (this.code == "") {
+      this.smgCode = "Mã nhóm thuốc không được để trống."
+    }
+    if (this.name == "") {
+      this.smgName = "Tên nhóm thuốc không được để trống."
+    } else {
+      this.drugGroup.drugGroupCode = this.code;
+      this.drugGroup.drugGroupName = this.name;
+      this.drugGroupService.update(this.drugGroup.drugGroupId, this.drugGroup).subscribe(() => {
+        console.log(this.id)
+        alert("cập nhật thành công")
+        this.name = "";
+        this.code = "";
+      }, e => {
+        alert("cập nhật thất bại")
+        console.log(e);
+      });
+    }
+
   }
 
   create() {
-    console.log(this.code)
-    console.log(this.name)
-    this.drugGroup.drugGroupId=null;
-    this.drugGroup.drugGroupCode =this.code;
-    this.drugGroup.drugGroupName =this.name;
-    console.log(this.drugGroup)
-    this.drugGroupService.save(this.drugGroupObj).subscribe(() => {
-      alert('Tạo thành công');
-    });
+    const drugGroup = {
+      drugGroupId: 1,
+      drugGroupCode: "NT00",
+      drugGroupName: "thuoc gan"
+    }
+    drugGroup.drugGroupId = null;
+    if (this.code == "") {
+      this.smgCode = "Mã nhóm thuốc không được để trống."
+    }
+    if (this.name == "") {
+      this.smgName = "Tên nhóm thuốc không được để trống."
+    } else {
+      drugGroup.drugGroupName = this.name;
+      drugGroup.drugGroupCode = this.code;
+      this.drugGroupService.save(drugGroup).subscribe(() => {
+        alert('Tạo thành công');
+        this.router.navigate(['/management/management-information'])
+      }, e => {
+        alert("tạo thất bại")
+        console.log(e);
+      });
+    }
   }
 
   onDeleteHandler(): void {
@@ -91,5 +142,6 @@ export class DrugGroupListComponent implements OnInit {
       }
     });
   }
+  
 
 }
