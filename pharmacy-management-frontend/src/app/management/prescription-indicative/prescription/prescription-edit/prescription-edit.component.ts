@@ -22,19 +22,22 @@ export class PrescriptionEditComponent implements OnInit {
   prescriptionForm: FormGroup;
 
   ngOnInit(): void {
-    this.prescriptionService.findById(this.idEdit).subscribe(pres => {
+    this.prescriptionService.findById(this.idEdit).subscribe(prescriptions => {
+      console.log('loggggg' + prescriptions.prescriptionName);
       this.prescriptionForm = this.fb.group({
-        prescriptionCode: new FormControl(pres.prescriptionCode),
-        prescriptionName: new FormControl(pres.prescriptionName),
-        symptom: new FormControl(pres.symptom),
-        object: new FormControl(pres.object),
-        numberOfDay: new FormControl(pres.numberOfDay),
-        note: new FormControl(pres.note),
+        prescriptionId: new FormControl(prescriptions.prescriptionId),
+        prescriptionCode: new FormControl(prescriptions.prescriptionCode),
+        prescriptionName: new FormControl(prescriptions.prescriptionName),
+        symptom: new FormControl(prescriptions.symptom),
+        object: new FormControl(prescriptions.object),
+        numberOfDay: new FormControl(prescriptions.numberOfDay),
+        note: new FormControl(prescriptions.note),
         indicatives: this.fb.array([this.fb.group({
-          drug: '',
-          totalPill: '',
-          drinkDay: '',
-          drinkTime: ''
+          indicativeId: new FormControl(''),
+          drug: new FormControl(''),
+          totalPill: new FormControl(''),
+          drinkDay: new FormControl(''),
+          drinkTime: new FormControl('')
         })])
       });
     });
@@ -60,7 +63,6 @@ export class PrescriptionEditComponent implements OnInit {
   submit(idEdit: number) {
     const prescription = this.prescriptionForm.value;
     this.prescriptionService.updatePrescription(idEdit, prescription).subscribe(() => {
-
         this.prescriptionForm.reset();
         this.router.navigateByUrl('/prescription/prescription-list');
         alert(' Thêm mới thành công ! ');

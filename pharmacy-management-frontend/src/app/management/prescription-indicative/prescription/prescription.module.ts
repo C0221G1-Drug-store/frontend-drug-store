@@ -5,9 +5,10 @@ import { PrescriptionRoutingModule } from './prescription-routing.module';
 import {PrescriptionListComponent} from './prescription-list/prescription-list.component';
 import {PrescriptionCreateComponent} from './prescription-create/prescription-create.component';
 import { PrescriptionEditComponent } from './prescription-edit/prescription-edit.component';
-import {ReactiveFormsModule} from '@angular/forms';
+
 import { PrescriptionDeleteComponent } from './prescription-delete/prescription-delete.component';
 import {IndicativeModule} from '../indicative/indicative.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,8 +21,10 @@ import {IndicativeModule} from '../indicative/indicative.module';
   imports: [
     CommonModule,
     PrescriptionRoutingModule,
+
+    IndicativeModule,
     ReactiveFormsModule,
-    IndicativeModule
+    FormsModule
   ]
 })
 export class PrescriptionModule { }

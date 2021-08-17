@@ -1,11 +1,18 @@
 <div class="container">
   <h1 class="text-center mb-3">Đơn thuốc</h1>
-
   <form [formGroup]="prescriptionForm" (ngSubmit)="submit()">
     <div class="">
+
+
       <div class="d-flex mb-3">
         <label class="label-text-min mt-1 ml-1 d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
         <input class="form-control pl-2" type="text" formControlName="prescriptionName" >
+        <div class="d-flex"
+          *ngIf="!prescriptionForm.get('prescriptionName').valid && (prescriptionForm.get('prescriptionName').dirty ||prescriptionForm.get('prescriptionName').touched)">
+          <div [hidden]="!prescriptionForm.get('prescriptionName').errors.required">
+            <span style="color: red">vui lòng vào</span>
+          </div>
+        </div>
       </div>
       <div class="d-flex mb-3">
         <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
@@ -54,10 +61,9 @@
         <div *ngFor="let item of indicatives.controls ; let indicativeIndex=index" [formGroupName]="indicativeIndex">
           <div class="d-flex justify-content-between row">
             <span>{{indicativeIndex+1}}</span>
-<!--            <span formControlName="prescriptionId"></span>-->
             <div class=" col-6">
               <select class="select form-control"  formControlName="drug">
-                <option *ngFor="let d of drugs ">{{d}}</option>
+                <option *ngFor="let d of drugs " value="{{d}}}">{{d}}</option>
               </select>
             </div>
             <div class="col-1"></div>

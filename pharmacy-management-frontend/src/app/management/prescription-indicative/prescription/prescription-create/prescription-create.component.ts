@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PrescriptionService} from '../../../../service/prescription.service';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {IndicativeService} from '../../../../service/indicative.service';
+import validate = WebAssembly.validate;
 
 @Component({
   selector: 'app-prescription-create',
@@ -23,18 +24,17 @@ export class PrescriptionCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.prescriptionForm = this.fb.group({
-      prescriptionCode: new FormControl(),
-      prescriptionName: new FormControl(),
-      symptom: new FormControl(),
-      object: new FormControl(),
-      numberOfDay: new FormControl(),
-      note: new FormControl(),
+      prescriptionCode: new FormControl('', [Validators.required, Validators.pattern('^(T)-[0-9]{4}$')]),
+      prescriptionName: new FormControl('', [Validators.required]),
+      symptom: new FormControl('', [Validators.required]),
+      object: new FormControl('', [Validators.required]),
+      numberOfDay: new FormControl('', [Validators.required]),
+      note: new FormControl('', [Validators.required]),
       indicatives: this.fb.array([this.fb.group({
-        idPres: 0,
-        drug: new FormControl(),
-        totalPill: new FormControl(),
-        drinkDay: new FormControl(),
-        drinkTime: new FormControl()
+        drug: new FormControl('', [Validators.required]),
+        totalPill: new FormControl('', [Validators.required]),
+        drinkDay: new FormControl('', [Validators.required]),
+        drinkTime: new FormControl('', [Validators.required]),
       })])
     });
   }
@@ -46,7 +46,6 @@ export class PrescriptionCreateComponent implements OnInit {
 
   addIndicative() {
     this.indicatives.push(this.fb.group({
-      idPres: 0,
       drug: '',
       totalPill: '',
       drinkDay: '',

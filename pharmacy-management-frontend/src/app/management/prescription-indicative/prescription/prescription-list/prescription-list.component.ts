@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Prescription} from '../../../../model/prescription';
 import {PrescriptionService} from '../../../../service/prescription.service';
+import {MatDialog} from '@angular/material/dialog';
+import {PrescriptionDeleteComponent} from '../prescription-delete/prescription-delete.component';
 
 @Component({
   selector: 'app-prescription-list',
@@ -11,8 +13,19 @@ export class PrescriptionListComponent implements OnInit {
   idEdit: number;
   prescriptions: Prescription[];
   pages: Array<any>;
+  prescription: Prescription;
+  prescriptionName = '';
+  prescriptionCode = '';
+  object = '';
   page = 0;
-  constructor(private prescriptionService: PrescriptionService) {
+  symptom = '';
+  sortBy = 'prescription_id';
+  select: any;
+  valueSearch: any;
+
+
+  constructor(private prescriptionService: PrescriptionService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -20,10 +33,11 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   getPrescriptions() {
-    this.prescriptionService.getAllPrescription(this.page).subscribe(prescriptions => {
+    // tslint:disable-next-line:max-line-length
+    this.prescriptionService.getAllPrescription(this.prescriptionName, this.prescriptionCode, this.object, this.symptom, this.page, this.sortBy).subscribe(prescriptions => {
       this.prescriptions = prescriptions['content'];
       this.pages = new Array<any>(prescriptions['totalPages']);
-      console.log(this.pages);
+      // console.log(this.pages);
     });
   }
 
@@ -53,6 +67,49 @@ export class PrescriptionListComponent implements OnInit {
     } else {
       this.page = this.page + 1;
       this.getPrescriptions();
+    }
+  }
+
+  getPres(p: Prescription) {
+    this.prescription = p;
+  }
+  onDeleteHandler(prescription: Prescription): void {
+    const dialogRef = this.dialog.open(PrescriptionDeleteComponent, {
+      width: '250px',
+      data: prescription
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.prescriptionService.deletePrescription(prescription.prescriptionId).subscribe(next => {
+          this.getPrescriptions();
+        });
+      }
+    });
+  }
+
+  search() {
+    switch (this.select) {
+      case 'tenThuoc':
+        this.prescriptionName = this.valueSearch;
+        this.getPrescriptions();
+        break;
+      case 'maToaThuoc':
+        this.prescriptionName = '';
+        this.prescriptionCode = this.valueSearch;
+        this.getPrescriptions();
+        break;
+      case 'doiTuong':
+        this.prescriptionCode = '';
+        this.object = this.valueSearch;
+        this.getPrescriptions();
+        break;
+      case 'trieuChung':
+        this.object = '';
+        this.symptom = this.valueSearch;
+        this.getPrescriptions();
+        break;
     }
   }
 }

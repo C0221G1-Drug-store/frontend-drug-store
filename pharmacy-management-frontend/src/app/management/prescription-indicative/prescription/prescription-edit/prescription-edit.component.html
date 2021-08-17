@@ -2,120 +2,120 @@
   <h1 class="text-center mb-3">Đơn thuốc</h1>
 
   <form [formGroup]="prescriptionForm" (ngSubmit)="submit(idEdit)">
-    <input type="text" formControlName="prescriptionId" hidden>
-    <div class="">
-      <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="prescriptionName" >
-      </div>
-      <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="prescriptionCode">
-      </div>
-      <!--      <p style="color: red ; margin-left: 210px ;margin-top:-30px "> Vui lòng không được nhập trống</p>-->
 
-      <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Triệu chứng <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="symptom">
-      </div>
+        <div class="">
+          <input type="text" formControlName="prescriptionId" hidden>
 
-      <!--      <p style="color: red ; margin-left: 210px;margin-top:-30px "> Vui lòng không được nhập trống</p>-->
-      <div class="d-flex">
-        <label class="label-text-min mt-2 ml-1 "><p>Ghi chú </p></label>
-        <textarea class="form-control pl-2 ml-5" formControlName="note"></textarea>
-      </div>
+          <div class="d-flex mb-3">
+            <label class="label-text-min mt-1 ml-1 d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
+            <input class="form-control pl-2" type="text" formControlName="prescriptionName" >
+          </div>
+          <div class="d-flex mb-3">
+            <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
+            <input class="form-control pl-2" type="text" formControlName="prescriptionCode">
+          </div>
 
-      <br>
-    </div>
+          <div class="d-flex mb-3">
+            <label class="label-text-min mt-1 ml-1 d-flex">Triệu chứng <p style=" color: red">(*)</p></label>
+            <input class="form-control pl-2" type="text" formControlName="symptom">
+          </div>
 
-    <div class="row">
-      <div class="col-2">
-        <label class="label-text-min mt-1">Đối tượng</label>
-      </div>
-      <div class="col-4">
-        <select class="form-control ml-4" style="width: 70%" formControlName="object">
-          <option value="Trẻ em">Trẻ em</option>
-          <option value="Người lớn">Người lớn</option>
-          <option value="Phụ nữ mang thai">Phụ nữ mang thai</option>
-        </select>
-      </div>
+          <div class="d-flex">
+            <label class="label-text-min mt-2 ml-1 "><p>Ghi chú </p></label>
+            <textarea class="form-control pl-2 ml-5" formControlName="note"></textarea>
+          </div>
 
-      <div class="col-3">
-        <label class="label-text-min mt-1 ml-5  ">Số ngày uống</label>
-      </div>
-      <div class="col-3"><input type="number" class="form-control mr-2 ml-2" style="width: 96%;"
-                                formControlName="numberOfDay"></div>
-    </div>
+          <br>
+        </div>
 
-    <fieldset class="scheduler-border">
-      <legend class="scheduler-border">Chỉ định</legend>
+        <div class="row">
+          <div class="col-2">
+            <label class="label-text-min mt-1">Đối tượng</label>
+          </div>
+          <div class="col-4">
+            <select class="form-control ml-4" style="width: 70%" formControlName="object">
+              <option value="Trẻ em">Trẻ em</option>
+              <option value="Người lớn">Người lớn</option>
+              <option value="Phụ nữ mang thai">Phụ nữ mang thai</option>
+            </select>
+          </div>
 
-      <div class="mb-3" formArrayName="indicatives">
+          <div class="col-3">
+            <label class="label-text-min mt-1 ml-5  ">Số ngày uống</label>
+          </div>
+          <div class="col-3"><input type="number" class="form-control mr-2 ml-2" style="width: 96%;"
+                                    formControlName="numberOfDay"></div>
+        </div>
 
-        <div *ngFor="let item of indicatives.controls ; let indicativeIndex=index" [formGroupName]="indicativeIndex">
-          <div class="d-flex justify-content-between row">
-            <span>{{indicativeIndex+1}}</span>
-            <div class=" col-6">
-              <select class="select form-control"  formControlName="drug">
-                <option *ngFor="let d of drugs ">{{d}}</option>
-              </select>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-3 d-flex">
-              <input class="vien mr-4 form-control ml-2" type="number" formControlName="totalPill"> <span
-              class="mt-2 ">Viên</span>
-            </div>
-            <div class=" col-2">
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border">Chỉ định</legend>
+
+          <div class="mb-3" formArrayName="indicatives">
+
+            <div *ngFor="let item of indicatives.controls ; let indicativeIndex=index" [formGroupName]="indicativeIndex">
+              <div class="d-flex justify-content-between row">
+                <span>{{indicativeIndex+1}}</span>
+                <div class=" col-6">
+                  <select class="select form-control"  formControlName="drug">
+                    <option *ngFor="let d of drugs " value="{{d}}}">{{d}}</option>
+                  </select>
+                </div>
+                <input type="text" formControlName="indicativeId" hidden>
+                <div class="col-1"></div>
+                <div class="col-3 d-flex">
+                  <input class="vien mr-4 form-control ml-2" type="number" formControlName="totalPill"> <span
+                  class="mt-2 ">Viên</span>
+                </div>
+                <div class=" col-2">
         <span (click)="deleteIndicative(indicativeIndex)">
         <i style="color: red;width: 200%" class="fa fa-trash-o btn-lg mr-5 mt-1 "
            aria-hidden="true"></i></span>
+                </div>
+              </div>
+              <br>
+              <div class="d-flex row">
+                <div class="col-8 d-flex ">
+                  <p class="mt-2">Ngày uống</p>
+                  <input type="number" class="ml-2 vien form-control" formControlName="drinkDay">
+                  <p class="ml-2 mt-2 mr-2">lần , </p>
+
+                  <span class="mt-2 mr-2"> mỗi lần</span>
+                  <input type="number" class=" vien  form-control " formControlName="drinkTime">
+                  <span class="mt-2 ml-4">Viên</span>
+                </div>
+              </div>
             </div>
           </div>
-          <br>
-          <div class="d-flex row">
-            <div class="col-8 d-flex ">
-              <p class="mt-2">Ngày uống</p>
-              <input type="number" class="ml-2 vien form-control" formControlName="drinkDay">
-              <p class="ml-2 mt-2 mr-2">lần , </p>
 
-              <span class="mt-2 mr-2"> mỗi lần</span>
-              <input type="number" class=" vien  form-control " formControlName="drinkTime">
-              <span class="mt-2 ml-4">Viên</span>
+          <div class="row d-flex ">
+            <div class="col-4">
             </div>
           </div>
-        </div>
-      </div>
+
+          <div class="col-8 ">
+
+            <button (click)="addIndicative()" class="mt-3 btn  ml-5 border border-secondary  " type="button"><i
+              class="fa fa-plus" aria-hidden="true"></i>
+              Thêm
+            </button>
+          </div>
 
 
-      <div class="row d-flex ">
+        </fieldset>
+
         <div class="col-4">
+
         </div>
-      </div>
-
-      <div class="col-8 ">
-
-        <button (click)="addIndicative()" class="mt-3 btn  ml-5 border border-secondary  " type="button"><i
-          class="fa fa-plus" aria-hidden="true"></i>
-          Thêm
-        </button>
-      </div>
-
-
-    </fieldset>
-
-    <div class="col-4">
-
+        <div class="col-8">
+          <div class="d-flex flex-row-reverse pt-4 pb-5">
+            <button class=" btn btn-danger huy" type="button" routerLink="/prescription/prescription-list"><i class="fa fa-times-circle"
+                                                                                                              aria-hidden="true"></i>Hủy
+            </button>
+            <button class="mr-5 btn btn-success" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Thêm
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="col-8">
-      <div class="d-flex flex-row-reverse pt-4 pb-5">
-        <button class=" btn btn-danger huy" type="button"><i class="fa fa-times-circle"
-                                                             aria-hidden="true"></i> Hủy
-        </button>
-        <button class="mr-5 btn btn-success" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Thêm
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
 
-{{this.prescriptionForm.value | json}}
+    {{this.prescriptionForm.value | json}}

@@ -5,24 +5,24 @@
       <div class="d-flex  mt-4">
         <div class=" col-3 d-flex">
           <label class="mt-2">Lọc theo</label>
-          <select class="form-control ml-1" style="width: 70%">
-            <option>Tên thuốc</option>
-            <option>Mã toa thuốc</option>
-            <option>Đối tượng</option>
-            <option>Triệu chứng</option>
+          <select class="form-control ml-1" style="width: 70%" [(ngModel)]="select">
+            <option value="tenThuoc">Tên thuốc</option>
+            <option value="maToaThuoc">Mã toa thuốc</option>
+            <option value="doiTuong">Đối tượng</option>
+            <option value="trieuChung">Triệu chứng</option>
           </select>
         </div>
         <div class="col-6 d-flex">
-          <input type="text" class="mr-2 form-control ml-5" style="width: 50%">
+          <input type="text" class="mr-2 form-control ml-5" style="width: 50%" [(ngModel)]="valueSearch">
           <div class="ml-1 d-flex">
-            <button class="btn border   " style="height: 92%  "><i
+            <button class="btn border   " style="height: 92%  " (click)="search()"><i
               class="fa fa-search "></i> Lọc kết quả
             </button>
           </div>
         </div>
         <div class="mr-5 col-3 d-flex">
           <label class="mt-2 ">Sắp xếp </label>
-          <select class="form-control ml-1" style="width: 70%">
+          <select class="form-control ml-1" style="width: 70%" >
             <option>Mã toa thuốc</option>
             <option>Tên thuốc</option>
             <option>Đối tượng</option>
@@ -49,7 +49,7 @@
 
         </tr>
 
-        <tr *ngFor="let p of prescriptions" (click)="getId(p.prescriptionId)"
+        <tr *ngFor="let p of prescriptions" (click)="getId(p.prescriptionId) ; getPres(p)"
             [style]="{background: p.prescriptionId==idEdit?'#63B8FF':null}">
           <td>{{p.prescriptionCode}}</td>
           <td>{{p.prescriptionName}}</td>
@@ -82,8 +82,8 @@
     <button class="mr-5 btn btn-edit" type="button"  [routerLink]="['/prescription/prescription-edit',idEdit]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
       Sửa
     </button>
-    <button class="mr-5 btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModal"><i
-      class="fa fa-trash-o" aria-hidden="true"></i> xóa
+    <button class="mr-5 btn btn-danger" type="button" (click)="onDeleteHandler(prescription)">
+      <i class="fa fa-trash-o" aria-hidden="true"></i> xóa
     </button>
     <button class="mr-1 btn btn-back" type="button" style=" width: auto;" [routerLink]="['/common']"><i class="icon-sidebar fa fa-reply ">
     </i>Trở về
