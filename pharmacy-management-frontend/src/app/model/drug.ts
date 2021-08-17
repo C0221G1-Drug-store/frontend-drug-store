@@ -17,5 +17,8 @@ export interface Drug {
   note?: string;
   drugSideEffect?: string;
   flag?: true;
-  drugGroup?: DrugGroup;
+  drugGroup?: any;
+  wholesalePrice?: number;
+  retailPrice?: number;
+  drugImageDetails?: string;
 }

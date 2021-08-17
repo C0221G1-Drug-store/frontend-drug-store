@@ -2,7 +2,7 @@
 <div class="py-lg-2">
   <div class="container">
     <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
-      <a href="/" class="navbar-brand d-flex w-50 mr-auto">Kết quả tìm kiếm cho &nbsp;<span
+      <a class="navbar-brand d-flex w-50 mr-auto">Kết quả tìm kiếm cho &nbsp;<span
         style="color: #242a61">"{{search}}"</span></a>
       <div class="navbar-collapse collapse navbar-toggle w-100" id="collapsingNavbar4">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
@@ -10,13 +10,18 @@
             <a class="nav-link" href="#">Sắp xếp theo:</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tên <span class="fa fa-sort text-white"></span></a>
+            <a class="nav-link btn text-white mx-1" style="background: #567FEA; height: 38px; border-radius: 8px"
+               (click)="sortDrugByName()">Tên <span class="fa fa-sort text-white"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Giá <span class="fa fa-sort text-white"></span></a>
+            <a class="nav-link btn text-white mx-1" style="background: #567FEA; height: 38px; border-radius: 8px"
+               (click)="toggleBooleanPrice ? sortDrugPriceAsc() : sortDrugPriceDesc()">Giá <span
+              class="fa fa-sort text-white"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Số lượng <span class="fa fa-sort text-white"></span></a>
+            <a class="nav-link btn text-white mx-1" style="background: #567FEA; height: 38px; border-radius: 8px"
+               (click)="toggleBooleanAmount ? sortDrugAmountAsc() : sortDrugAmountDesc()">Số Lượng <span
+              class="fa fa-sort text-white"></span></a>
           </li>
         </ul>
       </div>
@@ -24,96 +29,45 @@
     <hr class="search-hr pb-lg-1">
   </div>
 </div>
-
-<!--  <p class="font-weight-bold text-danger pb-4 pl-3">Có 5 kết quả</p>-->
-<!--  <div class="row py-2">-->
-<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
-<!--      <div class="hovereffect">-->
-<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/boganic.jpeg" alt="">-->
-<!--        <div class="overlay" style="padding-top: 60px">-->
-<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
-<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
-<!--            VÀO GIỎ</a>-->
-<!--        </div>-->
-<!--        <div class="align-content-center pt-3">-->
-<!--          <h4 class="text-dark font-weight-bold">Boganic</h4>-->
-<!--          <h3 class="text-dark">Giá: 120000 VND / Hộp</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
-<!--      <div class="hovereffect">-->
-<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/hepalise.jpg" alt="">-->
-<!--        <div class="overlay" style="padding-top: 60px">-->
-<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
-<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>-->
-<!--        </div>-->
-<!--        <div class="align-content-center pt-3">-->
-<!--          <h4 class="text-dark font-weight-bold">Hepalise</h4>-->
-<!--          <h3 class="text-danger">HẾT HÀNG</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
-<!--      <div class="hovereffect">-->
-<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/kama.png" alt="">-->
-<!--        <div class="overlay" style="padding-top: 60px">-->
-<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
-<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
-<!--            VÀO GIỎ</a>-->
-<!--        </div>-->
-<!--        <div class="align-content-center pt-3">-->
-<!--          <h4 class="text-dark font-weight-bold">Kama</h4>-->
-<!--          <h3 class="text-dark">Giá: 100000 VND / Hộp</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
-<!--      <div class="hovereffect">-->
-<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/livernamvian.jpeg" alt="">-->
-<!--        <div class="overlay" style="padding-top: 60px">-->
-<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
-<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM-->
-<!--            VÀO GIỎ</a>-->
-<!--        </div>-->
-<!--        <div class="align-content-center pt-3">-->
-<!--          <h4 class="text-dark font-weight-bold">Livernamvian</h4>-->
-<!--          <h3 class="text-dark">Giá: 115000 VND / Hộp</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">-->
-<!--      <div class="hovereffect">-->
-<!--        <img class="img-responsive" width="255" height="250" src="./assets/image/client-page-image/tonka.png" alt="">-->
-<!--        <div class="overlay" style="padding-top: 60px">-->
-<!--          <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>-->
-<!--          <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred">HẾT HÀNG</a>-->
-<!--        </div>-->
-<!--        <div class="align-content-center pt-3">-->
-<!--          <h4 class="text-dark font-weight-bold">Tonka</h4>-->
-<!--          <h3 class="text-danger">HẾT HÀNG</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<div class="container">
-  <div class="row py-4">
-<ng-container *ngFor="let drug of drugs">
-      <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
-        <div class="hovereffect">
-          <img class="img-responsive" width="255" height="250" src="#"
-               alt="">
-          <div class="overlay" style="padding-top: 60px">
-            <a class="info" style="border-radius: 8px; background-color: #2FC1A6" href="#">CHI TIẾT</a>
-            <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
-              VÀO GIỎ</a>
-          </div>
-          <div class="align-content-center pt-3">
-            <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
-            <h3 class="text-dark">Giá: 120000 VND / Chai</h3>
+<div *ngIf="drugs.length == 0; else elseBlockResult">
+  <div class="container">
+    <h2 class="py-3 text-center text-danger font-weight-bold ml-3" style="color: #242a61; text-transform: uppercase">
+      không có kết quả nào</h2>
+  </div>
+</div>
+<ng-template #elseBlockResult>
+  <div class="container">
+    <h3 class="text-danger font-weight-bold ml-3">Có {{drugs.length}} kết quả.</h3>
+    <br>
+    <div class="row py-4">
+      <ng-container *ngFor="let drug of drugs">
+        <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
+          <div class="hovereffect">
+            <img class="img-responsive" width="255" height="250" src="{{drug.drugImageDetails}}"
+                 alt="">
+            <div class="overlay" style="padding-top: 60px">
+              <a class="info" style="border-radius: 8px; background-color: #2FC1A6" [routerLink]="['details',drug.drugId]">CHI TIẾT</a>
+              <div *ngIf="drug.drugAmount == 0; else elseBlockAmount">
+                <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred" disabled
+                   href="#">HẾT HÀNG</a>
+              </div>
+              <ng-template #elseBlockAmount>
+                <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
+                  VÀO GIỎ</a>
+              </ng-template>
+            </div>
+            <div class="align-content-center pt-3">
+              <h4 class="text-dark font-weight-bold">{{drug.drugName}}</h4>
+              <div *ngIf="drug.wholesalePrice == 0; else elseBlockPrice">
+                <h3 class="text-danger">HẾT HÀNG</h3>
+              </div>
+              <ng-template #elseBlockPrice>
+                <h3 class="text-dark">Giá: {{drug.wholesalePrice | number:'1.0-0'}} VND / {{drug.unit}}</h3>
+              </ng-template>
+            </div>
           </div>
         </div>
-      </div>
-</ng-container>
+      </ng-container>
     </div>
   </div>
+</ng-template>

@@ -1,7 +1,56 @@
+/*HEADER*/
+nav.header-colored {
+  background-color: #242a61;
+  color: white;
+}
+
+a.border-right-nav-item {
+  border-right: 1px solid grey;
+}
+
+button.login-button {
+  border-radius: 12px;
+  background-color: #2FC1A6;
+  color:white;
+  height: 36px;
+}
+
 button.drug-group-toggle {
   border-radius: 12px;
   background-color: #567FEA;
   color:white;
+}
+
+div.search-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+  border-radius: 8px;
+}
+
+input.search-term {
+  width: 100%;
+  border: 3px solid #567FEA;
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+input.search-term:focus{
+  color: #567FEA;
+}
+
+button.search-button {
+  width: 40px;
+  border: 1px solid #567FEA;
+  background: #567FEA;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 span.item-in-cart {
@@ -21,6 +70,23 @@ span.item-in-cart {
   width: 1.6em;
 }
 
+
+
+/*FOOTER*/
+
+footer {
+  background-color: #242a61;
+}
+footer hr {
+  border-color: white;
+}
+
+input.login-button {
+  border-radius: 12px;
+  background-color: #2FC1A6;
+  color:white;
+  height: 36px;
+}
 
 /*ITEMS*/
 @media all and (min-width: 992px) {
@@ -130,8 +196,44 @@ button.chat-button {
   width: 300px;
 }
 
+span.neon-text {
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px red,
+    0 0 82px red,
+    0 0 92px red,
+    0 0 102px red,
+    0 0 151px red;
+;
+  animation: flicker 1.5s infinite alternate;
+}
 
+@keyframes flicker {
 
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px red,
+      0 0 80px red,
+      0 0 90px red,
+      0 0 100px red,
+      0 0 150px red;
+
+  }
+
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+hr.search-hr {
+  border-color: #242a61;
+}
 
 
 

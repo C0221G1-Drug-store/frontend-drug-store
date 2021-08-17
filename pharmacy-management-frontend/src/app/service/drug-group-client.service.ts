@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DrugGroupService {
+export class DrugGroupClientService {
   private URl = 'http://localhost:8080/drug-group';
 
   constructor(private http: HttpClient) { }

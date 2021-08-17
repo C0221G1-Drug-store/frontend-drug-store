@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Drug} from '../../model/drug';
 import {DrugGroup} from '../../model/drug-group';
-import {DrugService} from '../../service/drug.service';
-import {DrugGroupService} from '../../service/drug-group.service';
+import {DrugClientService} from '../../service/drug-client.service';
+import {DrugGroupClientService} from '../../service/drug-group-client.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
   config: any;
   data = '';
 
-  constructor(private drugService: DrugService, private drugGroupService: DrugGroupService, private router: Router) {
+  constructor(private drugService: DrugClientService, private drugGroupService: DrugGroupClientService, private router: Router) {
     this.config = {
       itemsPerPage: 3,
       currentPage: 1
@@ -29,7 +29,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDrugGroup();
-    this.getAllDrug()
+    this.getAllDrug();
   }
 
   getAllDrug() {
@@ -42,13 +42,5 @@ export class HomepageComponent implements OnInit {
     this.drugGroupService.getAll().subscribe(next => {
       this.drugGroups = next;
     });
-  }
-
-  getDrugByDrugGroup(drugGroupId: any) {
-    let drugs: Drug[] = [];
-    this.drugService.findDrugByGroup(drugGroupId).subscribe(next => {
-      drugs = next;
-    });
-    return drugs;
   }
 }

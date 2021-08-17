@@ -1,27 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Drug} from '../../model/drug';
 import {DrugClientService} from '../../service/drug-client.service';
-import {ActivatedRoute, ParamMap, Route, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-search-page',
-  templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css']
+  selector: 'app-group',
+  templateUrl: './group.component.html',
+  styleUrls: ['./group.component.css']
 })
-export class SearchPageComponent implements OnInit {
+export class GroupComponent implements OnInit {
   drugs: Drug[] = [];
-  search?: any;
+  drugGroupName?: any;
   isNameAscending = true;
   toggleBooleanPrice = true;
   toggleBooleanAmount = true;
 
-  constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) {
-  }
+  constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
-      this.search = paramMap.get('search');
-      this.drugService.searchDrug(this.search).subscribe(next => {
+      this.drugGroupName = paramMap.get('drugGroupName');
+      this.drugService.findDrugByGroup(this.drugGroupName).subscribe(next => {
         this.drugs = next;
       });
     });
