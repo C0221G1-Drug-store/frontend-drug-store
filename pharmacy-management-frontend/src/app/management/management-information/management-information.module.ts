@@ -12,13 +12,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
   exports: [
     CustomerListComponent
   ],
-  imports: [
-    CommonModule,
-    ManagementInformationRoutingModule,
-    NgbPaginationModule,
-    NgxPaginationModule,
+    imports: [
+        CommonModule,
+        ManagementInformationRoutingModule,
+        NgxPaginationModule,
+        NgbPaginationModule,
 
-  ]
+    ]
 })
 export class ManagementInformationModule {
 }

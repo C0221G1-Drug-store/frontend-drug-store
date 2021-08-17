@@ -9,13 +9,15 @@ import {NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  p = 1;
+  page: number = 1;
+  pageSize: number = 5;
+  collectionSize: number = 0;
   id: number;
   customerDelete: Customer;
   customers: Customer[] = [];
 
   constructor(private customerService: CustomerService,
-              config: NgbModalConfig) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -24,7 +26,8 @@ export class CustomerListComponent implements OnInit {
 
   getAllCustomer() {
     this.customerService.getAll().subscribe(data => {
-      this.customers = data;
+      this.customers = data['content'];
+      this.collectionSize = data['totalPages'];
     });
   }
 
@@ -101,6 +104,40 @@ export class CustomerListComponent implements OnInit {
         const b = c2.customerCode.toLowerCase();
         return a === b ? 0 : a > b ? 1 : -1;
       });
+    }
+  }
+
+  chooseTypeSearch(typeSearch: string, keyword: string) {
+    if (keyword !== '') {
+      switch (typeSearch) {
+        case'customer_code':
+          this.customerService.searchByCustomerCode(keyword).subscribe(data => {
+            this.customers = data;
+          });
+          break;
+        case'customer_group':
+          this.customerService.searchByCustomerGroup(keyword).subscribe(data => {
+            this.customers = data;
+          });
+          break;
+        case'customer_name':
+          this.customerService.searchByCustomerName(keyword).subscribe(data => {
+            this.customers = data;
+          });
+          break;
+        case'customer_address':
+          this.customerService.searchByCustomerAddress(keyword).subscribe(data => {
+            this.customers = data;
+          });
+          break;
+        case'customer_phone':
+          this.customerService.searchByCustomerPhone(keyword).subscribe(data => {
+            this.customers = data;
+          });
+          break;
+      }
+    } else {
+      this.getAllCustomer();
     }
   }
 }

@@ -1,47 +1,43 @@
 <div class="container ">
   <div class="container mt-5 pt-5">
-    <form>
-      <fieldset>
-        <legend>Bộ lọc</legend>
-        <div class="row text-center">
-          <div class="col-4 filter1 ">
-            <span>Lọc theo:</span>
-            <select class="custom-select" style="width: 250px" >
-              <option value="">Thông tin khách hàng</option>
-              <option value="">Nhà cung cấp</option>
-              <option value="">Thuốc</option>
-              <option value="">Toa thuốc</option>
-              <option value="">Nhân viên</option>
-              <option value="">Hóa đơn</option>
-            </select>
-          </div>
-          <div class="input-group mb-4 col-4 filter1">
-            <input type="text" class="form-control"  #searchName
-                   (input)="search(searchName.value)" placeholder="từ khóa...."
-                   aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class=" btn btn-search">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="col-4 filter1 ">
-            <span>Sắp xếp</span>
-            <select class="custom-select" style="width: 250px" (input)="sort(typeSort.value)" #typeSort>
-              <option value="customer_code">Mã khách hàng</option>
-              <option value="customer_group">Nhóm khách hàng</option>
-              <option value="customer_name">Tên khách hàng</option>
-              <option value="customer_address">Địa chỉ</option>
-              <option value="customer_phone">Điện thoại</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
-    </form>
+    <legend>Bộ lọc</legend>
+    <div class="row text-center">
+      <div>
+        <span>Lọc theo:</span>
+        <select class="custom-select" style="width: 250px" #typeSearch>
+          <option value="customer_code">Mã khách hàng</option>
+          <option value="customer_group">Nhóm khách hàng</option>
+          <option value="customer_name">Tên khách hàng</option>
+          <option value="customer_address">Địa chỉ</option>
+          <option value="customer_phone">Điện thoại</option>
+        </select>
+      </div>
+      <div class="input-group mb-4 col-4">
+        <input type="text" class="form-control" #searchName
+               placeholder="từ khóa...."
+               aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class=" btn btn-search" (click)="chooseTypeSearch(typeSearch.value,searchName.value)">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="col-4  ">
+        <span>Sắp xếp</span>
+        <select class="custom-select" style="width: 250px" (input)="sort(typeSort.value)" #typeSort>
+          <option value="customer_code">Mã khách hàng</option>
+          <option value="customer_group">Nhóm khách hàng</option>
+          <option value="customer_name">Tên khách hàng</option>
+          <option value="customer_address">Địa chỉ</option>
+          <option value="customer_phone">Điện thoại</option>
+        </select>
+      </div>
+    </div>
+
   </div>
   <div class="container pb-3">
     <fieldset class="scheduler-border">
       <legend class="scheduler-border">Danh sách Khách hàng</legend>
       <table class="table table-bordered table-striped ">
-        <thead  style="background: #567FEA ; color: white">
+        <thead style="background: #567FEA ; color: white">
         <tr>
           <th>STT</th>
           <th>Mã khách hàng</th>
@@ -55,7 +51,7 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let c of customers  | paginate: { itemsPerPage: 5, currentPage: p },  index as i " role="button"
+        <tr *ngFor="let c of customers  | slice: (page-1) * pageSize : page * pageSize,  index as i " role="button"
             (click)="sendId(c.customerId)">
           <ng-container *ngIf="id==c.customerId">
             <td style="background: darkgrey">{{i + 1}}</td>
@@ -84,8 +80,21 @@
     <div class="row">
       <div class="col-8">
       </div>
-      <div class="clearfix col-4 float-right ">
-        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+      <div class="clearfix">
+        <div class="hint-text">Hiển thị <b>{{pageSize}}</b> trên <b>{{customers.length}}</b> đối tượng</div>
+        <ngb-pagination class="d-flex justify-content-end"
+                        [(page)]="page"
+                        [pageSize]="pageSize"
+                        [collectionSize]="customers.length"
+                        [maxSize]="5"
+                        [rotate]="true"
+                        [ellipses]="true"
+                        [boundaryLinks]="true">
+          <ng-template ngbPaginationFirst>Trang đầu</ng-template>
+          <ng-template ngbPaginationLast>Trang cuối</ng-template>
+          <ng-template ngbPaginationEllipsis>...</ng-template>
+          <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+        </ngb-pagination>
       </div>
     </div>
     <div class="row">
@@ -139,8 +148,10 @@
                   </div>
                   <div [hidden]="customerDelete" class="modal-footer">
                     <button type="button" class="mr-5 btn btn-success" data-dismiss="modal" (click)="reset()">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                           class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
                       </svg>
                       Trở về
                     </button>
@@ -151,8 +162,10 @@
           </div>
           <div class="col-3">
             <button class="btn btn-success">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
               </svg>
               Trở về
             </button>
@@ -162,4 +175,5 @@
     </div>
   </div>
 </div>
+
 

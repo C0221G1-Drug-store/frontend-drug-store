@@ -34,7 +34,19 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${API_URL}/customer/search/${keyword}`);
   }
 
-  searchAndSort(keyword: string, column: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/sort/${keyword}&${column}`);
+  searchByCustomerCode(keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerCode/${keyword}`);
+  }
+  searchByCustomerGroup(keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerGroup/${keyword}`);
+  }
+  searchByCustomerName(keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerName/${keyword}`);
+  }
+  searchByCustomerAddress(keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerAddress/${keyword}`);
+  }
+  searchByCustomerPhone(keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerPhone/${keyword}`);
   }
 }
