@@ -7,6 +7,8 @@ import {Customer} from '../model/customer';
 import {BillSale} from '../model/bill-sale';
 import {DrugOfBill} from '../model/drug-of-bill';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,13 +31,19 @@ export class BillSaleService {
   }
 
   getBillSaleById(id: number): Observable<BillSale> {
-    return this.http.get<BillSale>(this.API_URL + '/get-bill-sale/' + id);
+    return this.http.get<BillSale>(this.API_URL + '/get-bill-sale?id=' + id);
   }
 
+  getDrugOfBillByBillSaleId(id: number): Observable<DrugOfBill[]> {
+    return this.http.get<DrugOfBill[]>(this.API_URL + '/get-list-drug-of-bill?id=' + id);
+  }
   createBillSale(billSale: BillSale): Observable<BillSale> {
     return this.http.post<BillSale>(this.API_URL + '/create-bill-sale', billSale);
 }
-
+ updateBillSale(billSale: BillSale): Observable<BillSale> {
+    console.log(billSale);
+    return this.http.put<BillSale>(this.API_URL + '/update-bill-sale', billSale);
+  }
   createDrugOfBill(drugOfBill: DrugOfBill): Observable<DrugOfBill> {
     return this.http.post<DrugOfBill>(this.API_URL + '/create-drug-of-bill', drugOfBill);
   }

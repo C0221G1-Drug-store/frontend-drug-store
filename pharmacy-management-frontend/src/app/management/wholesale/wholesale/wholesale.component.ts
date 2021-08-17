@@ -8,6 +8,7 @@ import {BillSaleService} from '../../../service/bill-sale.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Customer} from '../../../model/customer';
 import {Employee} from '../../../model/employee';
+import {DeleteComponent} from '../delete/delete.component';
 
 @Component({
   selector: 'app-wholesale',
@@ -15,23 +16,25 @@ import {Employee} from '../../../model/employee';
   styleUrls: ['./wholesale.component.css']
 })
 export class WholesaleComponent implements OnInit {
-  data: DrugOfBill[] = [];
-  total = 0;
-  drugList: Drug[] = [];
-  customerList: Customer[] = [];
-  employeeList: Employee[] = [];
+  drugOfBillList: DrugOfBill[] = [];
+  total: number;
+  drugs: Drug[] = [];
   drug = null;
   drugOfBill: DrugOfBill;
-  quantity = 0;
+  index: number;
+  quantity1: number;
+  customerList: Customer[] = [];
+  employeeList: Employee[] = [];
 
   billSaleForm: FormGroup = new FormGroup(
     {
       billSaleId: new FormControl(''),
       employee: new FormControl(''),
+      billSaleCode: new FormControl('HDBS'),
       invoiceDate: new FormControl(''),
       customer: new FormControl(''),
       billSaleNote: new FormControl(''),
-      totalMoney: new FormControl(this.total),
+      totalMoney: new FormControl(),
       billSaleType: new FormControl('Bán sỉ'),
     }
   );
@@ -41,7 +44,11 @@ export class WholesaleComponent implements OnInit {
               private billSaleService: BillSaleService) {
     const state = this.router.getCurrentNavigation().extras.state as {data};
     if (state != null) {
-      this.data = state.data;
+      this.drugOfBillList = state.data;
+    }
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.drugOfBillList.length; i++) {
+      this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
     }
   }
 
@@ -51,16 +58,9 @@ export class WholesaleComponent implements OnInit {
     this.getAllEmployee();
   }
 
-  openDeleteDialog() {
-    // const dialog = this.dialog.open(DeleteDialogComponent , {
-    //   height: '250px' , width: '300px',
-    //   data: {}
-    // });
-  }
-
   getAllDrug() {
     this.billSaleService.getListDrug().subscribe(next => {
-      this.drugList = next;
+      this.drugs = next;
     });
   }
   getAllCustomer() {
@@ -74,22 +74,62 @@ export class WholesaleComponent implements OnInit {
     });
   }
   getDrug(tam) {
-    this.drugOfBill = {drug: tam , quantity : this.quantity};
-    this.data.push(this.drugOfBill);
+    this.drugOfBill = {drug: tam , quantity : 5};
+    this.drugOfBillList.push(this.drugOfBill);
     // tslint:disable-next-line:prefer-for-of
     this.total = 0;
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.data.length; i++) {
-      this.total += this.data[i].quantity * this.data[i].drug.retailProfitRate;
+    for (let i = 0; i < this.drugOfBillList.length; i++) {
+      this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
     }
-    console.log(this.data);
-    console.log(this.total);
   }
 
   submit() {
+    // @ts-ignore
+    this.billSaleForm.get('totalMoney').setValue(this.total);
     const billSale = this.billSaleForm.value;
+    // tslint:disable-next-line:no-unused-expression
     this.billSaleService.createBillSale(billSale).subscribe(() => {
       alert('Thêm thành công');
+      for (let i = 0; i < this.drugOfBillList.length; i++) {
+        this.drugOfBill = this.drugOfBillList[i];
+        console.log(this.drugOfBillList[i]);
+        this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
+          alert('Thêm thành công' + i);
+          this.drugOfBillList = [];
+        });
+      }
+    }
+    );
+    // tslint:disable-next-line:prefer-for-of
+  }
+
+  send(drugOfBill) {
+    this.drugOfBill = drugOfBill;
+  }
+  openDeleteDialog() {
+    const drugOfBill = this.drugOfBill;
+    const dialog = this.dialog.open(DeleteComponent , {
+      data: [this.drugOfBillList , {drugOfBill}, ]
     });
+    dialog.afterClosed().subscribe(() => {
+      this.total = 0;
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.drugOfBillList.length; i++) {
+        this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
+      }
+    })
+    console.log(drugOfBill);
+  }
+
+  addDrug(drug, number1) {
+    this.drugOfBill = {drug , quantity : number1, billSale: this.billSaleForm.value };
+    this.drugOfBillList.push(this.drugOfBill);
+    this.total = 0;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.drugOfBillList.length; i++) {
+      this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
+    }
+    console.log(this.drugOfBillList);
   }
 }
