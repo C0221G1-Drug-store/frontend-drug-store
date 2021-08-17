@@ -5,15 +5,17 @@ import {EmployeeRoutingModule} from './employee-routing.module';
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {EmployeeCreateComponent} from './employee-create/employee-create.component';
-import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../environments/environment';
 
 
 @NgModule({
-  declarations: [ListEmployeeComponent, EmployeeCreateComponent, EmployeeUpdateComponent],
+  declarations: [ListEmployeeComponent, EmployeeCreateComponent],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ]
 })
 export class EmployeeModule {

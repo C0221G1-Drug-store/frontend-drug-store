@@ -9,9 +9,8 @@
       </div>
       <div class="col-8">
         <div class="d-flex align-items-center">
-          <input formControlName="employeeCode" class="form-control" type="text" value="NV028">
+          <input formControlName="employeeCode" class="form-control" type="text">
         </div>
-        <small style="color: red">Trường này không được để trống. (*)</small>
       </div>
     </div>
     <br>
@@ -20,8 +19,14 @@
         <span>Tên nhân viên <label>(*)</label></span>
       </div>
       <div class="col-8">
-        <input formControlName="employeeName" class="form-control" type="text" value="Nguyễn Văn A">
-        <small style="color: red">Trường này không được để trống. (*)</small>
+        <input formControlName="employeeName" class="form-control" type="text" >
+        <small>
+          <div class="text-danger" *ngFor="let validation of validationMessage.employeeName">
+            <div class="error-message"
+                 *ngIf="employeeForm.get('employeeName').hasError(validation.type) && (employeeForm.get('employeeName').dirty || employeeForm.get('employeeName').touched)">
+              {{validation.message}}</div>
+          </div>
+        </small>
       </div>
     </div>
     <br>
@@ -30,8 +35,14 @@
         <span>Địa chỉ <label>(*)</label></span>
       </div>
       <div class="col-8">
-        <input formControlName="employeeAddress" class="form-control" type="text" value="Đà Nẵng">
-        <small style="color: red">Trường này không được để trống. (*)</small>
+        <input formControlName="employeeAddress" class="form-control" type="text" >
+        <small>
+          <div class="text-danger" *ngFor="let validation of validationMessage.employeeAddress">
+            <div class="error-message"
+                 *ngIf="employeeForm.get('employeeAddress').hasError(validation.type) && (employeeForm.get('employeeAddress').dirty || employeeForm.get('employeeAddress').touched)">
+              {{validation.message}}</div>
+          </div>
+        </small>
       </div>
     </div>
     <br>
@@ -40,8 +51,14 @@
         <span>Điện thoại <label>(*)</label></span>
       </div>
       <div class="col-8">
-        <input formControlName="employeePhone" class="form-control" type="text" value="0905111113">
-        <small style="color: red">Trường này không được để trống. (*)</small>
+        <input formControlName="employeePhone" class="form-control" type="text" >
+        <small>
+          <div class="text-danger" *ngFor="let validation of validationMessage.employeePhone">
+            <div class="error-message"
+                 *ngIf="employeeForm.get('employeePhone').hasError(validation.type) && (employeeForm.get('employeePhone').dirty || employeeForm.get('employeePhone').touched)">
+              {{validation.message}}</div>
+          </div>
+        </small>
       </div>
     </div>
     <br>
@@ -50,8 +67,14 @@
         <span>Ngày vào làm <label>(*)</label></span>
       </div>
       <div class="col-4">
-        <input formControlName="employeeStartDate" type="date" class="form-control" value="2015-05-06">
-        <small style="color: red">Trường này không được để trống. (*)</small>
+        <input formControlName="employeeStartDate" type="date" class="form-control">
+        <small>
+          <div class="text-danger" *ngFor="let validation of validationMessage.employeeStartDate">
+            <div class="error-message"
+                 *ngIf="employeeForm.get('employeeStartDate').hasError(validation.type) && (employeeForm.get('employeeStartDate').dirty || employeeForm.get('employeeStartDate').touched)">
+              {{validation.message}}</div>
+          </div>
+        </small>
       </div>
     </div>
     <br>
@@ -60,21 +83,24 @@
         <span>Tên tài khoản <label>(*)</label></span>
       </div>
       <div class="col-8">
-        <input formControlName="accountName" class="form-control" type="text" value="nguyenvana">
-        <small style="color: red">Trường này không được để trống. (*)</small>
+        <input formControlName="accountName" class="form-control" type="text">
+        <div class="text-danger" *ngFor="let validation of validationMessage.accountName">
+          <div class="error-message"
+               *ngIf="employeeForm.get('accountName').hasError(validation.type) && (employeeForm.get('accountName').dirty || employeeForm.get('accountName').touched)">
+            {{validation.message}}</div>
+        </div>
       </div>
     </div>
     <br>
-<!--    <div class="row input-group">-->
-<!--      <div class="col-3 folow-right">-->
-<!--        <span>Ảnh nhân viên <label>(*)</label></span>-->
-<!--      </div>-->
-<!--      <div class="col-8">-->
-<!--        <input class="btn btn-sm" style="background: #adb5bd" type="file" (change)="showPreview()">-->
-<!--        <br>-->
-<!--        <small style="color: red">Trường này không được để trống. (*)</small>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="row input-group">
+      <div class="col-3 folow-right">
+        <span>Ảnh nhân viên <label>(*)</label></span>
+      </div>
+      <div class="col-8">
+        <input class="btn btn-sm" style="background: #adb5bd" type="file" (change)="showPreview($event)">
+        <br>
+      </div>
+    </div>
     <br>
     <div class="row input-group">
       <div class="col-3 folow-right">
@@ -82,7 +108,7 @@
       </div>
       <div class="col-8">
         <select class="form-control" formControlName="position">
-          <option value="Nhân viên">Nhân viên</option>
+          <option value="Nhân viên" [selected]="true">Nhân viên</option>
           <option value="Quản lý">Quản lý</option>
         </select>
       </div>
@@ -94,18 +120,15 @@
       </div>
       <div class="col-8">
         <input formControlName="employeeNote" class="form-control" type="text">
-        <small style="color: red">Trường này không được để trống. (*)</small>
       </div>
     </div>
     <div class="d-flex justify-content-end margin">
       <button class="mr-5 btn btn-success" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Thêm
       </button>
-      <button class="mr-5 btn btn-danger" type="reset" data-toggle="modal" data-target="#exampleModal"><i
+      <button class="mr-5 btn btn-danger" type="reset" data-toggle="modal" data-target="#exampleModal" ><i
         class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
       </button>
       <a href="/employee" class="mr-5 btn btn-back"><i class="icon-sidebar fa fa-reply text-warning"></i> Trở về</a>
     </div>
   </form>
 </fieldset>
-
-

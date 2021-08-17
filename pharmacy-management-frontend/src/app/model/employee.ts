@@ -9,4 +9,5 @@ export interface Employee {
   employeeNote: string;
   position: number;
   accountName: string;
+  flag: boolean;
 }
