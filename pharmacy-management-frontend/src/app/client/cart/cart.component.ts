@@ -117,7 +117,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
         this.medicines = null;
         localStorage.removeItem('medicineList');
         // Send email.
-
+        this.cartService.sendEmail().subscribe(e => {
+          console.log('ok');
+        }, error => {
+          console.log('error');
+        });
       });
     }
   };
@@ -140,6 +144,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.getMedicineList();
+    this.cartService.sendEmail().subscribe(e => {
+      console.log('ok');
+    }, error => {
+      console.log('error');
+    });
   }
 
   getMedicineList() {

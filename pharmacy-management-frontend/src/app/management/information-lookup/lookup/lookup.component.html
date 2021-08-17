@@ -1,0 +1,74 @@
+<div id="content" class="container">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Thông tin tra cứu</legend>
+    <div class="row border pt-4" id="left">
+      <form class="col mb-3 text-right pr-0 d-flex" [formGroup]="myChoose" (click)="selectLookup()">
+        <label class="label-text" style="line-height: 38px; width: 100px;">Tra cứu theo: &nbsp; </label>
+        <select name='selectItem' class="form-control" formControlName="selectItem">
+          <option *ngFor="let i of lookups" value="{{i.eng}}">{{i.vn}}</option>
+        </select>
+        <select name="" class="form-control ml-1" formControlName="selectAttribute">
+          <option value="" [selected]="selectItem">Chọn tất cả</option>
+          <option *ngFor="let m of attributes.manufacturer" value="{{m.eng}}"
+                  [hidden]="selectItem != 'manufacturer'">{{m.vn}}</option>
+          <option *ngFor="let c of attributes.customer" value="{{c.eng}}"
+                  [hidden]="selectItem != 'customer'">{{c.vn}}</option>
+
+        </select>
+
+      </form>
+      <div class="col mb-3 d-flex pl-1">
+        <form class="d-flex" [formGroup]="mySearch">
+          <div>
+            <input type="text" class="form-control" formControlName="inputLookup">
+          </div>
+          <button class="btn ml-1"
+                  style="background: #2fc1a6; color: white; max-height: 38px; font-size: 15px; min-width: 38px"
+                  type="submit" (click)="search()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            Tra cứu
+          </button>
+        </form>
+        <button class="btn ml-1"
+                style="background: #567FEA; color: white; max-height: 38px; font-size: 15px; min-width: 38px">
+          <i class="fa fa-reply" aria-hidden="true"></i>
+          Trở về
+        </button>
+      </div>
+    </div>
+
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">Kết quả</legend>
+      <table class="table table-bordered table-striped">
+        <thead class="thead" style="background: #567FEA!important; color: white">
+        <tr>
+          <th *ngFor="let th of thead">{{th}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let td of customers">
+          <td>{{td.customerCode}}</td>
+          <td>{{td.customerName}}</td>
+          <td>{{td.customerAge}}</td>
+          <td>{{td.address}}</td>
+          <td>{{td.phone}}</td>
+          <td>{{td.group}}</td>
+          <td>{{td.note}}</td>
+        </tr>
+        <tr *ngFor="let td of manufacturers">
+          <td>{{td.manufacturerCode}}</td>
+          <td>{{td.manufacturerName}}</td>
+          <td>{{td.manufacturerAddress}}</td>
+          <td>{{td.manufacturerPhone}}</td>
+          <td>{{td.manufacturerNote}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+</fieldset>
+</fieldset>
+</div>
