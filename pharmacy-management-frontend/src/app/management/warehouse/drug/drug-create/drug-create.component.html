@@ -232,11 +232,8 @@
         </div>
         <div class="col-lg-10">
           <select style="min-width: 100%;height: 33px" formControlName="drugGroup">
-            <option selected value="" disabled>Select</option>
-            <option>Thuốc bổ</option>
-            <option>Thuốc kháng sinh</option>
-            <option>Thuốc kháng viêm</option>
-            <option>Thuốc giảm đau hạ sốt</option>
+            <option selected [value]="null" disabled>Select</option>
+            <option *ngFor="let type of drugGroups" [ngValue]="type.drugGroupId">{{type.drugGroupName}}</option>
           </select>
         </div>
 

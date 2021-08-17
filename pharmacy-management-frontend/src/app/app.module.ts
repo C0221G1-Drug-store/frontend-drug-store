@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DrugModule} from './management/warehouse/drug/drug.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {environment} from '../environments/environment';
     MatDialogModule,
     DrugModule,
     HttpClientModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],

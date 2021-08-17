@@ -6,7 +6,7 @@ import { DrugCreateComponent } from './drug-create/drug-create.component';
 import { DrugEditComponent } from './drug-edit/drug-edit.component';
 import { DrugListComponent } from './drug-list/drug-list.component';
 
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DrugDeleteComponent } from './drug-delete/drug-delete.component';
 import { DrugNotSelectedComponent } from './drug-not-selected/drug-not-selected.component';
 

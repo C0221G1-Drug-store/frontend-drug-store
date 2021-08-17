@@ -31,4 +31,7 @@ export class DrugService {
   save(drug: Drug): Observable<any> {
     return this.http.post<any>(this.URl, drug);
   }
+  update(id: number, code: number, drug: Drug): Observable<any> {
+    return this.http.put<any>(`${this.URl}/${id}&${code}`, drug);
+  }
 }
