@@ -1,1 +1,76 @@
-<p>edit-customer works!</p>
+<div class="container">
+  <main>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="mx-auto" style="width: 60% !important;">
+          <div class="col-md-12 contact-form" id="login-form">
+            <h2 class="h1 text-center">Sửa Khách Hàng</h2>
+            <form [formGroup]="customerForm" (ngSubmit)="submitForm()" *ngIf="customerForm">
+              <div class="form-group">
+                <label for="team">Nhóm khách hàng <span class="text-danger"></span></label>
+
+                <select id="team" class="form-control col 10 js-example-basic-single"
+                        style="    width: 100%;height: 100%" name="state" required>
+                  <option value="" disabled>Select a Group</option>
+                  <option *ngFor="let group of customerGroup "
+                          [ngValue]="group"
+                          [selected]="group.customerGroupId == customerForm.controls.group.value['groupId']"
+                          style="color: blue">
+                    {{group.customerGroupName}}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="id">Mã Khách Hàng <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="id" min="1" max="40" disabled="disabled" value="KHS0006" >
+              </div>
+              <div class="form-group">
+                <label for="customer">Tên Khách hàng <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="customer" required/>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerName.hasError('required')
+         && customerForm.controls.customerName.dirty">
+                  Tên khách hàng không được để trống.</small>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerName.hasError('pattern')
+         && customerForm.controls.customerName.dirty">
+                  Tên khách hàng không được có kí tự đặc biệt, tên phải viết hoa chữ đầu tiên.</small>
+              </div>
+              <div class="form-group">
+                <label for="birthday">ngày sinh <span class="text-danger"></span></label>
+                <input type="date" class="form-control" id="birthday" value="1999-10-14" required/>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerAge.hasError('required')
+         && customerForm.controls.customerAge.dirty">
+                  Ngày Sinh không được để trống.</small>
+              </div>
+              <div class="form-group">
+                <label for="address">địa chỉ <span class="text-danger"></span></label>
+                <input type="text" class="form-control" id="address" value="Huế" required/>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerAddress.hasError('required')
+         && customerForm.controls.customerAddress.dirty">
+                  Địa chỉ không được để trống.</small>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerAddress.hasError('pattern')
+         && customerForm.controls.customerAddress.dirty">
+                  Địa chỉ không được có kí tự đặc biệt, tên phải viết hoa chữ đầu tiên.</small>
+              </div>
+              <div class="form-group">
+                <label for="phone">Điện Thoại <span class="text-danger"></span></label>
+                <input type="text" class="form-control" id="phone" required/>
+                <small style="color: red"
+                       *ngIf="customerForm.controls.customerAge.hasError('required')
+         && customerForm.controls.customerAge.dirty">
+                  Điện thoại không được để trống.</small>
+              </div>
+              <input type="reset" class="btn btn-secondary" (click)="cancelSubmit()" value="Trở về" style="min-width: 70px;">
+              <input type="submit" class="btn btn-primary" [disabled]="!(customerForm.valid && checkUpLoad)" value="Hoàn Thành" style="min-width: 70px;">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+

@@ -1,135 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <style>
-  </style>
-  <meta charset="UTF-8">
-  <title>Thêm khách hàng</title>
-  <link rel="stylesheet" href="./bootstrap/bootstrap-4.6.0-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="./main.css">
-  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css"
-        integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css"
-        integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
-</head>
-
-<body>
-<div id="header" class="d-flex justify-content-between">
-  <div id="list">
-    <a href="#"><i class="fa fa-bars"></i></a>
-  </div>
-  <ul id="nav">
-    <li>
-      <a href="https://github.com/">Home</a>
-    </li>
-    <li>
-      <a href="">
-        Quản lý bán hàng
-        <i class="icon1 fa fa-caret-down ml-2"></i>
-      </a>
-      <ul class="subnav">
-        <li><a href="">Bán lẻ</a></li>
-        <li><a href="">Bán hàng</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="">
-        Quản lý kho bãi
-        <i class="icon1 fa fa-caret-down ml-2"></i>
-      </a>
-      <ul class="subnav">
-        <li><a href="">Quản lý nhập kho</a></li>
-        <li><a href="">Quản lý xuất kho</a></li>
-        <li><a href="">Danh sách thuốc</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="">
-        Quản lý thông tin
-        <i class="icon1 fa fa-caret-down ml-2"></i>
-      </a>
-      <ul class="subnav">
-        <li><a href="">Khách hàng</a></li>
-        <li><a href="">Nhà cung cấp</a></li>
-        <li><a href="">Nhân viên</a></li>
-        <li><a href="">Toa thuốc</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="">
-        Tra cứu
-      </a>
-
-    </li>
-    <li>
-      <a href="" id="bao-cao">
-        Báo cáo
-        <i class="icon1 fa fa-caret-down ml-2"></i>
-      </a>
-      <ul class="subnav">
-        <li><a href="">Báo cáo</a></li>
-        <li><a href="">Biểu đồ Thống kê</a></li>
-      </ul>
-    </li>
-  </ul>
-  <div class="user d-flex">
-    <p id="user-name">Admin</p>
-    <img id="user-image" src="./image/user-image.jpg" alt="">
-  </div>
-</div>
-<div class="content mb-3">
-  <div class="row">
-    <div id="sidebar" class="col-2">
-      <div class="menu-sub d-flex justify-content-center mt-2 mb-2">
-        <h5>Chọn nhanh</h5>
-      </div>
-      <div >
-        <ul class="subnav-item">
-          <li class="border-top">
-            <i class="icon-sidebar fa fa-file-text-o text-light"></i>
-            <a href="">Báo cáo</a>
-          </li>
-          <li>
-            <i class="icon-sidebar fa fa-database"></i>
-            <a href="#">Nhập kho</a>
-          </li>
-          <li>
-            <i class="icon-sidebar fa fa-reply text-warning"></i>
-            <a href="#">Xuất hoàn trả</a>
-          </li>
-          <li>
-            <i class="icon-sidebar fa fa-times text-violet"></i>
-            <a href="#">Xuất hủy</a>
-          </li>
-          <li class="mt-3 border-top">
-            <i class="icon-sidebar fa fa-search text-light"></i>
-            <a href="">Tra cứu nhanh</a>
-          </li>
-          <li >
-            <i class="icon-sidebar fa fa-archive text-light"></i>
-            <a href="#">Hệ thống kho bãi</a>
-          </li>
-          <li class="mt-3 border-top" >
-            <i class="icon-sidebar fa fa-clipboard"></i>
-            <a href="#">Nhật ký bán hàng</a>
-          </li>
-          <li class="mt-3 border-top" >
-            <i class="icon-sidebar fa fa-sign-out text-warning "></i>
-            <a href="#">Đăng xuất</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 <div class="container">
   <main>
     <div class="container">
@@ -137,39 +5,71 @@
         <div class="mx-auto" style="width: 60% !important;">
           <div class="col-md-12 contact-form" id="login-form">
             <h2 class="h1 text-center">Thêm Khách Hàng</h2>
-            <form>
+            <form [formGroup]="customerForm" (ngSubmit)="submit()" *ngIf="customerForm">
               <div class="form-group">
                 <label for="team">Nhóm khách hàng <span class="text-danger"></span></label>
 
-                <select id="team" class="form-control col 10 js-example-basic-single"
-                        style="    width: 100%;height: 100%" name="state" required>
-                  <option value="khách bán sỉ">khách bán sỉ</option>
-                  <option value="khách bán lẻ">khách bán lẻ</option>
-                  <option value="khách theo đơn">khách theo đơn</option>
+                <select formControlName="customerGroup" id="team" class="form-control col 10 js-example-basic-single"
+                        style="width: 100%;height: 100%" name="state">
+                  <option value="" disabled>Select a Group</option>
+                  <option *ngFor="let group of customerGroup"
+                          [ngValue]="group"
+                          style="color: blue">
+                    {{group.customerGroupName}}
+                  </option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="id">Mã Khách Hàng <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="id" min="1" max="40" disabled="disabled" value="KHS0006" >
+                <input formControlName="customerCode" id="id" type="text" class="form-control" disabled="disabled">
+
               </div>
               <div class="form-group">
                 <label for="customer">Tên Khách hàng <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="customer" required/>
+                <input formControlName="customerName" type="text" class="form-control" id="customer" required/>
+                <p class="small text-danger"
+                   *ngIf="customerForm.controls.customerName.hasError('required') && customerForm.controls.customerName.touched">
+                  Vui lòng nhập tên khách hàng !
+                </p>
+                <p class="small text-danger"
+                   *ngIf="customerForm.controls.customerName.hasError('pattern') && customerForm.controls.customerName.touched">
+                  Tên khách hàng sai định dạng, vui lòng nhập lại !
+                </p>
+                <p class="small text-danger"
+                   *ngIf="messageName != ''">
+                  Phòng đã tồn tại, vui lòng nhập tên khác !
+                </p>
               </div>
               <div class="form-group">
                 <label for="birthday">ngày sinh <span class="text-danger"></span></label>
-                <input type="date" class="form-control" id="birthday" required/>
+                <input formControlName="customerAge" type="date" class="form-control" id="birthday" required/>
+                <p class="small text-danger"
+                   *ngIf="customerForm.controls.customerAge.hasError('required') && customerForm.controls.customerAge.touched">
+                  Vui lòng nhập ngày sinh !
+                </p>
+                <p class="small text-danger"
+                   *ngIf="customerForm.controls.customerAge.hasError('pattern') && customerForm.controls.customerAge.touched">
+                  Ngày sinh sai định dạng, vui lòng nhập lại !
+                </p>
               </div>
               <div class="form-group">
                 <label for="address">địa chỉ <span class="text-danger"></span></label>
-                <input type="text" class="form-control" id="address" required/>
+                <input formControlName="customerAddress" type="text" class="form-control" id="address" required/>
+                <p class="small text-danger"
+                   *ngIf="customerForm.controls.customerAddress.hasError('required') && customerForm.controls.customerAddress.touched">
+                  Vui lòng nhập địa chỉ !
+                </p>
               </div>
               <div class="form-group">
                 <label for="phone">Điện Thoại <span class="text-danger"></span></label>
-                <input type="text" class="form-control" id="phone" required/>
+                <input formControlName="customerPhone" type="text" class="form-control" id="phone" required/>
+                <p *ngIf="customerForm.controls.phone.touched" class="msgError">
+                  <span *ngIf="customerForm.controls.phone.errors?.required">Phone is required</span>
+                  <span *ngIf="customerForm.controls.phone.errors?.pattern">Phone must have 10-12 digits</span>
+                </p>
               </div>
-              <input type="reset" class="btn btn-secondary" value="Trờ về" style="min-width: 70px;">
-              <input type="submit" class="btn btn-primary" value="Thêm" style="min-width: 70px;">
+              <input type="reset" class="btn btn-secondary" (click)="cancelSubmit()" value="Trờ về" style="min-width: 70px;">
+              <input type="submit" class="btn btn-primary" [disabled]="!(customerForm.valid && checkUpLoad)" value="Thêm" style="min-width: 70px;">
             </form>
           </div>
         </div>
@@ -177,12 +77,4 @@
     </div>
   </main>
 </div>
-<div id="footer">
-  <div class="social-list">
-    <a class="mr-2" href=""><i class="icon-footer fa fa-facebook"></i></a>
-    <a class="ml-2" href=""><i class="icon-footer fa fa-google"></i></a>
-  </div>
-</div>
-</body>
 
-</html>
