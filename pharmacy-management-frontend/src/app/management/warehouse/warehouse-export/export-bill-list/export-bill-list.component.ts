@@ -13,18 +13,28 @@ import {MatDialog} from '@angular/material/dialog';
 export class ExportBillListComponent implements OnInit {
 
   exportBillList: ExportBill[] = [];
+  selectList: number[] = [];
   // tslint:disable-next-line:ban-types
   data: Object;
   private idDialog: number;
   private nameDialog: string;
-  private page: number;
-  private max: any;
+  page: number;
+  max: any;
   pages: Array<number>;
 
   constructor(private exportBillService: ExportBillServiceService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllRecord();
+  }
+
+  selectRecords(id: number) {
+    if (!this.selectList.includes(id)) {
+      this.selectList.push(id);
+    } else {
+      this.selectList.splice(this.selectList.indexOf(id), 1);
+    }
+    console.log(this.selectList);
   }
 
   getAllRecord() {

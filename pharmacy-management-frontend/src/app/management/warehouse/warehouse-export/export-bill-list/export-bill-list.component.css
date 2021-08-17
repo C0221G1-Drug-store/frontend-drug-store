@@ -410,3 +410,7 @@ legend.scheduler-border {
 .time {
   width: 61.7%;
 }
+
+.row-selected{
+  background-color: yellow;
+}
