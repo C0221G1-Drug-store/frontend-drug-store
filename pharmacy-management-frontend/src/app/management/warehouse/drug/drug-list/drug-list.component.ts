@@ -13,7 +13,7 @@ import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.c
 export class DrugListComponent implements OnInit {
   drugs: DrugDTO[];
   drugsNotPagination: DrugDTO[];
-  indexPagination: number = 1;
+  indexPagination = 1;
   totalPagination: number;
   drugSelectedId;
   selected = false;

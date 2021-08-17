@@ -2,9 +2,9 @@ export interface Drug {
   drugId?: number;
   drugCode?: string;
   drugName?: string;
-  drugIngredient?: string;
+  drugFaculty?: string;
   activeElement?: string;
-  drugAmount?: number;
+  drugImageDetails?: string;
   unit?: string;
   conversionUnit?: string;
   conversionRate?: string;

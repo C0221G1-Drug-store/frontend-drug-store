@@ -1,0 +1,55 @@
+{
+  "drug": [
+    {
+      "drugName": "kkk",
+      "drugFaculty": "kkk",
+      "activeElement": "kkk",
+      "drugSideEffect": "kkkk",
+      "conversionRate": "5",
+      "drugAmount": 5,
+      "wholesaleProfitRate": 5,
+      "retailProfitRate": 5,
+      "unit": "hộp",
+      "conversionUnit": "vỉ",
+      "manufacturer": "kkkk",
+      "origin": "mỹ",
+      "drugGroup": "kháng sinh",
+      "note": "kkk",
+      "id": 1
+    },
+    {
+      "drugName": "Panadol",
+      "drugFaculty": "kkk",
+      "activeElement": "kkk",
+      "drugSideEffect": "kk",
+      "conversionRate": "5",
+      "drugImageDetails": "https://firebasestorage.googleapis.com/v0/b/c0221g1-sprint-1.appspot.com/o/17-08-2021102528AMpanadol.png?alt=media&token=391859d4-f213-496b-973d-1b32e2f4943e",
+      "wholesaleProfitRate": "5",
+      "retailProfitRate": "5",
+      "unit": "Hộp",
+      "conversionUnit": "Lọ",
+      "manufacturer": "",
+      "origin": "Việt Nam",
+      "drugGroup": "Thuốc giảm đau hạ sốt",
+      "note": "",
+      "id": 2
+    },
+    {
+      "drugName": "tttttt",
+      "drugFaculty": "ttttt",
+      "activeElement": "ttttt",
+      "drugSideEffect": "ttt",
+      "conversionRate": "5",
+      "drugImageDetails": "https://firebasestorage.googleapis.com/v0/b/c0221g1-sprint-1.appspot.com/o/17-08-2021102651AMpanadol.png?alt=media&token=28d1d590-e1cd-4b5c-ac5c-a97f2a32627e",
+      "wholesaleProfitRate": "5",
+      "retailProfitRate": "5",
+      "unit": "Hộp",
+      "conversionUnit": "Gói",
+      "manufacturer": null,
+      "origin": "Việt Nam",
+      "drugGroup": "Thuốc kháng sinh",
+      "note": null,
+      "id": 3
+    }
+  ]
+}

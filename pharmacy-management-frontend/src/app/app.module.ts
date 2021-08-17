@@ -10,6 +10,8 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {DrugModule} from './management/warehouse/drug/drug.module';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {DrugModule} from './management/warehouse/drug/drug.module';
     CommonModule,
     MatDialogModule,
     DrugModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
