@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {DrugService} from '../../../service/drug.service';
+import {DrugClientService} from '../../../service/drug-client.service';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {Drug} from '../../../model/drug';
 import {Prescription} from '../../../model/prescription';
@@ -20,7 +20,7 @@ export class PrescriptionDetailComponent implements OnInit {
   fromPrescription: FormGroup;
 
   constructor(public dialog: MatDialog,
-              private drugService: DrugService,
+              private drugService: DrugClientService,
               private activatedRoute: ActivatedRoute,
               private prescriptionService: PrescriptionService,
               private router: Router

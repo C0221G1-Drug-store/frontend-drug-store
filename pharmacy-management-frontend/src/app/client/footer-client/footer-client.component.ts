@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
-import {DrugGroupService} from '../../service/drug-group.service';
+import {DrugGroupClientService} from '../../service/drug-group-client.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class FooterClientComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
-  constructor(private drugGroupService: DrugGroupService, private router: Router) { }
+  constructor(private drugGroupService: DrugGroupClientService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllDrugGroup();

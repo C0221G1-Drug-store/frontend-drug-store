@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class DrugService {
+export class DrugClientService {
   private URl = 'http://localhost:8080/drug';
 
   constructor(private http: HttpClient) { }

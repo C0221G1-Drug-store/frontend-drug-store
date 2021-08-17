@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
-import {DrugGroupService} from '../../service/drug-group.service';
+import {DrugGroupClientService} from '../../service/drug-group-client.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class HeaderClientComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
   search: any;
-  constructor(private drugGroupService: DrugGroupService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private drugGroupService: DrugGroupClientService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllDrugGroup();

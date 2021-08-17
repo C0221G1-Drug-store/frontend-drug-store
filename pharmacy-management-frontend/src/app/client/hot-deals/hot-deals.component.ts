@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DrugService} from '../../service/drug.service';
+import {DrugClientService} from '../../service/drug-client.service';
 import {Drug} from '../../model/drug';
 
 @Component({
@@ -10,7 +10,7 @@ import {Drug} from '../../model/drug';
 export class HotDealsComponent implements OnInit {
   drugs: Drug[] = [];
 
-  constructor(private drugService: DrugService) { }
+  constructor(private drugService: DrugClientService) { }
 
   ngOnInit(): void {
     this.drugService.getAll().subscribe(next => {

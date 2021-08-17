@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import {DrugService} from '../../../service/drug.service';
+import {DrugClientService} from '../../../service/drug-client.service';
 import {DrugOfBill} from '../../../model/drug-of-bill';
 import {Drug} from '../../../model/drug';
 
@@ -19,7 +19,7 @@ export class SaleComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private router: Router,
-              private drugService: DrugService) {
+              private drugService: DrugClientService) {
     const state = this.router.getCurrentNavigation().extras.state as {data};
     if (state != null) {
       this.data = state.data;

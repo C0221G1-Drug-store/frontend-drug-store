@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Drug} from '../../model/drug';
-import {DrugService} from '../../service/drug.service';
+import {DrugClientService} from '../../service/drug-client.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class GroupComponent implements OnInit {
   toggleBooleanPrice = true;
   toggleBooleanAmount = true;
 
-  constructor(private drugService: DrugService, private router: Router, private activatedRouter: ActivatedRoute) { }
+  constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {

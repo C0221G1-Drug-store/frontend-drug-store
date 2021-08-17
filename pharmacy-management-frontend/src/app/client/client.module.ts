@@ -30,6 +30,7 @@ import { HotDealsComponent } from './hot-deals/hot-deals.component';
     CommonModule,
     ClientRoutingModule,
     ReactiveFormsModule,
-    FormsModule]
+    FormsModule,
+  ]
 })
 export class ClientModule {}
