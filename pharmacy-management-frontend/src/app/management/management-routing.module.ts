@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
 const routes: Routes = [
   {
     path: 'sale-retail',

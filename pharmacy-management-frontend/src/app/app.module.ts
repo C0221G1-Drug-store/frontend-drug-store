@@ -7,12 +7,17 @@ import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
-<<<<<<< HEAD
 import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
-=======
->>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
+import {MatSelectModule} from '@angular/material/select';
+import {NgxPrintModule} from 'ngx-print';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {Overlay} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -26,14 +31,22 @@ import {WarehouseExportModule} from './management/warehouse/warehouse-export/war
     ManagementModule,
     CommonModule,
     MatDialogModule,
-<<<<<<< HEAD
     HttpClientModule,
-    WarehouseExportModule
-=======
-    HttpClientModule
->>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
+    WarehouseExportModule,
+    MatSelectModule,
+    NgxPrintModule,
+    MatSelectModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NgxPrintModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
+
+
   ],
-  providers: [],
+  providers: [MatDialog ,Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -71,7 +71,7 @@
           <tr>
             <td>
               <select [ngModel]="null" (ngModelChange)="getDrug($event)"   >
-                <option  [selected]="true" [hidden]="true"   >Thêm thuốc</option>
+                <option  [selected]="true" [hidden]="true">Thêm thuốc</option>
                 <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.name}}</option>
               </select>
             </td>
@@ -86,7 +86,6 @@
             <td>{{drugOfBill.quantity}}</td>
             <td>{{drugOfBill.drug.price}}</td>
             <td>{{drugOfBill.drug.price * drugOfBill.quantity}} VND</td>
-
           </tr>
           </tbody>
         </table>

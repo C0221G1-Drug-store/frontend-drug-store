@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExportBillDestroyComponent } from './export-bill-destroy.component';
+import { DialogComponent } from './dialog.component';
 
-describe('ExportBillDestroyComponent', () => {
-  let component: ExportBillDestroyComponent;
-  let fixture: ComponentFixture<ExportBillDestroyComponent>;
+describe('DialogComponent', () => {
+  let component: DialogComponent;
+  let fixture: ComponentFixture<DialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExportBillDestroyComponent ]
+      declarations: [ DialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExportBillDestroyComponent);
+    fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,22 +2,35 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WarehouseExportRoutingModule } from './warehouse-export-routing.module';
-<<<<<<< HEAD
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxPrintModule} from 'ngx-print';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {CustomCurrencyPipe} from "./custom-currency.pipe"
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 
 
 @NgModule({
-  declarations: [ExportBillRefundComponent],
-=======
-import { ExportBillDestroyComponent } from './export-bill-destroy/export-bill-destroy.component';
-
-
-@NgModule({
-  declarations: [ExportBillDestroyComponent],
->>>>>>> 42fa1997646221384241896f84cc8ddcb05542d0
+  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
   imports: [
     CommonModule,
-    WarehouseExportRoutingModule
+    WarehouseExportRoutingModule,
+    MatSelectModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NgxPrintModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    NgxMatSelectSearchModule,
   ]
 })
 export class WarehouseExportModule { }
