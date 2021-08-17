@@ -95,7 +95,8 @@ export class DrugListComponent implements OnInit {
   updateDialog(): void {
     this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
       const dialogRef = this.dialog.open(DrugEditComponent, {
-        width: '500px',
+        width: '1000px',
+        height: '950px',
         data: {data1: drug}
       });
       dialogRef.afterClosed().subscribe(result => {

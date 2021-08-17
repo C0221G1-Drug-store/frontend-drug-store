@@ -6,6 +6,8 @@ import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {formatDate} from '@angular/common';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {DrugGroupService} from '../../../../service/drug-group.service';
+import {DrugGroup} from '../../../../model/drugGroup';
 
 @Component({
   selector: 'app-drug-edit',
@@ -13,12 +15,14 @@ import {AngularFireStorage} from '@angular/fire/storage';
   styleUrls: ['./drug-edit.component.css']
 })
 export class DrugEditComponent implements OnInit {
+  drugGroups: DrugGroup[] = [];
   drugForm: FormGroup;
   drugId;
   drugCode;
   selectedImage: any = null;
 
   constructor(private drugService: DrugService,
+              private drugGroupService: DrugGroupService,
               private dialogRef: MatDialogRef<DrugDeleteComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private storage: AngularFireStorage) {
@@ -28,7 +32,7 @@ export class DrugEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getAllDrugGroup();
   }
 
 
@@ -77,5 +81,10 @@ export class DrugEditComponent implements OnInit {
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  getAllDrugGroup() {
+    this.drugGroupService.getAll().subscribe(drugGroups => {
+      this.drugGroups = drugGroups;
+    });
   }
 }
