@@ -4,6 +4,8 @@ import {DrugService} from '../../../../service/drug.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {formatDate} from '@angular/common';
 import {finalize} from 'rxjs/operators';
+import {DrugGroup} from '../../../../model/drugGroup';
+import {DrugGroupService} from '../../../../service/drug-group.service';
 
 @Component({
   selector: 'app-drug-create',
@@ -11,6 +13,7 @@ import {finalize} from 'rxjs/operators';
   styleUrls: ['./drug-create.component.css']
 })
 export class DrugCreateComponent implements OnInit {
+  drugGroups: DrugGroup[] = [];
   selectedImage: any = null;
   drugForm: FormGroup = new FormGroup({
   drugName: new FormControl('', [Validators.required, Validators.maxLength(25)]),
@@ -30,9 +33,11 @@ export class DrugCreateComponent implements OnInit {
   });
 
   constructor(private drugService: DrugService,
+              private drugGroupService: DrugGroupService,
               private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
+    this.getAllDrugGroup();
   }
 
   submit() {
@@ -57,4 +62,10 @@ export class DrugCreateComponent implements OnInit {
   getCurrentDateTime(): string {
     return formatDate(new Date(), 'dd-MM-yyyyhhmmssa', 'en-US');
   }
+  getAllDrugGroup() {
+    this.drugGroupService.getAll().subscribe(drugGroups => {
+      this.drugGroups = drugGroups;
+    });
+  }
+
 }

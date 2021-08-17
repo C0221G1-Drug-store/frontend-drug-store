@@ -1,6 +1,6 @@
 export interface Drug {
   drugId?: number;
-  drugCode?: string;
+  drugCode?: number;
   drugName?: string;
   drugFaculty?: string;
   activeElement?: string;
