@@ -23,6 +23,7 @@ export class PrescriptionListComponent implements OnInit {
     this.prescriptionService.getAllPrescription(this.page).subscribe(prescriptions => {
       this.prescriptions = prescriptions['content'];
       this.pages = new Array<any>(prescriptions['totalPages']);
+      console.log(this.pages);
     });
   }
 

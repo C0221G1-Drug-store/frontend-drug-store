@@ -32,4 +32,5 @@ export class PrescriptionService {
   deletePrescription(id: number): Observable<Prescription> {
     return this.http.delete<Prescription>(`${API_URL}/prescription/${id}`);
   }
+  // pagePrescription(name,)
 }

@@ -41,7 +41,6 @@ export class PrescriptionCreateComponent implements OnInit {
 
   get indicatives() {
     return this.prescriptionForm.get('indicatives') as FormArray;
-    console.log(FormArray);
   }
 
 
@@ -61,6 +60,7 @@ export class PrescriptionCreateComponent implements OnInit {
 
   submit() {
     const prescription = this.prescriptionForm.value;
+    console.log(prescription);
     this.prescriptionService.savePrescription(prescription).subscribe(() => {
         this.prescriptionForm.reset();
         this.router.navigateByUrl('/prescription/prescription-list');

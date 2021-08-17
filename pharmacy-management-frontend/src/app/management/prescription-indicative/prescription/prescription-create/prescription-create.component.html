@@ -54,7 +54,7 @@
         <div *ngFor="let item of indicatives.controls ; let indicativeIndex=index" [formGroupName]="indicativeIndex">
           <div class="d-flex justify-content-between row">
             <span>{{indicativeIndex+1}}</span>
-            <span formControlName="prescriptionId"></span>
+<!--            <span formControlName="prescriptionId"></span>-->
             <div class=" col-6">
               <select class="select form-control"  formControlName="drug">
                 <option *ngFor="let d of drugs ">{{d}}</option>
