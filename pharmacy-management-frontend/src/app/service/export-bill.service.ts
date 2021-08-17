@@ -25,4 +25,7 @@ export class ExportBillService {
   createCodeExportBill():Observable<String>{
     return this.http.get<String>(this.URL+ '/export-bills/code');
   }
+  getEmployee():Observable<any>{
+    return this.http.get<String>(this.URL+ '/employees');
+  }
 }

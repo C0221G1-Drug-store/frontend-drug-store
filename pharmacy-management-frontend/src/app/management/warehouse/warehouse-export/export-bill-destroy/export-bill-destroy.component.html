@@ -22,7 +22,7 @@
               <div class="col-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Nhà cung cấp :</label>
-                  <select style="width: 300px;" formControlName="manufacturer" disabled>
+                  <select style="width: 300px;" formControlName="manufacturer">
                   </select>
                 </div>
               </div>
@@ -42,7 +42,7 @@
               <div class="col-6 col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Địa Chỉ:</label>
-                  <input type="text" style="border: 2px solid " formControlName="exportBillAddress" disabled>
+                  <input type="text" style="border: 2px solid " formControlName="exportBillAddress">
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="">
                   <label>Nhân viên:</label>
-                  <input type="text" formControlName="employee" >
+                  <input type="text"  formControlName="employee">
                 </div>
               </div>
               <div class="col-6 col-md-6 col-sm-12">
@@ -96,7 +96,8 @@
               <tbody>
               <tr>
                 <td>
-                  <mat-select [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
+                  <mat-select style="background-color: mediumaquamarine;min-width:200px;height: 40px;line-height: 40px;text-align: center;font-weight: bold"
+                              placeholder="Mời Chọn Thuốc"  [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
                     <mat-option>
                       <ngx-mat-select-search [formControl]="bankFilterCtrl" placeholderLabel="Search..."></ngx-mat-select-search>
                     </mat-option>
@@ -123,8 +124,8 @@
                 <td>{{d.expiry | date: 'dd/MM/yyyy'}}</td>
               </tr>
               <ng-container *ngFor="let i of a">
-                <tr *ngIf="i > (drugDestroys.length - 5*(p-1)) % 5 ">
-                  <td></td>
+                <tr *ngIf="(i > (drugDestroys.length - 5*(p-1))) || (drugDestroys.length == 0) ">
+                  <td> </td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -134,7 +135,6 @@
                 </tr>
               </ng-container>
               </tbody>
-
             </table>
             <div class="d-flex justify-content-end">
               <pagination-controls (pageChange)="p = $event"></pagination-controls>
