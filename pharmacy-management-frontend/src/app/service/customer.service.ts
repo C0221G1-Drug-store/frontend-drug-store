@@ -15,7 +15,11 @@ export class CustomerService {
   }
 
   getAll(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(API_URL + '/customer');
+    return this.httpClient.get<Customer[]>(API_URL + '/customer/all');
+  }
+
+  getCustomerByPagination(index: number): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(API_URL + '/customer?index=' + index);
   }
 
   delete(id: number): Observable<Customer> {
@@ -34,19 +38,23 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${API_URL}/customer/search/${keyword}`);
   }
 
-  searchByCustomerCode(keyword: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerCode/${keyword}`);
+  searchByCustomerCode(index: number, keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerCode/${index}/${keyword}`);
   }
-  searchByCustomerGroup(keyword: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerGroup/${keyword}`);
+
+  searchByCustomerGroup(index: number, keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerGroup/${index}/${keyword}`);
   }
-  searchByCustomerName(keyword: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerName/${keyword}`);
+
+  searchByCustomerName(index: number, keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerName/${index}/${keyword}`);
   }
-  searchByCustomerAddress(keyword: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerAddress/${keyword}`);
+
+  searchByCustomerAddress(index: number, keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerAddress/${index}/${keyword}`);
   }
-  searchByCustomerPhone(keyword: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerPhone/${keyword}`);
+
+  searchByCustomerPhone(index: number, keyword: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerPhone/${index}/${keyword}`);
   }
 }

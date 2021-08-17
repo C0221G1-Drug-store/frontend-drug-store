@@ -5,6 +5,7 @@ import {ManagementInformationRoutingModule} from './management-information-routi
 import {CustomerListComponent} from './customer/customer-list/customer-list.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -12,13 +13,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
   exports: [
     CustomerListComponent
   ],
-    imports: [
-        CommonModule,
-        ManagementInformationRoutingModule,
-        NgxPaginationModule,
-        NgbPaginationModule,
+  imports: [
+    CommonModule,
+    ManagementInformationRoutingModule,
+    NgxPaginationModule,
+    NgbPaginationModule,
+    FormsModule,
 
-    ]
+  ]
 })
 export class ManagementInformationModule {
 }

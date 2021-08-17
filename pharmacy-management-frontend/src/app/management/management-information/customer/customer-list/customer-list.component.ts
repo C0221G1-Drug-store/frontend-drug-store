@@ -9,25 +9,29 @@ import {NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  page: number = 1;
-  pageSize: number = 5;
-  collectionSize: number = 0;
+  indexPagination = 1;
+  totalPagination: number;
   id: number;
   customerDelete: Customer;
   customers: Customer[] = [];
+  customersPagination: Customer[] = [];
+  typeSort: string;
 
   constructor(private customerService: CustomerService,
   ) {
   }
 
   ngOnInit(): void {
+    this.getCustomerByPagination();
     this.getAllCustomer();
   }
 
   getAllCustomer() {
     this.customerService.getAll().subscribe(data => {
-      this.customers = data['content'];
-      this.collectionSize = data['totalPages'];
+      this.customers = data;
+      if ((this.customers.length % 5) !== 0) {
+        this.totalPagination = (Math.round((this.customers.length / 5) + 0.4999999));
+      }
     });
   }
 
@@ -63,23 +67,6 @@ export class CustomerListComponent implements OnInit {
     this.customerDelete = null;
   }
 
-  search(keyword: string) {
-    if (keyword !== '') {
-      this.customerService.searchAllField(keyword).subscribe(data => {
-        if (data != null) {
-          this.customers = data;
-          console.log(data);
-        } else {
-          this.customers = [];
-        }
-      }, error => {
-        console.log(error);
-      });
-    } else {
-      this.getAllCustomer();
-    }
-  }
-
   sort(typeSort: string) {
     if (typeSort === 'customer_group') {
       this.customers = this.customers.sort((a, b) => a.customerGroup.customerGroupId - b.customerGroup.customerGroupId);
@@ -111,33 +98,74 @@ export class CustomerListComponent implements OnInit {
     if (keyword !== '') {
       switch (typeSearch) {
         case'customer_code':
-          this.customerService.searchByCustomerCode(keyword).subscribe(data => {
-            this.customers = data;
+          this.customerService.searchByCustomerCode(0, keyword).subscribe(data => {
+            this.customersPagination = data;
           });
           break;
         case'customer_group':
-          this.customerService.searchByCustomerGroup(keyword).subscribe(data => {
-            this.customers = data;
+          this.customerService.searchByCustomerGroup(0, keyword).subscribe(data => {
+            this.customersPagination = data;
           });
           break;
         case'customer_name':
-          this.customerService.searchByCustomerName(keyword).subscribe(data => {
-            this.customers = data;
+          this.customerService.searchByCustomerName(0, keyword).subscribe(data => {
+            this.customersPagination = data;
           });
           break;
         case'customer_address':
-          this.customerService.searchByCustomerAddress(keyword).subscribe(data => {
-            this.customers = data;
+          this.customerService.searchByCustomerAddress(0, keyword).subscribe(data => {
+            this.customersPagination = data;
           });
           break;
         case'customer_phone':
-          this.customerService.searchByCustomerPhone(keyword).subscribe(data => {
-            this.customers = data;
+          this.customerService.searchByCustomerPhone(0, keyword).subscribe(data => {
+            this.customersPagination = data;
           });
           break;
       }
     } else {
-      this.getAllCustomer();
+      this.getCustomerByPagination();
     }
+  }
+
+///// phân trang
+  getCustomerByPagination() {
+    this.customerService.getCustomerByPagination(0).subscribe(data => {
+      this.customersPagination = data;
+    });
+  }
+
+  getCustomerByPaginationStep2() {
+    this.customerService.getCustomerByPagination((this.indexPagination * 5) - 5).subscribe(data => {
+      this.customersPagination = data;
+    });
+  }
+
+  firstPage() {
+    this.indexPagination = 1;
+    this.getCustomerByPagination();
+  }
+
+  nextPage() {
+    this.indexPagination += 1;
+    if (this.indexPagination > this.totalPagination) {
+      this.indexPagination = this.indexPagination - 1;
+    }
+    this.getCustomerByPaginationStep2();
+  }
+
+  previousPage() {
+    this.indexPagination -= 1;
+    if (this.indexPagination === 0) {
+      this.indexPagination = 1;
+      this.getCustomerByPagination();
+    } else {
+      this.getCustomerByPaginationStep2();
+    }
+  }
+
+  lastPage() {
+    this.indexPagination = this.totalPagination;
+    this.getCustomerByPaginationStep2();
   }
 }
