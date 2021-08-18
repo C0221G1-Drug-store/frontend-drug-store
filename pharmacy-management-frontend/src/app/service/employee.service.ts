@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Employee} from '../../model/employee/Employee';
-import {Observable} from 'rxjs';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Employee} from "../model/Employee";
 const API_URL = 'http://localhost:8080';
 @Injectable({
   providedIn: 'root'
