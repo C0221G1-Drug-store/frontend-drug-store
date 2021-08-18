@@ -4,6 +4,7 @@ import {ManufacturerUpdateComponent} from "../manufacturer-update/manufacturer-u
 import {ManufacturerDeleteComponent} from "../manufacturer-delete/manufacturer-delete.component";
 import {ManufacturerService} from "../../../service/manufacturer.service";
 import { Manufacturer } from 'src/app/model/manufacturer';
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -30,7 +31,7 @@ export class ManufacturerListComponent implements OnInit {
 
 
 
-  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService) {
+  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService,private  toastr:ToastrService) {
 
   }
 
@@ -73,7 +74,7 @@ export class ManufacturerListComponent implements OnInit {
   previous() {
 
     if (this.page <= 0) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang", 'Trang trước')
     } else {
       this.page = this.page - 1;
       this.getAll();
@@ -84,7 +85,7 @@ export class ManufacturerListComponent implements OnInit {
 
     this.max = this.pages.length;
     if (this.page + 2 > this.max) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang", 'Trang sau')
     } else {
       this.page = this.page + 1;
       this.getAll();

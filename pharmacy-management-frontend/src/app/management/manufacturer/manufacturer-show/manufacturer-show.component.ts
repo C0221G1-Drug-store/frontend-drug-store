@@ -35,11 +35,15 @@ export class ManufacturerShowComponent implements OnInit {
       manufacturerService.findByIdManufacture(this.id).subscribe(data => {
         this.manufacturer = data;
       });
+
       this.getAllImportBill();
 
 
     });
 
+  }
+  setFormValue(){
+    
   }
   ngOnInit(): void {
 

@@ -59,14 +59,13 @@ export class ManufacturerService {
       }
   }
   updateManufacturer(id:number, manufacturer: Manufacturer):Observable<Manufacturer>{
+    console.log('abv');
+    console.log(manufacturer);
     return  this.http.put<Manufacturer>(API_URL +'/manufacturer/update?id='+id,manufacturer);
 
   }
-  saveManufacturer(manufacturer: Object):Observable<Object>{
-    return this.http.post<Object>(API_URL +'/manufacturer/create', manufacturer)
-  }
-  deleteManufacturer(id: number){
-    return this.http.delete<Object>(API_URL +'/manufacturer/delete?id='+id)
+  saveManufacturer(manufacturer: Manufacturer):Observable<Manufacturer>{
+    return this.http.post<Manufacturer>(API_URL +'/manufacturer/create', manufacturer)
   }
   findByIdManufacture(id: number){
     return this.http.get<Object>(API_URL +'/manufacturer/show?id='+id)

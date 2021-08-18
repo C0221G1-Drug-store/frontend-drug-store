@@ -84,7 +84,7 @@
           <td>{{m.manufacturerCode}}</td>
           <td>{{m.manufacturerName}}</td>
           <td>{{m.manufacturerAddress}}</td>
-          <td>{{m.manufacturerPhoneNumber}}</td>
+          <td>({{m.manufacturerPhoneNumber.substr(0,3)}})-{{m.manufacturerPhoneNumber.substr(3,5)}}-{{m.manufacturerPhoneNumber | slice:5:9}}</td>
           <td>{{m.manufacturerDebts}}</td>
           <td>{{m.manufacturerNote}}</td>
 
@@ -113,36 +113,41 @@
         chi tiết
       </button>
 
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
 
-      <div class="col-lg-9">
-        <div class="container">
-          <div class="row ">
-            <div class="col-lg-12 text-right">
-              <a routerLink="/manufacturer/create">
-                <button class="btn ve" style="width: 100px;background: #2fc1a6"
-                        type="button"><i
-                  class="fa fa-plus-circle" aria-hidden="true"></i> Thêm
-                </button>
-              </a>
+        <div class="row ">
 
-              <button (click)="openDialogDelete()" class=" a   btn btn-danger" data-toggle="modal"
-                      data-target="#exampleModal1"><i
-                class="fa  fa-trash-o" aria-hidden="true"></i> Xóa
-              </button>
-              <button (click)="openDialogUpdate()" data-toggle="modal" data-target="#exampleModal"
-                      class="a   btn btn-warning"><i
-                class="fa fa-pencil-square-o"
-                aria-hidden="true"></i>
-                Chỉnh sửa
-              </button>
-              <button class=" btn ve" type="button"><i class="icon-sidebar fa fa-reply"></i>
-                Trở về
-              </button>
-            </div>
-
+          <div class=" col-lg-3 ">
+            <button class="btn" routerLink="/manufacturer/create" style="width: 115px;background: #2fc1a6"
+                    type="button"><i
+              class="fa fa-plus-circle" aria-hidden="true"></i> Thêm
+            </button>
+          </div>
+          <div class=" col-lg-3 ">
+            <button (click)="openDialogDelete()" style="width: 115px" class=" a   btn btn-danger" data-toggle="modal"
+                    data-target="#exampleModal1"><i
+              class="fa  fa-trash-o" aria-hidden="true"></i> Xóa
+            </button>
+          </div>
+          <div class=" col-lg-3 ">
+          <button (click)="openDialogUpdate()" style="width: 115px" data-toggle="modal" data-target="#exampleModal"
+                  class="a   btn btn-warning"><i
+            class="fa fa-pencil-square-o"
+            aria-hidden="true"></i>
+            Chỉnh sửa
+          </button>
+          </div>
+          <div class=" col-lg-3 ">
+          <button class="  btn ve" style="width: 115px" type="button"><i class="icon-sidebar fa fa-reply"></i>
+            Trở về
+          </button>
           </div>
         </div>
+
+
       </div>
+
 
     </div>
   </div>

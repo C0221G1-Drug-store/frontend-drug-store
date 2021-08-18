@@ -10,6 +10,7 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import {ManufacturerModule} from "./management/manufacturer/manufacturer.module"
     CommonModule,
     MatDialogModule,
     HttpClientModule,
-    ManufacturerModule
+    ManufacturerModule,
+    ToastrModule.forRoot({
+      timeOut:2000,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

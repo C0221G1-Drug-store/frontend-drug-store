@@ -31,7 +31,7 @@
       <div class="row mb-3 mt-3">
         <label for="manufacturerPhoneNumber" class="label-text col-3">Số điện thoại (<span style="color: red">*</span>)</label>
         <div class="col-9">
-          <input formControlName="manufacturerPhoneNumber" class="form-control" type="text" id="manufacturerPhoneNumber">
+          <input formControlName="manufacturerPhoneNumber"  class="form-control" type="text" id="manufacturerPhoneNumber">
           <small *ngIf="manufacturerForm.get('manufacturerPhoneNumber')?.hasError('required')&& manufacturerForm.get('manufacturerPhoneNumber')?.touched" style="color: red">Số điện thoại không được để rỗng</small>
           <small *ngIf="manufacturerForm.get('manufacturerPhoneNumber')?.hasError('pattern')&& manufacturerForm.get('manufacturerPhoneNumber')?.touched" style="color: red">Nhâp đúng định dạng số điện thoại </small>
         </div>
