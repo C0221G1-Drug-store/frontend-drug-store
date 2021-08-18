@@ -7,10 +7,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./sales-invoice-detail.component.css']
 })
 export class SalesInvoiceDetailComponent implements OnInit {
-
+p: string;
   constructor(public dialogRef: MatDialogRef<SalesInvoiceDetailComponent>,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    if(this.data == null){
+      this.p = 'chưa nhận được hóa đơn';
+    }
     this.data.date = this.subDate(this.data.invoiceDate);
     this.data.time = this.subTime(this.data.invoiceDate);
   }

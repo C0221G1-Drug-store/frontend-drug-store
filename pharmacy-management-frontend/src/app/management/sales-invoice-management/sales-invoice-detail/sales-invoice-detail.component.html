@@ -1,4 +1,5 @@
-<div id="demo">
+<p style="color: red">{{p}}</p>
+<div id="demo" *ngIf="data != null">
   <form>
     <h1>Chi tiết hóa đơn</h1>
     <table>
@@ -35,9 +36,11 @@
     </table>
   </form>
 </div>
+<div *ngIf="data != null">
+  <button class="btn btn-success mr-3" type="button" printSectionId = "demo" ngxPrint (click)="dialogRef.close(true)" >Có</button>
+  <button class="btn btn-danger mr-3" type="button" (click)="dialogRef.close(false)">Không</button>
 
-<button class="btn btn-success mr-3" type="button" printSectionId = "demo" ngxPrint >Có</button>
-<button class="btn btn-danger mr-3" type="button" mat-dialog-close="">Cancel</button>
+</div>
 
 
 

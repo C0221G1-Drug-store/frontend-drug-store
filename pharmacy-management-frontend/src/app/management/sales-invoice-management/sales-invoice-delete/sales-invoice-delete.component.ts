@@ -9,10 +9,14 @@ import {BillSale} from "../../../model/bill-sale";
 })
 export class SalesInvoiceDeleteComponent implements OnInit {
   billSale: BillSale;
+  p:string;
   constructor(public dialogRef: MatDialogRef<SalesInvoiceDeleteComponent>,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
     this.billSale = this.data;
+    if(this.billSale == null) {
+      this.p ='chưa nhận được hóa đơn';
+    }
   }
 
 }

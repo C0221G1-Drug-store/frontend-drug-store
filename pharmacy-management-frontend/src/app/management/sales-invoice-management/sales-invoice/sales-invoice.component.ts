@@ -25,8 +25,8 @@ export class SalesInvoiceComponent implements OnInit {
   p2: string;
   p3: string;
   p4: string;
-  p5: string;
-  p6: string;
+  p5 ='';
+  p6 ='';
   err = true;
   pages: Array<any>;
   page = 0;
@@ -82,7 +82,9 @@ export class SalesInvoiceComponent implements OnInit {
 
   onDeleteHandler() {
     if (this.idBillsales == null) {
-      alert('chưa nhận đc hóa đơn');
+      const dialogRef = this.dialog.open(SalesInvoiceDeleteComponent, {
+        width: '250px',
+      });
     } else {
       this.billSaleService.findById(this.idBillsales).subscribe(next => {
         this.billSale1 = next;
@@ -108,7 +110,9 @@ export class SalesInvoiceComponent implements OnInit {
 
   onDetailHandler() {
     if (this.idBillsales == null) {
-      alert('chưa nhận đc hóa đơn');
+      const dialogRef = this.dialog.open(SalesInvoiceDetailComponent, {
+        width: '250px',
+      });
     } else {
       const dialogRef = this.dialog.open(SalesInvoiceDetailComponent, {
         width: '500px',
@@ -116,9 +120,12 @@ export class SalesInvoiceComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        this.getAll();
+        console.log('The dialog was closed');
+        console.log(result);
+        if (result) {
+          this.getAll();
+        }
       });
-
     }
   }
 
@@ -176,12 +183,7 @@ export class SalesInvoiceComponent implements OnInit {
         if (this.search4 == null) {
           this.p4 = 'giờ không được để trống';
         }
-        if (this.search4 == null) {
-          this.p5 = 'không được để trống';
-        }
-        if (this.search1 == null) {
-          this.p6 = 'không được để trống';
-        }
+
       } else {
 
         this.billSaleService.searchBillSale(this.search1, this.search2, this.search3, this.search4, this.search5, this.search6, this.page).subscribe(next => {

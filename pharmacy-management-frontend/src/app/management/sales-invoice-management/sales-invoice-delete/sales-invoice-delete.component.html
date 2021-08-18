@@ -1,4 +1,6 @@
-<p>Bạn có muốn xóa thông tin hóa đơn  {{billSale.billSaleCode}}:  không </p>
-<button class="btn btn-success mr-3" type="button" (click)="dialogRef.close(true)">Yes</button>
-<button class="btn btn-danger mr-3" type="button" (click)="dialogRef.close(false)">No</button>
-
+<p style="color: red">{{p}}</p>
+<div *ngIf="billSale != null">
+  <p>Bạn có muốn xóa thông tin hóa đơn  {{billSale.billSaleCode}}:  không </p>
+  <button class="btn btn-success mr-3" type="button" (click)="dialogRef.close(true)">Yes</button>
+  <button class="btn btn-danger mr-3" type="button" (click)="dialogRef.close(false)">No</button>
+</div>
