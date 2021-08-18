@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ReportService} from '../../../service/report.service';
 
 
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -42,6 +41,7 @@ export class ReportComponent implements OnInit {
       return;
     }
     if (this.choice === '') {
+      this.msgDate = '';
       this.msgChoice = 'Vui lòng chọn loại báo cáo';
       return;
     }
@@ -52,10 +52,10 @@ export class ReportComponent implements OnInit {
         this.msgChoice = 'Không tìm thấy dữ liệu (null)';
         return;
       }
-
       this.sv.exportExcel(r, this.choice);
       this.msgDate = '';
     }, e => {
+      this.msgDate = '';
       this.msgChoice = 'Không tìm thấy dữ liệu (error)';
     });
   }

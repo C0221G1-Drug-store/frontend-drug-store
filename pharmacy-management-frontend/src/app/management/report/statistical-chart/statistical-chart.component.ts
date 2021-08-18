@@ -11,8 +11,7 @@ import {
   ApexTitleSubtitle
 } from 'ng-apexcharts';
 import {StatisticalChart} from '../../../model/statistical-chart';
-
-export interface ChartOptions {
+export class ChartOptions {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -32,19 +31,48 @@ export class StatisticalChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   chartOption?: Partial<ChartOptions>;
   isShowChart = false;
-  chartList: StatisticalChart[] = [];
+  turnovers: StatisticalChart[] =
+    [
+      {doanhThu: 1000, ngayDoanhThu: '2021-08-01'},
+      {doanhThu: 1200, ngayDoanhThu: '2021-08-02'},
+      {doanhThu: 1300, ngayDoanhThu: '2021-08-03'},
+      {doanhThu: 1400, ngayDoanhThu: '2021-08-04'},
+      {doanhThu: 1500, ngayDoanhThu: '2021-08-05'},
+      {doanhThu: 1600, ngayDoanhThu: '2021-08-06'},
+      {doanhThu: 1700, ngayDoanhThu: '2021-08-07'},
+      {doanhThu: 1800, ngayDoanhThu: '2021-08-08'},
+      {doanhThu: 1900, ngayDoanhThu: '2021-08-09'},
+      {doanhThu: 2000, ngayDoanhThu: '2021-08-10'},
+    ];
+  profits: StatisticalChart[] =
+    [
+      {loiNhuan: 300, ngayLoiNhuan: '2021-08-01'},
+      {loiNhuan: 400, ngayLoiNhuan: '2021-08-02'},
+      {loiNhuan: 500, ngayLoiNhuan: '2021-08-03'},
+      {loiNhuan: 600, ngayLoiNhuan: '2021-08-04'},
+      {loiNhuan: 700, ngayLoiNhuan: '2021-08-05'},
+      {loiNhuan: 800, ngayLoiNhuan: '2021-08-06'},
+      {loiNhuan: 900, ngayLoiNhuan: '2021-08-07'},
+      {loiNhuan: 1000, ngayLoiNhuan: '2021-08-08'},
+      {loiNhuan: 1100, ngayLoiNhuan: '2021-08-09'},
+      {loiNhuan: 1200, ngayLoiNhuan: '2021-08-10'},
+    ];
   week: number;
   month: number;
   year: number;
-  isWeek: boolean;
-  isMonth: boolean;
-  isYear: boolean;
+  isWeek = false;
+  isMonth = false;
+  isYear = false;
   msgDate;
-  startDate: string;
-  endDate: string;
+  startDate = '';
+  endDate = '';
   weekArray = new Array(52);
   yearArray = new Array(100);
-
+  turnover: number;
+  profit: number;
+  averageTurnover: number;
+  averageProfit: number;
+  isSuccess = false;
 
   constructor() {
   }
@@ -54,50 +82,75 @@ export class StatisticalChartComponent implements OnInit {
   }
 
   showChart() {
+    if (this.isWeek === false && this.isMonth === false && this.isYear === false) {
+      this.msgDate = 'Vui lòng chọn theo tuần/tháng/năm';
+      this.isShowChart = false;
+      return;
+    }
+    if (this.turnovers === null && this.profits === null) {
+      this.isShowChart = false;
+      return;
+    }
+    if (this.startDate === '' || this.endDate === '') {
+      this.msgDate = 'Vui lòng chọn thời gian muốn hiển thị';
+      this.isShowChart = false;
+      return;
+    }
+    this.paintChart();
+    if (this.isWeek === true || this.isMonth === true) {
+      this.week = undefined;
+      this.month = undefined;
+      this.year = undefined;
+      this.showChartByWeekMonth();
+      this.isShowChart = true;
+      this.msgDate = '';
+      return;
+    }
+    if (this.isYear === true) {
+      this.week = undefined;
+      this.month = undefined;
+      this.year = undefined;
+      this.isShowChart = true;
+      this.msgDate = '';
+      return;
+    }
+    this.week = undefined;
+    this.month = undefined;
+    this.year = undefined;
+    this.msgDate = '';
+    this.isShowChart = false;
+  }
 
+  showChartByWeekMonth() {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.turnovers.length; i++) {
+      // @ts-ignore
+      this.chartOption.series[0].data.push({x: this.turnovers[i].ngayDoanhThu, y: this.turnovers[i].doanhThu});
+      this.chartOption.xaxis.categories = this.turnovers[i].ngayDoanhThu;
+      this.turnover += this.turnovers[i].doanhThu;
+      this.msgDate = '';
+      this.averageProfit = this.profit / this.profits.length;
+    }
+    this.averageTurnover = this.turnover / this.turnovers.length;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.profits.length; i++) {
+      // @ts-ignore
+      this.chartOption.series[1].data.push({x: this.profits[i].ngayLoiNhuan, y: this.profits[i].loiNhuan});
+      this.profit += this.profits[i].loiNhuan;
+    }
+  }
+
+
+  paintChart() {
     this.chartOption = {
       series: [
         {
           name: 'Doanh thu',
-          data: [
-            {
-              x: '2018-12-29',
-              y: 31
-            },
-            {
-              x: '2018-12-30',
-              y: 40
-            },
-            {
-              x: '2018-12-31',
-              y: 28
-            },
-            {
-              x: '2019-01-01',
-              y: 51
-            },
-          ]
+          data: []
         },
         {
           name: 'Lợi nhuận',
-          data: [
-            {
-              x: '2018-12-29',
-              y: 11
-            },
-            {
-              x: '2018-12-30',
-              y: 31
-            },
-            {
-              x: '2018-12-31',
-              y: 45
-            },
-            {
-              x: '2019-01-01',
-              y: 32
-            },
-          ]
+          data: []
         }
       ],
       chart: {
@@ -119,12 +172,7 @@ export class StatisticalChartComponent implements OnInit {
       },
       xaxis: {
         type: 'datetime',
-        categories: [
-          '2018-12-29',
-          '2018-12-30',
-          '2018-12-31',
-          '2019-01-01',
-        ],
+        categories: [],
       },
       tooltip: {
         x: {
@@ -132,11 +180,13 @@ export class StatisticalChartComponent implements OnInit {
         }
       }
     };
-    this.isShowChart = true;
   }
 
-
   choiceDate(choice) {
+    this.month = undefined;
+    this.year = undefined;
+    this.week = undefined;
+    this.isShowChart = false;
     switch (choice.value) {
       case 'week':
         this.msgDate = '';
@@ -161,20 +211,24 @@ export class StatisticalChartComponent implements OnInit {
 
   getWeek(week) {
     this.week = week.value;
+    this.isSuccess = true;
     this.msgDate = this.getDateOfWeek(this.week, this.year);
   }
 
   getMonth(month) {
     this.month = month.value;
+    this.isSuccess = true;
     this.msgDate = this.getDateOfMonth(month.value);
   }
 
   getYear(year) {
+    this.isSuccess = true;
     this.msgDate = this.getDateOfYear(year.value);
   }
 
   getYearOfWeek(year) {
     this.year = year.value;
+    this.isSuccess = true;
     this.msgDate = this.getDateOfWeek(this.week, this.year);
   }
 
@@ -191,13 +245,12 @@ export class StatisticalChartComponent implements OnInit {
   getDateOfWeek(w, y) {
     if (w === undefined || y === undefined) {
       return '';
-    } else {
-      this.startDate = this.formatDateToDb(new Date(y, 0, (1 + (w - 1) * 7) - 4));
-      this.endDate = this.formatDateToDb(new Date(y, 0, (3 + (w - 1) * 7)));
-      const startDate = this.formatDateShowClient(new Date(y, 0, (1 + (w - 1) * 7) - 4));
-      const endDate = this.formatDateShowClient(new Date(y, 0, (3 + (w - 1) * 7)));
-      return 'Từ ' + startDate + ' đến ' + endDate;
     }
+    this.startDate = this.formatDateToDb(new Date(y, 0, (1 + (w - 1) * 7) - 4));
+    this.endDate = this.formatDateToDb(new Date(y, 0, (3 + (w - 1) * 7)));
+    const startDate = this.formatDateShowClient(new Date(y, 0, (1 + (w - 1) * 7) - 4));
+    const endDate = this.formatDateShowClient(new Date(y, 0, (3 + (w - 1) * 7)));
+    return 'Từ ' + startDate + ' đến ' + endDate;
   }
 
   getDateOfYear(y) {
@@ -235,6 +288,4 @@ export class StatisticalChartComponent implements OnInit {
     }
     return [year, month, day].join('-');
   }
-
-
 }
