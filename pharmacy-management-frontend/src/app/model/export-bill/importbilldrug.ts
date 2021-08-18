@@ -1,7 +1,7 @@
-import {Drug} from "../drug";
-import {ImportBill} from "./import-bill";
+import {Drug} from './drug';
+import {ImportBill} from './importBill';
 
-export interface DrugImportBill {
+export interface Importbilldrug {
   importBillDrugId?;
   importAmount?;
   importPrice?;

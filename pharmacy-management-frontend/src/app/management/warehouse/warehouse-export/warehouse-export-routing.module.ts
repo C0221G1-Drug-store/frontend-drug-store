@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ExportBillDestroyComponent} from "./export-bill-destroy/export-bill-destroy.component";
-import {ExportBillRefundComponent} from "./export-bill-refund/export-bill-refund.component";
+import {ExportBillRefundComponent} from './export-bill-refund/export-bill-refund.component';
+import {HomeComponent} from '../../common/home/home.component';
 
 
 const routes: Routes = [
-  {
-    path: 'export-bill-destroy',
-    component: ExportBillDestroyComponent
-  },
-  {
-    path: 'export-bill-refund',
-    component: ExportBillRefundComponent
-  }
+  {path: 'export-bill-refund' , component: ExportBillRefundComponent},
+  {path: '' , component: HomeComponent},
 ];
 
 @NgModule({
