@@ -18,7 +18,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart" routerLinkActive="active"><span>GIỎ HÀNG<i class="fa fa-shopping-cart fa-2x"
                                                         style="color: #000000"></i></span><span
-            class="item-in-cart">0</span></a>
+            class="item-in-cart">{{totalProduct}}</span></a>
         </li>
         <li class="nav-item">
           <div *ngIf="!isLoggedIn">

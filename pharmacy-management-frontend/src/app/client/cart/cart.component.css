@@ -1,15 +1,11 @@
-.container h3{
-  padding-left: 40px;
-}
 .container h3, .container h3 a {
-  margin-top: 10px;
-  font-weight: normal;
   text-decoration: none;
 }
 
 .container h3 span{
   color: #000;
 }
+
 .container table tbody td {
   padding: 6px;
 }
@@ -24,7 +20,7 @@
 
 #left {
   width: 60%;
-  padding: 30px;
+  padding: 15px 30px;
 }
 
 #left table tbody tr td .bi {
