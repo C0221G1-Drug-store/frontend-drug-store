@@ -120,19 +120,12 @@ small{
 tr{
   height: 44.56px;
 }
-snack-bar-container.success {
+::ng-deep .success {
   background-color: #5cb85c;
   color : #fff;
 }
 
-snack-bar-container.warn {
+::ng-deep  .warn {
   background-color: #f99157;
   color : #fff;
-}
-
-
-snack-bar-container.notification simple-snack-bar{
-  font-size: 18px !important;
-  width: 400px;
-  font-weight: bold;
 }

@@ -14,6 +14,7 @@ import {MatSelect} from "@angular/material/select";
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/en-VI';
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
+import {error} from "@angular/compiler/src/util";
 
 registerLocaleData(localeFr, 'vi');
 
@@ -77,7 +78,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
   config: MatSnackBarConfig = {
     duration: 3000,
     horizontalPosition: 'right',
-    verticalPosition: 'top'
+    verticalPosition: 'top',
   };
 
   success(msg) {
@@ -137,7 +138,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
 
   selectRow(id: number, name: string) {
     const tr = document.getElementById(String(id));
-    if (tr.style.backgroundColor == 'rgb(99, 184, 255)') {
+    if (tr.style.backgroundColor == 'rgb(98, 184, 255)') {
       this.idDrug = null;
       tr.style.backgroundColor = null;
     } else {
@@ -145,7 +146,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
       this.nameDrug = name;
       for (let i = 0; i < this.drugDestroys.length; i++) {
         if (this.drugDestroys[i].importBillDrugId === id) {
-          document.getElementById(String(this.drugDestroys[i].importBillDrugId)).style.backgroundColor = '#63B8FF';
+          document.getElementById(String(this.drugDestroys[i].importBillDrugId)).style.backgroundColor = '#62b8ff';
         } else {
           document.getElementById(String(this.drugDestroys[i].importBillDrugId)).style.backgroundColor = null;
         }
@@ -245,7 +246,8 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
           this.exportBillService.createExportBillDetail(exportBillDetail).subscribe(() => {
           })
         }
-        this.success('Tạo hóa đơn thành công')
+        this.success('Tạo hóa đơn thành công');
+        this.route.navigateByUrl('');
       }, error => {
         this.warn('Tạo hóa đơn thất bại')
       });
@@ -258,8 +260,8 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
       let imgWidth = 208;
       let imgHeight = canvas.height * imgWidth / canvas.width;
       let contentDataURL = canvas.toDataURL('image/png');
-      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       let position = 2;
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight)
       pdf.save('Hóa đơn xuất hủy ngày ' + this.getDateNow() + '.pdf'); // Generated PDF
     });
