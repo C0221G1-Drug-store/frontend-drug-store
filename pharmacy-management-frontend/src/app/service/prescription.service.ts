@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Bill} from '../model/bill';
+import {BillSale} from '../model/billSale';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class PrescriptionService {
   findPrescriptionById(id: number): Observable<any> {
     return  this.http.get(`${this.URL}/${id}`);
   }
-  saveBIll(bill: Bill): Observable<any> {
+  saveBIll(bill: BillSale): Observable<any> {
     return this.http.post(this.URL + '/bill', bill);
     console.log(bill);
   }

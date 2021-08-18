@@ -5,7 +5,7 @@ import {DrugService} from '../../../service/drug.service';
 import {DrugOfBill} from '../../../model/drug-of-bill';
 import {Drug} from '../../../model/drug';
 import { DeleteComponent } from '../delete/delete.component';
-import {Bill} from '../../../model/bill';
+import {BillSale} from '../../../model/billSale';
 import {PrescriptionService} from '../../../service/prescription.service';
 
 
@@ -23,7 +23,7 @@ export class SaleComponent implements OnInit {
   index: number;
   number1: number;
   drugOf: DrugOfBill;
-  bill: Bill;
+  bill: BillSale;
   dateSetBill = '';
   note = '' ;
 
@@ -66,29 +66,36 @@ export class SaleComponent implements OnInit {
     this.index = i;
   }
   openDeleteDialog() {
-    let drugOfBill = this.drugOfBill;
-    const dialog = this.dialog.open(DeleteComponent , {
-      height: '250px' , width: '300px',
-      data: [this.drugOfBills , {drugOfBill}]
-    });
-    dialog.afterClosed().subscribe(() => {
-      this.total = 0;
-      for (let i = 0; i < this.drugOfBills.length; i++) {
-        this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
-      }
-    });
-    this.drugOf = null;
-    console.log(drugOfBill);
+    if (this.drugOfBill !== undefined) {
+      const drugOfBill = this.drugOfBill;
+      const dialog = this.dialog.open(DeleteComponent , {
+        height: '250px' , width: '300px',
+        data: [this.drugOfBills , {drugOfBill}]
+      });
+      dialog.afterClosed().subscribe(() => {
+        this.total = 0;
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.drugOfBills.length; i++) {
+          this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+        }
+      });
+
+      this.drugOf = null;
+      console.log(drugOfBill);
+    }
   }
 
   addDrug(drug, number1) {
-    this.drugOfBill = {drug , quantity : number1};
-    this.drugOfBills.push(this.drugOfBill);
-    this.total = 0;
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.drugOfBills.length; i++) {
-      this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+    if (drug !== null && number1 !== undefined) {
+      this.drugOfBill = {drug , quantity : number1};
+      this.drugOfBills.push(this.drugOfBill);
+      this.total = 0;
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.drugOfBills.length; i++) {
+        this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+      }
     }
+
   }
 
   showChoose(drugOfBill: DrugOfBill) {
@@ -96,7 +103,7 @@ export class SaleComponent implements OnInit {
   }
 
   saveBill() {
-    this.bill = {customer: 'khách lẻ', employee: 'tam' , total: this.total, setBillDate: this.dateSetBill, note: this.note};
+    this.bill = {customer: 'khách lẻ', employee: 'tam' , totalMoney: this.total, invoiceDate: this.dateSetBill, billSaleNote: this.note};
     this.prescriptionService.saveBIll(this.bill).subscribe();
   }
 }

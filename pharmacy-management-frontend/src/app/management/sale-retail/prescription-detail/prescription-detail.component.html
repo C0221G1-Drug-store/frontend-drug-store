@@ -11,11 +11,11 @@
       <h2 class="text-center mb-3">Đơn thuốc</h2>
       <div class="d-flex mb-3">
         <label class="label-text">Tên đơn thuốc</label>
-        <input *ngIf="prescription != null" value="{{prescription.name}}"  class="form-control" type="text"><br>
+        <input *ngIf="prescription != null" value="{{prescription.prescriptionName}}"  class="form-control" type="text"><br>
       </div>
       <div class="d-flex mb-3">
         <label class="label-text">Triệu chứng</label>
-        <input *ngIf="prescription != null" value="{{prescription.sign}}" class="form-control" type="text">
+        <input *ngIf="prescription != null" value="{{prescription.symptom}}" class="form-control" type="text">
       </div>
       <div class="d-flex mb-3 justify-content-between">
         <label class="label-text-min">Đối tượng</label>
