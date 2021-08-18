@@ -5,6 +5,7 @@ import {DrugOfBill} from '../../../model/drug-of-bill';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteCustomerRefundComponent} from '../delete-customer-refund/delete-customer-refund.component';
 import {formatDate} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-refund',
@@ -20,9 +21,9 @@ export class CustomerRefundComponent implements OnInit {
   totalRefund = 0;
   today = new Date();
   todaysDataTime = '';
-
   constructor(private billSaleService: BillSaleService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private toast: ToastrService) {
   }
 
   drugOfBillList: DrugOfBill[];
@@ -35,15 +36,27 @@ export class CustomerRefundComponent implements OnInit {
   searchBillSale() {
     this.billSaleService.getBillSaleById(this.inputSearch).subscribe(data => {
       this.billSale = data;
-      this.totalRefund = this.billSale.totalMoney;
-    });
-    this.billSaleService.getDrugOfBillByBillSaleId(this.inputSearch).subscribe(data => {
-      this.drugOfBillList = data;
-      this.total = 0;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.drugOfBillList.length; i++) {
-        this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
+      if (data == null) {
+        this.toast.error('Không tìm thấy hóa đơn này', 'Alert');
+        this.drugOfBillList = [];
+        this.total = 0;
+      } else {
+        this.billSaleService.getDrugOfBillByBillSaleId(this.inputSearch).subscribe(data1 => {
+          this.drugOfBillList = data1;
+          if (data1 == null) {
+            this.toast.error('Không có thuốc để hoàn trả', 'Alert');
+          }
+          this.total = 0;
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.drugOfBillList.length; i++) {
+            this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
+          }
+        }, error => {
+        });
       }
+      this.totalRefund = this.billSale.totalMoney;
+    }, c => {
+      this.toast.error('Không tìm thấy hóa đơn này', 'Alert');
     });
   }
 
@@ -71,7 +84,7 @@ export class CustomerRefundComponent implements OnInit {
   payment() {
     this.billSale.totalMoney = this.total;
     this.billSaleService.updateBillSale(this.billSale).subscribe(() => {
-      this.billSale.billSaleId = this.billSale.billSaleId + 9999;
+      this.billSale.billSaleId = this.billSale.billSaleId +  Math.floor(Math.random() * 1000);
       // @ts-ignore
       this.todaysDataTime = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
       this.billSale.invoiceDate = this.todaysDataTime;
@@ -79,15 +92,19 @@ export class CustomerRefundComponent implements OnInit {
       this.billSale.billSaleNote = 'Khách hoàn trả';
       this.billSale.billSaleType = 'Hoàn trả';
       this.billSale.totalMoney = this.totalRefund - this.total;
+      console.log(this.billSale);
       this.billSaleService.createBillSale(this.billSale).subscribe(() => {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.drugOfBillListDelete.length; i++) {
           this.drugOfBill = this.drugOfBillListDelete[i][0];
           this.drugOfBill.billSale = this.billSale;
           this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-            this.searchBillSale();
           });
         }
+        this.searchBillSale();
+        this.toast.success('Hoàn trả thành công', 'Alert');
+      }, error => {
+        this.toast.error('Hoàn trả thất bại', 'Alert');
       });
     });
   }

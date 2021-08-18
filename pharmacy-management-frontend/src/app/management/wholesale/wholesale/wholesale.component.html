@@ -1,7 +1,7 @@
 <div>
-  <form [formGroup]="billSaleForm" (ngSubmit)="submit()">
+  <form [formGroup]="billSaleForm" (ngSubmit)="payment()">
     <div class="container my-3">
-      <div class="container" style="background: #567FEA;height: 50px"><h2
+      <div class="container my-3" style="background: #567FEA;height: 50px"><h2
         style="text-align: center;line-height: 50px">Bán hàng</h2></div>
       <fieldset class="scheduler-border">
         <legend class="scheduler-border">Bán sỉ</legend>
@@ -10,7 +10,7 @@
             <div class="col-lg-4 my-2">
               <div class="row ">
                 <label for="inputBillId" class="label-text">Số phiếu</label>
-                <input formControlName="billSaleId" type="text" id="inputBillId">
+                <input formControlName="billSaleId" type="text" id="inputBillId" readonly>
               </div>
               <div class="row mt-3 ">
                 <label for="inputEmployee" class="label-text">Nhân viên</label>
@@ -22,7 +22,7 @@
             <div class="col-lg-4 my-2">
               <div class="row ">
                 <label for="inputDate" class="label-text">Ngày lập</label>
-                <input formControlName="invoiceDate" type="date" id="inputDate">
+                <input formControlName="invoiceDate" type="date" id="inputDate" readonly>
               </div>
               <div class="row mt-3 ">
                 <label for="selectEmployee" class="label-text">Khách hàng<i class="text-danger">*</i></label>
@@ -78,15 +78,15 @@
               <td>{{drugOfBill.drug.drugName}}</td>
               <td>{{drugOfBill.drug.unit}}</td>
               <td>{{drugOfBill.quantity}}</td>
-              <td>{{drugOfBill.drug.wholesaleProfitRate}}</td>
-              <td>{{drugOfBill.drug.wholesaleProfitRate * drugOfBill.quantity}} VND</td>
+              <td>{{drugOfBill.drug.wholesaleProfitRate.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}}</td>
+              <td>{{(drugOfBill.drug.wholesaleProfitRate * drugOfBill.quantity).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}}</td>
             </tr>
             </tbody>
           </table>
         </div>
         <div class="d-flex justify-content-end mt-3 ">
           <label for="inputTotal" class="mr-3">Tổng tiền </label>
-          <input formControlName="totalMoney" type="text" id="inputTotal" readonly value="{{total}}">
+          <input formControlName="totalMoney" type="text"  id="inputTotal" readonly value="{{total | currency : 'VND'}}">
         </div>
       </fieldset>
 

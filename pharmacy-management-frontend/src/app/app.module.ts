@@ -10,6 +10,8 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {WholesaleModule} from './management/wholesale/wholesale.module';
+import {ToastrModule} from 'ngx-toastr';
+import {timeout} from 'rxjs/operators';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,12 @@ import {WholesaleModule} from './management/wholesale/wholesale.module';
     ManagementModule,
     CommonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      progressBar: true,
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
