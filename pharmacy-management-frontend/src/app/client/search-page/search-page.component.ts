@@ -14,8 +14,18 @@ export class SearchPageComponent implements OnInit {
   isNameAscending = true;
   toggleBooleanPrice = true;
   toggleBooleanAmount = true;
+  config: any;
+  data = '';
 
   constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) {
+    this.config = {
+      itemsPerPage: 4,
+      currentPage: 1
+    };
+    const state = this.router.getCurrentNavigation().extras.state as {data: string};
+    if (state != null) {
+      this.data = state.data;
+    }
   }
 
   ngOnInit(): void {
@@ -25,6 +35,10 @@ export class SearchPageComponent implements OnInit {
         this.drugs = next;
       });
     });
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   sortDrugByName() {

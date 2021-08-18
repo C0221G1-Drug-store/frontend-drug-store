@@ -14,8 +14,19 @@ export class GroupComponent implements OnInit {
   isNameAscending = true;
   toggleBooleanPrice = true;
   toggleBooleanAmount = true;
+  config: any;
+  data = '';
 
-  constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) { }
+  constructor(private drugService: DrugClientService, private router: Router, private activatedRouter: ActivatedRoute) {
+    this.config = {
+      itemsPerPage: 8,
+      currentPage: 1
+    };
+    const state = this.router.getCurrentNavigation().extras.state as {data: string};
+    if (state != null) {
+      this.data = state.data;
+    }
+  }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
@@ -24,6 +35,10 @@ export class GroupComponent implements OnInit {
         this.drugs = next;
       });
     });
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   sortDrugByName() {
