@@ -114,18 +114,31 @@ legend.scheduler-border {
 tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
+.selected {
+  background-color: #62b8ff !important;
+  color: white;
+}
 small{
   color: red;
+  margin-left: 120px
 }
 tr{
   height: 44.56px;
 }
-::ng-deep .success {
-  background-color: #5cb85c;
-  color : #fff;
+.ngx-pagination {
+  padding-left: 0px !important;
 }
 
-::ng-deep  .warn {
-  background-color: #f99157;
-  color : #fff;
+.ngx-pagination .current,
+
+.btn-info {
+  background: red !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+.ngx-pagination .current:hover {
+  background: red !important;
+  border-radius: 20px !important;
+  border: transparent !important;
 }

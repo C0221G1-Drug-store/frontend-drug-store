@@ -1,20 +1,21 @@
 import {Component, OnDestroy, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import {Router} from "@angular/router";
-import {ExportBillService} from "../../../../service/export-bill.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ExportBillType} from "../../../../model/export-bill/export-bill-type";
-import {DrugImportBill} from "../../../../model/import-bill/drug-import-bill";
 import {ReplaySubject, Subject} from "rxjs";
 import {take, takeUntil} from "rxjs/operators";
-import {MatDialog} from "@angular/material/dialog";
-import {DialogConfirmComponent} from "../dialog-confirm/dialog-confirm.component";
 import html2canvas from 'html2canvas';
 import {jsPDF} from 'jspdf';
 import {MatSelect} from "@angular/material/select";
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/en-VI';
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
-import {error} from "@angular/compiler/src/util";
+import {Exportbilltype} from '../../../../model/export-bill/exportbilltype';
+import {Importbilldrug} from '../../../../model/export-bill/importbilldrug';
+import {DialogService} from '../../../../service/export-bill/dialog.service';
+import {validateDate} from '../validateDate';
+import {ExportbilltypeService} from '../../../../service/export-bill/exportbilltype.service';
+import {ImportbilldrugService} from '../../../../service/export-bill/importbilldrug.service';
+import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
 
 registerLocaleData(localeFr, 'vi');
 
@@ -25,34 +26,37 @@ registerLocaleData(localeFr, 'vi');
 })
 export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDestroy {
   exportBillForm: FormGroup;
-  exportBillTypes: ExportBillType[];
-  drugs: DrugImportBill[] = [];
-  drugDestroys: DrugImportBill[] = [];
+  exportBillTypes: Exportbilltype[];
+  drugs: Importbilldrug[] = [];
+  drugDestroys: Importbilldrug[] = [];
   idDrug?: number;
   nameDrug?: string;
   totalMoney: number = 0;
   p = 1;
   a = [1, 2, 3, 4, 5];
   today = new Date();
+  click = true;
   bankCtrl: FormControl = new FormControl();
   bankFilterCtrl: FormControl = new FormControl();
-  filteredBanks: ReplaySubject<DrugImportBill[]> = new ReplaySubject<DrugImportBill[]>(0);
+  filteredBanks: ReplaySubject<Importbilldrug[]> = new ReplaySubject<Importbilldrug[]>(0);
   @ViewChild('drugSelect') drugSelect: MatSelect;
   @ViewChild('pdfTable') pdfTable: ElementRef;
   _onDestroy = new Subject<void>();
 
-  constructor(private exportBillService: ExportBillService,
+  constructor(private exportbilltypeService: ExportbilltypeService,
+              private importbilldrugService: ImportbilldrugService,
+              private  exportbillService : ExportbillService,
               private route: Router,
-              private dialog: MatDialog,
+              private dialogService: DialogService,
               private snackBar: MatSnackBar) {
     this.createForm();
     this.getListDrug();
     this.getExportBillType();
     this.setValueForm();
-    this.exportBillService.getEmployee().subscribe(data => {
+    this.exportbillService.getEmployee().subscribe(data => {
       this.exportBillForm.get('employee').setValue(data.employeeName);
     });
-    this.exportBillService.getListDrugImportBill().subscribe(data => {
+    this.importbilldrugService.getAllImportBillDrug().subscribe(data => {
       this.drugs = data;
       this.getListDrug();
     });
@@ -92,7 +96,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
   }
 
   getExportBillType() {
-    this.exportBillService.getExportBillType().subscribe(data => {
+    this.exportbilltypeService.getAllExportBillType().subscribe(data => {
       this.exportBillTypes = data;
       this.exportBillForm.patchValue({exportBillType: data[1]});
     });
@@ -102,7 +106,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     this.exportBillForm = new FormGroup({
       exportBillType: new FormControl('', [Validators.required]),
       exportBillCode: new FormControl('', [Validators.required]),
-      exportBillDate: new FormControl('', [Validators.required]),
+      exportBillDate: new FormControl('', [Validators.required,validateDate]),
       exportBillReason: new FormControl('', [Validators.required]),
       exportBillAddress: new FormControl({value: '', disabled: true}),
       manufacturer: new FormControl({value: '', disabled: true}),
@@ -111,7 +115,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
   }
 
   setValueForm() {
-    this.exportBillService.createCodeExportBill().subscribe(data => {
+    this.exportbillService.createCodeExportBillDestroy().subscribe(data => {
       this.exportBillForm.patchValue({
         exportBillCode: data[0],
         exportBillDate: this.getDateNow()
@@ -127,6 +131,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     for (let i = 0; i < this.drugDestroys.length; i++) {
       drugs = drugs.filter(item => item.importBillDrugId != this.drugDestroys[i].importBillDrugId)
     }
+    console.log(drugs);
     this.filteredBanks.next(drugs);
   }
 
@@ -159,6 +164,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     if (this.drugDestroys.includes(data) == false) {
       this.drugDestroys.push(data);
       this.totalMoney += data.importAmount * data.importPrice;
+
       this.getListDrug();
     }
   }
@@ -171,7 +177,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     return yyyy + '-' + mm + '-' + dd;
   }
 
-  compareFn(c1: ExportBillType, c2: ExportBillType): boolean {
+  compareFn(c1: Exportbilltype, c2: Exportbilltype): boolean {
     return c1 && c2 ? c1.exportBillTypeId === c2.exportBillTypeId : c1 === c2;
   }
 
@@ -179,7 +185,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     this.filteredBanks
       .pipe(take(1), takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.drugSelect.compareWith = (a: DrugImportBill, b: DrugImportBill) => a && b && a.importBillDrugId === b.importBillDrugId;
+        this.drugSelect.compareWith = (a: Importbilldrug, b: Importbilldrug) => a && b && a.importBillDrugId === b.importBillDrugId;
       });
   }
 
@@ -203,12 +209,8 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     if (this.idDrug == null) {
       this.warn('Bạn chưa chon thuốc');
     } else {
-      let deleteDialog = this.dialog.open(DialogConfirmComponent, {
-        data: {
-          message: 'Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách không ???'
-        }
-      });
-      deleteDialog.afterClosed().subscribe(result => {
+
+      this.dialogService.openConfirm('Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách').afterClosed().subscribe(result => {
           if (result === true) {
             this.drugDestroys = this.drugDestroys.filter(item => {
                 if (item.importBillDrugId !== this.idDrug) {
@@ -237,13 +239,13 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
     } else {
       let exportBill = this.exportBillForm.value;
       exportBill.exportBillDate += " " + this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
-      this.exportBillService.createExportBill(exportBill).subscribe(data => {
+      this.exportbillService.createExportBill(exportBill).subscribe(data => {
         for (let i = 0; i < this.drugDestroys.length; i++) {
           let exportBillDetail = {
             exportBill: data,
             importBillDrug: this.drugDestroys[i]
           };
-          this.exportBillService.createExportBillDetail(exportBillDetail).subscribe(() => {
+          this.exportbillService.createExportBillDetail(exportBillDetail).subscribe(() => {
           })
         }
         this.success('Tạo hóa đơn thành công');
@@ -262,18 +264,13 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
       let contentDataURL = canvas.toDataURL('image/png');
       let position = 2;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-      pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight)
+      pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight);
       pdf.save('Hóa đơn xuất hủy ngày ' + this.getDateNow() + '.pdf'); // Generated PDF
     });
   }
 
   returnList() {
-    const returnDialog = this.dialog.open(DialogConfirmComponent, {
-      data: {
-        message: 'Bạn có muốn hủy hóa đơn đang lâp không?'
-      }
-    });
-    returnDialog.afterClosed().subscribe(result => {
+    this.dialogService.openConfirm('Bạn có muốn hủy hóa đơn đang lâp không?').afterClosed().subscribe(result => {
       if (result === true) {
         this.route.navigateByUrl('');
       }

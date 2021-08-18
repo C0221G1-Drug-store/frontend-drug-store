@@ -1,12 +1,8 @@
-import {LOCALE_ID, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WarehouseExportRoutingModule } from './warehouse-export-routing.module';
-import { ExportBillDestroyComponent } from './export-bill-destroy/export-bill-destroy.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgxPaginationModule} from "ngx-pagination";
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import {MatSelectModule} from "@angular/material/select";
 import {NgxMatSelectSearchModule} from "ngx-mat-select-search";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -14,21 +10,30 @@ import {CustomCurrencyPipe} from "./custom-currency.pipe";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxPrintModule} from 'ngx-print';
+import { DialogComponent } from './dialog/dialog.component';
+import {ExportBillDestroyComponent} from './export-bill-destroy/export-bill-destroy.component';
+
 
 
 @NgModule({
-  declarations: [ExportBillDestroyComponent, ExportBillRefundComponent, DialogConfirmComponent, CustomCurrencyPipe],
+  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe, ExportBillDestroyComponent],
   imports: [
     CommonModule,
     WarehouseExportRoutingModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
     MatSelectModule,
-    NgxMatSelectSearchModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NgxPrintModule,
+    MatIconModule,
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
     MatButtonModule,
+    NgxMatSelectSearchModule,
   ],
 })
 export class WarehouseExportModule { }

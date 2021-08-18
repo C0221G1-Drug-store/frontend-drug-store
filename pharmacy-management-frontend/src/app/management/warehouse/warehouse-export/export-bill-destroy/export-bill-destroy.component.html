@@ -56,6 +56,9 @@
                       <div *ngIf="exportBillForm.controls.exportBillDate.hasError('required')">
                         <small>Ngày lập không dươc để trống.</small>
                       </div>
+                      <div *ngIf="exportBillForm.controls.exportBillDate.hasError('dateValid')">
+                        <small>Ngày lập không được lớn hơn ngày hiện tại</small>
+                      </div>
                     </div>
                   </div>
                   <div class="">
@@ -100,7 +103,7 @@
                     <mat-select style="background-color: #62b8ff;min-width:200px;height: 40px;line-height: 40px;text-align: center;font-weight: bold"
                                 placeholder="Mời Chọn Thuốc"  [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
                       <mat-option>
-                        <ngx-mat-select-search [formControl]="bankFilterCtrl" placeholderLabel="Search..."></ngx-mat-select-search>
+                        <ngx-mat-select-search style="width: 60px !important;" [noEntriesFoundLabel]="'Không có thuốc bạn tìm'" [placeholderLabel] ="'Tìm thuốc...'" [formControl]="bankFilterCtrl"></ngx-mat-select-search>
                       </mat-option>
                       <mat-option *ngFor="let drug of filteredBanks | async" [value]="drug">
                         {{drug.drug.drugName+"-"+ drug.importBill.importSystemCode }}
