@@ -44,8 +44,8 @@
         </div>
       </fieldset>
     </div>
-    <div class="container pb-3">
-      <fieldset class="scheduler-border">
+    <div class="container pb-3" >
+      <fieldset class="scheduler-border" >
         <legend class="scheduler-border">Danh sánh thuốc</legend>
         <div class="outer scroll">
           <table class="table table-bordered table-striped">
@@ -60,17 +60,19 @@
             </thead>
             <tbody>
             <td>
-              <select [(ngModel)]="drug" [ngModelOptions]="{standalone: true}">
+              <select [(ngModel)]="selectDrug" [ngModelOptions]="{standalone: true}">
                 <option [selected]="true" [hidden]="true">Thêm thuốc</option>
                 <option *ngFor="let drug of drugs" [ngValue]="drug">{{drug.drugName}}</option>
               </select>
             </td>
             <td class="text-center"></td>
-            <td class="text-center"><input [(ngModel)]="quantity1" [ngModelOptions]="{standalone: true}" type="text" placeholder="số lượng" [value]="quantity1"
+            <td class="text-center"><input [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" type="number"
+                                           onkeypress="return event.charCode >= 48" placeholder="số lượng"
+                                           [value]="quantity"
                                            style="width: 100px"></td>
             <td class="text-center"></td>
             <td class="text-center">
-              <button type="button" (click)="addDrug(drug, quantity1 )">Thêm</button>
+              <button type="button" (click)="addDrug(selectDrug, quantity )">Thêm</button>
             </td>
             </tbody>
             <tbody *ngFor="let drugOfBill of drugOfBillList , let i = index">
@@ -78,15 +80,21 @@
               <td>{{drugOfBill.drug.drugName}}</td>
               <td>{{drugOfBill.drug.unit}}</td>
               <td>{{drugOfBill.quantity}}</td>
-              <td>{{drugOfBill.drug.wholesaleProfitRate.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}}</td>
-              <td>{{(drugOfBill.drug.wholesaleProfitRate * drugOfBill.quantity).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}}</td>
+              <td>{{drugOfBill.drug.wholesaleProfitRate.toLocaleString('it-IT', {
+                style: 'currency',
+                currency: 'VND'
+              })}}</td>
+              <td>{{(drugOfBill.drug.wholesaleProfitRate * drugOfBill.quantity).toLocaleString('it-IT', {
+                style: 'currency',
+                currency: 'VND'
+              })}}</td>
             </tr>
             </tbody>
           </table>
         </div>
         <div class="d-flex justify-content-end mt-3 ">
           <label for="inputTotal" class="mr-3">Tổng tiền </label>
-          <input formControlName="totalMoney" type="text"  id="inputTotal" readonly value="{{total | currency : 'VND'}}">
+          <input formControlName="totalMoney" type="text" id="inputTotal" readonly value="{{total | currency : 'VND'}}">
         </div>
       </fieldset>
 
@@ -100,7 +108,7 @@
                     data-target="#exampleModal1" type="button"><i
               class="fa fa-trash-o" aria-hidden="true"></i> Xóa thuốc
             </button>
-            <button class="btn-print mx-2 btn btn-warning" type="button">
+            <button class="btn-print mx-2 btn btn-warning" type="button" printSectionId="printDemo" ngxPrint>
               <i class="fa fa-print" aria-hidden="true"></i>
               In phiếu
             </button>
@@ -112,4 +120,55 @@
       </div>
     </div>
   </form>
+</div>
+<div id="printDemo" hidden>
+  <div id="page" class="page">
+    <div class="header">
+      <div class="company">C.Ty TNHH C0221G1</div>
+    </div>
+    <br/>
+    <div class="title">
+      HÓA ĐƠN BÁN HÀNG
+      <br/>
+      -------oOo-------
+    </div>
+    <div>
+      Số phiếu: <label>{{billSaleForm.get('billSaleCode').value}}{{billSaleForm.get('billSaleId').value}}</label><br>
+      Ngày lập: <label>{{billSaleForm.get('invoiceDate').value}}</label>
+    </div>
+    <br/>
+    <br/>
+    <table class="table">
+      <tr>
+        <th class="text-center">Tên thuốc</th>
+        <th class="text-center">Đơn vị tính</th>
+        <th class="text-center">Số lượng</th>
+        <th class="text-center">Đơn giá</th>
+        <th class="text-center">Thành tiền</th>
+      </tr>
+      <tbody *ngFor="let drugOfBill of drugOfBillList , let ix = index">
+      <tr id="{{ix}}">
+        <td>{{drugOfBill.drug.drugName}}</td>
+        <td>{{drugOfBill.drug.unit}}</td>
+        <td>{{drugOfBill.quantity}}</td>
+        <td>{{drugOfBill.drug.wholesaleProfitRate.toLocaleString('it-IT', {
+          style: 'currency',
+          currency: 'VND'
+        })}}</td>
+        <td>{{(drugOfBill.drug.wholesaleProfitRate * drugOfBill.quantity).toLocaleString('it-IT', {
+          style: 'currency',
+          currency: 'VND'
+        })}}</td>
+      </tr>
+      </tbody>
+      <tr>
+        <td colspan="4" class="tong">Tổng cộng</td>
+        <td class="cotSo">{{total | currency : 'VND'}}</td>
+      </tr>
+    </table>
+    <div class="footer-left"> CodeGym, ngày .... tháng .... năm ....<br/>
+      Khách hàng </div>
+    <div class="footer-right"> CodeGym, ngày .... tháng .... năm ....<br/>
+      Nhân viên </div>
+  </div>
 </div>

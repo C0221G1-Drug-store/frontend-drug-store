@@ -11,8 +11,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {WholesaleModule} from './management/wholesale/wholesale.module';
 import {ToastrModule} from 'ngx-toastr';
-import {timeout} from 'rxjs/operators';
-
+import { NgxPrintModule } from 'ngx-print';
 @NgModule({
   declarations: [
     AppComponent
@@ -27,6 +26,7 @@ import {timeout} from 'rxjs/operators';
     CommonModule,
     MatDialogModule,
     HttpClientModule,
+    NgxPrintModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       progressBar: true,

@@ -8,16 +8,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {DeleteComponent} from './delete/delete.component';
 import { DeleteCustomerRefundComponent } from './delete-customer-refund/delete-customer-refund.component';
+import {NgxPrintModule} from 'ngx-print';
 
 
 @NgModule({
   declarations: [WholesaleComponent, CustomerRefundComponent, DeleteComponent, DeleteCustomerRefundComponent],
-    imports: [
-        CommonModule,
-        WholesaleRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatDialogModule,
-    ]
+  imports: [
+    CommonModule,
+    WholesaleRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule,
+    NgxPrintModule,
+  ]
 })
 export class WholesaleModule {}

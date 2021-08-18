@@ -82,31 +82,36 @@ export class CustomerRefundComponent implements OnInit {
   }
 
   payment() {
-    this.billSale.totalMoney = this.total;
-    this.billSaleService.updateBillSale(this.billSale).subscribe(() => {
-      this.billSale.billSaleId = this.billSale.billSaleId +  Math.floor(Math.random() * 1000);
-      // @ts-ignore
-      this.todaysDataTime = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
-      this.billSale.invoiceDate = this.todaysDataTime;
-      this.billSale.billSaleCode = 'HDHT';
-      this.billSale.billSaleNote = 'Khách hoàn trả';
-      this.billSale.billSaleType = 'Hoàn trả';
-      this.billSale.totalMoney = this.totalRefund - this.total;
-      console.log(this.billSale);
-      this.billSaleService.createBillSale(this.billSale).subscribe(() => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.drugOfBillListDelete.length; i++) {
-          this.drugOfBill = this.drugOfBillListDelete[i][0];
-          this.drugOfBill.billSale = this.billSale;
-          this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-          });
-        }
-        this.searchBillSale();
-        this.toast.success('Hoàn trả thành công', 'Alert');
-      }, error => {
-        this.toast.error('Hoàn trả thất bại', 'Alert');
+    console.log(this.drugOfBillListDelete);
+    if (this.drugOfBillListDelete.length === 0) {
+      this.toast.error('Thất bại', 'Alert');
+    } else {
+      this.billSale.totalMoney = this.total;
+      this.billSaleService.updateBillSale(this.billSale).subscribe(() => {
+        this.billSale.billSaleId = this.billSale.billSaleId + Math.floor(Math.random() * 1000);
+        // @ts-ignore
+        this.todaysDataTime = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
+        this.billSale.invoiceDate = this.todaysDataTime;
+        this.billSale.billSaleCode = 'HDHT';
+        this.billSale.billSaleNote = 'Khách hoàn trả';
+        this.billSale.billSaleType = 'Hoàn trả';
+        this.billSale.totalMoney = this.totalRefund - this.total;
+        console.log(this.billSale);
+        this.billSaleService.createBillSale(this.billSale).subscribe(() => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.drugOfBillListDelete.length; i++) {
+            this.drugOfBill = this.drugOfBillListDelete[i][0];
+            this.drugOfBill.billSale = this.billSale;
+            this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
+            });
+          }
+          this.searchBillSale();
+          this.toast.success('Hoàn trả thành công', 'Alert');
+        }, error => {
+          this.toast.error('Hoàn trả thất bại', 'Alert');
+        });
       });
-    });
+    }
   }
 
   getID(drugOfBillId: number) {
