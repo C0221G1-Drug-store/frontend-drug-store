@@ -100,14 +100,25 @@ export class WarehouseImportDrugListComponent implements OnInit {
   }
 
   previousPage() {
-    this.indexPagination -= 1;
+    if (this.indexPagination > 0) {
+      this.indexPagination -= 1;
+    }
   }
 
   nextPage() {
-    this.indexPagination += 1;
+    if (this.indexPagination < this.totalPage) {
+      this.indexPagination += 1;
+    }
   }
 
   showList(i: number) {
     return i < 5 * (this.indexPagination) + 5 && i >= 5 * (this.indexPagination);
+  }
+  get totalPage() {
+    if (this.formArrayDrugs.getRawValue().length > 0) {
+      return Math.ceil(this.formArrayDrugs.getRawValue().length / 5 ) - 1;
+    } else {
+      return 0;
+    }
   }
 }

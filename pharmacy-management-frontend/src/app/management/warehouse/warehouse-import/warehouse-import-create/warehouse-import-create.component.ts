@@ -12,6 +12,7 @@ import {Employee} from '../../../../model/employee';
 import {PaymentService} from '../../../../service/payment.service';
 import {ImportBillService} from '../../../../service/import-bill.service';
 import {ImportBilDrugService} from '../../../../service/import-bil-drug.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-warehouse-import-create',
@@ -34,7 +35,9 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
               public dialog: MatDialog,
               private paymentService: PaymentService,
               private importBillService: ImportBillService,
-              private importBillDrugService: ImportBilDrugService) {
+              private importBillDrugService: ImportBilDrugService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -98,6 +101,17 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
               importBillDrug.importBill = importBill;
               this.importBillDrugService.create(importBillDrug).subscribe();
             });
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'hợp đồng đã được thêm mới',
+              showConfirmButton: false,
+              timer: 1500
+            }).finally(
+              () => {
+                this.router.navigate(['']);
+              }
+            );
           }
         });
       });
@@ -156,7 +170,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   get cashInReturn() {
     return Math.round(this.payment.get('totalMoney').value - this.payment.get('prepayment').value);
   }
-  get totalMoney(){
-    return this.payment.get('totalMoney').value  !== undefined ? Math.round(this.payment.get('totalMoney').value) : ''
+  get totalMoney() {
+    return this.payment.get('totalMoney').value  !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
   }
 }
