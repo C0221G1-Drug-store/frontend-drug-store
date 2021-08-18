@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DrugService {
-  private URl = 'http://localhost:8080/drug';
+export class DrugGroupClientService {
+  private URl = 'http://localhost:8080/drug-group';
 
   constructor(private http: HttpClient) { }
 

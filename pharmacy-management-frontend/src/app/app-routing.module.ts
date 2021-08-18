@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./management/management.module').then(module => module.ManagementModule)
   },
   {
-    path: 'client',
+    path: '',
     loadChildren: () => import('./client/client.module').then(module => module.ClientModule)
   },
   {

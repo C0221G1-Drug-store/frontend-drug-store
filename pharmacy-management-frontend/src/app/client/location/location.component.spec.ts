@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderFooterClientComponent } from './header-footer-client.component';
+import { LocationComponent } from './location.component';
 
-describe('HeaderFooterClientComponent', () => {
-  let component: HeaderFooterClientComponent;
-  let fixture: ComponentFixture<HeaderFooterClientComponent>;
+describe('LocationComponent', () => {
+  let component: LocationComponent;
+  let fixture: ComponentFixture<LocationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderFooterClientComponent ]
+      declarations: [ LocationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderFooterClientComponent);
+    fixture = TestBed.createComponent(LocationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

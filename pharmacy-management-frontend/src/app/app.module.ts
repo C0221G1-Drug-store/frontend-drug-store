@@ -9,6 +9,8 @@ import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import { ClientModule } from './client/client.module';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {HttpClientModule} from '@angular/common/http';
     ManagementModule,
     CommonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
