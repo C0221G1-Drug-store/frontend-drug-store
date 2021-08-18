@@ -100,6 +100,7 @@ export class SalesInvoiceComponent implements OnInit {
         console.log(result);
         if (result) {
           this.billSaleService.deleteBillSale(this.idBillsales, this.billSale1).subscribe(next => {
+            alert('xóa thành công');
             this.getAll();
           });
         }
@@ -123,6 +124,7 @@ export class SalesInvoiceComponent implements OnInit {
         console.log('The dialog was closed');
         console.log(result);
         if (result) {
+          alert('in thành công');
           this.getAll();
         }
       });
@@ -188,6 +190,9 @@ export class SalesInvoiceComponent implements OnInit {
 
         this.billSaleService.searchBillSale(this.search1, this.search2, this.search3, this.search4, this.search5, this.search6, this.page).subscribe(next => {
           this.billSales = next['content'];
+          if (this.billSales.length === 0) {
+            alert('Chọn sai thời gian cần tra cứu');
+          }
           this.pages = new Array<any>(next['totalPages']);
           console.log(this.pages);
           next['content'].forEach(d => {
