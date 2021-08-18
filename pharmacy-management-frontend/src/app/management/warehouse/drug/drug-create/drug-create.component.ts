@@ -7,6 +7,7 @@ import {finalize} from 'rxjs/operators';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {Router} from '@angular/router';
+import {DrugImageDetail} from '../../../../model/drugImageDetail';
 
 @Component({
   selector: 'app-drug-create',
@@ -23,7 +24,7 @@ export class DrugCreateComponent implements OnInit {
     activeElement: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     drugSideEffect: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     conversionRate: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^\d*$/)]),
-    drugImageDetails: new FormControl(''),
+    // drugImageDetails: new FormControl(''),
     wholesaleProfitRate: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern(/^\d*$/)]),
     retailProfitRate: new FormControl('', [Validators.min(0), Validators.pattern(/^\d*$/)]),
     unit: new FormControl('', [Validators.required]),
@@ -61,11 +62,21 @@ export class DrugCreateComponent implements OnInit {
       //   })
       // ).subscribe();
 
-      this.drugForm.patchValue({drugImageDetails: this.urlImage[0]});
-      this.drugService.save(this.drugForm.value).subscribe(() => {
+      // this.drugForm.patchValue({drugImageDetails: this.urlImage});
+      this.drugService.save(this.drugForm.value).subscribe(data => {
         alert('Tạo thành công');
-        // this.drugForm.reset();
-        this.backToList();
+        // console.log(data);
+        for (let i = 0; i<this.urlImage.length; i++){
+          let drugImage = {
+            drugImageDetailUrl: this.urlImage[i],
+            drug: data,
+          };
+          console.log(drugImage);
+          this.drugService.saveImage(drugImage).subscribe(() => {
+          })
+        }
+        // // this.drugForm.reset();
+        // this.backToList();
       });
 
 
