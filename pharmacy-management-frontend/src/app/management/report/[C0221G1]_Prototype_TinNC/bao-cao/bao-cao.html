@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo cáo</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="header" class="d-flex justify-content-between">
+    <div id="list">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul id="nav">
+        <li>
+            <a href="https://github.com/">Home</a>
+        </li>
+        <li>
+            <a href="">
+                Quản lý bán hàng
+                <i class="icon1 fa fa-caret-down ml-2"></i>
+            </a>
+            <ul class="subnav">
+                <li><a href="">Bán lẻ</a></li>
+                <li><a href="">Bán hàng</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">
+                Quản lý kho bãi
+                <i class="icon1 fa fa-caret-down ml-2"></i>
+            </a>
+            <ul class="subnav">
+                <li><a href="">Quản lý nhập kho</a></li>
+                <li><a href="">Quản lý xuất kho</a></li>
+                <li><a href="">Danh sách thuốc</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">
+                Quản lý thông tin
+                <i class="icon1 fa fa-caret-down ml-2"></i>
+            </a>
+            <ul class="subnav">
+                <li><a href="">Khách hàng</a></li>
+                <li><a href="">Nhà cung cấp</a></li>
+                <li><a href="">Nhân viên</a></li>
+                <li><a href="">Toa thuốc</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">
+                Tra cứu
+            </a>
+
+        </li>
+        <li>
+            <a href="" id="bao-cao">
+                Báo cáo
+                <i class="icon1 fa fa-caret-down ml-2"></i>
+            </a>
+            <ul class="subnav">
+                <li><a href="">Báo cáo</a></li>
+                <li><a href="">Biểu đồ Thống kê</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="user d-flex">
+        <p id="user-name">Admin</p>
+        <img id="user-image" src="./image/user-image.jpg" alt="">
+    </div>
+</div>
+<div class="content mb-3">
+    <div class="row">
+        <div id="sidebar" class="col-2">
+            <div class="menu-sub d-flex justify-content-center mt-2 mb-2">
+                <h5>Chọn nhanh</h5>
+            </div>
+            <div>
+                <ul class="subnav-item">
+                    <li class="border-top">
+                        <i class="icon-sidebar fa fa-file-text-o text-light"></i>
+                        <a href="">Báo cáo</a>
+                    </li>
+                    <li>
+                        <i class="icon-sidebar fa fa-database"></i>
+                        <a href="#">Nhập kho</a>
+                    </li>
+                    <li>
+                        <i class="icon-sidebar fa fa-reply text-warning"></i>
+                        <a href="#">Xuất hoàn trả</a>
+                    </li>
+                    <li>
+                        <i class="icon-sidebar fa fa-times text-violet"></i>
+                        <a href="#">Xuất hủy</a>
+                    </li>
+                    <li class="mt-3 border-top">
+                        <i class="icon-sidebar fa fa-search text-light"></i>
+                        <a href="">Tra cứu nhanh</a>
+                    </li>
+                    <li>
+                        <i class="icon-sidebar fa fa-archive text-light"></i>
+                        <a href="#">Hệ thống kho bãi</a>
+                    </li>
+                    <li class="mt-3 border-top">
+                        <i class="icon-sidebar fa fa-clipboard"></i>
+                        <a href="#">Nhật ký bán hàng</a>
+                    </li>
+                    <li class="mt-3 border-top">
+                        <i class="icon-sidebar fa fa-sign-out text-warning "></i>
+                        <a href="#">Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 right-content ">
+            <div class="row white-block"></div>
+
+            <!--        nơi đổ dữ liệu router-outlet              -->
+
+            <div class="container justify-content-between">
+                <div>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Thời gian</legend>
+                        <div class="row ">
+                            <div class="mx-3 col">Từ ngày:
+                            <input type="date" class=" form-control "></div>
+                            <div class="mx-3 col">Đến ngày:
+
+                            <input type="date" class=" form-control "></div>
+                            <div class="mx-3 col">Từ giờ:
+
+                            <input type="time" class=" form-control"></div>
+                            <div class="mx-3 col">Đến giờ:
+
+                            <input type="time" class=" form-control"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset class="scheduler-border h-100">
+                        <legend class="scheduler-border">Hệ thống báo cáo</legend>
+                        <div class="row">
+                            <div class="col-4">
+                                <legend class="scheduler-border"><h6>HÀNG HÓA, KHÁCH HÀNG</h6></legend>
+                            </div>
+                            <div class="col-4">
+                                <legend class="scheduler-border"><h6>THU CHI, CÔNG NỢ</h6></legend>
+                            </div>
+                            <div class="col-4">
+                                <legend class="scheduler-border"><h6>DANH SÁCH, PHÂN TÍCH</h6></legend>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết nhập kho
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo doanh thu
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo thuốc cần nhập thêm
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết xuất hủy
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo lợi nhuận
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo thuốc sắp hết hạn
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết xuất hoàn trả
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo công nợ
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> 100 thuốc bán chạy nhất
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết bán lẻ
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="check"> Nhật ký bán hàng
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết bán sỉ
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo chi tiết bán theo đơn
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo thuốc đang cung cấp
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo danh sách nhà cung cấp
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="radio" name="check"> Báo cáo danh sách khách hàng
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="text-right d-flex justify-content-between mb-3">
+                        <button class="ml-3 btn btn-search button" type="button"><i class="fa fa-bar-chart"
+                                                                                    aria-hidden="true"></i>Biểu
+                            đồ thống kê
+                        </button>
+                        <div>
+                            <button class="mr-3 btn btn-create button" type="button"><i class="fa fa-plus"></i>Xuất
+                                excel
+                            </button>
+                            <button class="mr-3 btn btn-return button " type="button"><i class="fa fa-reply"></i>Trở về
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right mr-4" style="color: red">Nhập sai thời gian báo cáo &nbsp;<br>Chưa chọn mục cần báo
+                cáo
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<div id="footer">
+    <div class="social-list">
+        <a class="mr-2" href=""><i class="icon-footer fa fa-facebook"></i></a>
+        <a class="ml-2" href=""><i class="icon-footer fa fa-google"></i></a>
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
