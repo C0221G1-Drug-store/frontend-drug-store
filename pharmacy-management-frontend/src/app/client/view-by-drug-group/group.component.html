@@ -29,7 +29,7 @@
 </div>
 <div class="container">
   <div class="row py-4">
-    <ng-container *ngFor="let drug of drugs">
+    <ng-container *ngFor="let drug of drugs | paginate : config ">
       <div class="col-lg-3 col-md-6 col-6 col-sm-6 mb-4 mb-lg-5">
         <div class="hovereffect">
           <img class="img-responsive" width="255" height="250" src="{{drug.drugImageDetails}}"
@@ -56,5 +56,8 @@
         </div>
       </div>
     </ng-container>
+  </div>
+  <div class="container">
+    <pagination-controls previousLabel="Trang Trước" nextLabel="Trang Kế" class="text-right" (pageChange)="pageChanged($event)" ></pagination-controls>
   </div>
 </div>

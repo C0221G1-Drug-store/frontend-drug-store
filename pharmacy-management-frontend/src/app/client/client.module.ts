@@ -14,6 +14,7 @@ import {GroupComponent} from './view-by-drug-group/group.component';
 import { LocationComponent } from './location/location.component';
 import { HealthTipsComponent } from './health-tips/health-tips.component';
 import { HotDealsComponent } from './hot-deals/hot-deals.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -31,7 +32,8 @@ import { HotDealsComponent } from './hot-deals/hot-deals.component';
     CommonModule,
     ClientRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class ClientModule { }
