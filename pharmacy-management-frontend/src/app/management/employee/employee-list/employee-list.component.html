@@ -20,13 +20,13 @@
         </div>
         <div class="mr-5 col-3">
           <label>Sắp xếp </label>
-          <select [(ngModel)]="sort" class="form-control-sm" (change)="sortByRequest()" >
-            <option value="employeeName">Tên  Nhân Viên</option>
-            <option value="employeeCode">mã nhân viên</option>
+          <select [(ngModel)]="sortBy" class="form-control-sm" (change)="sortByRequest()" >
+            <option value="employee_name">Tên  Nhân Viên</option>
+            <option value="employee_code">mã nhân viên</option>
             <option value="position">chức vụ</option>
-            <option value="employeeStartDate">ngày vào làm</option>
-            <option value="employeeAddress">địa chỉ</option>
-            <option value="employeePhone">Điện thoại</option>
+            <option value="employee_start_date">ngày vào làm</option>
+            <option value="employee_address">địa chỉ</option>
+            <option value="employee_phone">Điện thoại</option>
           </select>
         </div>
       </div>

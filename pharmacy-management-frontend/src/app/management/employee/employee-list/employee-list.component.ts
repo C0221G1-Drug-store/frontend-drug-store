@@ -36,6 +36,10 @@ export class EmployeeListComponent implements OnInit {
   getEmployees() {
     // tslint:disable-next-line:max-line-length
     this.employeeService.findEmployeeByRequest(this.employeeName , this.employeeAddress , this.employeeCode, this.employeePhone, this.position, this.page , this.sortBy).subscribe(employee => {
+      if (employee === null){
+        this.employees = [];
+        alert("Không tìm thấy kết quả");
+      }
       this.employees = employee['content'];
       this.pages = new Array<any>(employee['totalPages']);
       console.log(this.pages);
@@ -92,12 +96,6 @@ export class EmployeeListComponent implements OnInit {
 
 
     }
-    // <option value="employeeName">Tên  Nhân Viên</option>
-    // <option value="">mã nhân viên</option>
-    // <option value="position">chức vụ</option>
-    // <option value="employeeStartDate">ngày vào làm</option>
-    // <option value="employeeAddress">địa chỉ</option>
-    // <option value="employeePhone">Điện thoại</option>
   }
 
   getEmpl(e: Employee) {
@@ -123,15 +121,10 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+
   sortByRequest() {
-    switch (this.sort) {
-      case 'employeeName':
-        this.sortBy = 'employee_name';
-        this.search();
-        break;
-
-    }
-
+    this.getEmployees();
   }
+
 
 }
