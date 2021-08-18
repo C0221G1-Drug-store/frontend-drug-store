@@ -28,7 +28,7 @@
               <div class="w-100 d-inline-flex">
                 <label class="col-3 pl-0">Tên nhà cung cấp</label>
                 <input class="form-control-sm border-dark w-100" type="text"
-                  readonly   [value]="manufacturerName">
+                       readonly [value]="manufacturerName">
               </div>
 
             </div>
@@ -36,7 +36,7 @@
               <div class="w-100 d-inline-flex">
                 <label class="col-3 pl-0">Địa chỉ</label>
                 <input class="form-control-sm border-dark w-100" type="text"
-                  readonly     [value]="manufacturerAddress">
+                       readonly [value]="manufacturerAddress">
               </div>
 
             </div>
@@ -45,7 +45,7 @@
                 <label class="col-3 pl-0">Ghi chú</label>
                 <textarea class="form-control border-dark border-2"
                           id="exampleFormControlTextarea1" rows="3"
-                   readonly       [value]="manufacturerNote"></textarea>
+                          readonly [value]="manufacturerNote"></textarea>
               </div>
               <small
                 *ngIf="form.get('manufacturer')?.errors"

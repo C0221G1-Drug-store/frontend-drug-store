@@ -92,31 +92,37 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
 
   submit() {
     console.log(this.form);
-    if (this.payment.valid) {
+    if (this.checkSubmit) {
       this.paymentService.create(this.payment.value).subscribe(value => {
-        this.payment.setValue(value);
-        this.importBillService.create(this.form.value).subscribe(importBill => {
-          if (this.childImportDrugList.formArrayDrugs.valid) {
-            this.childImportDrugList.formArrayDrugs.getRawValue().forEach(importBillDrug => {
-              importBillDrug.importBill = importBill;
-              this.importBillDrugService.create(importBillDrug).subscribe();
-            });
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'hợp đồng đã được thêm mới',
-              showConfirmButton: false,
-              timer: 1500
-            }).finally(
-              () => {
-                this.router.navigate(['']);
-              }
-            );
-          }
-        });
+        this.addNewImportBill(value);
+      }, error => {
+        this.errorAlert('Có lỗi từ hệ thống');
       });
     }
   }
+ get checkSubmit() {
+   if (this.payment.invalid) {
+     this.errorAlert('Thông tin thanh toán bị sai');
+     return false;
+   }
+   if (this.childImportDrugList.formArrayDrugs.invalid) {
+     this.errorAlert('Danh sách thuốc bị sai');
+     return  false;
+   }
+   if (this.manufacturerForm.invalid) {
+     this.errorAlert('Thông tin nhà cung cấp sai');
+     return false;
+   }
+   return  true;
+  }
+  errorAlert(reason) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Tạo hóa đơn không thành công',
+      text: reason,
+    });
+  }
+
   get payment() {
     return this.form.controls.payment;
   }
@@ -158,19 +164,54 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       this.manufacturerForm.setValue(value);
     });
   }
+
   get manufacturerName() {
     return this.manufacturerForm.value.manufacturerName !== undefined ? this.manufacturerForm.value.manufacturerName : '';
   }
+
   get manufacturerAddress() {
-   return this. manufacturerForm.value.manufacturerAddress !== undefined ? this. manufacturerForm.value.manufacturerAddress : '';
+    return this.manufacturerForm.value.manufacturerAddress !== undefined ? this.manufacturerForm.value.manufacturerAddress : '';
   }
+
   get manufacturerNote() {
-   return this.manufacturerForm.value.manufacturerNote !== undefined ? this.manufacturerForm.value.manufacturerNote : '';
+    return this.manufacturerForm.value.manufacturerNote !== undefined ? this.manufacturerForm.value.manufacturerNote : '';
   }
+
   get cashInReturn() {
     return Math.round(this.payment.get('totalMoney').value - this.payment.get('prepayment').value);
   }
+
   get totalMoney() {
-    return this.payment.get('totalMoney').value  !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
+    return this.payment.get('totalMoney').value !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
+  }
+
+  addNewImportBillDrug(importBill) {
+    this.childImportDrugList.formArrayDrugs.getRawValue().forEach(importBillDrug => {
+      importBillDrug.importBill = importBill;
+      this.importBillDrugService.create(importBillDrug).subscribe(() => {
+      }, error => {
+        this.errorAlert('Có lỗi từ hệ thống');
+      });
+    });
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'hợp đồng đã được thêm mới',
+      showConfirmButton: false,
+      timer: 1500
+    }).finally(
+      () => {
+        this.router.navigate(['']);
+      }
+    );
+  }
+
+  addNewImportBill(value) {
+    this.payment.setValue(value);
+    this.importBillService.create(this.form.value).subscribe(importBill => {
+        this.addNewImportBillDrug(importBill);
+    }, error => {
+      this.errorAlert('Có lỗi từ hệ thống');
+    });
   }
 }
