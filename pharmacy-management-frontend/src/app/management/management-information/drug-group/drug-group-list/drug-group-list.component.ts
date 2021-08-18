@@ -4,6 +4,7 @@ import {DrugGroup} from "../../../../model/drug-group";
 import {DrugGroupService} from "../../../../service/drug-group.service";
 import {DrugGroupDeleteComponent} from "../drug-group-delete/drug-group-delete.component";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -30,9 +31,7 @@ export class DrugGroupListComponent implements OnInit {
 
   constructor(private drugGroupService: DrugGroupService,
               private dialog: MatDialog,
-              private router:Router) {
-
-
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -83,50 +82,68 @@ export class DrugGroupListComponent implements OnInit {
   update() {
     if (this.code == "") {
       this.smgCode = "Mã nhóm thuốc không được để trống."
+    }else {
+      this.smgCode ="";
     }
     if (this.name == "") {
       this.smgName = "Tên nhóm thuốc không được để trống."
     } else {
-      this.drugGroup.drugGroupCode = this.code;
-      this.drugGroup.drugGroupName = this.name;
-      this.drugGroupService.update(this.drugGroup.drugGroupId, this.drugGroup).subscribe(() => {
-        console.log(this.id)
-        alert("cập nhật thành công")
-        this.name = "";
-        this.code = "";
-      }, e => {
-        alert("cập nhật thất bại")
-        console.log(e);
-      });
+      this.smgName ="";
     }
+    this.drugGroup.drugGroupCode = this.code;
+    this.drugGroup.drugGroupName = this.name;
+    this.drugGroupService.update(this.drugGroup.drugGroupId, this.drugGroup).subscribe(() => {
+      console.log(this.id)
+      this.showEdit()
+      this.name = "";
+      this.code = "";
+    }, e => {
+      this.showEditErr()
+      console.log(e);
+    });
 
   }
 
   create() {
     const drugGroup = {
-      drugGroupId: 1,
-      drugGroupCode: "NT00",
-      drugGroupName: "thuoc gan"
+      drugGroupId: null,
+      drugGroupCode: "",
+      drugGroupName: ""
     }
-    drugGroup.drugGroupId = null;
     if (this.code == "") {
       this.smgCode = "Mã nhóm thuốc không được để trống."
+    }else {
+      this.smgCode ="";
     }
     if (this.name == "") {
       this.smgName = "Tên nhóm thuốc không được để trống."
     } else {
-      drugGroup.drugGroupName = this.name;
-      drugGroup.drugGroupCode = this.code;
-      this.drugGroupService.save(drugGroup).subscribe(() => {
-        alert('Tạo thành công');
-        this.router.navigate(['/management/management-information'])
-      }, e => {
-        alert("tạo thất bại")
-        console.log(e);
-      });
+      this.smgName =" ";
     }
+    drugGroup.drugGroupName = this.name;
+    drugGroup.drugGroupCode = this.code;
+    this.drugGroupService.save(drugGroup).subscribe(() => {
+      this.showCreate()
+    }, e => {
+      this.showCreateErr()
+      console.log(e);
+    });
   }
-
+  showCreate() {
+    this.toastr.success('tạo mới thành công', 'Toastr fun!');
+  }
+  showCreateErr() {
+    this.toastr.success('tạo mới thất bại', 'Toastr fun!');
+  }
+  showEdit() {
+    this.toastr.success('cập nhật thành công', 'Toastr fun!');
+  }
+  showEditErr() {
+    this.toastr.error('cập nhật thất bại', 'Toastr fun!');
+  }
+  showDelete(){
+    this.toastr.success('xóa thành công', 'Toastr fun!');
+  }
   onDeleteHandler(): void {
     const dialogRef = this.dialog.open(DrugGroupDeleteComponent, {
       width: '250px',
@@ -134,14 +151,14 @@ export class DrugGroupListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result) {
         this.drugGroupService.delete(this.drugGroup.drugGroupId).subscribe(next => {
+          this.showDelete()
           this.getAll();
         });
       }
     });
   }
-  
+
 
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ManagementInformationRoutingModule } from './management-information-routing.module';
 import {DrugGroupModule} from './drug-group/drug-group.module';
-import { DrugGroupDeleteComponent } from './drug-group/drug-group-delete/drug-group-delete.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 
 
@@ -12,7 +12,8 @@ import { DrugGroupDeleteComponent } from './drug-group/drug-group-delete/drug-gr
   imports: [
     CommonModule,
     ManagementInformationRoutingModule,
-    DrugGroupModule
+    DrugGroupModule,
+
   ]
 })
 export class ManagementInformationModule { }
