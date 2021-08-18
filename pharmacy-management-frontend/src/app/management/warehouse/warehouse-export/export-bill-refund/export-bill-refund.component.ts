@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ExportbilltypeService} from '../../../../service/export-bill/exportbilltype.service';
 import {ImportbilldrugService} from '../../../../service/export-bill/importbilldrug.service';
 import {ManufacturerService} from '../../../../service/export-bill/manufacturer.service';
 import {Exportbilltype} from '../../../../model/export-bill/exportbilltype';
 import {Importbilldrug} from '../../../../model/export-bill/importbilldrug';
 import {Manufacturer} from '../../../../model/export-bill/manufacturer';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {DialogService} from '../../../../service/export-bill/dialog.service';
@@ -16,6 +16,7 @@ import {take, takeUntil} from 'rxjs/operators';
 import html2canvas from 'html2canvas';
 import {jsPDF} from 'jspdf';
 import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
+import {validateDate} from '../validateDate';
 
 
 @Component({
@@ -29,16 +30,20 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
   importBillDrug: Importbilldrug[] = [];
   manufacturer: Manufacturer[] = [];
   addressManufacture = '';
-  drugDestroy: Importbilldrug[] = [];
+  drugRefund: Importbilldrug[] = [];
   total = 0;
   p = 1;
   a = [1, 2, 3, 4, 5];
-  exportBillCode: string;
+  idDrug: number;
+  nameDrug: string;
+  click = true;
   bankCtrl: FormControl = new FormControl();
   bankFilterCtrl: FormControl = new FormControl();
   filteredBanks: ReplaySubject<Importbilldrug[]> = new ReplaySubject<Importbilldrug[]>(0);
   @ViewChild('drugSelect') drugSelect: MatSelect;
+  @ViewChild('pdfTable') pdfTable: ElementRef;
   _onDestroy = new Subject<void>();
+  manuObj = null;
 
   constructor(private exportbilltypeService: ExportbilltypeService,
               private importbilldrugService: ImportbilldrugService,
@@ -49,14 +54,15 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
               private exportbillService : ExportbillService,
               private router: Router) {
     this.createForm();
-    this.createExportBillRefundCode();
+    this.exportbillService.getEmployee().subscribe(data => {
+      this.exportBillForm.get('employee').setValue(data.employeeName);
+    });
   }
 
   ngOnInit(): void {
     this.getAllExportBillType();
     this.getAllManufacturer();
-    this.getListDrug();
-    this.setValueDateForm();
+    this.setValueForm();
     this.getExportBillType();
     this.bankFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
@@ -101,30 +107,27 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
 
   createForm() {
     this.exportBillForm = new FormGroup({
-      exportBillType: new FormControl(),
-      exportBillCode: new FormControl(),
-      exportBillDate: new FormControl(),
-      employee: new FormControl('Nguyễn Văn A'),
-      exportBillReason: new FormControl(),
-      exportBillAddress: new FormControl(),
-      manufacturer: new FormControl()
+      exportBillType: new FormControl('',[Validators.required]),
+      exportBillCode: new FormControl('',[Validators.required]),
+      exportBillDate: new FormControl('',[Validators.required,validateDate]),
+      employee: new FormControl({value: '', disabled: true}),
+      exportBillReason: new FormControl('',[Validators.required]),
+      exportBillAddress: new FormControl('',[Validators.required]),
+      manufacturer: new FormControl(this.manuObj,[Validators.required])
     });
   }
 
-  setValueDateForm() {
-    this.exportBillForm.patchValue({
-      exportBillDate: this.getDateNow(),
-    });
-  }
-
-  createExportBillRefundCode(){
-    this.exportbillService.createCodeExportBillRefund().subscribe(res => {
-      this.exportBillCode = res;
+  setValueForm() {
+    this.exportbillService.createCodeExportBillRefund().subscribe(data => {
       this.exportBillForm.patchValue({
-        exportBillCode: this.exportBillCode
-      })
-    })
+        exportBillCode: data[0],
+        exportBillDate: this.getDateNow(),
+      });
+    }, error => {
+      console.log(error)
+    });
   }
+
 
   getAllExportBillType() {
     this.exportbilltypeService.getAllExportBillType().subscribe(res => {
@@ -138,35 +141,20 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
     });
   }
 
-  selectedObj: Importbilldrug;
 
-  onselect(drugDestroy: Importbilldrug) {
-    this.selectedObj = drugDestroy;
-  }
 
   getListDrug() {
-    this.importBillDrug = [];
-    this.importbilldrugService.getAllImportBillDrug().subscribe(res => {
-      for (let i = 0; i < res.length; i++) {
-        let check = true;
-        for (let j = 0; j < this.drugDestroy.length; j++) {
-          if (this.drugDestroy[j].importBillDrugId === res[i].importBillDrugId) {
-            check = false;
-            break;
-          }
-        }
-        if (check) {
-          this.importBillDrug.push(res[i]);
-        }
-      }
-    });
-    this.filteredBanks.next(this.importBillDrug);
+    let listDrug = this.importBillDrug;
+    for(let i = 0 ; i < this.drugRefund.length ; i++){
+      listDrug = listDrug.filter(item => item.importBillDrugId != this.drugRefund[i].importBillDrugId)
+    }
+    this.filteredBanks.next(listDrug);
   }
 
   selectDrug() {
     let res = this.bankCtrl.value;
-    if (this.drugDestroy.includes(res) == false) {
-      this.drugDestroy.push(res);
+    if (this.drugRefund.includes(res) == false) {
+      this.drugRefund.push(res);
       this.total += (res.importAmount * res.importPrice) - (res.discountRate * res.importPrice / 100) - (res.importAmount * res.importPrice * res.vat / 100);
       this.getListDrug();
     }
@@ -179,25 +167,32 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
     return yyyy + '-' + mm + '-' + dd;
   }
 
-  deleteDrug() {
-    if (this.idDrug == null) {
-      this.warn('::Bạn chưa chon thuốc');
-    } else {
-      this.dialogService.openConfirm('Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách').afterClosed().subscribe(res => {
-        if (res === true) {
-          console.log(res);
-          this.drugDestroy = this.drugDestroy.filter(item => item.importBillDrugId !== this.idDrug);
-          this.success('::Bạn đã xóa thuốc thành công');
-        }
-        this.total = 0;
-        for (let i = 0; i < this.drugDestroy.length; i++) {
-          this.total += (this.drugDestroy[i].importAmount * this.drugDestroy[i].importPrice) - (this.drugDestroy[i].discountRate * this.drugDestroy[i].importPrice / 100) - (this.drugDestroy[i].importAmount * this.drugDestroy[i].importPrice * this.drugDestroy[i].vat / 100);
-        }
-      }, error => {
-        this.warn('::Bạn chưa chon thuốc');
-      });
-    }
+  selectedObj: Importbilldrug;
+
+  onselect(drugRefund: Importbilldrug) {
+    this.selectedObj = drugRefund;
   }
+
+  deleteDrug() {
+      if (this.idDrug == null) {
+        this.warn('::Bạn chưa chon thuốc');
+      } else {
+        this.dialogService.openConfirm('Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách').afterClosed().subscribe(res => {
+
+          if (res === true) {
+            console.log(res);
+            this.drugRefund = this.drugRefund.filter(item => item.importBillDrugId !== this.idDrug);
+            this.success('::Bạn đã xóa thuốc thành công');
+            this.idDrug = null;
+          }
+          this.total = 0;
+          for (let i = 0; i < this.drugRefund.length; i++) {
+            this.total += (this.drugRefund[i].importAmount * this.drugRefund[i].importPrice) - (this.drugRefund[i].discountRate * this.drugRefund[i].importPrice / 100) - (this.drugRefund[i].importAmount * this.drugRefund[i].importPrice * this.drugRefund[i].vat / 100);
+          }
+        }, error => {
+          this.warn('::Bạn chưa chon thuốc');
+        });
+      }}
 
   setInitialValue() {
     this.filteredBanks
@@ -255,35 +250,43 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
       exportBillAddress: this.addressManufacture
     });
     this.getDrugBillByManufacturerId(this.idManufacture);
-
   }
 
-  idDrug: number;
-  nameDrug: string;
+
 
   deleteById(importBillDrugId) {
-    this.idDrug = importBillDrugId;
-    for (let i = 0; i < this.drugDestroy.length; i++) {
-      if (this.idDrug === this.drugDestroy[i].importBillDrugId) {
-        this.nameDrug = this.drugDestroy[i].drug.drugName;
+    this.click =! this.click;
+    if(this.click == false){
+      this.idDrug = importBillDrugId;
+      for (let i = 0; i < this.drugRefund.length; i++) {
+        if (this.idDrug === this.drugRefund[i].importBillDrugId) {
+          this.nameDrug = this.drugRefund[i].drug.drugName;
+        }
       }
+    }else {
+      this.idDrug = null;
     }
+
     console.log(this.nameDrug);
   }
 
 
   htmlToPDF() {
-    let data = document.getElementById('content');
-    html2canvas(data).then(canvas => {
-      let imgWidth = 208;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
-      let contentDataURL = canvas.toDataURL('image/png');
-      let pdf = new jsPDF('p', 'mm', 'a4');
-      let position = 2;
-      pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight);
-      pdf.save('Hóa đơn xuất trả ngày ' + this.getDateNow() + '.pdf');
-      this.success(':: Bạn đã in hóa đơn thành công ');
-    });
+    this.dialogService.openConfirm("Bạn có muốn in hoán đơn hay không").afterClosed().subscribe(res=> {
+      if(res == true){
+        let data = document.getElementById('pdfTable');
+        html2canvas(data).then(canvas => {
+          let imgWidth = 208;
+          let imgHeight = canvas.height * imgWidth / canvas.width;
+          let contentDataURL = canvas.toDataURL('image/png');
+          let pdf = new jsPDF('p', 'mm', 'a4');
+          let position = 2;
+          pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight);
+          pdf.save('Hóa đơn xuất trả ngày ' + this.getDateNow() + '.pdf');
+          this.success(':: Bạn đã in hóa đơn thành công ');
+        });
+      }
+    })
   }
 
 
@@ -310,5 +313,29 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
 
   backToManagementScreen() {
     this.router.navigateByUrl('/');
+  }
+  today = new Date();
+
+  createExportBill() {
+    if (!this.exportBillForm.valid || this.drugRefund.length == 0) {
+      this.warn('Bạn phải nhập đủ thông tin')
+    } else {
+      let exportBill = this.exportBillForm.value;
+      console.log(exportBill);
+      exportBill.exportBillDate += " " + this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+      this.exportbillService.createExportBill(exportBill).subscribe(data => {
+        for (let i = 0; i < this.drugRefund.length; i++) {
+          let exportBillDetail = {
+            exportBill: data,
+            importBillDrug: this.drugRefund[i]
+          };
+          this.exportbillService.createExportBillDetail(exportBillDetail).subscribe(() => {
+          })
+        }
+        this.success('Tạo hóa đơn thành công');
+      }, error => {
+        this.warn('Tạo hóa đơn thất bại')
+      });
+    }
   }
 }

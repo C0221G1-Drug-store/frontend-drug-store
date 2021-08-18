@@ -23,4 +23,8 @@ export class ImportbilldrugService {
   getByManufacturerId(id: number): Observable<any> {
     return this.http.get(`${this.API_IMPORTBILLDRUG}/manufacturer/${id}`)
   }
+
+  getEmployee():Observable<any>{
+    return this.http.get<String>('http://localhost:8080/api/employees');
+  }
 }

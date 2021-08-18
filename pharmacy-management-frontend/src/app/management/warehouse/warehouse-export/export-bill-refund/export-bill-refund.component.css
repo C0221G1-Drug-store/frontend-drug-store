@@ -165,9 +165,26 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 .selected {
-  background-color: mediumaquamarine !important;
+  background-color: #62b8ff !important;
   color: white;
 }
 tr{
   height: 44.56px;
+}
+
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: red !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+.ngx-pagination .current:hover {
+  background: red !important;
+  border-radius: 20px !important;
+  border: transparent !important;
 }
