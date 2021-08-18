@@ -27,18 +27,16 @@
             <div class="mb-3">
               <div class="w-100 d-inline-flex">
                 <label class="col-3 pl-0">Tên nhà cung cấp</label>
-                <input class="form-control-sm border-dark w-100" type="text" #manufacturerName
-                  readonly     [value]="manufacturerForm.value.manufacturerName !== undefined ? manufacturerForm.value.manufacturerName : ''">
+                <input class="form-control-sm border-dark w-100" type="text"
+                  readonly   [value]="manufacturerName">
               </div>
-              <small
-                *ngIf="form.get('manufacturer')?.errors && manufacturerName.ontouchend"
-                class="d-block position-absolute text-danger pt-1 px-0">Phải chọn nhà cũng cấp từ select</small>
+
             </div>
             <div class="mb-3">
               <div class="w-100 d-inline-flex">
                 <label class="col-3 pl-0">Địa chỉ</label>
                 <input class="form-control-sm border-dark w-100" type="text"
-                  readonly     [value]="manufacturerForm.value.manufacturerAddress !== undefined ? manufacturerForm.value.manufacturerAddress : ''">
+                  readonly     [value]="manufacturerAddress">
               </div>
 
             </div>
@@ -47,9 +45,11 @@
                 <label class="col-3 pl-0">Ghi chú</label>
                 <textarea class="form-control border-dark border-2"
                           id="exampleFormControlTextarea1" rows="3"
-                   readonly       [value]="manufacturerForm.value.manufacturerNote !== undefined ? manufacturerForm.value.manufacturerNote : ''"></textarea>
+                   readonly       [value]="manufacturerNote"></textarea>
               </div>
-
+              <small
+                *ngIf="form.get('manufacturer')?.errors"
+                class="d-block position-absolute text-danger pt-1 px-0">Chọn nhà cũng cấp từ select</small>
             </div>
           </div>
           <div class="col-xl-4 col-md-12 col-sm-12 ">
@@ -125,7 +125,7 @@
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Tổng tiền</label>
             <input formControlName="totalMoney"
-                   [value]="payment.get('totalMoney').value  !== undefined ? payment.get('totalMoney').value : ''"
+                   [value]="totalMoney"
                    class="form-control-sm border-dark w-100"
                    type="text">
           </div>
@@ -139,7 +139,8 @@
         <div class="mb-4">
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Còn lại</label>
-            <input class="form-control-sm border-dark w-100" type="text">
+            <input [value]="cashInReturn" class="form-control-sm border-dark w-100" type="text">
+
           </div>
         </div>
       </fieldset>

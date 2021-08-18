@@ -53,7 +53,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
         discount: ['', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]+$'), Validators.max(100)]],
         status: [''],
       }),
-      manufacturer: [''],
+      manufacturer: ['', Validators.required],
       employee: [this.employee]
     });
   }
@@ -144,5 +144,19 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       this.manufacturerForm.setValue(value);
     });
   }
-
+  get manufacturerName() {
+    return this.manufacturerForm.value.manufacturerName !== undefined ? this.manufacturerForm.value.manufacturerName : '';
+  }
+  get manufacturerAddress() {
+   return this. manufacturerForm.value.manufacturerAddress !== undefined ? this. manufacturerForm.value.manufacturerAddress : '';
+  }
+  get manufacturerNote() {
+   return this.manufacturerForm.value.manufacturerNote !== undefined ? this.manufacturerForm.value.manufacturerNote : '';
+  }
+  get cashInReturn() {
+    return Math.round(this.payment.get('totalMoney').value - this.payment.get('prepayment').value);
+  }
+  get totalMoney(){
+    return this.payment.get('totalMoney').value  !== undefined ? Math.round(this.payment.get('totalMoney').value) : ''
+  }
 }
