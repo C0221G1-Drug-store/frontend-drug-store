@@ -27,10 +27,22 @@ const routes: Routes = [
   {
     path: 'information-lookup',
     loadChildren: () => import('./information-lookup/information-lookup.module').then(module => module.InformationLookupModule)
+<<<<<<< HEAD
+  },
+  {
+    path: 'employee',
+<<<<<<< HEAD
+    loadChildren: () => import('./employee/employee.module').then(module => module.EmployeeModule)
+=======
+    loadChildren: () => import('./employee/employee-routing.module').then(module => module.EmployeeRoutingModule)
+>>>>>>> origin/ThoNH
+  }
+=======
   },{
   path : 'manufacturer',
   loadChildren: () => import('./manufacturer/manufacturer.module').then(module => module.ManufacturerModule)
 }
+>>>>>>> origin
 ];
 
 @NgModule({
