@@ -7,8 +7,8 @@
       <ul class="navbar-nav w-100 ml-lg-5 justify-content-center">
         <div class="w-100">
           <div class="search-box w-100 ml-lg-5">
-            <input type="text" class="search-term" placeholder="Tìm kiếm ...">
-            <button type="submit" class="search-button">
+            <input id="searchInput" [(ngModel)]="search"  type="text" class="search-term" placeholder="Tìm kiếm ...">
+            <button type="submit" id="searchButton" class="search-button" routerLinkActive="active" [routerLink]="['search',search]">
               <i class="fa fa-search text-white"></i>
             </button>
           </div>
@@ -16,12 +16,12 @@
       </ul>
       <ul class="nav navbar-nav w-100 justify-content-end ">
         <li class="nav-item">
-          <a class="nav-link" href="#"><span>GIỎ HÀNG<i class="fa fa-shopping-cart fa-2x"
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active"><span>GIỎ HÀNG<i class="fa fa-shopping-cart fa-2x"
                                                         style="color: #000000"></i></span><span
-            class="item-in-cart">2</span></a>
+            class="item-in-cart">0</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" routerLink="/login">
             <button class="btn login-button">ĐĂNG NHẬP</button>
           </a>
         </li>
@@ -44,11 +44,9 @@
             SẢN PHẨM
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">TẤT CẢ SẢN PHẨM</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">THỰC PHẨM CHỨC NĂNG</a>
-            <a class="dropdown-item" href="#">THUỐC GIẢM ĐAU</a>
-            <a class="dropdown-item" href="#">THUỐC HÔ HẤP</a>
+            <div *ngFor="let drugGroup of drugGroups">
+            <a class="dropdown-item" href="#" style="text-transform: uppercase">THUỐC {{drugGroup.drugGroupName}}</a>
+            </div>
           </div>
         </li>
         <li>
@@ -80,3 +78,4 @@
   </div>
 </nav>
 <!--</header>-->
+

@@ -25,9 +25,9 @@ export class SaleComponent implements OnInit {
       this.data = state.data;
     }
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.data.length; i++) {
-      this.total += this.data[i].quantity * this.data[i].drug.price;
-    }
+    // for (let i = 0; i < this.data.length; i++) {
+    //   this.total += this.data[i].quantity * this.data[i].drug.price;
+    // }
   }
 
   ngOnInit(): void {
@@ -54,8 +54,8 @@ export class SaleComponent implements OnInit {
     // tslint:disable-next-line:prefer-for-of
     this.total = 0;
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.data.length; i++) {
-      this.total += this.data[i].quantity * this.data[i].drug.price;
-    }
+    // for (let i = 0; i < this.data.length; i++) {
+    //   this.total += this.data[i].quantity * this.data[i].drug.price;
+    // }
   }
 }
