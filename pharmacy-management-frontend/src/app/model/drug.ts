@@ -1,4 +1,5 @@
 import {DrugGroup} from './drug-group';
+import {Image_detail} from './image_detail';
 
 export interface Drug {
   drugId?: number;
@@ -17,5 +18,8 @@ export interface Drug {
   note?: string;
   drugSideEffect?: string;
   flag?: true;
-  drugGroup?: DrugGroup;
+  drugGroup?: any;
+  wholesalePrice?: number;
+  retailPrice?: number;
+  drugImageDetails?: Image_detail[];
 }

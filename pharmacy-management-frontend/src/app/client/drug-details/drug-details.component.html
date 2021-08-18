@@ -2,82 +2,117 @@
   <div class="grid wide">
     <div class="row">
       <div class="col-private l-7">
-        <div id="show-img" class="carousel slide myslide mt-3" data-ride="carousel">
-          <ul class="carousel-indicators">
-            <li data-target="#show-img" data-slide-to="0" class="active"></li>
-            <li data-target="#show-img" data-slide-to="1"></li>
-            <li data-target="#show-img" data-slide-to="2"></li>
-            <li data-target="#show-img" data-slide-to="3"></li>
-            <li data-target="#show-img" data-slide-to="4"></li>
-            <li data-target="#show-img" data-slide-to="5"></li>
-          </ul>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="./assets/image/client-page-image/boganic.jpeg" alt="Los Angeles" style="width: 100%;">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/image/client-page-image/aspirin.jpeg" alt="Chicago" style="width: 100%;">
-            </div>
-            <div class="carousel-item">
-              <img src="./assets/image/client-page-image/collagen.webp" alt="New York" style="width: 100%;">
+<!--        <div id="show-img" class="carousel slide myslide mt-3" data-ride="carousel" *ngIf="drug.drugImageDetails; else defaultImage">-->
+<!--          <ul>-->
+<!--            <ng-container *ngFor="let drug of drug.drugImageDetails; index as i">-->
+<!--              <li data-target="#show-img" data-slide-to="{{i}}"></li>-->
+<!--            </ng-container>-->
+<!--          </ul>-->
+<!--          <ul class="carousel-indicators">-->
+<!--            <li data-target="#show-img" data-slide-to="0" class="active"></li>-->
+<!--            <li data-target="#show-img" data-slide-to="1"></li>-->
+<!--            <li data-target="#show-img" data-slide-to="2"></li>-->
+<!--            <li data-target="#show-img" data-slide-to="3"></li>-->
+<!--            <li data-target="#show-img" data-slide-to="4"></li>-->
+<!--            <li data-target="#show-img" data-slide-to="5"></li>-->
+<!--          </ul>-->
+<!--          <div class="carousel-inner">-->
+<!--            <div class="carousel-item active">-->
+<!--              <img src="./assets/image/client-page-image/boganic.jpeg" alt="Los Angeles" style="width: 100%;">-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--              <img src="assets/image/client-page-image/aspirin.jpeg" alt="Chicago" style="width: 100%;">-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--              <img src="./assets/image/client-page-image/collagen.webp" alt="New York" style="width: 100%;">-->
+
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--              <img src="./assets/image/client-page-image/boganic.jpeg" alt="New York" style="width: 100%;">-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <a class="carousel-control-prev" href="#show-img" data-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon"></span>-->
+<!--          </a>-->
+<!--          <a class="carousel-control-next" href="#show-img" data-slide="next">-->
+<!--            <span class="carousel-control-next-icon"></span>-->
+<!--          </a>-->
+<!--        </div>-->
+          <div id="show-img" class="carousel slide myslide mt-3" data-ride="carousel" *ngIf="drug.drugImageDetails">
+            <ul class="carousel-indicators">
+              <li data-target="#show-img" data-slide-to="0" class="active"></li>
+              <li data-target="#show-img" data-slide-to="1"></li>
+              <li data-target="#show-img" data-slide-to="2"></li>
+              <li data-target="#show-img" data-slide-to="3"></li>
+              <li data-target="#show-img" data-slide-to="4"></li>
+              <li data-target="#show-img" data-slide-to="5"></li>
+            </ul>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./assets/image/client-page-image/boganic.jpeg" alt="Los Angeles" style="width: 100%;">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/image/client-page-image/aspirin.jpeg" alt="Chicago" style="width: 100%;">
+              </div>
+              <div class="carousel-item">
+                <img src="./assets/image/client-page-image/collagen.webp" alt="New York" style="width: 100%;">
+
+              </div>
+              <div class="carousel-item">
+                <img src="./assets/image/client-page-image/boganic.jpeg" alt="New York" style="width: 100%;">
+              </div>
 
             </div>
-            <div class="carousel-item">
-              <img src="./assets/image/client-page-image/boganic.jpeg" alt="New York" style="width: 100%;">
-            </div>
-
+            <a class="carousel-control-prev" href="#show-img" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#show-img" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
           </div>
-          <a class="carousel-control-prev" href="#show-img" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#show-img" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a>
-        </div>
 
         <div class="evaluate">
-          <h4 class="evaluate-title">Thuốc ho tinh dầu Eugica forteThuốc ho tinh dầu Eugica forteThuốc ho tinh dầu Eugica forte Thuốc ho tinh dầu Eugica forte</h4>
+          <h4 class="evaluate-title">{{drug.drugName}}</h4>
           <div class="evaluate-rating">
-            <div></div>
-
             <div class="row">
               <div class="col-lg-5">
                 <h5>6 Đánh giá</h5>
-                <div class="evaluate-list">
-                  <span>5</span>
-                  <span class="evaluate-item-star">
-                        <i class='bx bxs-star'></i></span>
-                  <p class="evaluate-item">
-                  </p>
-                </div>
-                <div class="evaluate-list">
-                  <span>4</span>
-                  <span class="evaluate-item-star">
-                        <i class='bx bxs-star'></i></span>
-                  <p class="evaluate-item">
-                  </p>
-                </div>
-                <div class="evaluate-list">
-                  <span>3</span>
-                  <span class="evaluate-item-star">
-                        <i class='bx bxs-star'></i></span>
-                  <p class="evaluate-item">
-                  </p>
-                </div>
-                <div class="evaluate-list">
-                  <span>2</span>
-                  <span class="evaluate-item-star">
-                        <i class='bx bxs-star'></i></span>
-                  <p class="evaluate-item">
-                  </p>
-                </div>
-                <div class="evaluate-list">
-                  <span>1</span>
-                  <span class="evaluate-item-star">
-                        <i class='bx bxs-star'></i></span>
-                  <p class="evaluate-item">
-                  </p>
-                </div>
+<!--                <div class="evaluate-list">-->
+<!--                  <span>5</span>-->
+<!--                  <span class="evaluate-item-star">-->
+<!--                        <i class='bx bxs-star'></i></span>-->
+<!--                  <p class="evaluate-item">-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="evaluate-list">-->
+<!--                  <span>4</span>-->
+<!--                  <span class="evaluate-item-star">-->
+<!--                        <i class='bx bxs-star'></i></span>-->
+<!--                  <p class="evaluate-item">-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="evaluate-list">-->
+<!--                  <span>3</span>-->
+<!--                  <span class="evaluate-item-star">-->
+<!--                        <i class='bx bxs-star'></i></span>-->
+<!--                  <p class="evaluate-item">-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="evaluate-list">-->
+<!--                  <span>2</span>-->
+<!--                  <span class="evaluate-item-star">-->
+<!--                        <i class='bx bxs-star'></i></span>-->
+<!--                  <p class="evaluate-item">-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="evaluate-list">-->
+<!--                  <span>1</span>-->
+<!--                  <span class="evaluate-item-star">-->
+<!--                        <i class='bx bxs-star'></i></span>-->
+<!--                  <p class="evaluate-item">-->
+<!--                  </p>-->
+<!--                </div>-->
               </div>
             </div>
           </div>
@@ -149,30 +184,30 @@
       <div class="col-private l-5">
         <div class="description-product">
           <div>
-            <h4 class="title-product">Thuốc ho tinh dầu Eugica forte</h4>
+            <h4 class="title-product">{{drug.drugName}}</h4>
           </div>
           <h4 class="price-product">
-            <span>Giá sản phẩm:</span> <span>20.000.000 <sup>đ</sup></span>
+            <span>Giá sản phẩm:</span> <span>{{drug.retailPrice}} <sup>đ</sup></span>
           </h4>
-          <div class="promotion">
-            <div class="promotion-header">
-              <h4>mua online giảm sốc <span>15%</span> còn</h4>
-              <p class="promotion-header-price">19.880.000 <sup>đ</sup></p>
-            </div>
-            <div class="promotion-content">
-              <small>Giá và khuyến mãi dự kiến áp dụng đến 23:00 31/05, không áp dụng trả góp lãi suất đặc biệt
-                (0%,1%,1.5%)</small>
-              <div><span class="lable-number">1</span><span>Chuột không dây</span></div>
-              <div><span class="lable-number">2</span><span>Balo laptop <span>Leonovo</span></span>
-              </div>
-            </div>
-          </div>
+<!--          <div class="promotion">-->
+<!--            <div class="promotion-header">-->
+<!--              <h4>mua online giảm <span>15%</span> còn</h4>-->
+<!--              <p class="promotion-header-price">19.880.000 <sup>đ</sup></p>-->
+<!--            </div>-->
+<!--            <div class="promotion-content">-->
+<!--              <small>Giá và khuyến mãi dự kiến áp dụng đến 23:00 31/05, không áp dụng trả góp lãi suất đặc biệt-->
+<!--                (0%,1%,1.5%)</small>-->
+<!--              <div><span class="lable-number">1</span><span>Chuột không dây</span></div>-->
+<!--              <div><span class="lable-number">2</span><span>Balo laptop <span>Leonovo</span></span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <h4 class="stocking-lable">CÒN HÀNG</h4>
           <div class="location"><span><i class="fas fa-map-marker-alt location-icon"></i></span><span>Giao tới 332, Phường Bến Nghé, Quận 1, Hồ Chí Minh</span>
           </div>
-          <p class="ship">Giao hàng <strong>Từ 10h - 12h hôm nay (30/05)</strong></p>
+          <p class="ship">Giao hàng <strong>Từ 10h - 12h hôm nay {{date}}</strong></p>
           <p class="ship">Miễn phí giao hàng</p>
-          <div class="description-label"><span><i class="fas fa-store-alt"></i></span><span>Xem siêu thị có hàng</span>
+          <div class="description-label"><span><i class="fas fa-store-alt"></i></span><span>Xem cửa hàng có hàng</span>
           </div>
           <div class="payment">
             <div style="width: 70px">Số Lượng:</div>
@@ -192,38 +227,31 @@
           <p class="phone-to-buy">Gọi đặt mua <span>1800.1060 </span> (7:30 - 22:00)</p>
         </div>
         <div class="product-detail">
-          <h4 class="product-detail-title">Thuốc ho tinh dầu Eugica forte</h4>
+          <h4 class="product-detail-title">{{drug.drugName}}</h4>
           <table class="table table-striped product-detail-table">
             <tbody>
             <tr>
               <td>Công dụng
               </td>
-              <td><span>Giúp sát trùng đường hô hấp, làm loãng dịch nhầy trong cổ họng từ đó giúp làm dịu và giảm ho hiệu quả.</span><br><span>Điều trị hiệu quả viêm họng và các bệnh lý ho khác nhau như: ho khan, ho có đờm, ho mất tiếng, ho lâu ngày,…</span><br><span>Tăng cường sức đề kháng của đường hô hấp, kích thích bài tiết của tuyến mồ hôi và hệ tiêu hóa từ đó giúp điều trị và ngăn ngừa các bệnh lý liên quan đến hệ hô hấp như: sốt, nhức đầu, sổ mũi, cảm cúm,…</span><br></td>
+              <td>
+                {{drug.drugFaculty}}
+              </td>
             </tr>
             <tr>
               <td>Thành Phần:
               </td>
-              <td>Hoạt chất chính: Eucalyptol (Eucalyptolum) 100 mg, Menthol (Mentholum) 0,5 mg, Tinh dầu tần (Oleum Colei aromatici) 0,36mg, Tinh dầu gừng (Oleum Zingiberis officinalis) 0,75 mg, Tinh dầu tràm (Oleum Melaleucae) 50mg.</td>
+              <td>{{drug.manufacturer}}</td>
             </tr>
             <tr>
               <td>Tác Dụng Phụ:
               </td>
-              <td>Bên cạnh những tác dụng chính như giảm ho, sát khuẩn, thuốc cũng có thể gây ra một số tác dụng phụ cho người bệnh chẳng hạn như có cảm giác nóng hơn tại dạ dày. Ngay khi phát hiện có những triệu chứng bất thường hay
-                tác dụng phụ của thuốc người dùng cần ngay lập tức báo cho bác sĩ điều trị hoặc người phụ trách để tìm ra hướng giải quyết nhanh nhất tránh những hậu quả không muốn có thể xảy ra.</td>
-            </tr>
-            <tr>
-              <td>Bảo quản:
-              </td>
-              <td>Nơi khô ráo thoáng mát, tránh ánh nắng trực tiếp, nhiệt độ dưới 30 độ C</td>
+              <td>{{drug.drugSideEffect}}</td>
             </tr>
             <tr>
               <td>Hướng dẫn sự dụng
               </td>
-              <td>Chỉ định: Điều trị các chứng ho, đau họng, sổ mũi, cảm cúm. Làm loãng niêm dịch, làm dịu ho, sát trùng đường hô hấp.<br> Chống chỉ định: Quá mẫn cảm với các thành phần của thuốc. Ho do suyễn, ho lao, suy hô hấp. Trẻem
-                dưới 30 tháng tuổi, trẻ em có tiền sử động kinh hoặc sốt cao.<br> Đối Tượng Sử Dụng: Người lớn và trẻ em từ 30 tháng tuổi trở lên.<br> Liều Dùng & Cách Dùng: Trẻ em trên 30 tháng tuổi: uống 1 viên x 3 lần/ngày (xanh),
-                uống 1 viên x 2 lần/ngày (đỏ). Người lớn: uống 2 viên x 3 lần/ngày (xanh), uống 1 viên x 3 – 4 lần/ngày (đỏ). Tránh dùng cho trẻ dưới 2 tuổi.</td>
+              <td>{{drug.note}}</td>
             </tr>
-
             </tbody>
           </table>
         </div>

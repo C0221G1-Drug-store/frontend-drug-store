@@ -41,6 +41,7 @@ export class InboxService {
   getUser(){
     return this.user;
   }
+
   googleLogin(){
     const provider= new firebase.auth.GoogleAuthProvider();
     return this.afAuth.signInWithPopup(provider)
