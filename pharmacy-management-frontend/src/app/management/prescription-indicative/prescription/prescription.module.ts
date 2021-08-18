@@ -9,6 +9,8 @@ import { PrescriptionEditComponent } from './prescription-edit/prescription-edit
 import { PrescriptionDeleteComponent } from './prescription-delete/prescription-delete.component';
 import {IndicativeModule} from '../indicative/indicative.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -17,11 +19,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     PrescriptionCreateComponent,
     PrescriptionEditComponent,
     PrescriptionDeleteComponent
+
   ],
   imports: [
     CommonModule,
     PrescriptionRoutingModule,
-
+    MatDialogModule,
     IndicativeModule,
     ReactiveFormsModule,
     FormsModule

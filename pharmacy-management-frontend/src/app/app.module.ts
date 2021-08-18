@@ -20,8 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,
-    MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

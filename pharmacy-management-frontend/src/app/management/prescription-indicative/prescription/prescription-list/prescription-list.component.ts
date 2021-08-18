@@ -3,6 +3,8 @@ import {Prescription} from '../../../../model/prescription';
 import {PrescriptionService} from '../../../../service/prescription.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PrescriptionDeleteComponent} from '../prescription-delete/prescription-delete.component';
+import {PrescriptionEditComponent} from '../prescription-edit/prescription-edit.component';
+
 
 @Component({
   selector: 'app-prescription-list',
@@ -22,6 +24,7 @@ export class PrescriptionListComponent implements OnInit {
   sortBy = 'prescription_id';
   select: any;
   valueSearch: any;
+  idDialog: number;
 
 
   constructor(private prescriptionService: PrescriptionService,
@@ -40,12 +43,6 @@ export class PrescriptionListComponent implements OnInit {
       // console.log(this.pages);
     });
   }
-
-  getId(prescriptionId: number) {
-    this.idEdit = prescriptionId;
-    console.log(this.idEdit);
-  }
-
   setPage(i: number) {
     this.page = i;
     this.getPrescriptions();
@@ -88,6 +85,20 @@ export class PrescriptionListComponent implements OnInit {
       }
     });
   }
+  onEditHandler() {
+    const  id = this.idEdit;
+    const dialogRef = this.dialog.open(PrescriptionEditComponent, {
+      data: {id}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  getId(prescriptionId: number) {
+    this.idEdit = prescriptionId;
+    console.log(this.idEdit);
+  }
+
 
   search() {
     switch (this.select) {

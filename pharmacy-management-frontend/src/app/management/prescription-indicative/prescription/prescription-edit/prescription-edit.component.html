@@ -1,10 +1,9 @@
 <div class="container">
   <h1 class="text-center mb-3">Đơn thuốc</h1>
 
-  <form [formGroup]="prescriptionForm" (ngSubmit)="submit(idEdit)">
-
+  <form [formGroup]="prescriptionForm" (ngSubmit)="submit()">
         <div class="">
-          <input type="text" formControlName="prescriptionId" hidden>
+<!--          <input type="text" formControlName="prescriptionId" hidden>-->
 
           <div class="d-flex mb-3">
             <label class="label-text-min mt-1 ml-1 d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
@@ -14,7 +13,6 @@
             <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
             <input class="form-control pl-2" type="text" formControlName="prescriptionCode">
           </div>
-
           <div class="d-flex mb-3">
             <label class="label-text-min mt-1 ml-1 d-flex">Triệu chứng <p style=" color: red">(*)</p></label>
             <input class="form-control pl-2" type="text" formControlName="symptom">
@@ -60,7 +58,7 @@
                     <option *ngFor="let d of drugs " value="{{d}}}">{{d}}</option>
                   </select>
                 </div>
-                <input type="text" formControlName="indicativeId" hidden>
+<!--                <input type="text" formControlName="indicativeId" hidden>-->
                 <div class="col-1"></div>
                 <div class="col-3 d-flex">
                   <input class="vien mr-4 form-control ml-2" type="number" formControlName="totalPill"> <span
