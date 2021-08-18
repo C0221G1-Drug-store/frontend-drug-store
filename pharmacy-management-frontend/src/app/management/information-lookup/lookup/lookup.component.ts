@@ -4,7 +4,6 @@ import {LookupService} from '../../../service/lookup.service';
 import {CustomerLookup} from '../../../model/lookup/customer-lookup';
 import {CustomerGroupLookup} from '../../../model/lookup/customer-group-lookup';
 import {ManufacturerLookup} from '../../../model/lookup/manufacturer-lookup';
-
 @Component({
   selector: 'app-lookup',
   templateUrl: './lookup.component.html',
@@ -50,15 +49,14 @@ export class LookupComponent implements OnInit {
   customerGroups!: CustomerGroupLookup[];
 
   manufacturers!: ManufacturerLookup[];
-  manufacturerTh = ['Mã NXS', 'Tên nhà sản xuất', 'Địa chỉ', 'Số điện thoại', 'Ghi chú' ];
+  manufacturerTh = ['Mã NXS', 'Tên nhà sản xuất', 'Địa chỉ', 'Số điện thoại', 'Ghi chú'];
 
 
-  indexPagination: number = 1;
-  totalPagination: number;
-  page = 5;
   inputLook = '';
   selectAttr = '';
-  numberPage = this.indexPagination * this.page - this.page;
+  pages: Array<any>;
+  page = 0;
+
   constructor(private fb: FormBuilder,
               private lookupService: LookupService) {
   }
@@ -66,10 +64,15 @@ export class LookupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCustomerGroups() {
+    this.lookupService.getCustomerGroups().subscribe(list => {
+      this.customerGroups = list;
+    });
+  }
+
+
   search() {
-    console.log(this.selectItem);
-    console.log(this.myChoose.value.selectAttribute);
-    console.log(this.mySearch.value.inputLookup);
+    this.pages = null;
     this.selectAttr = this.myChoose.value.selectAttribute;
     if (!this.selectAttr) {
       this.selectAttr = 'all';
@@ -79,32 +82,62 @@ export class LookupComponent implements OnInit {
     switch (this.selectItem) {
       case 'customer':
         this.manufacturers = null;
-        this.lookupService.getCustomerGroups().subscribe(list => {
-          this.customerGroups = list;
-        });
-        this.lookupService.getCustomersByKeyWord(this.selectAttr, this.inputLook).subscribe(list => {
-          this.customers = list;
+        this.customers = null;
+        this.getCustomerGroups();
+        this.lookupService.getCustomersByKeyWord(this.selectAttr, this.inputLook, String(this.page)).subscribe(data => {
+          if (data == null){
+            alert("Không tìm thấy dữ liệu " + this.mySearch.value.inputLookup)
+          }
+          this.customers = data.content;
+          this.pages = new Array<any>(data.totalPages);
         }, error => {
-          console.log('error');
+          alert('Không tìm thấy dữ liệu ' + this.mySearch.value.inputLookup);
         });
         this.thead = this.customerTh;
         break;
       case 'manufacturer':
         this.customers = null;
-        this.lookupService.getManufacturerByKeyWord(this.selectAttr, this.inputLook).subscribe(list => {
-          this.manufacturers = list;
+        this.lookupService.getManufacturerByKeyWord(this.selectAttr, this.inputLook, String(this.page)).subscribe(data => {
+          if (data == null){
+            alert("Không tìm thấy dữ liệu " + this.mySearch.value.inputLookup)
+          }
+          this.manufacturers = data.content;
+          this.pages = new Array<any>(data.totalPages);
         }, error => {
-          console.log('error');
+          alert('Không tìm thấy dữ liệu ' + this.mySearch.value.inputLookup);
         });
         this.thead = this.manufacturerTh;
         break;
       default:
-        console.log("Please NOT hacker");
+        console.log('Please NOT hacker');
     }
-}
+  }
 
   selectLookup() {
     this.selectItem = this.myChoose.value.selectItem;
   }
 
+  setPage(i: number) {
+    this.page = i;
+    this.search();
+
+  }
+
+  previous() {
+    if (this.page === 0) {
+      alert('Không tìm thấy trang');
+    } else {
+      this.page = this.page - 1;
+      this.search();
+    }
+  }
+
+  next() {
+    if (this.page > this.pages.length - 2) {
+      alert('Không tìm thấy trang');
+    } else {
+      this.page = this.page + 1;
+      this.search();
+    }
+  }
 }

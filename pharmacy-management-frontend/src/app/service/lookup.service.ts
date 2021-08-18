@@ -12,14 +12,15 @@ export class LookupService {
   private URl = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
-  getCustomersByKeyWord(attribute: string, keyWord: string): Observable<CustomerLookup[]> {
-    return this.http.get<CustomerLookup[]>(`${this.URl}/customer/search/${attribute}/${keyWord}`);
+  getCustomersByKeyWord(attribute: string, keyWord: string, page: string): Observable<any> {
+    return this.http.get(`${this.URl}/customer/search/${attribute}/${keyWord}/${page}`);
   }
+
   getCustomerGroups(): Observable<CustomerGroupLookup[]> {
     return this.http.get<CustomerGroupLookup[]>(`${this.URl}/customerGroup`);
   }
 
-  getManufacturerByKeyWord(attribute: string, keyWord: string): Observable<ManufacturerLookup[]> {
-    return this.http.get<ManufacturerLookup[]>(`${this.URl}/manufacturer/search/${attribute}/${keyWord}`);
+  getManufacturerByKeyWord(attribute: string, keyWord: string, page: string): Observable<any> {
+    return this.http.get(`${this.URl}/manufacturer/search/${attribute}/${keyWord}/${page}`);
   }
 }
