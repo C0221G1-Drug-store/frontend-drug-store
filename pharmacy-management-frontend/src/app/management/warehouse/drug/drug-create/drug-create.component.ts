@@ -6,6 +6,7 @@ import {formatDate} from '@angular/common';
 import {finalize} from 'rxjs/operators';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {DrugGroupService} from '../../../../service/drug-group.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-drug-create',
@@ -14,7 +15,8 @@ import {DrugGroupService} from '../../../../service/drug-group.service';
 })
 export class DrugCreateComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
-  selectedImage: any = null;
+  selectedImage;
+  urlImage = [];
   drugForm: FormGroup = new FormGroup({
   drugName: new FormControl('', [Validators.required, Validators.maxLength(25)]),
     drugFaculty: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -34,30 +36,76 @@ export class DrugCreateComponent implements OnInit {
 
   constructor(private drugService: DrugService,
               private drugGroupService: DrugGroupService,
-              private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getAllDrugGroup();
   }
 
   submit() {
-    const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
+    // console.log(this.urlImage);
+    // for (let i = 0; i<this.drugImageDetails)
+      // const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
+      // const fileRef = this.storage.ref(nameImg);
+      // this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+      //   finalize(() => {
+      //     fileRef.getDownloadURL().subscribe((url) => {
+      //       this.drugForm.patchValue({drugImageDetails: url});
+      //       this.drugService.save(this.drugForm.value).subscribe(() => {
+      //         alert('Tạo thành công');
+      //         // this.drugForm.reset();
+      //         this.backToList();
+      //       });
+      //     });
+      //   })
+      // ).subscribe();
+
+      this.drugForm.patchValue({drugImageDetails: this.urlImage[0]});
+      this.drugService.save(this.drugForm.value).subscribe(() => {
+        alert('Tạo thành công');
+        // this.drugForm.reset();
+        this.backToList();
+      });
+
+
+  }
+  backToList() {
+    this.router.navigateByUrl('/drug/list');
+  }
+
+  uploadFile(imageFile) {
+    const nameImg = this.getCurrentDateTime() + imageFile.name;
     const fileRef = this.storage.ref(nameImg);
     this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
-          this.drugForm.patchValue({drugImageDetails: url});
-          this.drugService.save(this.drugForm.value).subscribe(() => {
-            alert('Tạo thành công');
-            this.drugForm.reset();
-          });
+          this.urlImage.push(url);
+          // this.drugForm.patchValue({drugImageDetails: url});
+          // this.drugService.save(this.drugForm.value).subscribe(() => {
+          //   alert('Tạo thành công');
+          //   // this.drugForm.reset();
+          //   this.backToList();
+          // });
         });
       })
     ).subscribe();
   }
 
-  showPreview(event: any) {
-    this.selectedImage = event.target.files[0];
+  showPreview(event) {
+    // this.selectedImage = event.target.files[0];
+    this.selectedImage = [];
+    const files = event.target.files;
+    if (files) {
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.selectedImage.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+        this.uploadFile(file);
+      }
+    }
   }
   getCurrentDateTime(): string {
     return formatDate(new Date(), 'dd-MM-yyyyhhmmssa', 'en-US');

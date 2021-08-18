@@ -8,6 +8,7 @@ import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
+import {Drug} from '../../../../model/drug';
 
 @Component({
   selector: 'app-drug-edit',
@@ -19,6 +20,7 @@ export class DrugEditComponent implements OnInit {
   drugForm: FormGroup;
   drugId;
   drugCode;
+  drugGroup;
   selectedImage: any = null;
 
   constructor(private drugService: DrugService,
@@ -28,14 +30,16 @@ export class DrugEditComponent implements OnInit {
               private storage: AngularFireStorage) {
     this.drugId = this.data.data1.drugId;
     this.drugCode = this.data.data1.drugCode;
+    this.drugGroup = this.data.data1.drugGroup;
     this.getDrug();
   }
 
   ngOnInit(): void {
     this.getAllDrugGroup();
   }
-
-
+  compareFn(c1: Drug, c2: Drug): boolean {
+    return c1 && c2 ? c1.drugId === c2.drugId : c1 === c2;
+  }
   private getDrug() {
     return this.drugService.getDrugById(this.drugId).subscribe(drug => {
       this.drugForm = new FormGroup({
@@ -68,7 +72,7 @@ export class DrugEditComponent implements OnInit {
             alert('Cập nhật thành công');
             this.drugForm.reset();
             this.dialogRef.close();
-          });
+          }, error => alert('Cập nhất thất bại'));
         });
       })
     ).subscribe();
