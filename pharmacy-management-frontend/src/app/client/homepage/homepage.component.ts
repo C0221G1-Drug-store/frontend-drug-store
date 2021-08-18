@@ -38,9 +38,11 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+
   getAllDrugGroup() {
     this.drugGroupService.getAll().subscribe(next => {
       this.drugGroups = next;
     });
   }
+
 }
