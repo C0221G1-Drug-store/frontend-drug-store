@@ -4,9 +4,9 @@
     <div class="row text-center">
       <div>
         <span>Lọc theo:</span>
-        <select class="custom-select" style="width: 250px" #typeSearch>
+        <select class="custom-select" style="width: 250px" #typeSearch >
           <option value="customer_code">Mã khách hàng</option>
-          <option value="customer_group">Nhóm khách hàng</option>
+<!--          <option value="customer_group">Nhóm khách hàng</option>-->
           <option value="customer_name">Tên khách hàng</option>
           <option value="customer_address">Địa chỉ</option>
           <option value="customer_phone">Điện thoại</option>
@@ -14,7 +14,7 @@
 
       </div>
       <div class="input-group mb-4 col-4">
-        <input type="text" class="form-control" #searchName
+        <input type="text" class="form-control" #searchName [(ngModel)]="keyWord"
                placeholder="từ khóa...."
                aria-label="Recipient's username" aria-describedby="button-addon2">
         <button class=" btn btn-search" (click)="chooseTypeSearch(typeSearch.value,searchName.value)">
@@ -179,7 +179,7 @@
             </div>
           </div>
           <div class="col-3">
-            <button class="btn btn-success">
+            <button class="btn btn-success" routerLink="/">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                    class="bi bi-arrow-return-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -193,5 +193,4 @@
     </div>
   </div>
 </div>
-
 

@@ -15,7 +15,8 @@ export class CustomerListComponent implements OnInit {
   customerDelete: Customer;
   customers: Customer[] = [];
   customersPagination: Customer[] = [];
-  typeSort: string;
+  keyWord = '';
+  typeSearch;
 
   constructor(private customerService: CustomerService,
   ) {
@@ -29,9 +30,7 @@ export class CustomerListComponent implements OnInit {
   getAllCustomer() {
     this.customerService.getAll().subscribe(data => {
       this.customers = data;
-      if ((this.customers.length % 5) !== 0) {
-        this.totalPagination = (Math.round((this.customers.length / 5) + 0.4999999));
-      }
+      this.totalPagination = (Math.round((this.customers.length / 5) + 0.4999999));
     });
   }
 
@@ -96,29 +95,39 @@ export class CustomerListComponent implements OnInit {
 
   chooseTypeSearch(typeSearch: string, keyword: string) {
     if (keyword !== '') {
+      this.typeSearch = typeSearch;
+      this.indexPagination = 1;
       switch (typeSearch) {
         case'customer_code':
-          this.customerService.searchByCustomerCode(0, keyword).subscribe(data => {
+          this.customerService.searchByCustomerCodePagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
+            // console.log(data);
           });
           break;
         case'customer_group':
-          this.customerService.searchByCustomerGroup(0, keyword).subscribe(data => {
+          this.customerService.searchByCustomerGroupPagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
           });
+
           break;
         case'customer_name':
-          this.customerService.searchByCustomerName(0, keyword).subscribe(data => {
+          this.customerService.searchByCustomerNamePagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
+            console.log(data);
+          });
+          this.customerService.getNumberOfRecord(keyword).subscribe(data => {
+            this.totalPagination = (Math.round((data / 5) + 0.4999999));
+            console.log(data);
           });
           break;
         case'customer_address':
-          this.customerService.searchByCustomerAddress(0, keyword).subscribe(data => {
+          this.customerService.searchByCustomerAddressPagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
           });
+
           break;
         case'customer_phone':
-          this.customerService.searchByCustomerPhone(0, keyword).subscribe(data => {
+          this.customerService.searchByCustomerPhonePagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
           });
           break;
@@ -128,12 +137,76 @@ export class CustomerListComponent implements OnInit {
     }
   }
 
+// search//////
+  getCustomerBySearchPagination() {
+    switch (this.typeSearch) {
+      case'customer_code':
+        this.customerService.searchByCustomerCodePagination(0, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_group':
+        this.customerService.searchByCustomerGroupPagination(0, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_name':
+        this.customerService.searchByCustomerNamePagination(0, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_address':
+        this.customerService.searchByCustomerAddressPagination(0, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_phone':
+        this.customerService.searchByCustomerPhonePagination(0, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+    }
+  }
+
+  getCustomerBySearchPaginationStep2() {
+    switch (this.typeSearch) {
+      case'customer_code':
+        this.customerService.searchByCustomerCodePagination((this.indexPagination * 5) - 5, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_group':
+        this.customerService.searchByCustomerGroupPagination((this.indexPagination * 5) - 5, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_name':
+        this.customerService.searchByCustomerNamePagination((this.indexPagination * 5) - 5, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_address':
+        this.customerService.searchByCustomerAddressPagination((this.indexPagination * 5) - 5, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+      case'customer_phone':
+        this.customerService.searchByCustomerPhonePagination((this.indexPagination * 5) - 5, this.keyWord).subscribe(data => {
+          this.customersPagination = data;
+        });
+        break;
+    }
+  }
+
 ///// phân trang
   getCustomerByPagination() {
     this.customerService.getCustomerByPagination(0).subscribe(data => {
       this.customersPagination = data;
+      this.totalPagination = (Math.round((this.customers.length / 5) + 0.4999999));
+
     });
   }
+
 
   getCustomerByPaginationStep2() {
     this.customerService.getCustomerByPagination((this.indexPagination * 5) - 5).subscribe(data => {
@@ -143,29 +216,51 @@ export class CustomerListComponent implements OnInit {
 
   firstPage() {
     this.indexPagination = 1;
-    this.getCustomerByPagination();
+    if (this.keyWord === '') {
+      this.getCustomerByPagination();
+    } else {
+      this.getCustomerBySearchPagination();
+    }
   }
 
   nextPage() {
     this.indexPagination += 1;
     if (this.indexPagination > this.totalPagination) {
       this.indexPagination = this.indexPagination - 1;
+    } else {
+      if (this.keyWord === '') {
+        this.getCustomerByPaginationStep2();
+      } else {
+        this.getCustomerBySearchPaginationStep2();
+      }
     }
-    this.getCustomerByPaginationStep2();
+
   }
 
   previousPage() {
     this.indexPagination -= 1;
     if (this.indexPagination === 0) {
       this.indexPagination = 1;
-      this.getCustomerByPagination();
+      if (this.keyWord === '') {
+        this.getCustomerByPagination();
+      } else {
+        this.getCustomerBySearchPagination();
+      }
     } else {
-      this.getCustomerByPaginationStep2();
+      if (this.keyWord === '') {
+        this.getCustomerByPaginationStep2();
+      } else {
+        this.getCustomerBySearchPaginationStep2();
+      }
     }
   }
 
   lastPage() {
     this.indexPagination = this.totalPagination;
-    this.getCustomerByPaginationStep2();
+    if (this.keyWord === '') {
+      this.getCustomerByPaginationStep2();
+    } else {
+      this.getCustomerBySearchPaginationStep2();
+    }
   }
 }
