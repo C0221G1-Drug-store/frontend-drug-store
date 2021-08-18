@@ -29,7 +29,11 @@ const routes: Routes = [
   },
   {
     path: 'employee',
+<<<<<<< HEAD
     loadChildren: () => import('./employee/employee.module').then(module => module.EmployeeModule)
+=======
+    loadChildren: () => import('./employee/employee-routing.module').then(module => module.EmployeeRoutingModule)
+>>>>>>> origin/ThoNH
   }
 ];
 
