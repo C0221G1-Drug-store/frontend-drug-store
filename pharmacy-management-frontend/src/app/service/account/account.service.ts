@@ -23,4 +23,12 @@ export class AccountService {
       .set('property', `${property}`);
     return this.http.get<any>(API_URL + '/users', {params});
   }
+
+  findById(id: number): Observable<any> {
+    return this.http.get<any>(`${API_URL}/users/${id}`);
+  }
+
+  updateAccount(id: number, account: any): Observable<any> {
+    return this.http.put<any>(`${API_URL}/users/edit/${id}`, account);
+  }
 }

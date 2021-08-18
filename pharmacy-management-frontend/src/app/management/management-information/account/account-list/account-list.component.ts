@@ -16,7 +16,7 @@ export class AccountListComponent implements OnInit {
   pagination = {
     totalPages: 0
   };
-
+  idAccount: number;
   constructor(
     private accountService: AccountService
   ) {
@@ -70,5 +70,9 @@ export class AccountListComponent implements OnInit {
   searchAccount() {
     this.page = 0;
     this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+  }
+
+  getIdAccount(id: number) {
+    this.idAccount = id;
   }
 }

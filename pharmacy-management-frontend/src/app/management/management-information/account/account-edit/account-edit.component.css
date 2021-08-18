@@ -1,0 +1,10 @@
+div input {
+  width: 95%;
+  margin-left: 3%
+}
+div select {
+  min-width: 95%;
+  height: 39px;
+  margin-left: 3%;
+  border-radius: 4px
+}

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountListComponent } from './account-list/account-list.component';
 import { AccountEditComponent } from './account-edit/account-edit.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import {FormsModule} from "@angular/forms";
     imports: [
         CommonModule,
         AccountRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class AccountModule { }
