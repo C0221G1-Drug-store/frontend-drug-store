@@ -1,4 +1,5 @@
 import {DrugGroup} from './drugGroup';
+import {DrugImageDetail} from './drugImageDetail';
 
 export interface Drug {
   drugId?: number;
@@ -6,7 +7,7 @@ export interface Drug {
   drugName?: string;
   drugFaculty?: string;
   activeElement?: string;
-  drugImageDetails?: string;
+  drugImageDetails?: any;
   unit?: string;
   conversionUnit?: string;
   conversionRate?: string;
@@ -16,6 +17,6 @@ export interface Drug {
   origin?: string;
   note?: string;
   drugSideEffect?: string;
-  drugGroup?: DrugGroup;
+  drugGroup?: any;
   flag?: boolean;
 }

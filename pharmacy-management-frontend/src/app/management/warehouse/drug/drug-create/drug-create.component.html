@@ -1,133 +1,4 @@
 <div class="container mb-5">
-<!--  <form [formGroup]="drugForm" (ngSubmit)="submit()" novalidate>-->
-<!--    <table id="form">-->
-<!--      <tr>-->
-<!--        <td>Name:</td>-->
-<!--        <td><input type="text" formControlName="drugName"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('drugName')?.invalid && (drugForm.get('drugName')?.dirty || drugForm.get('drugName')?.touched)">-->
-<!--        <p style="color: red">Name is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Faculty:</td>-->
-<!--        <td><input type="text" formControlName="drugFaculty"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('drugFaculty')?.invalid && (drugForm.get('drugFaculty')?.dirty || drugForm.get('drugFaculty')?.touched)">-->
-<!--        <p style="color: red">Falcuty is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Active Element</td>-->
-<!--        <td><input type="text" formControlName="activeElement"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('activeElement')?.invalid && (drugForm.get('activeElement')?.dirty || drugForm.get('activeElement')?.touched)">-->
-<!--        <p style="color: red">Active Element is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Side Effect</td>-->
-<!--        <td><input type="text" formControlName="drugSideEffect"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('drugSideEffect')?.invalid && (drugForm.get('drugSideEffect')?.dirty || drugForm.get('drugSideEffect')?.touched)">-->
-<!--        <p style="color: red">Side Effect is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Conversion Rate</td>-->
-<!--        <td><input type="text" formControlName="conversionRate"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">-->
-<!--        <p style="color: red">Conversion Rate is invalid!</p>-->
-<!--      </div>-->
-<!--&lt;!&ndash;      <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;        <td>Amount</td>&ndash;&gt;-->
-<!--&lt;!&ndash;        <td><input type="number" formControlName="drugAmount"></td>&ndash;&gt;-->
-<!--&lt;!&ndash;      </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;      <div *ngIf="drugForm.get('conversionRate')?.invalid && (drugForm.get('conversionRate')?.dirty || drugForm.get('conversionRate')?.touched)">&ndash;&gt;-->
-<!--&lt;!&ndash;        <p style="color: red">Amount is invalid!</p>&ndash;&gt;-->
-<!--&lt;!&ndash;      </div>&ndash;&gt;-->
-<!--      <tr>-->
-<!--        <td>Wholesale Profit Rate</td>-->
-<!--        <td><input type="number" formControlName="wholesaleProfitRate"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('wholesaleProfitRate')?.invalid && (drugForm.get('wholesaleProfitRate')?.dirty || drugForm.get('wholesaleProfitRate')?.touched)">-->
-<!--        <p style="color: red">Wholesale Profit Rate is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Retail Profit Rate</td>-->
-<!--        <td><input type="number" formControlName="retailProfitRate"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('retailProfitRate')?.invalid && (drugForm.get('retailProfitRate')?.dirty || drugForm.get('retailProfitRate')?.touched)">-->
-<!--        <p style="color: red">Retail Profit Rate is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Unit</td>-->
-<!--        <td><select formControlName="unit">-->
-<!--          <option selected value="" disabled>Select</option>-->
-<!--          <option value="Hộp">Hộp</option>-->
-<!--          <option value="Thùng">Thùng</option>-->
-<!--          <option value="Vỉ">Vỉ</option>-->
-<!--          <option value="Bịch">Bịch</option>-->
-<!--        </select></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('unit')?.invalid && (drugForm.get('unit')?.dirty || drugForm.get('unit')?.touched)">-->
-<!--        <p style="color: red">Unit Profit Rate is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Conversion Unit</td>-->
-<!--        <td><select formControlName="conversionUnit">-->
-<!--          <option selected value="" disabled>Select</option>-->
-<!--          <option value="Hộp">Hộp</option>-->
-<!--          <option value="Vỉ">Vỉ</option>-->
-<!--          <option value="Bịch">Bịch</option>-->
-<!--        </select></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('conversionUnit')?.invalid && (drugForm.get('conversionUnit')?.dirty || drugForm.get('conversionUnit')?.touched)">-->
-<!--        <p style="color: red">Conversion Unit Profit Rate is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Manufacturer</td>-->
-<!--        <td><input type="text" formControlName="manufacturer"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('manufacturer')?.invalid && (drugForm.get('manufacturer')?.dirty || drugForm.get('manufacturer')?.touched)">-->
-<!--        <p style="color: red">Retail Profit Rate is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Origin</td>-->
-<!--        <td><select formControlName="origin">-->
-<!--          <option selected value="" disabled>Select</option>-->
-<!--          <option value="Mỹ">Mỹ</option>-->
-<!--          <option value="Trung Quốc">Trung Quốc</option>-->
-<!--          <option value="Lào">Lào</option>-->
-<!--          <option value="Việt Nam">Việt Nam</option>-->
-<!--        </select></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('origin')?.invalid && (drugForm.get('origin')?.dirty || drugForm.get('origin')?.touched)">-->
-<!--        <p style="color: red">Origin is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Drug Group</td>-->
-<!--        <td><select formControlName="drugGroup">-->
-<!--          <option selected value="" disabled>Select</option>-->
-<!--          <option value="Thuốc Kháng Sinh">Thuốc Kháng Sinh</option>-->
-<!--          <option value="Thuốc Kháng Viêm">Thuốc Kháng Viêm</option>-->
-<!--          <option value="Thuốc giảm đau hạ sốt">Thuốc giảm đau hạ sốt</option>-->
-<!--        </select></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('drugGroup')?.invalid && (drugForm.get('drugGroup')?.dirty || drugForm.get('drugGroup')?.touched)">-->
-<!--        <p style="color: red">Origin is invalid!</p>-->
-<!--      </div>-->
-<!--      <tr>-->
-<!--        <td>Note</td>-->
-<!--        <td><input type="text" formControlName="note"></td>-->
-<!--      </tr>-->
-<!--      <div *ngIf="drugForm.get('note')?.invalid && (drugForm.get('note')?.dirty || drugForm.get('note')?.touched)">-->
-<!--        <p style="color: red">Origin is invalid!</p>-->
-<!--      </div>-->
-
-<!--      <tr>-->
-<!--        <td></td>-->
-<!--        <td><button type="submit" [disabled]="!drugForm.valid">Create</button></td>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--  </form>-->
   <form id="form" [formGroup]="drugForm" (ngSubmit)="submit()" novalidate>
     <div class="row mx-0 d-flex justify-content-center">
       <div class="col-lg-12 d-flex justify-content-start ml-0 px-0">
@@ -143,9 +14,7 @@
         <div class="col-lg-10">
           <input class="form-control border border-dark" type="text" formControlName="drugName">
         </div>
-        <!--                            <div class="col-lg-1 px-0">-->
-        <!--                                <label class="label-text" style="color: red">(*)</label>-->
-        <!--                            </div>-->
+
       </div>
       <div class="row d-flex mb-3 align-items-center">
         <div class="col-lg-2">
@@ -277,7 +146,11 @@
               <label class="label-text">Ảnh thuốc <span style="color: red">(*)</span></label>
             </div>
             <div class="col-lg-8">
-              <input type="file" class="form-control-file pl-0" (change)="showPreview($event)">
+              <div>
+                <img *ngFor="let url of selectedImage" [src]="url" class="rounded" width="80">
+              </div>
+              <input type="file" (change)="showPreview($event)" multiple>
+<!--              <input type="file" class="form-control-file pl-0" (change)="showPreview($event)" multiple="multiple">-->
             </div>
           </div>
 
