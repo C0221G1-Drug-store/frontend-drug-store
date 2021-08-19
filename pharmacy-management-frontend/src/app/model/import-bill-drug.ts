@@ -2,7 +2,7 @@ import {ImportBill} from './import-bill';
 import {Drug} from './drug';
 
 export interface ImportBillDrug {
-  ImportBillDrugId?;
+  importBillDrugId?;
   importAmount?;
   importPrice?;
   discountRate?;

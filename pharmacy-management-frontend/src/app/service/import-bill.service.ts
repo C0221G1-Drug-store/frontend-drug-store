@@ -13,8 +13,8 @@ export class ImportBillService {
   getAll(): Observable<ImportBill[]> {
     return  this.http.get<ImportBill[]>(API_URL + '/importBills');
   }
-  create(value): Observable<ImportBill[]> {
-    return  this.http.post<ImportBill[]>(API_URL + '/importBills', value);
+  create(value): Observable<ImportBill> {
+    return  this.http.post<ImportBill>(API_URL + '/importBills', value);
   }
   update(value, id) {
     return  this.http.put<ImportBill[]>(`${API_URL}/importBills/${id}`, value);
