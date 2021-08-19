@@ -31,7 +31,7 @@
             <select class="form-control"
                     style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
                     type="text" [(ngModel)]="sign" name="sign">
-              <option [ngValue]="''">- Điều kiện -</option>
+              <option [ngValue]="'like'">- Điều kiện -</option>
               <option [ngValue]="'='">Bằng</option>
               <option [ngValue]="'>'"
                       *ngIf="field != 'd.drug_code' && field != 'dg.drug_group_name' && field != 'd.drug_name' && field != 'd.active_element'">

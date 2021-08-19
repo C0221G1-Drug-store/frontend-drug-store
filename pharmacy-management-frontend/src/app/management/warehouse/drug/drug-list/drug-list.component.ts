@@ -23,7 +23,7 @@ export class DrugListComponent implements OnInit {
   selectedColor = '';
   field = '';
   input = '';
-  sign = '';
+  sign = 'like';
   searched = false;
 
 drugForm: FormGroup = new FormGroup({
@@ -160,16 +160,14 @@ drugForm: FormGroup = new FormGroup({
   }
 
   search() {
-    if (this.sign === 'all' || (this.field === '' && this.sign === '')) {
+    if (this.sign === 'all' || (this.field === '' && this.sign === 'like')) {
       this.ngOnInit();
       this.searched = false;
     } else {
       this.getAllSearchPagination(this.field, this.sign, this.input, 0);
-      console.log(this.drugs);
       this.indexPagination = 1;
       this.drugService.getAllDrugsSearchNotPagination(this.field, this.sign, this.input).subscribe((drugs: DrugDTO[]) => {
         this.drugsSearchNotPagination = drugs;
-        console.log(this.drugsSearchNotPagination);
         if ((this.drugsSearchNotPagination.length % 5) === 0) {
           this.totalPagination = this.drugsSearchNotPagination.length / 5;
         } else {
@@ -177,6 +175,7 @@ drugForm: FormGroup = new FormGroup({
         }
       });
       this.searched = true;
+      console.log(this.totalPagination);
     }
 
       noSelectUpdateDialog(): void {
