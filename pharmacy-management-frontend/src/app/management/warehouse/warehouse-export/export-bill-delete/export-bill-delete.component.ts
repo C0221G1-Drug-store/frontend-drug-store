@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {ExportBillServiceService} from '../../../../service/export-bill/export-bill-service.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
 
 @Component({
   selector: 'app-export-bill-delete',
@@ -9,7 +9,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ExportBillDeleteComponent implements OnInit {
 
-  constructor(private exportBillService: ExportBillServiceService, @Inject(MAT_DIALOG_DATA) public data) { }
+  constructor(private exportBillService: ExportbillService, @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ExportBill} from '../../../../model/export-bill/export-bill';
-import {ExportBillServiceService} from '../../../../service/export-bill/export-bill-service.service';
+
 import {Observable} from 'rxjs';
 import {ExportBillDeleteComponent} from '../export-bill-delete/export-bill-delete.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
+import {ExportBillDetails} from '../../../../model/export-bill/exportBillDetails';
 
 @Component({
   selector: 'app-export-bill-list',
@@ -12,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ExportBillListComponent implements OnInit {
 
-  exportBillList: ExportBill[] = [];
+  exportBillList: ExportBillDetails[] = [];
   selectList: number[] = [];
   // tslint:disable-next-line:ban-types
   data: Object;
@@ -21,8 +22,9 @@ export class ExportBillListComponent implements OnInit {
   page: number;
   max: any;
   pages: Array<number>;
+  totalMoney = 0;
 
-  constructor(private exportBillService: ExportBillServiceService, private dialog: MatDialog) { }
+  constructor(private exportBillService: ExportbillService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllRecord();
@@ -91,6 +93,10 @@ export class ExportBillListComponent implements OnInit {
     this.page = i;
     this.getAllRecord();
   }
+
+  // setTotal(id: number) {
+  //   this.totalMoney =
+  // }
 
 
 }

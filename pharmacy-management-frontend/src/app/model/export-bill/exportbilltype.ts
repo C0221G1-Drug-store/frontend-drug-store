@@ -1,4 +1,4 @@
-export interface ExportBillType {
+export interface Exportbilltype {
   exportBillTypeId: number;
   exportBillTypeName: string;
 }

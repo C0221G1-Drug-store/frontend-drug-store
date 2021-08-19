@@ -1,15 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~assets/font-awesome-4.7.0/css/font-awesome.min.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 snack-bar-container.success {
-  background-color: #567FEA;
+  background-color: #5cb85c;
   color : #fff;
 }
 
 snack-bar-container.warn {
-  background-color: red;
+  background-color: #f99157;
   color : #fff;
 }
 
@@ -46,7 +41,7 @@ snack-bar-container.notification simple-snack-bar{
 .confirm-dialog-container #no-button{
   height: 50px;
   width: 50%;
-  background-color: #567FEA;
+  background-color: #fc7169;
   color:white;
   border-radius: 0px;
 }
@@ -55,7 +50,7 @@ snack-bar-container.notification simple-snack-bar{
   height: 50px;
   width: 50%;
   background-color: #b6bece;
-  color:black;
+  color:white;
   border-radius: 0px;
 }
 
