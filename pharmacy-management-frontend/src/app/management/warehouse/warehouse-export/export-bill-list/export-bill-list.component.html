@@ -196,15 +196,15 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="trow" *ngFor="let exportBill of exportBillList, index as i" (click)="selectRecords(exportBill.exportBillId)" [ngClass]="{'data-selected': selectList.indexOf(exportBill.exportBillId) !== -1}">
+                  <tr class="trow" *ngFor="let exportBillDetails of exportBillList, index as i" (click)="selectRecords(exportBillDetails.exportBill.exportBillId)" [ngClass]="{'data-selected': selectList.indexOf(exportBillDetails.exportBill.exportBillId) !== -1}">
                     <td hidden ></td>
-                    <td>{{exportBill.exportBillCode}}</td>
-                    <td>{{exportBill.exportBillDateCreate | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{exportBill.exportBillDateCreate | date: 'HH:mm'}}</td>
-                    <td>{{exportBill.employee.employeeName}}</td>
-                    <td>{{exportBill.totalMoney}}</td>
-                    <td>{{exportBill.manufacturer.manufacturerName}}</td>
-                    <td>{{exportBill.exportBillReason}}</td>
+                    <td>{{exportBillDetails.exportBill.exportBillCode}}</td>
+                    <td>{{exportBillDetails.exportBill.exportBillDate | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{exportBillDetails.exportBill.exportBillDate | date: 'HH:mm'}}</td>
+                    <td>{{exportBillDetails.exportBill.employee.employeeName}}</td>
+                    <td>{{totalMoney}}</td>
+                    <td>{{exportBillDetails.exportBill.manufacturer.manufacturerName}}</td>
+                    <td>{{exportBillDetails.exportBill.exportBillReason}}</td>
                   </tr>
                   </tbody>
                 </table>
