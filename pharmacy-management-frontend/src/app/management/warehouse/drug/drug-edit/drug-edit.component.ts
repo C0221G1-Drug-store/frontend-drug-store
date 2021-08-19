@@ -48,7 +48,7 @@ export class DrugEditComponent implements OnInit {
         activeElement: new FormControl(drug.activeElement, [Validators.required, Validators.maxLength(50)]),
         drugSideEffect: new FormControl(drug.drugSideEffect, [Validators.required, Validators.maxLength(50)]),
         conversionRate: new FormControl(drug.conversionRate, [Validators.required, Validators.min(1), Validators.pattern(/^\d*$/)]),
-        drugImageDetails: new FormControl(drug.drugImageDetails),
+        // drugImageDetails: new FormControl(drug.drugImageDetails),
         // tslint:disable-next-line:max-line-length
         wholesaleProfitRate: new FormControl(drug.wholesaleProfitRate, [Validators.required, Validators.min(0), Validators.pattern(/^\d*$/)]),
         retailProfitRate: new FormControl(drug.retailProfitRate, [Validators.min(0), Validators.pattern(/^\d*$/)]),
