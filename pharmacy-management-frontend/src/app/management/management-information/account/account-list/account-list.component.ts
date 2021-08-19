@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from "../../../../service/account/account.service";
 import {newArray} from "@angular/compiler/src/util";
+import {DialogComponent} from "../dialog/dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {AccountEditComponent} from "../account-edit/account-edit.component";
 
 @Component({
   selector: 'app-account-list',
@@ -18,7 +21,8 @@ export class AccountListComponent implements OnInit {
   };
   idAccount: number;
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -74,5 +78,19 @@ export class AccountListComponent implements OnInit {
 
   getIdAccount(id: number) {
     this.idAccount = id;
+  }
+
+  onUpdateHendler(idAccount: number) {
+    let dialogRef = this.dialog.open(AccountEditComponent, {
+      width: '700px',
+      data: idAccount
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result){
+        this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+      }
+    });
   }
 }

@@ -31,4 +31,5 @@ export class AccountService {
   updateAccount(id: number, account: any): Observable<any> {
     return this.http.put<any>(`${API_URL}/users/edit/${id}`, account);
   }
+
 }

@@ -5,10 +5,11 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountListComponent } from './account-list/account-list.component';
 import { AccountEditComponent } from './account-edit/account-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
-  declarations: [AccountListComponent, AccountEditComponent],
+  declarations: [AccountListComponent, AccountEditComponent, DialogComponent],
     imports: [
         CommonModule,
         AccountRoutingModule,

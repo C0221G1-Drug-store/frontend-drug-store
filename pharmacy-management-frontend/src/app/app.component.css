@@ -175,8 +175,7 @@ html{
   padding: 10px 10px 0 0;
 }
 .content {
-  margin-top: 67px;
-
+   padding-top: 67px;
 }
 .row-content{
   display: flex;
