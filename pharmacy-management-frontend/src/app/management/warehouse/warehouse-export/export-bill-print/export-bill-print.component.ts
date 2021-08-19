@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-export-bill-print',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExportBillPrintComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+
+  constructor(public dialogRef: MatDialogRef<ExportBillPrintComponent>,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    if (this.data == null) {
+      this.message = 'chưa nhận được hóa đơn';
+    }
+  }
+
+  print() {
+    this.dialogRef.close(true);
+    window.print();
   }
 
 }

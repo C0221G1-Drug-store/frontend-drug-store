@@ -126,7 +126,6 @@
                       <option value="1" >Xuất hoàn trả</option>
                       <option value="2">Xuất hủy</option>
                     </select>
-                    <!--                        <p style="color: red; font-size: 12px">số phiếu không dc để trống</p>-->
                   </div>
                 </div>
                 <div class="col-2">
@@ -134,7 +133,7 @@
                     <label class="label-text">Ngày lập</label>
                     <div>
                       <input #date1 class="date" type="date" value="2021-01-01">
-                      <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
+                      <p *ngIf="message1 != ''" style="color: red ; font-size: 12px">{{message1}}</p>
                     </div>
                   </div>
                 </div>
@@ -143,7 +142,7 @@
                     <label class="label-text">Đến ngày</label>
                     <div>
                       <input #date2 class="date" type="date" value="2021-01-01">
-                      <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
+                      <p *ngIf="message2 != ''" style="color: red ; font-size: 12px">{{message2}}</p>
                     </div>
                   </div>
                 </div>
@@ -152,7 +151,7 @@
                     <label class="label-text">Từ giờ</label>
                     <div>
                       <input #time1 class="date" type="time" style="width:80%" value="00:00 AM">
-                      <!--                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
+                      <p *ngIf="message3 != ''" style="color: red ; font-size: 12px">{{message3}}</p>
                     </div>
                   </div>
                 </div>
@@ -161,7 +160,7 @@
                     <label class="label-text">Đến giờ</label>
                     <div>
                       <input #time2 class="date" type="time" style="width:80%" value="00:00 AM">
-                      <!--                                                                        <p style="color: red ; font-size: 12px">ngày  không dc để trống</p>-->
+                      <p *ngIf="message4 != ''" style="color: red ; font-size: 12px">{{message4}}</p>
                     </div>
                   </div>
                 </div>
@@ -202,7 +201,7 @@
                     <td>{{exportBillDetails.exportBill.exportBillDate | date: 'dd/MM/yyyy'}}</td>
                     <td>{{exportBillDetails.exportBill.exportBillDate | date: 'HH:mm'}}</td>
                     <td>{{exportBillDetails.exportBill.employee.employeeName}}</td>
-                    <td>{{totalMoney}}</td>
+                    <td>{{setTotal(exportBillDetails) | currencyVND}}</td>
                     <td>{{exportBillDetails.exportBill.manufacturer.manufacturerName}}</td>
                     <td>{{exportBillDetails.exportBill.exportBillReason}}</td>
                   </tr>
@@ -223,7 +222,7 @@
             <div class="d-flex justify-content-end pt-4 pb-5" style="margin-right: -50%">
               <button class="mr-5  btn btn-pay" type="button" [routerLink]="['/export-bill']"><i class="fa fa-plus"></i> Thanh toán
               </button>
-              <button class="mr-5  btn btn-print" type="button" [routerLink]="['/export-bill/print']"><i class="fa fa-print"></i> In phiếu
+              <button class="mr-5  btn btn-print" type="button" (click)="openDialogPrint()"><i class="fa fa-print"></i> In phiếu
               </button>
               <button class="mr-5  btn btn-delete" type="button" (click)="openDialogDelete()"><i class="fa fa-trash"></i> xóa hóa
                 đơn
