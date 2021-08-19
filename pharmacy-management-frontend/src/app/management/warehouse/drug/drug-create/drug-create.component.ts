@@ -65,6 +65,7 @@ export class DrugCreateComponent implements OnInit {
       // this.drugForm.patchValue({drugImageDetails: this.urlImage});
       this.drugService.save(this.drugForm.value).subscribe(data => {
         alert('Tạo thành công');
+        this.backToList();
         // console.log(data);
         for (let i = 0; i<this.urlImage.length; i++){
           let drugImage = {
@@ -88,21 +89,14 @@ export class DrugCreateComponent implements OnInit {
   uploadFile(imageFile) {
     const nameImg = this.getCurrentDateTime() + imageFile.name;
     const fileRef = this.storage.ref(nameImg);
-    this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+    this.storage.upload(nameImg, imageFile).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.urlImage.push(url);
-          // this.drugForm.patchValue({drugImageDetails: url});
-          // this.drugService.save(this.drugForm.value).subscribe(() => {
-          //   alert('Tạo thành công');
-          //   // this.drugForm.reset();
-          //   this.backToList();
-          // });
         });
       })
     ).subscribe();
   }
-
   showPreview(event) {
     // this.selectedImage = event.target.files[0];
     this.selectedImage = [];
