@@ -41,7 +41,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
   bankFilterCtrl: FormControl = new FormControl();
   filteredBanks: ReplaySubject<Importbilldrug[]> = new ReplaySubject<Importbilldrug[]>(0);
   @ViewChild('drugSelect') drugSelect: MatSelect;
-  @ViewChild('pdfTable') pdfTable: ElementRef;
+  @ViewChild('pdfContent') pdfContent: ElementRef;
   _onDestroy = new Subject<void>();
   manuObj = null;
 
@@ -224,8 +224,10 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
 
   selectType(value: string) {
     // @ts-ignore
-    if (Object.values(value)[0] == 1) {
-      this.router.navigateByUrl('');
+    console.log(Object.values(value));
+    // @ts-ignore
+    if (Object.values(value)[0] == 3) {
+      this.router.navigateByUrl('/');
     }
   }
 
@@ -272,22 +274,27 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
 
 
   htmlToPDF() {
-    this.dialogService.openConfirm("Bạn có muốn in hoán đơn hay không").afterClosed().subscribe(res=> {
-      if(res == true){
-        let data = document.getElementById('pdfTable');
-        html2canvas(data).then(canvas => {
-          let imgWidth = 208;
-          let imgHeight = canvas.height * imgWidth / canvas.width;
-          let contentDataURL = canvas.toDataURL('image/png');
-          let pdf = new jsPDF('p', 'mm', 'a4');
-          let position = 2;
-          pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight);
-          window.open()
-          pdf.save('Hóa đơn xuất trả ngày ' + this.getDateNow() + '.pdf');
-          this.success(':: Bạn đã in hóa đơn thành công ');
-        });
-      }
-    })
+    if(!this.exportBillForm.valid || this.drugRefund.length == 0){
+      this.warn(":: Bạn phải điền đủ thông tin mới xuất được hóa đơn")
+    }else {
+      this.dialogService.openConfirm("Bạn có muốn in hoán đơn hay không").afterClosed().subscribe(res=> {
+        if(res == true){
+          let data = document.getElementById('pdfContent');
+          html2canvas(data).then(canvas => {
+            let imgWidth = 208;
+            let imgHeight = canvas.height * imgWidth / canvas.width;
+            let contentDataURL = canvas.toDataURL('image/png');
+            let pdf = new jsPDF('p', 'mm', 'a4');
+            let position = 2;
+            pdf.addImage(contentDataURL, 'PNG', 1, position, imgWidth, imgHeight);
+            pdf.save('Hóa đơn xuất trả ngày ' + this.getDateNow() + '.pdf');
+            this.success(':: Bạn đã in hóa đơn thành công ');
+            window.location.reload();
+          });
+        }
+      })
+    }
+
   }
 
 
@@ -334,9 +341,11 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
           })
         }
         this.success('Tạo hóa đơn thành công');
+        window.location.reload();
       }, error => {
         this.warn('Tạo hóa đơn thất bại')
       });
     }
   }
+
 }

@@ -442,7 +442,6 @@
       <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/exportbilltype.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/importbilldrug.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/manufacturer.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/config/Config.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/controller/ExportBillController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/dto/ExportBillDetailDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/dto/ExportBillDto.java" afterDir="false" />
@@ -826,7 +825,9 @@
       <workItem from="1629247942763" duration="8785000" />
       <workItem from="1629266479942" duration="10311000" />
       <workItem from="1629279088555" duration="2711000" />
-      <workItem from="1629287835024" duration="672000" />
+      <workItem from="1629287835024" duration="3610000" />
+      <workItem from="1629335083247" duration="4147000" />
+      <workItem from="1629354496837" duration="5349000" />
     </task>
     <servers />
   </component>
