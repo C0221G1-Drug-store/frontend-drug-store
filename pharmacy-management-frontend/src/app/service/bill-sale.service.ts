@@ -42,15 +42,19 @@ export class BillSaleService {
   }
 
   updateBillSale(billSale: BillSale): Observable<BillSale> {
-    return this.http.put<BillSale>(this.API_URL + '/update-bill-sale', billSale);
+    return this.http.post<BillSale>(this.API_URL + '/create-bill-sale', billSale);
   }
 
   createDrugOfBill(drugOfBill: DrugOfBill): Observable<DrugOfBill> {
     return this.http.post<DrugOfBill>(this.API_URL + '/create-drug-of-bill', drugOfBill);
   }
 
-  deleteDrugOfBill(id: number): Observable<DrugOfBill> {
-    return this.http.delete<DrugOfBill>(this.API_URL + '/delete-drug-of-bill?id=' + id);
+  updateDrug(drug: Drug): Observable<Drug> {
+    return this.http.put<Drug>(this.API_URL + '/update-drug', drug);
+  }
+
+  findDrugById(id: number): Observable<Drug> {
+    return this.http.get<Drug>(this.API_URL + '/find-drug-by-id?id=' + id);
   }
 
 }

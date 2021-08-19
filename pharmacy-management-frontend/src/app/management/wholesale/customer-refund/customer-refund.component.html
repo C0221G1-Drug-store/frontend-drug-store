@@ -64,7 +64,8 @@
           </tr>
           </thead>
           <tbody *ngFor="let drugOfBill of drugOfBillList , let i = index">
-          <tr id="{{i}}" (click)="send(drugOfBill)" (click)="getID(drugOfBill.drugOfBillId)">
+          <tr id="{{i}}" (click)="send(drugOfBill,i)" (click)="getID(drugOfBill.drugOfBillId)"
+              [style]="{background: i == this.idSelect ? '#63B8FF' : null}">
             <td>{{drugOfBill.drug.drugName}}</td>
             <td>{{drugOfBill.drug.unit}}</td>
             <td>{{drugOfBill.quantity}}</td>

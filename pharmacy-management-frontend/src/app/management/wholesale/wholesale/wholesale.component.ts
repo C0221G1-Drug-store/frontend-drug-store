@@ -19,6 +19,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class WholesaleComponent implements OnInit {
   drugOfBillList: DrugOfBill[] = [];
+  idSelect: number;
   total: number;
   drugs: Drug[] = [];
   selectDrug = null;
@@ -82,34 +83,40 @@ export class WholesaleComponent implements OnInit {
   }
 
   payment() {
-    // @ts-ignore
-    this.billSaleForm.get('totalMoney').setValue(this.total);
-    this.billSaleForm.get('billSaleId').setValue(this.numRandom);
-    const billSale = this.billSaleForm.value;
-    this.billSaleService.createBillSale(billSale).subscribe(() => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < this.drugOfBillList.length; i++) {
-          this.drugOfBill = this.drugOfBillList[i];
-          console.log(this.drugOfBillList[i]);
-          this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-          });
+    // tslint:disable-next-line:max-line-length
+    if (this.billSaleForm.get('customer').value == null || this.billSaleForm.get('employee').value == null || this.drugOfBillList.length === 0 ) {
+      this.toast.error('Thanh toán thất bại', 'Alert');
+    } else {
+      this.billSaleForm.get('totalMoney').setValue(this.total);
+      this.billSaleForm.get('billSaleId').setValue(this.numRandom);
+      const billSale = this.billSaleForm.value;
+      this.billSaleService.createBillSale(billSale).subscribe(() => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < this.drugOfBillList.length; i++) {
+            this.drugOfBill = this.drugOfBillList[i];
+            this.drugOfBill.drug.drugAmount = this.drugOfBill.drug.drugAmount - this.drugOfBill.quantity ;
+            this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
+              this.billSaleService.updateDrug(this.drugOfBill.drug).subscribe(() => {
+              });
+            });
+          }
+          this.toast.success('Thanh toán thành công', 'Alert');
+        }, error => {
+          this.toast.error('Thanh toán thất bại', 'Alert');
         }
-        this.toast.success('Thanh toán thành công', 'Alert');
-      }, error => {
-        this.toast.error('Thanh toán thất bại', 'Alert');
-      }
-    );
-    // tslint:disable-next-line:prefer-for-of
+      );
+    }
   }
 
-  send(drugOfBill) {
+  send(drugOfBill, index) {
     this.drugOfBill = drugOfBill;
+    this.idSelect = index;
   }
 
   openDeleteDialog() {
     const drugOfBill = this.drugOfBill;
     const dialog = this.dialog.open(DeleteComponent, {
-      data: [this.drugOfBillList, {drugOfBill},]
+      data: [this.drugOfBillList, {drugOfBill}]
     });
     dialog.afterClosed().subscribe(() => {
       this.total = 0;

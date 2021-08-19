@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DeleteCustomerRefundComponent} from '../delete-customer-refund/delete-customer-refund.component';
 import {formatDate} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {Drug} from '../../../model/drug';
 
 @Component({
   selector: 'app-customer-refund',
@@ -13,14 +14,17 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./customer-refund.component.css']
 })
 export class CustomerRefundComponent implements OnInit {
+  idSelect: number;
   inputSearch: any;
-  billSale: BillSale = null;
+  drugInBill: Drug;
+  billSale: BillSale;
   total = 0;
   idDelete = 0;
   idDeleteList: [] = [];
   totalRefund = 0;
   today = new Date();
   todaysDataTime = '';
+  getIDTest  = 0;
   constructor(private billSaleService: BillSaleService,
               private dialog: MatDialog,
               private toast: ToastrService) {
@@ -60,8 +64,9 @@ export class CustomerRefundComponent implements OnInit {
     });
   }
 
-  send(drugOfBill) {
+  send(drugOfBill, index) {
     this.drugOfBill = drugOfBill;
+    this.idSelect = index;
   }
 
   dialogDelete() {
@@ -82,7 +87,6 @@ export class CustomerRefundComponent implements OnInit {
   }
 
   payment() {
-    console.log(this.drugOfBillListDelete);
     if (this.drugOfBillListDelete.length === 0) {
       this.toast.error('Thất bại', 'Alert');
     } else {
@@ -96,16 +100,21 @@ export class CustomerRefundComponent implements OnInit {
         this.billSale.billSaleNote = 'Khách hoàn trả';
         this.billSale.billSaleType = 'Hoàn trả';
         this.billSale.totalMoney = this.totalRefund - this.total;
-        console.log(this.billSale);
         this.billSaleService.createBillSale(this.billSale).subscribe(() => {
           // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < this.drugOfBillListDelete.length; i++) {
             this.drugOfBill = this.drugOfBillListDelete[i][0];
             this.drugOfBill.billSale = this.billSale;
+            this.getIDTest = this.drugOfBill.drug.drugId;
+            this.searchDrug(this.getIDTest);
             this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
+              console.log(this.drugInBill);
+              this.drugInBill.drugAmount = this.drugInBill.drugAmount + this.drugOfBill.quantity;
+              this.billSaleService.updateDrug(this.drugInBill).subscribe(() => {
+              });
             });
+            this.searchBillSale();
           }
-          this.searchBillSale();
           this.toast.success('Hoàn trả thành công', 'Alert');
         }, error => {
           this.toast.error('Hoàn trả thất bại', 'Alert');
@@ -117,5 +126,11 @@ export class CustomerRefundComponent implements OnInit {
   getID(drugOfBillId: number) {
     // @ts-ignore
     this.idDelete = drugOfBillId;
+  }
+
+  searchDrug(id: number) {
+    this.billSaleService.findDrugById(id).subscribe(data => {
+      this.drugInBill = data;
+    });
   }
 }
