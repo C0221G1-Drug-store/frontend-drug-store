@@ -1,9 +1,13 @@
-import {Component, DoCheck, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import Swal from 'sweetalert2';
-import {DrugService} from '../../../../service/drug.service';
-import {Drug} from '../../../../model/drug';
-import {ImportBillDrug} from '../../../../model/import-bill-drug';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+import {Component, OnInit} from '@angular/core';
+import {ImportBill} from '../model/import-bill';
+import {ImportBillServiceService} from '../service/import-bill-service.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {WarehouseImportDerugDeleteComponent} from '../warehouse-import-derug-delete/warehouse-import-derug-delete.component';
+import {IImportBillDto} from '../model/iimport-bill-dto';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-warehouse-import-drug-list',
@@ -11,124 +15,147 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./warehouse-import-drug-list.component.css']
 })
 export class WarehouseImportDrugListComponent implements OnInit {
-  drugs: Drug[] = [];
-  choiceDelete;
-  totalMoney;
+
+  flag = false;
+  bills: IImportBillDto[] = [];
+  page: number = 0;
+  pages: Array<number>;
+  totalPage = 0;
+  invoiceDate = 'invoiceDate';
   indexPagination = 0;
-  totalPagination = 0;
-  form = this.fb.group({
-    formArrayDrugs: this.fb.array([])
-  });
-  @Output() sendTotal = new EventEmitter<any>();
+  startDateTime = '';
+  endDateTime = '';
+  message = '';
+  startDate = '1000-01-01 ';
+  endDate = '9999-09-09 ';
+  startTime = '';
+  endTime = '';
+  public searchBill: FormGroup;
+  idDialog: any;
+  nameDialog: any;
+  selectedImportbill: ImportBill;
 
-  constructor(private drugService: DrugService, private fb: FormBuilder, private elementRef: ElementRef) {
+  constructor(private importBillServiceService: ImportBillServiceService,
+              private dialog: MatDialog,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
-
-  listImportDrug: ImportBillDrug[] = [];
 
   ngOnInit(): void {
-    this.drugService.getAll().subscribe(value => {
-      this.drugs = value;
-    });
-    this.listImportDrug.forEach(value => {
-      this.addNewDrug(value);
+    this.getListBill(this.page);
+
+    this.searchBill = new FormGroup({
+      billCode: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      startTime: new FormControl(''),
+      endTime: new FormControl(''),
+      sortBill: new FormControl(''),
     });
   }
 
-  get formArrayDrugs() {
-    return this.form.controls.formArrayDrugs as FormArray;
+  setPage(i) {
+    this.page = i;
+    this.search(i);
   }
 
-  choiceDrug(target) {
-    if (target.value !== '0') {
-      this.drugService.getById(target.value).subscribe(value => {
-        if (value !== null) {
-          const importDrug: ImportBillDrug = {drug: value};
-          this.addNewDrug(importDrug);
-          // dung cho truong hop chi mot lan nhap ten thuoc
-          // const del = this.drugs.findIndex(value1 => value1.drugId === Number(target.value));
-          // this.drugs.splice(del, 1);
-        }
-      });
+  openDialogDelete(): void {
+    const id = this.idDialog;
+    const name = this.nameDialog;
+    let dialogRef = this.dialog.open(WarehouseImportDerugDeleteComponent, {
+        data: {id, name}
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.importBillServiceService.getAllBill(this.page);
+    });
+  }
+
+
+  subDate(dateTime: string) {
+    const v = dateTime.substr(0, 10);
+    return v;
+  }
+
+  subTime(dateTime: string) {
+    const v = dateTime.substr(11, 16);
+    return v;
+  }
+
+
+  nextPage() {
+    if (this.page < this.pages.length - 1) {
+      this.page = this.page + 1;
+      if (this.flag) {
+        this.search(this.page);
+      } else {
+        this.getListBill(this.page);
+      }
     }
-  }
-
-  addNewDrug(importDrug: ImportBillDrug) {
-    if (typeof importDrug.drug === 'undefined') {
-      console.log('adad');
-    } else {
-      const formGroup = this.fb.group({
-        importBillDrugId: [importDrug.importBillDrugId],
-        importAmount: [importDrug.importAmount, [Validators.required, Validators.min(0)]],
-        importPrice: [importDrug.importPrice, [Validators.required, Validators.min(0)]],
-        discountRate: [importDrug.discountRate, [Validators.required, Validators.min(0)]],
-        lotNumber: [importDrug.lotNumber, [Validators.required, Validators.min(0)]],
-        expiry: [importDrug.expiry, [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$')]],
-        vat: [importDrug.vat, [Validators.required, Validators.min(0), Validators.max(100)]],
-        importBill: [importDrug.importBill],
-        drug: [importDrug.drug],
-      });
-      this.formArrayDrugs.push(formGroup);
-      this.totalPagination = Math.ceil(this.formArrayDrugs.getRawValue().length / 5) ;
-    }
-  }
-
-  remoteImportDrug(id) {
-    this.formArrayDrugs.removeAt(id);
-    this.refreshColor();
-  }
-
-  clickDelete(e) {
-    this.refreshColor();
-    const parentElement = e.target.closest('.onRow') as Element;
-    parentElement.classList.add('choice-del');
-    this.choiceDelete = parentElement.id;
-  }
-
-  refreshColor() {
-    const dom: HTMLElement = this.elementRef.nativeElement;
-    const elements = dom.querySelectorAll('.onRow');
-    elements.forEach(value => {
-      value.classList.remove('choice-del');
-    });
-  }
-
-  totalMoneyCalculation() {
-    this.totalMoney = 0;
-    const dom: HTMLElement = this.elementRef.nativeElement;
-    const elements = dom.querySelectorAll('.total-money');
-    elements.forEach(e => {
-      this.totalMoney -= -(e as HTMLInputElement).value;
-    });
-    this.sendTotal.emit(this.totalMoney);
   }
 
   previousPage() {
-    if (this.indexPagination > 0) {
-      this.indexPagination -= 1;
+    if (this.page > 0) {
+      this.page = this.page - 1;
+      this.search(this.page);
     }
   }
 
-  nextPage() {
-    if (this.indexPagination < this.totalPage) {
-      this.indexPagination += 1;
+  search(page) {
+    this.flag = true;
+    if (this.searchBill.value.startDate == '' && this.searchBill.value.endDate == '') {
+      this.searchBill.value.startDate = this.startDate;
+      this.searchBill.value.endDate = this.endDate;
     }
-    console.log(this.indexPagination);
-    console.log(this.totalPagination);
+    if (this.searchBill.value.sortBill == '') {
+      this.searchBill.value.sortBill = this.invoiceDate;
+    }
+    this.startTime = this.searchBill.value.startTime;
+    this.endTime = this.searchBill.value.endTime;
+    this.startDateTime = this.startDate + this.startTime;
+    this.endDateTime = this.endDate + this.endTime;
+    // tslint:disable-next-line:max-line-length
+
+    this.importBillServiceService.getSearchSortPaging(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, page).subscribe((data: IImportBillDto[]) => {
+      if (data == null) {
+        this.message = 'Thông tin bạn tìm kiếm hiện không có trong hệ thống ';
+        alert(this.message);
+      } else {
+        data['content'].forEach(b => {
+          b.date = this.subDate(b.invoiceDate);
+          b.time = this.subTime(b.invoiceDate);
+        });
+        this.bills = data['content'];
+        this.pages = new Array(data['totalPages']);
+        this.totalPage = this.pages.length - 1;
+      }
+    });
   }
 
-  showList(i: number) {
-    return i < 5 * (this.indexPagination) + 5 && i >= 5 * (this.indexPagination);
+  getId(id: any, name: any) {
+    this.idDialog = id;
+    this.nameDialog = name;
   }
 
-  get totalPage() {
-    if (this.formArrayDrugs.getRawValue().length > 0) {
-      return Math.ceil(this.formArrayDrugs.getRawValue().length / 5) - 1;
-    } else {
-      return 0;
-    }
+  changColor(importBill: ImportBill) {
+    this.selectedImportbill = importBill;
   }
-  choicePage(i) {
-    this.indexPagination = i;
+
+  getListBill(pageable) {
+    this.page = pageable;
+    this.importBillServiceService.getAllBillPaging(pageable).subscribe(data => {
+      data['content'].forEach(b => {
+        b.date = this.subDate(b.invoiceDate);
+        b.time = this.subTime(b.invoiceDate);
+      });
+      this.bills = data['content'];
+      this.pages = new Array(data['totalPages']);
+      this.totalPage = this.pages.length - 1;
+    }, error => console.log(error));
+  }
+
+  addNewImportBill() {
+    this.router.navigate(['warehouse/import/add']);
   }
 }
+

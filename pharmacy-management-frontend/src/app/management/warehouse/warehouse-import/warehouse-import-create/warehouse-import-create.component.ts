@@ -13,6 +13,7 @@ import {PaymentService} from '../../../../service/payment.service';
 import {ImportBillService} from '../../../../service/import-bill.service';
 import {ImportBilDrugService} from '../../../../service/import-bil-drug.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ImportListDrugComponent} from '../import-list-drug/import-list-drug.component';
 
 @Component({
   selector: 'app-warehouse-import-create',
@@ -20,7 +21,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./warehouse-import-create.component.css']
 })
 export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
-  @ViewChild(WarehouseImportDrugListComponent) childImportDrugList!: WarehouseImportDrugListComponent;
+  @ViewChild(ImportListDrugComponent) childImportDrugList!: ImportListDrugComponent;
   form: FormGroup;
   manufacturers: Manufacturer[] = [];
   employee: Employee = {

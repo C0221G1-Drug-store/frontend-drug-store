@@ -8,15 +8,17 @@ import {WarehouseImportInvoiceInformationComponent} from './warehouse-import-inv
 import {WarehouseImportPaymentComponent} from './warehouse-import-payment/warehouse-import-payment.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ArrayNumPipe } from './warehouse-import-drug-list/array-num.pipe';
-
-
+import { WarehouseImportDerugDeleteComponent } from './warehouse-import-derug-delete/warehouse-import-derug-delete.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ImportListDrugComponent } from './import-list-drug/import-list-drug.component';
 @NgModule({
-  declarations: [WarehouseImportCreateComponent, WarehouseImportDrugListComponent, WarehouseImportInvoiceInformationComponent, WarehouseImportPaymentComponent, ArrayNumPipe],
+  declarations: [WarehouseImportCreateComponent, WarehouseImportDrugListComponent, WarehouseImportInvoiceInformationComponent, WarehouseImportPaymentComponent, ArrayNumPipe,WarehouseImportDrugListComponent, WarehouseImportDerugDeleteComponent, ImportListDrugComponent],
   imports: [
     CommonModule,
     WarehouseImportRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class WarehouseImportModule {

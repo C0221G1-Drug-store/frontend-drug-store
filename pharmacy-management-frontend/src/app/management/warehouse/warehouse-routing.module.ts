@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {WarehouseImportCreateComponent} from './warehouse-import/warehouse-import-create/warehouse-import-create.component';
 
 
 const routes: Routes = [
