@@ -1,3 +1,6 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -18,7 +21,7 @@ import {WarehouseExportRoutingModule} from "./warehouse-export-routing.module";
 import {NgModule} from "@angular/core";
 
 @NgModule({
-  declarations: [ExportBillListComponent, ExportBillDeleteComponent, ExportBillPrintComponent],
+  declarations: [ExportBillListComponent, ExportBillDeleteComponent, ExportBillPrintComponent, ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
   exports: [
     ExportBillListComponent
   ],

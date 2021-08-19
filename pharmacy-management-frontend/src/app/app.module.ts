@@ -7,9 +7,17 @@ import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
+import {MatSelectModule} from '@angular/material/select';
+import {NgxPrintModule} from 'ngx-print';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {Overlay} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
