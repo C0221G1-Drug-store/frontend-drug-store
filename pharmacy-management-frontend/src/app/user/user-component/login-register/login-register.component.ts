@@ -37,6 +37,7 @@ export class LoginRegisterComponent implements OnInit {
     this.formRegister = new FormGroup({
       username: new FormControl('', [Validators.required,Validators.minLength(5)]),
       accountName: new FormControl('', [Validators.required,Validators.minLength(5)]),
+      email: new FormControl('', [Validators.required,Validators.minLength(5)]),
       password: new FormControl('', [Validators.required,Validators.minLength(5)]),
     });
   }

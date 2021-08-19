@@ -34,6 +34,7 @@ export class HeaderClientComponent implements OnInit {
       // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
       this.username = user.accountName;
+
       // @ts-ignore
       this.ismod = ( this.roles == 'ROLE_MODERATOR' || this.roles == 'ROLE_ADMIN')
     }
