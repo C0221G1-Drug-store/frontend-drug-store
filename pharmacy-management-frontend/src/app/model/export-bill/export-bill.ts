@@ -6,6 +6,6 @@ export interface ExportBill {
   exportBillDateCreate: string;
   exportBillReason: string;
   exportBillType: ExportBillType;
-  // employee: Employee;
-  // manufacturer: Manufacturer;
+  employee: Employee;
+  manufacturer: Manufacturer;
 }

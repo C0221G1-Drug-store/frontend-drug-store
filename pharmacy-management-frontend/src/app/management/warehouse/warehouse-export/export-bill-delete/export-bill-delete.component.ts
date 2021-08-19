@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {ExportBillServiceService} from '../service/export-bill-service.service';
+import {ExportBillServiceService} from '../../../../service/export-bill/export-bill-service.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({

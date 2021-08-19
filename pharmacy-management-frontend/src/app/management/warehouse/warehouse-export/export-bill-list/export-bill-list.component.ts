@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ExportBill} from '../model/export-bill';
-import {ExportBillServiceService} from '../service/export-bill-service.service';
+import {ExportBill} from '../../../../model/export-bill/export-bill';
+import {ExportBillServiceService} from '../../../../service/export-bill/export-bill-service.service';
 import {Observable} from 'rxjs';
 import {ExportBillDeleteComponent} from '../export-bill-delete/export-bill-delete.component';
 import {MatDialog} from '@angular/material/dialog';
