@@ -37,25 +37,32 @@
       <h2 style="color: black">Đăng Ký</h2>
       <form [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
         <div class="to-div-input">
-          <input type="text" class="to-input-box" formControlName="accountName" placeholder="Họ và tên" required>
+          <input type="text" class="to-input-box" formControlName="accountName" placeholder="Họ và tên(*)" required>
           <small class="to-error-text" *ngIf="formRegister.get('accountName')?.hasError('required')
                   && formRegister.get('accountName')?.touched">Không được để trống!</small>
           <small class="to-error-text" *ngIf="formRegister.get('accountName')?.hasError('minlength')
-                  && formRegister.get('accountName')?.touched">Tên nhất 5 ký tự</small>
+                  && formRegister.get('accountName')?.touched">Tên ít nhất 5 ký tự</small>
         </div>
         <div class="to-div-input">
-          <input type="text" class="to-input-box" formControlName="username" placeholder="Tên Đăng Nhập" required>
+          <input type="text" class="to-input-box" formControlName="username" placeholder="Tên Đăng Nhập(*)" required>
           <small class="to-error-text" *ngIf="formRegister.get('username')?.hasError('required')
                   && formRegister.get('username')?.touched">Không được để trống!</small>
           <small class="to-error-text" *ngIf="formRegister.get('username')?.hasError('minlength')
-                  && formRegister.get('username')?.touched">Tên nhất 5 ký tự</small>
+                  && formRegister.get('username')?.touched">Tên đăng nhập ít nhất 5 ký tự</small>
         </div>
         <div class="to-div-input">
-          <input type="password" class="to-input-box" formControlName="password" placeholder="Mật Khẩu" required>
+          <input type="email" class="to-input-box" formControlName="email" placeholder="Email(*)" required>
+          <small class="to-error-text" *ngIf="formRegister.get('email')?.hasError('required')
+                  && formRegister.get('email')?.touched">Không được để trống!</small>
+          <small class="to-error-text" *ngIf="formRegister.get('email')?.hasError('minlength')
+                  && formRegister.get('email')?.touched">Email ít nhất 5 ký tự</small>
+        </div>
+        <div class="to-div-input">
+          <input type="password" class="to-input-box" formControlName="password" placeholder="Mật Khẩu(*)" required>
           <small class="to-error-text" *ngIf="formRegister.get('password')?.hasError('required')
                   && formRegister.get('password')?.touched">Không được để trống!</small>
           <small class="to-error-text" *ngIf="formRegister.get('password')?.hasError('minlength')
-                  && formRegister.get('password')?.touched">Mật khẩu nhất 5 ký tự</small>
+                  && formRegister.get('password')?.touched">Mật khẩu ít nhất 5 ký tự</small>
         </div>
         <button type="submit" class="to-sign-submit" style="margin-top: 20px;margin-bottom: 10px">Đăng ký
         </button>
