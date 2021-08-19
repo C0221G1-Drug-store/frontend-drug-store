@@ -16,17 +16,27 @@ import {WarehouseExportModule} from './management/warehouse/warehouse-export/war
     AppComponent
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SaleRetailModule,
-        BrowserAnimationsModule,
-        ManagementModule,
-        CommonModule,
-        MatDialogModule,
-        HttpClientModule,
-        WarehouseExportModule
+      BrowserModule,
+      AppRoutingModule,
+      SaleRetailModule,
+      BrowserAnimationsModule,
+      ManagementModule,
+      CommonModule,
+      MatDialogModule,
+      HttpClientModule,
+      WarehouseExportModule,
+      MatSelectModule,
+      NgxPrintModule,
+      MatSelectModule,
+      FormsModule,
+      NgxPaginationModule,
+      ReactiveFormsModule,
+      NgxPrintModule,
+      MatIconModule,
+      MatDialogModule,
+      MatButtonModule
     ],
-  providers: [],
+  providers: [MatDialog ,Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

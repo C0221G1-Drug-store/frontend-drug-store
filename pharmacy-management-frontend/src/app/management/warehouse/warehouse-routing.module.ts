@@ -4,9 +4,13 @@ import {ExportBillPrintComponent} from "./warehouse-export/export-bill-print/exp
 
 
 const routes: Routes = [
-  // {path: 'export-bill/import', component: ExportBillImportComponent
-  // },
-  {path: 'export-bill/print', component: ExportBillPrintComponent}
+  {path: 'export-bill/import', component: ExportBillImportComponent
+  },
+  {path: 'export-bill/print', component: ExportBillPrintComponent},
+  {
+    path: 'warehouse-export',
+    loadChildren: () => import('./warehouse-export/warehouse-export.module').then(module => module.WarehouseExportModule)
+  }
 ];
 
 @NgModule({
