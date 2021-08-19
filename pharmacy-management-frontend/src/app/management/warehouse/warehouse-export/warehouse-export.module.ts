@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { WarehouseExportRoutingModule } from './warehouse-export-routing.module';
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -16,9 +17,6 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {ExportBillListComponent} from "./export-bill-list/export-bill-list.component";
 import {ExportBillDeleteComponent} from "./export-bill-delete/export-bill-delete.component";
 import {ExportBillPrintComponent} from "./export-bill-print/export-bill-print.component";
-import {CommonModule} from "@angular/common";
-import {WarehouseExportRoutingModule} from "./warehouse-export-routing.module";
-import {NgModule} from "@angular/core";
 
 @NgModule({
   declarations: [ExportBillListComponent, ExportBillDeleteComponent, ExportBillPrintComponent, ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
