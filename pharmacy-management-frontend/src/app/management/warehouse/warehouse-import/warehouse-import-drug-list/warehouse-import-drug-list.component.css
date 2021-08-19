@@ -660,4 +660,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-.form-control-sm .ng-invalid {     background-color: red !important; color: red !important}
+.form-control-sm.ng-touched.ng-invalid {     border: solid 5px red !important; color: red !important}

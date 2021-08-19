@@ -15,7 +15,7 @@ export class WarehouseImportDrugListComponent implements OnInit {
   choiceDelete;
   totalMoney;
   indexPagination = 0;
-  totalPagination: number;
+  totalPagination = 0;
   form = this.fb.group({
     formArrayDrugs: this.fb.array([])
   });
@@ -45,6 +45,9 @@ export class WarehouseImportDrugListComponent implements OnInit {
         if (value !== null) {
           const importDrug: ImportBillDrug = {drug: value};
           this.addNewDrug(importDrug);
+          // dung cho truong hop chi mot lan nhap ten thuoc
+          // const del = this.drugs.findIndex(value1 => value1.drugId === Number(target.value));
+          // this.drugs.splice(del, 1);
         }
       });
     }
@@ -61,11 +64,12 @@ export class WarehouseImportDrugListComponent implements OnInit {
         discountRate: [importDrug.discountRate, [Validators.required, Validators.min(0)]],
         lotNumber: [importDrug.lotNumber, [Validators.required, Validators.min(0)]],
         expiry: [importDrug.expiry, [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$')]],
-        vat: [importDrug.vat],
+        vat: [importDrug.vat, [Validators.required, Validators.min(0), Validators.max(100)]],
         importBill: [importDrug.importBill],
         drug: [importDrug.drug],
       });
       this.formArrayDrugs.push(formGroup);
+      this.totalPagination = Math.ceil(this.formArrayDrugs.getRawValue().length / 5) ;
     }
   }
 
@@ -109,16 +113,22 @@ export class WarehouseImportDrugListComponent implements OnInit {
     if (this.indexPagination < this.totalPage) {
       this.indexPagination += 1;
     }
+    console.log(this.indexPagination);
+    console.log(this.totalPagination);
   }
 
   showList(i: number) {
     return i < 5 * (this.indexPagination) + 5 && i >= 5 * (this.indexPagination);
   }
+
   get totalPage() {
     if (this.formArrayDrugs.getRawValue().length > 0) {
-      return Math.ceil(this.formArrayDrugs.getRawValue().length / 5 ) - 1;
+      return Math.ceil(this.formArrayDrugs.getRawValue().length / 5) - 1;
     } else {
       return 0;
     }
+  }
+  choicePage(i) {
+    this.indexPagination = i;
   }
 }
