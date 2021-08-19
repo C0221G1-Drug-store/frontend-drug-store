@@ -1,0 +1,8 @@
+<h1>Xóa Nhân Viên</h1>
+<p>Mã Nhân Viên: {{data.employeeCode}}</p>
+<p>Tên Nhân viên: {{data.employeeName}}</p>
+<p> bạn có muốn xóa không???</p>
+<button class="mr-5 btn btn-primary" type="button" (click)="dialogRef.close(false)">
+  <i class="fa fa-undo" aria-hidden="true"></i>trở</button>
+<button class="mr-1 btn btn-danger"  type="button" (click)="dialogRef.close(true)">
+  <i class="fa fa-trash-o" aria-hidden="true"></i>xóa</button>

@@ -1,153 +1,96 @@
-<div id="content" >
-  <fieldset class="scheduler-border">
-    <legend class="scheduler-border">Bộ lọc</legend>
-    <div class="container ">
-      <div class="d-flex justify-content-between mt-4">
-        <div class="ml-5 col-3">
-          <label>Lọc theo</label>
-          <select class="form-control-sm">
-            <option>Mã Nhân viên</option>
-            <option>Tên Nhân viên</option>
-            <option>Địa Chỉ</option>
-            <option>Chức Vụ</option>
-          </select>
-        </div>
-        <div class="col-6 d-flex">
-          <input type="text" class="mr-2" style="width: 60%">
-          <button class="mr-3 btn btn-search" type="button"><i class="fa fa-search"></i> Lọc kết
-            quả
-          </button>
-        </div>
-        <div class="mr-5 col-3">
-          <label>Sắp xếp </label>
-          <select class="form-control-sm" >
-            <option>Tên  Nhân Viên</option>
-            <option>Số Điện Thoại</option>
-            <option>Địa Chỉ</option>
-            <option>Mã Nhân Viên</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </fieldset>
 
-
-  <fieldset class="scheduler-border">
-    <legend class="scheduler-border">Danh Sách Nhân Viên</legend>
-    <table class="table table-bordered table-striped">
-      <thead class="thead">
-      <tr>
-      <tr>
-        <th>Mã Nhân Viên</th>
-        <th>Tên Nhân Viên</th>
-        <th>Địa Chỉ</th>
-        <th>Số Điện Thoại</th>
-        <th>Ngày Vào Làm</th>
-        <th>Tài Khoản</th>
-        <th>Chức Vụ</th>
-        <th>Ghi Chú</th>
-      </tr>
-
-
-      </thead>
-
-      <tbody>
-      <tr role="button" id="1" onclick="select(this.id)">
-        <td>NV001</td>
-        <td>Trần Văn A</td>
-        <td>Đà Nẵng</td>
-        <td>090 9090 909</td>
-        <td>2/10/2014</td>
-        <td>tranvana</td>
-        <td>Nhân Viên</td>
-        <td>6</td>
-
-      </tr>
-
-      <tr role="button" id="2" onclick="select(this.id)" >
-        <td>NV002</td>
-        <td>Trần Văn A</td>
-        <td>Đà Nẵng</td>
-        <td>090 9090 909</td>
-        <td>2/10/2014</td>
-        <td>tranvana</td>
-        <td>Nhân Viên</td>
-        <td>6</td>
-
-
-      </tr>
-
-      <tr role="button" id="3" onclick="select(this.id)" >
-        <td>NV003</td>
-        <td>Trần Văn A</td>
-        <td>Đà Nẵng</td>
-        <td>090 9090 909</td>
-        <td>2/10/2014</td>
-        <td>tranvana</td>
-        <td>Nhân Viên</td>
-        <td>6</td>
-
-
-      </tr>
-
-      <tr role="button" id="4" onclick="select(this.id)" >
-        <td>NV004</td>
-        <td>Trần Văn A</td>
-        <td>Đà Nẵng</td>
-        <td>090 9090 909</td>
-        <td>2/10/2014</td>
-        <td>tranvana</td>
-        <td>Nhân Viên</td>
-        <td>6</td>
-
-
-      </tr>
-
-    </table>
-
-    <div class="d-flex justify-content-end">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="d-flex justify-content-end pt-3 pb-5 p-3">
-<!--      <button class="mr-3 btn btn-create button" type="button"><i class="fa fa-plus"></i>Thêm</button>-->
-      <a href="employee/create" class="btn btn-create mr-3 button"><i class="fa fa-plus"></i>Thêm</a>
-      <button class="mr-3 btn btn-edit button" type="button"><i class="fa fa-edit"></i> Sửa</button>
-      <button class="mr-3 btn btn-danger button" data-toggle="modal" data-target="#exampleModal"><i
-        class="fa fa-trash-o"></i> Xóa
-      </button>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">xóa nhân viên</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Bạn có muốn xóa nhân viên này hay không ?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn button btn-return" data-dismiss="modal">Không
-              </button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Xóa</button>
-            </div>
+<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 right-content ">
+  <div class="row white-block"></div>
+  <div id="content" >
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">Bộ lọc</legend>
+      <div class="container ">
+        <div class="d-flex justify-content-between mt-4">
+          <div class="ml-5 col-3">
+            <label>Lọc theo</label>
+            <select [(ngModel)]="select" class="form-control-sm">
+              <option value="code">Mã Nhân viên</option>
+              <option value="name">Tên Nhân viên</option>
+              <option value="address">Địa Chỉ</option>
+              <option value="position">Chức Vụ</option>
+            </select>
+          </div>
+          <div class="col-6 d-flex">
+            <input [(ngModel)]="searchValue"  type="text" class="mr-2" style="width: 60%">
+            <button (click)="search()" class="mr-3 btn btn-search" type="button"><i class="fa fa-search"></i> Lọc kết
+              quả
+            </button>
+          </div>
+          <div class="mr-5 col-3">
+            <label>Sắp xếp </label>
+            <select [(ngModel)]="sortBy" class="form-control-sm" (change)="sortByRequest()" >
+              <option value="employee_name">Tên  Nhân Viên</option>
+              <option value="employee_code">mã nhân viên</option>
+              <option value="position">chức vụ</option>
+              <option value="employee_start_date">ngày vào làm</option>
+              <option value="employee_address">địa chỉ</option>
+              <option value="employee_phone">Điện thoại</option>
+            </select>
           </div>
         </div>
       </div>
-      <button class="mr-3 btn btn-return button " type="button"><i class="fa fa-undo"></i> Trở về</button>
-    </div>
+    </fieldset>
+</div>
 
 
-  </fieldset>
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">Danh Sách Nhân Viên</legend>
+      <table class="table table-bordered table-striped">
+        <thead class="thead">
+        <tr>
+        <tr>
+          <th>Mã Nhân Viên</th>
+          <th>Tên Nhân Viên</th>
+          <th>Địa Chỉ</th>
+          <th>Số Điện Thoại</th>
+          <th>Ngày Vào Làm</th>
+          <th>Tài Khoản</th>
+          <th>Chức Vụ</th>
+          <th>Ghi Chú</th>
+        </tr>
+
+
+        </thead>
+
+        <tbody>
+
+        <tr *ngFor="let e of employees" (click)="getEmpl(e)" [style]="{background: e.employeeId == change ? '#63B8FF': null}" >
+          <td>{{e.employeeCode}}</td>
+          <td>{{e.employeeName}}</td>
+          <td>{{e.employeeAddress}}</td>
+          <td>{{e.employeePhone}}</td>
+          <td>{{e.employeeStartDate}}</td>
+          <td>{{e.accountName}}</td>
+          <td>{{e.position}}</td>
+          <td>{{e.employeeNote}}</td>
+        </tr>
+      </table>
+
+      <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" (click)="previous()">Trước</a></li>
+            <li class="page-item" *ngFor="let p of pages; let i=index"><a class="page-link" (click)="setPage(i)">{{i+1}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="next()">Tiếp</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="d-flex justify-content-end pt-3 pb-5 p-3">
+        <button class="mr-3 btn btn-create button" type="button"><i class="fa fa-plus"></i> Thêm</button>
+        <button class="mr-3 btn btn-edit button" type="button"><i class="fa fa-edit"></i> Sửa</button>
+        <button (click)="onDeleteHandler()" class="mr-3 btn btn-danger button" data-toggle="modal" data-target="#exampleModal"><i
+          class="fa fa-trash-o"></i> Xóa
+        </button>
+        <button class="mr-3 btn btn-return button " type="button"><i class="fa fa-undo"></i> Trở về</button>
+      </div>
+
+
+    </fieldset>
+  </div>
 </div>
 
