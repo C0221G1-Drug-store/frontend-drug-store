@@ -29,6 +29,7 @@ export class ExportbillService {
     return this.http.get<String>(this.API_EMPLOYEE+ '/employees');
   }
 
+
   getAllCaseRecord(pageNumber: number): Observable<ExportBill[]> {
     return this.http.get<ExportBill[]>(this.API_EXPORT_BILL + '?page=' + pageNumber);
   }
@@ -46,5 +47,4 @@ export class ExportbillService {
   delete(id: number): void {
     this.http.delete(this.API_EXPORT_BILL + '/delete/' + id );
   }
-
 }
