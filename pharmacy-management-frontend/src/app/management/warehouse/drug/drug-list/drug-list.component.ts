@@ -4,6 +4,8 @@ import {DrugDTO} from '../../../../model/DrugDTO';
 import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.component';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {DrugEditComponent} from '../drug-edit/drug-edit.component';
 
 @Component({
   selector: 'app-drug-list',
@@ -24,6 +26,22 @@ export class DrugListComponent implements OnInit {
   sign = '';
   searched = false;
 
+drugForm: FormGroup = new FormGroup({
+    drugName: new FormControl(''),
+    drugFaculty: new FormControl(''),
+    activeElement: new FormControl(''),
+    drugSideEffect: new FormControl(''),
+    conversionRate: new FormControl(''),
+    drugImageDetails: new FormControl(''),
+    wholesaleProfitRate: new FormControl(''),
+    retailProfitRate: new FormControl(''),
+    unit: new FormControl(''),
+    conversionUnit: new FormControl(''),
+    manufacturer: new FormControl(''),
+    origin: new FormControl(''),
+    drugGroup: new FormControl(''),
+    note: new FormControl('')
+  });
   constructor(private drugService: DrugService,
               private dialog: MatDialog) {
   }
@@ -105,6 +123,20 @@ export class DrugListComponent implements OnInit {
     });
   }
 
+  updateDialog(): void {
+    this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
+      const dialogRef = this.dialog.open(DrugEditComponent, {
+        width: '1000px',
+        height: '950px',
+        data: {data1: drug}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+    });
+  }
+
   notSelectedDialog(): void {
     const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
       width: '500px'
@@ -146,5 +178,14 @@ export class DrugListComponent implements OnInit {
       });
       this.searched = true;
     }
+
+      noSelectUpdateDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
+      width: '500px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
   }
 }
