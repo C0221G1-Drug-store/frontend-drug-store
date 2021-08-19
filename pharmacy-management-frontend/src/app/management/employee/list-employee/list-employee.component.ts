@@ -4,6 +4,7 @@ import {Employee} from "../../../model/Employee";
 import {EmployeeService} from "../../../service/employee.service";
 import {MatDialog} from "@angular/material/dialog";
 
+
 @Component({
   selector: 'app-list-employee',
   templateUrl: './list-employee.component.html',
@@ -27,7 +28,6 @@ export class ListEmployeeComponent implements OnInit {
 
 
   constructor(private employeeService: EmployeeService, private dialog: MatDialog) {
-
   }
 
   ngOnInit(): void {
@@ -137,4 +137,5 @@ export class ListEmployeeComponent implements OnInit {
     this.getEmployees();
 
   }
+
 }
