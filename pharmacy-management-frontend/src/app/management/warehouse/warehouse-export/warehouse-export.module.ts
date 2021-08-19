@@ -14,23 +14,29 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {CustomCurrencyPipe} from "./custom-currency.pipe"
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-
+import {ExportBillListComponent} from "./export-bill-list/export-bill-list.component";
+import {ExportBillDeleteComponent} from "./export-bill-delete/export-bill-delete.component";
+import {ExportBillPrintComponent} from "./export-bill-print/export-bill-print.component";
 
 @NgModule({
-  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
-  imports: [
-    CommonModule,
-    WarehouseExportRoutingModule,
-    MatSelectModule,
-    FormsModule,
-    NgxPaginationModule,
-    ReactiveFormsModule,
-    NgxPrintModule,
-    MatIconModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    NgxMatSelectSearchModule,
-  ]
+  declarations: [ExportBillListComponent, ExportBillDeleteComponent, ExportBillPrintComponent, ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
+  exports: [
+    ExportBillListComponent
+  ],
+    imports: [
+      CommonModule,
+      WarehouseExportRoutingModule,
+      MatSelectModule,
+      FormsModule,
+      NgxPaginationModule,
+      ReactiveFormsModule,
+      NgxPrintModule,
+      MatIconModule,
+      MatDialogModule,
+      MatButtonModule,
+      MatSnackBarModule,
+      NgxMatSelectSearchModule,
+    ],
+  providers: []
 })
 export class WarehouseExportModule { }
