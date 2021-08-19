@@ -1,5 +1,11 @@
 
-
+/*td {background-color:#003399;}*/
+/*td:hover{background-color:#00FF66;}*/
+/*td:active{background-color:#FF0000;}*/
+.selected {
+  background: #567FEA !important;
+  color: white;
+}
 @media (max-width: 800px) {
   .table thead {
     display: none;
