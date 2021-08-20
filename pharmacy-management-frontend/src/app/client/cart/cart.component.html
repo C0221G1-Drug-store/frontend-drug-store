@@ -72,8 +72,8 @@
         <tr>
           <td>
             <div>Tổng tiền</div>
-                        <div>{{(moneyTotal != 0) ? moneyTotal + 30000: 0 | currency: 'VND' : '' : '1.0-0'}} ₫</div>
-<!--            <div>{{456000 + 30000 | currency: 'VND' :'' : '1.0-0'}} ₫</div>-->
+            <div>{{(moneyTotal != 0) ? moneyTotal + 30000: 0 | currency: 'VND' : '' : '1.0-0'}} ₫</div>
+            <!--            <div>{{456000 + 30000 | currency: 'VND' :'' : '1.0-0'}} ₫</div>-->
           </td>
         </tr>
         <tr>
@@ -118,11 +118,6 @@
 </div>
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
@@ -134,7 +129,7 @@
         </button>
       </div>
       <div class="modal-body" >
-          <h4>{{deleteInfo}}</h4>
+        <h4>{{deleteInfo}}</h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
