@@ -2,7 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {WarehouseImportDrugListComponent} from '../warehouse-import-drug-list/warehouse-import-drug-list.component';
 import Swal from 'sweetalert2';
 import {DrugService} from '../../../../service/drug.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Payment} from '../../../../model/payment';
 import {ManufacturerService} from '../../../../service/manufacturer.service';
 import {Manufacturer} from '../../../../model/manufacturer';
@@ -30,7 +30,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     employeeName: 'Trần việt'
   };
   drugMoney;
-
+  importSystemCode;
   constructor(private fb: FormBuilder,
               private manufacturerService: ManufacturerService,
               public dialog: MatDialog,
@@ -45,10 +45,11 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     this.manufacturerService.findAllNormal().subscribe(value => {
       this.manufacturers = value;
     });
+    this.importSystemCode ='HD' + (Math.floor((Math.random() * (100000 - 9999))) + 10000);
     this.form = this.fb.group({
-      importSystemCode: ['HD' + (Math.floor((Math.random() * (100000 - 9999))) + 10000)],
+      importSystemCode: [this.importSystemCode],
       accountingVoucher: ['', Validators.required],
-      invoiceDate: ['', Validators.required],
+      invoiceDate: ['', [Validators.required]],
       flag: true,
       payment: this.fb.group({
         paymentId: [''],
@@ -66,29 +67,38 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   confirmBox() {
-    Swal.fire({
-      title: 'Bạn có muons xóa thuốc này không?',
-      text: 'thuốc trong danh sách sẽ bị xóa!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Ok ',
-      cancelButtonText: 'Không '
-    }).then((result) => {
-      if (result.value) {
-        this.childImportDrugList.remoteImportDrug(this.childImportDrugList.choiceDelete);
-        Swal.fire(
-          'Xóa thành công!',
-          'Thuốc đã được xóa.',
-          'success'
-        );
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Không xóa',
-          'Thuốc vẫn nằm trong danh sách)',
-          'error'
-        );
-      }
-    });
+    if(typeof this.childImportDrugList.choiceDelete != 'undefined' ){
+      Swal.fire({
+        title: 'Bạn có muons xóa thuốc này không?',
+        text: 'thuốc trong danh sách sẽ bị xóa!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ok ',
+        cancelButtonText: 'Không '
+      }).then((result) => {
+        if (result.value) {
+          this.childImportDrugList.remoteImportDrug(this.childImportDrugList.choiceDelete);
+          Swal.fire(
+            'Xóa thành công!',
+            'Thuốc đã được xóa.',
+            'success'
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Không xóa',
+            'Thuốc vẫn nằm trong danh sách)',
+            'error'
+          );
+        }
+      });
+    }else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Bạn chưa chọn thuốc để xóa',
+        text: 'vui lòng chọn thuốc từ danh sách',
+      });
+    }
+
   }
 
   submit() {
@@ -102,6 +112,14 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     }
   }
  get checkSubmit() {
+   if (this.form.get('invoiceDate').invalid || this.form.get('accountingVoucher').invalid ) {
+     this.errorAlert('form nhập không hợp lệ');
+     return false;
+   }
+   if (this.form.get('importSystemCode').value!= this.importSystemCode) {
+     this.errorAlert('Mã hóa đơn được tạo tự động .không thể sửa');
+     return false;
+   }
    if (this.payment.invalid) {
      this.errorAlert('Thông tin thanh toán bị sai');
      return false;
@@ -214,5 +232,15 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     }, error => {
       this.errorAlert('Có lỗi từ hệ thống');
     });
+  }
+
+  dateValidator(c: AbstractControl) {
+    // Not sure if c will come in as a date or if we have to convert is somehow
+    const today = new Date();
+    if(c.value > today) {
+      return null;
+    } else {
+      return {dateValidator: {valid: false}};
+    }
   }
 }

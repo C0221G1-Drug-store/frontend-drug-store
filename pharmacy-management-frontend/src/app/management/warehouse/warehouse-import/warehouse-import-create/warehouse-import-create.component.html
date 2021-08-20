@@ -43,7 +43,7 @@
             <div class="mb-3">
               <div class="w-100 d-inline-flex">
                 <label class="col-3 pl-0">Ghi chú</label>
-                <textarea class="form-control border-dark border-2"
+                <textarea class="form-control border-dark border-2 w-100"
                           id="exampleFormControlTextarea1" rows="3"
                           readonly [value]="manufacturerNote"></textarea>
               </div>
@@ -58,7 +58,7 @@
                 <label class="col-xl-4 col-3 px-0">Số HĐ</label>
                 <input type="text" readonly
                        class="form-control-sm text-secondary w-100"
-                       placeholder="HD123123" formControlName="importSystemCode">
+                       placeholder="" formControlName="importSystemCode">
               </div>
 
             </div>
@@ -79,6 +79,12 @@
                   <input type="datetime-local" class="form-control-sm w-100" formControlName="invoiceDate">
                 </div>
               </div>
+              <small
+                *ngIf="form.get('invoiceDate')?.hasError('required') && form.get('invoiceDate').touched"
+                class="d-block position-absolute text-danger pt-1 px-0">ngày lập không được để trống </small>
+              <small
+                *ngIf="form.get('invoiceDate')?.hasError('pattern') && form.get('invoiceDate').touched"
+                class="d-block position-absolute text-danger pt-1 px-0">ngày lập sai format</small>
             </div>
             <div class="mb-3">
               <div class="w-100 d-inline-flex">
@@ -128,6 +134,9 @@
                    [value]="totalMoney"
                    class="form-control-sm border-dark w-100"
                    type="text">
+            <small
+              *ngIf="form.controls.payment.get('totalMoney')?.hasError('required') && form.controls.payment.get('totalMoney').touched"
+              class="d-block position-absolute text-danger col-4 px-0 pt-4">tổng tiền không hợp lệ  </small>
           </div>
         </div>
         <div class="mb-3">
