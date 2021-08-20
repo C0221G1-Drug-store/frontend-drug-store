@@ -19,23 +19,39 @@
                 <label>Từ ngày:</label>
                 <input type="date" formControlName="startDate">
               </div>
+              <div style="color:red;" *ngFor="let validate of validate_message.date">
+                <div
+                  *ngIf="searchBill.get('startDate')?.hasError(validate.type) && searchBill.get('startDate')?.touched">{{validate.message}}</div>
+              </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
               <div class="form-group d-flex">
                 <label>Đến ngày:</label>
                 <input type="date" formControlName="endDate">
               </div>
+              <div style="color:red;" *ngFor="let validate of validate_message.date">
+                <div
+                  *ngIf="searchBill.get('endDate')?.hasError(validate.type) && searchBill.get('endDate')?.touched">{{validate.message}}</div>
+              </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 ">
               <div class="form-group d-flex">
                 <label>Từ giờ:</label>
                 <input type="time" formControlName="startDate">
+                <div style="color:red;" *ngFor="let validate of validate_message.time">
+                  <div
+                    *ngIf="searchBill.get('startTime')?.hasError(validate.type) && searchBill.get('startTime')?.touched">{{validate.message}}</div>
+                </div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
               <div class="form-group d-flex ">
                 <label>Đến giờ:</label>
                 <input type="time" formControlName="endTime">
+              </div>
+              <div style="color:red;" *ngFor="let validate of validate_message.time">
+                <div
+                  *ngIf="searchBill.get('endTime')?.hasError(validate.type) && searchBill.get('endTime')?.touched">{{validate.message}}</div>
               </div>
             </div>
           </div>
@@ -57,7 +73,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="form-group d-flex">
                 <label>Mã HĐ:</label>
-                <input type="text" formControlName="billCode">
+                <input type="text" formControlName="billCode" placeholder="Mã Hóa Đơn">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-2">
@@ -73,6 +89,7 @@
     <fieldset class="scheduler-border">
       <legend class="scheduler-border">Danh sách hóa đơn</legend>
       <div class="scroll outer">
+        <h1 class="text-center text-danger" *ngIf="bills.length == 0"><i class="fa fa-search" aria-hidden="true"></i>Không tìm thấy hóa đơn</h1>
         <table class="table table-bordered table-striped table- table-hover">
           <thead class="head justify-content-center">
           <tr>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ImportBill} from '../model/import-bill';
 import {ImportBillServiceService} from '../service/import-bill-service.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {WarehouseImportDerugDeleteComponent} from '../warehouse-import-derug-delete/warehouse-import-derug-delete.component';
 import {IImportBillDto} from '../model/iimport-bill-dto';
@@ -18,18 +18,28 @@ export class WarehouseImportDrugListComponent implements OnInit {
   pages: Array<number>;
   totalPage = 0;
   invoiceDate = 'invoiceDate';
-  indexPagination = 0;
+  message = '';
   startDateTime = '';
   endDateTime = '';
-  message = '';
   startDate = '1000-01-01 ';
   endDate = '9999-09-09 ';
   startTime = '';
   endTime = '';
+  newDate = new Date();
+  nowDate = this.newDate.getFullYear().toString() + '-' + this.newDate.getMonth().toString() + '-' + this.newDate.getDate().toString();
+  nowTime = this.newDate.getHours().toString() + this.newDate.getMinutes().toString() + this.newDate.getMilliseconds().toString();
   public searchBill: FormGroup;
   idDialog: any;
   nameDialog: any;
   selectedImportbill: ImportBill;
+  validate_message = {
+    date: [
+      {type: 'pattern', message: '* ex:dd-mm-yyyy'}
+    ], time: [
+      {type: 'pattern', message: '* ex:hh:mm:ss'}
+    ],
+
+  };
 
   constructor(private importBillServiceService: ImportBillServiceService,
               private dialog: MatDialog) {
@@ -40,10 +50,10 @@ export class WarehouseImportDrugListComponent implements OnInit {
 
     this.searchBill = new FormGroup({
       billCode: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      startTime: new FormControl(''),
-      endTime: new FormControl(''),
+      startDate: new FormControl('', [Validators.pattern('^\\d{4}\\-\\d{2}\\-\\d{2}$')]),
+      endDate: new FormControl('', [Validators.pattern('^\\d{4}\\-\\d{2}\\-\\d{2}$')]),
+      startTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}\\:\\d{2}$')]),
+      endTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}\\:\\d{2}$')]),
       sortBill: new FormControl(''),
     });
   }
@@ -96,19 +106,24 @@ export class WarehouseImportDrugListComponent implements OnInit {
   }
 
   search(page) {
+    // Date
     this.flag = true;
     if (this.searchBill.value.startDate == '' && this.searchBill.value.endDate == '') {
       this.searchBill.value.startDate = this.startDate;
-      this.searchBill.value.endDate = this.endDate;
+      this.searchBill.value.endDate = this.nowDate;
+    } else if (this.searchBill.value.endDate == '') {
+      this.searchBill.value.endDate = this.nowDate;
+    } else if (this.searchBill.value.startDate == '') {
+      this.searchBill.value.startDate = this.startDate;
     }
+    // if sort trong
     if (this.searchBill.value.sortBill == '') {
       this.searchBill.value.sortBill = this.invoiceDate;
     }
-    this.startTime = this.searchBill.value.startTime;
-    this.endTime = this.searchBill.value.endTime;
-    this.startDateTime = this.startDate + this.startTime;
-    this.endDateTime = this.endDate + this.endTime;
-    // tslint:disable-next-line:max-line-length
+    this.startDateTime = this.searchBill.value.startDate + this.searchBill.value.startTime;
+    this.endDateTime = this.searchBill.value.endDate + this.searchBill.value.endTime;
+    console.log('ngày bắt đầu' + this.startDateTime);
+    console.log('ngày Kết thúc' + this.endDateTime);
 
     this.importBillServiceService.getSearchSortPaging(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, page).subscribe((data: IImportBillDto[]) => {
       if (data == null) {
@@ -125,6 +140,41 @@ export class WarehouseImportDrugListComponent implements OnInit {
       }
     });
   }
+
+  // search(page) {
+  //   this.flag = true;
+  //   if (this.searchBill.value.startDate == '' && this.searchBill.value.endDate == '') {
+  //     this.searchBill.value.startDate = this.startDate;
+  //     this.searchBill.value.endDate = this.endDate;
+  //   }
+  //   //  else if(this.searchBill.value.endDate == ''){
+  //   //   this.searchBill.value.endDate =this.nowDate;
+  //   //   this.searchBill.value.endDate =this.endDate;
+  //   // }
+  //   if (this.searchBill.value.sortBill == '') {
+  //     this.searchBill.value.sortBill = this.invoiceDate;
+  //   }
+  //   this.startTime = this.searchBill.value.startTime;
+  //   this.endTime = this.searchBill.value.endTime;
+  //   this.startDateTime = this.startDate + this.startTime;
+  //   this.endDateTime = this.endDate + this.endTime;
+  //   // tslint:disable-next-line:max-line-length
+  //
+  //   this.importBillServiceService.getSearchSortPaging(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, page).subscribe((data: IImportBillDto[]) => {
+  //     if (data == null) {
+  //       this.message = 'Thông tin bạn tìm kiếm hiện không có trong hệ thống ';
+  //       alert(this.message);
+  //     } else {
+  //       data['content'].forEach(b => {
+  //         b.date = this.subDate(b.invoiceDate);
+  //         b.time = this.subTime(b.invoiceDate);
+  //       });
+  //       this.bills = data['content'];
+  //       this.pages = new Array(data['totalPages']);
+  //       this.totalPage = this.pages.length - 1;
+  //     }
+  //   });
+  // }
 
   getId(id: any, name: any) {
     this.idDialog = id;
