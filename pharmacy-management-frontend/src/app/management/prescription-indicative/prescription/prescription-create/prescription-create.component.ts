@@ -24,17 +24,17 @@ export class PrescriptionCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.prescriptionForm = this.fb.group({
-      prescriptionCode: new FormControl('', [Validators.required, Validators.pattern('^(T)-[0-9]{4}$')]),
+      prescriptionCode: new FormControl('', [Validators.required]),
       prescriptionName: new FormControl('', [Validators.required]),
       symptom: new FormControl('', [Validators.required]),
       object: new FormControl('', [Validators.required]),
       numberOfDay: new FormControl('', [Validators.required]),
       note: new FormControl('', [Validators.required]),
       indicatives: this.fb.array([this.fb.group({
-        drug: new FormControl('', [Validators.required]),
-        totalPill: new FormControl('', [Validators.required]),
-        drinkDay: new FormControl('', [Validators.required]),
-        drinkTime: new FormControl('', [Validators.required]),
+        drug: new FormControl(''),
+        totalPill: new FormControl(''),
+        drinkDay: new FormControl(''),
+        drinkTime: new FormControl(''),
       })])
     });
   }

@@ -1,10 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {PrescriptionService} from '../../../../service/prescription.service';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IndicativeService} from '../../../../service/indicative.service';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Prescription} from '../../../../model/prescription';
+import {PrescriptionDto} from '../../../../model/prescriptionDto';
+import {Indicative} from '../../../../model/indicative';
 
 @Component({
   selector: 'app-prescription-edit',
@@ -12,37 +13,31 @@ import {Prescription} from '../../../../model/prescription';
   styleUrls: ['./prescription-edit.component.css']
 })
 export class PrescriptionEditComponent implements OnInit {
-  idEdit: number;
   drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
-  prescription: Prescription;
+  prescription: PrescriptionDto;
+  indicativeList: Indicative[];
 
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
               private indicativeService: IndicativeService,
               private router: Router,
               @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.getIndicative();
     this.ngOnInit();
   }
-
   prescriptionForm: FormGroup = new FormGroup({});
-
   ngOnInit(): void {
     this.prescriptionService.findById(this.data.id).subscribe(prescriptions => {
-      console.log('log');
-      console.log(this.data.id);
       this.prescription = prescriptions;
-      console.log('obj');
-      console.log(this.prescriptionForm);
       this.prescriptionForm.patchValue(this.prescription);
     });
     this.prescriptionForm = new FormGroup({
-      prescriptionId: new FormControl(''),
-      prescriptionCode: new FormControl(''),
-      prescriptionName: new FormControl(''),
-      symptom: new FormControl(''),
-      object: new FormControl(''),
-      numberOfDay: new FormControl(''),
-      note: new FormControl(''),
+      prescriptionCode: new FormControl('', [Validators.required]),
+      prescriptionName: new FormControl('', [Validators.required]),
+      symptom: new FormControl('', [Validators.required]),
+      object: new FormControl('', [Validators.required]),
+      numberOfDay: new FormControl('', [Validators.required]),
+      note: new FormControl('', [Validators.required]),
       indicatives: this.fb.array([this.fb.group({
         indicativeId: new FormControl(''),
         drug: new FormControl(''),
@@ -52,6 +47,15 @@ export class PrescriptionEditComponent implements OnInit {
       })])
     });
   }
+
+  getIndicative() {
+    this.prescriptionService.getIdicative(this.data.id).subscribe(indicatives => {
+      this.indicativeList = indicatives;
+      console.log('indicative');
+      console.log(this.indicativeList);
+    });
+  }
+
 
   get indicatives() {
     return this.prescriptionForm.get('indicatives') as FormArray;

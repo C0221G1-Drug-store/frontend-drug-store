@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Prescription} from '../../../../model/prescription';
+import {PrescriptionDto} from '../../../../model/prescriptionDto';
 import {PrescriptionService} from '../../../../service/prescription.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PrescriptionDeleteComponent} from '../prescription-delete/prescription-delete.component';
@@ -13,9 +13,9 @@ import {PrescriptionEditComponent} from '../prescription-edit/prescription-edit.
 })
 export class PrescriptionListComponent implements OnInit {
   idEdit: number;
-  prescriptions: Prescription[];
+  prescriptions: PrescriptionDto[];
   pages: Array<any>;
-  prescription: Prescription;
+  prescription: PrescriptionDto;
   prescriptionName = '';
   prescriptionCode = '';
   object = '';
@@ -24,7 +24,6 @@ export class PrescriptionListComponent implements OnInit {
   sortBy = 'prescription_id';
   select: any;
   valueSearch: any;
-  idDialog: number;
 
 
   constructor(private prescriptionService: PrescriptionService,
@@ -38,11 +37,16 @@ export class PrescriptionListComponent implements OnInit {
   getPrescriptions() {
     // tslint:disable-next-line:max-line-length
     this.prescriptionService.getAllPrescription(this.prescriptionName, this.prescriptionCode, this.object, this.symptom, this.page, this.sortBy).subscribe(prescriptions => {
+      if (prescriptions === null) {
+        alert('Không tìm thấy trang');
+        this.prescriptions = [];
+      }
       this.prescriptions = prescriptions['content'];
       this.pages = new Array<any>(prescriptions['totalPages']);
       // console.log(this.pages);
     });
   }
+
   setPage(i: number) {
     this.page = i;
     this.getPrescriptions();
@@ -51,7 +55,7 @@ export class PrescriptionListComponent implements OnInit {
 
   previous() {
     if (this.page === 0) {
-      alert('Khong tim thay trang');
+      alert('Không tìm thấy trang');
     } else {
       this.page = this.page - 1;
       this.getPrescriptions();
@@ -60,19 +64,19 @@ export class PrescriptionListComponent implements OnInit {
 
   next() {
     if (this.page > this.pages.length - 2) {
-      alert('ko tim thay trang');
+      alert('Không tìm thấy trang ');
     } else {
       this.page = this.page + 1;
       this.getPrescriptions();
     }
   }
 
-  getPres(p: Prescription) {
+  getPres(p: PrescriptionDto) {
     this.prescription = p;
   }
-  onDeleteHandler(prescription: Prescription): void {
+
+  onDeleteHandler(prescription: PrescriptionDto): void {
     const dialogRef = this.dialog.open(PrescriptionDeleteComponent, {
-      width: '250px',
       data: prescription
     });
 
@@ -85,8 +89,9 @@ export class PrescriptionListComponent implements OnInit {
       }
     });
   }
+
   onEditHandler() {
-    const  id = this.idEdit;
+    const id = this.idEdit;
     const dialogRef = this.dialog.open(PrescriptionEditComponent, {
       data: {id}
     });
@@ -113,14 +118,30 @@ export class PrescriptionListComponent implements OnInit {
         break;
       case 'doiTuong':
         this.prescriptionCode = '';
+        this.prescriptionName = '';
         this.object = this.valueSearch;
         this.getPrescriptions();
         break;
-      case 'trieuChung':
+      case 'trieuChu  ng':
+        this.prescriptionCode = '';
+        this.prescriptionName = '';
         this.object = '';
         this.symptom = this.valueSearch;
         this.getPrescriptions();
+        console.log(this.getPrescriptions());
         break;
+      default:
+        // this.prescriptionName = this.valueSearch;
+        // this.prescriptionCode = '';
+        // this.object = '';
+        // this.symptom = '';
+        alert('vui long chọn trường cần tìm kiếm')
+        this.getPrescriptions();
+        console.log(this.getPrescriptions());
     }
+  }
+
+  sort() {
+    this.getPrescriptions();
   }
 }

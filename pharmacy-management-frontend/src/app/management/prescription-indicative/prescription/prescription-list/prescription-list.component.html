@@ -5,12 +5,14 @@
       <div class="d-flex  mt-4">
         <div class=" col-3 d-flex">
           <label class="mt-2">Lọc theo</label>
+
           <select class="form-control ml-1" style="width: 70%" [(ngModel)]="select">
-            <option value="tenThuoc">Tên thuốc</option>
+            <option value="tenThuoc" [selected]="true">Tên thuốc</option>
             <option value="maToaThuoc">Mã toa thuốc</option>
             <option value="doiTuong">Đối tượng</option>
             <option value="trieuChung">Triệu chứng</option>
           </select>
+
         </div>
         <div class="col-6 d-flex">
           <input type="text" class="mr-2 form-control ml-5" style="width: 50%" [(ngModel)]="valueSearch">
@@ -22,11 +24,11 @@
         </div>
         <div class="mr-5 col-3 d-flex">
           <label class="mt-2 ">Sắp xếp </label>
-          <select class="form-control ml-1" style="width: 70%" >
-            <option>Mã toa thuốc</option>
-            <option>Tên thuốc</option>
-            <option>Đối tượng</option>
-            <option>Triệu chứng</option>
+          <select class="form-control ml-1" style="width: 70%" [(ngModel)]="sortBy" (change)="sort()" >
+            <option value="prescription_code">Mã toa thuốc</option>
+            <option value="prescription_name">Tên toa thuốc</option>
+            <option value="object">Đối tượng</option>
+            <option value="symptom">Triệu chứng</option>
           </select>
         </div>
       </div>

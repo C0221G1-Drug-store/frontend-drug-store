@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Prescription} from '../model/prescription';
+import {PrescriptionDto} from '../model/prescriptionDto';
+import {Indicative} from '../model/indicative';
 
 const API_URL = 'http://localhost:8080';
 
@@ -14,24 +15,26 @@ export class PrescriptionService {
 
   getAllPrescription(name: string, code: string, object: string, symptom: string, page: number, sortBy: string) {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Prescription[]>(API_URL + '/prescriptions/prescription-list' + '?prescriptionName=' + name + '&prescriptionCode=' + code + '&object=' + object + '&symptom=' + symptom + '&page=' + page + '&sortBy=' + sortBy);
+    return this.http.get<PrescriptionDto[]>(API_URL + '/prescriptions/prescription-list' + '?prescriptionName=' + name + '&prescriptionCode=' + code + '&object=' + object + '&symptom=' + symptom + '&page=' + page + '&sortBy=' + sortBy);
   }
 
-  savePrescription(prescription): Observable<Prescription> {
-    return this.http.post<Prescription>(API_URL + '/prescriptions/prescription-create', prescription);
+  savePrescription(prescription): Observable<PrescriptionDto> {
+    return this.http.post<PrescriptionDto>(API_URL + '/prescriptions/prescription-create', prescription);
   }
 
-  findById(id: number): Observable<Prescription> {
-    return this.http.get<Prescription>(`${API_URL}/prescriptions/prescriptions/${id}`);
+  findById(id: number): Observable<PrescriptionDto> {
+    return this.http.get<PrescriptionDto>(`${API_URL}/prescriptions/prescriptions/${id}`);
   }
 
-  updatePrescription(id: number, prescription: Prescription): Observable<Prescription> {
-    return this.http.put<Prescription>(`${API_URL}/prescriptions/${id}`, prescription);
+  updatePrescription(id: number, prescription: PrescriptionDto): Observable<PrescriptionDto> {
+    return this.http.put<PrescriptionDto>(`${API_URL}/prescriptions/${id}`, prescription);
   }
 
-  deletePrescription(id: number): Observable<Prescription> {
-    return this.http.delete<Prescription>(`${API_URL}/prescriptions/prescriptions/${id}`);
+  deletePrescription(id: number): Observable<PrescriptionDto> {
+    return this.http.delete<PrescriptionDto>(`${API_URL}/prescriptions/prescriptions/${id}`);
   }
 
-  // pagePrescription(name,)
+  getIdicative(id: number): Observable<Indicative[]> {
+    return this.http.get<Indicative[]>(`${API_URL}/indicatives/indicative-list/${id}`);
+  }
 }

@@ -1,6 +1,6 @@
 import {Drug} from './drug';
 import {PrescriptionIndicative} from './prescription-indicative';
-import {Prescription} from './prescription';
+import {PrescriptionDto} from './prescriptionDto';
 
 export interface Indicative {
   indicativeId?: number;
@@ -8,5 +8,5 @@ export interface Indicative {
   drinkDay?: number;
   drinkTime?: number;
   drug?: string;
-  prescription?: Prescription;
+  prescription?: PrescriptionDto;
 }

@@ -1,5 +1,5 @@
 import {Drug} from './drug';
-import {Prescription} from './prescription';
+import {PrescriptionDto} from './prescriptionDto';
 import {Bill} from './bill';
 
 
@@ -7,6 +7,6 @@ export interface DrugOfBill {
   id?: number;
   quantity?: number;
   drug?: Drug;
-  prescription?: Prescription;
+  prescription?: PrescriptionDto;
   bill?: Bill;
 }

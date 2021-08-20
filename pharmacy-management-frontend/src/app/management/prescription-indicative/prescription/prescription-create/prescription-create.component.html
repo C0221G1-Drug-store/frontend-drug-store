@@ -1,55 +1,90 @@
 <div class="container">
   <h1 class="text-center mb-3">Đơn thuốc</h1>
   <form [formGroup]="prescriptionForm" (ngSubmit)="submit()">
+
     <div class="">
       <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="prescriptionName" >
-        <div class="d-flex"
-          *ngIf="!prescriptionForm.get('prescriptionName').valid && (prescriptionForm.get('prescriptionName').dirty ||prescriptionForm.get('prescriptionName').touched)">
-          <div [hidden]="!prescriptionForm.get('prescriptionName').errors.required">
-            <span style="color: red">vui lòng vào</span>
-          </div>
+       <div class="col-2">
+         <label class=" mt-1  d-flex">Tên đơn thuốc <p style=" color: red">(*)</p></label>
+       </div>
+        <div class="col-10">
+          <input class="form-control " type="text" formControlName="prescriptionName" >
         </div>
       </div>
+      <div class=""
+           *ngIf="!prescriptionForm.get('prescriptionName').valid && (prescriptionForm.get('prescriptionName').dirty ||prescriptionForm.get('prescriptionName').touched)">
+        <div [hidden]="!prescriptionForm.get('prescriptionName').errors.required"class="d-flex">
+          <span style="color: red; margin-left: 200px;margin-top: -17px ">vui lòng không được nhập trống !</span>
+        </div>
+      </div>
+
       <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="prescriptionCode">
+        <div class="col-2">
+          <label class="label-text-min mt-1 ml-1 d-flex">Mã đơn thuốc <p style=" color: red">(*)</p></label>
+        </div>
+        <div class="col-10">
+         <input class="form-control pl-2" type="text" formControlName="prescriptionCode">
+       </div>
       </div>
-      <!--      <p style="color: red ; margin-left: 210px ;margin-top:-30px "> Vui lòng không được nhập trống</p>-->
+      <div class=""
+           *ngIf="!prescriptionForm.get('prescriptionCode').valid && (prescriptionForm.get('prescriptionCode').dirty ||prescriptionForm.get('prescriptionCode').touched)">
+        <div [hidden]="!prescriptionForm.get('prescriptionCode').errors.required" class="d-flex">
+          <span style="color: red; margin-left: 200px;margin-top: -17px ">vui lòng không được nhập trống !</span>
+        </div>
+      </div>
 
       <div class="d-flex mb-3">
-        <label class="label-text-min mt-1 ml-1 d-flex">Triệu chứng <p style=" color: red">(*)</p></label>
-        <input class="form-control pl-2" type="text" formControlName="symptom">
+        <div class="col-2">
+          <label class="label-text-min mt-1 ml-1 d-flex">Triệu chứng <p style=" color: red">(*)</p></label>
+        </div>
+        <div class="col-10">
+          <input class="form-control pl-2" type="text" formControlName="symptom">
+        </div>
+      </div>
+      <div class="d-flex"
+           *ngIf="!prescriptionForm.get('symptom').valid && (prescriptionForm.get('symptom').dirty ||prescriptionForm.get('symptom').touched)">
+        <div [hidden]="!prescriptionForm.get('symptom').errors.required" class="d-flex">
+          <span style="color: red; margin-left: 200px;margin-top: -17px ">vui lòng không được nhập trống !</span>
+        </div>
       </div>
 
-      <!--      <p style="color: red ; margin-left: 210px;margin-top:-30px "> Vui lòng không được nhập trống</p>-->
-      <div class="d-flex">
-        <label class="label-text-min mt-2 ml-1 "><p>Ghi chú </p></label>
-        <textarea class="form-control pl-2 ml-5" formControlName="note"></textarea>
-      </div>
 
+        <div class="d-flex mb-3">
+          <div class="col-2">
+            <label class="label-text-min mt-1 ml-1 d-flex"><p>Ghi chú </p></label>
+          </div>
+          <div class="col-10">
+            <input class="form-control pl-2 " formControlName="note">
+          </div>
+        </div>
       <br>
     </div>
 
     <div class="row">
       <div class="col-2">
-        <label class="label-text-min mt-1">Đối tượng</label>
+        <label class="label-text-min ml-4  mt-1">Đối tượng</label>
       </div>
       <div class="col-4">
-        <select class="form-control ml-4" style="width: 70%" formControlName="object">
-          <option value="Trẻ em">Trẻ em</option>
+        <select class="form-control ml-4 mr-5" style="width: 70%" formControlName="object">
+          <option value="Trẻ em" [selected]="true ">Trẻ em</option>
           <option value="Người lớn">Người lớn</option>
           <option value="Phụ nữ mang thai">Phụ nữ mang thai</option>
         </select>
       </div>
 
-      <div class="col-3">
+      <div class="col-2">
         <label class="label-text-min mt-1 ml-5  ">Số ngày uống</label>
       </div>
-      <div class="col-3"><input type="number" class="form-control mr-2 ml-2" style="width: 96%;"
+      <div class="col-4"><input type="number" class="form-control mr-2 ml-2" style="width: 96%;"
                                 formControlName="numberOfDay"></div>
     </div>
+    <div class="d-flex"
+         *ngIf="!prescriptionForm.get('numberOfDay').valid && (prescriptionForm.get('numberOfDay').dirty ||prescriptionForm.get('numberOfDay').touched)">
+      <div [hidden]="!prescriptionForm.get('numberOfDay').errors.required">
+        <span style="color: red; margin-left: 865px;margin-top: -17px ">vui lòng không được nhập trống !</span>
+      </div>
+    </div>
+
 
     <fieldset class="scheduler-border">
       <legend class="scheduler-border">Chỉ định</legend>
@@ -58,14 +93,14 @@
 
         <div *ngFor="let item of indicatives.controls ; let indicativeIndex=index" [formGroupName]="indicativeIndex">
           <div class="d-flex justify-content-between row">
-            <span>{{indicativeIndex+1}}</span>
+            <span class="ml-5 mt-2">{{indicativeIndex+1}}</span>
             <div class=" col-6">
               <select class="select form-control"  formControlName="drug">
-                <option *ngFor="let d of drugs " value="{{d}}}">{{d}}</option>
+                <option *ngFor="let d of drugs " value="{{d}}}" [selected]="true">{{d}}</option>
               </select>
             </div>
-            <div class="col-1"></div>
-            <div class="col-3 d-flex">
+
+            <div class="col-2 d-flex">
               <input class="vien mr-4 form-control ml-2" type="number" formControlName="totalPill"> <span
               class="mt-2 ">Viên</span>
             </div>
@@ -76,24 +111,29 @@
             </div>
           </div>
           <br>
+
           <div class="d-flex row">
-            <div class="col-8 d-flex ">
+
+              <div class="col-8 d-flex  " style="margin-left: 80px">
               <p class="mt-2">Ngày uống</p>
               <input type="number" class="ml-2 vien form-control" formControlName="drinkDay">
-              <p class="ml-2 mt-2 mr-2">lần , </p>
-
-              <span class="mt-2 mr-2"> mỗi lần</span>
+              <p class="ml-2 mt-2 mr-5">lần , </p>
+              <span class="mt-2 mr-3"> mỗi lần</span>
               <input type="number" class=" vien  form-control " formControlName="drinkTime">
               <span class="mt-2 ml-4">Viên</span>
             </div>
+            <br>
+            <div class="row d-flex ">
+              <div class="col-4">
+              </div>
+            </div>
           </div>
+          <br>
         </div>
+        <br>
       </div>
+      <br>
 
-      <div class="row d-flex ">
-        <div class="col-4">
-        </div>
-      </div>
 
       <div class="col-8 ">
 
@@ -121,4 +161,4 @@
   </form>
 </div>
 
-{{this.prescriptionForm.value | json}}
+<!--{{this.prescriptionForm.value | json}}-->
