@@ -27,6 +27,12 @@ export class HomepageComponent implements OnInit {
     }
   }
 
+  getDrugByDrugGroup(drugGroupName) {
+    return this.drugs.filter(drug=>drug.drugGroup == drugGroupName);
+  }
+
+
+
   ngOnInit(): void {
     this.getAllDrugGroup();
     this.getAllDrug();
