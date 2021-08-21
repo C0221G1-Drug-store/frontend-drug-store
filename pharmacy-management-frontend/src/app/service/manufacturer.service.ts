@@ -12,6 +12,7 @@ const API_URL = `${environment.apiUrl}`;
 
 export class ManufacturerService {
 
+
   constructor(private http:HttpClient) { }
   getAll(page: number, search:any, selects:any, sort: any) {
 
@@ -76,11 +77,13 @@ export class ManufacturerService {
   findByIdImportBill(id: number){
     return this.http.get<ImportBill>(API_URL + '/manufacturer/importBill?id='+id);
   }
-  deleteManufacturer(id:number, manufacturer: Manufacturer):Observable<Manufacturer>{
+  deleteManufacturer(id:number, manufacturer: Manufacturer):Observable<Manufacturer> {
     console.log('abv');
     console.log(manufacturer);
-    return  this.http.put<Manufacturer>(API_URL +'/manufacturer/delete?id='+id,manufacturer);
-
+    return this.http.put<Manufacturer>(API_URL + '/manufacturer/delete?id=' + id, manufacturer);
+  }
+  findAllNormal(){
+    return this.http.get<Manufacturer[]>(API_URL + '/manufacturer/getAll');
   }
 }
 

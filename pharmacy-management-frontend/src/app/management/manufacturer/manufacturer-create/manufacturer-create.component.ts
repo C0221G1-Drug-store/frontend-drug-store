@@ -1,8 +1,12 @@
+
 import { Component, OnInit } from '@angular/core';
 import {ManufacturerService} from "../../../service/manufacturer.service";
 import {FormControl, FormGroup, Validators,AbstractControl} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {Manufacturer} from "../../../model/manufacturer";
+
+
+
 
 @Component({
   selector: 'app-manufacturer-create',
@@ -10,10 +14,11 @@ import {Manufacturer} from "../../../model/manufacturer";
   styleUrls: ['./manufacturer-create.component.css']
 })
 export class ManufacturerCreateComponent implements OnInit {
+
 manufacturerForm: FormGroup;
 manufacturers: Manufacturer[]=[];
 
-  constructor(private  manufacturerService: ManufacturerService, private toastr:ToastrService) {
+  constructor(private  manufacturerService: ManufacturerService, private toastr:ToastrService,) {
     this.manufacturerForm= new FormGroup(
     {
       manufacturerCode: new FormControl('',[Validators.required]),
@@ -29,7 +34,6 @@ manufacturers: Manufacturer[]=[];
   )
   }
 
-
   ngOnInit(): void {
   }
 
@@ -39,6 +43,7 @@ manufacturers: Manufacturer[]=[];
       console.log(manufacturer);
       this.manufacturerService.saveManufacturer(manufacturer).subscribe(  () => {
           this.toastr.success("Thêm mới thành công.", 'Thêm mới')
+
         },error => {
         if(error.status==404){
           this.toastr.error("Thêm mới thất bại vì trường email hoặc trường mã nhà cung cấp bị trùng.", 'Thêm mới')

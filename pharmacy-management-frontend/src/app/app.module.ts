@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
 import {ToastrModule} from "ngx-toastr";
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -29,6 +30,7 @@ import {ToastrModule} from "ngx-toastr";
     ToastrModule.forRoot({
       timeOut:2000,
     })
+
   ],
   providers: [],
   bootstrap: [AppComponent]

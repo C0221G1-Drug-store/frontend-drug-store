@@ -1,4 +1,3 @@
-import {Manufacturer} from "./manufacturer";
 import {Payment} from "./payment";
 
 export interface ImportBill {
@@ -9,6 +8,8 @@ export interface ImportBill {
   invoiceTime?;
   flag?: true;
   payment?: Payment;
-  manufacturer?: Manufacturer;
+  manufacturer?;
   employee?;
+
+
 }

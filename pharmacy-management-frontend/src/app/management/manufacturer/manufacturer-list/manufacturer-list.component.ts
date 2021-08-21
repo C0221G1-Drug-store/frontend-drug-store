@@ -5,6 +5,7 @@ import {ManufacturerDeleteComponent} from "../manufacturer-delete/manufacturer-d
 import {ManufacturerService} from "../../../service/manufacturer.service";
 import { Manufacturer } from 'src/app/model/manufacturer';
 import {ToastrService} from "ngx-toastr";
+import {ManufacturerCreateComponent} from "../manufacturer-create/manufacturer-create.component";
 
 
 
@@ -110,5 +111,14 @@ selectedMovie: Manufacturer;
     this.idDialog = manufacturerId;
     this.nameDialog = manufacturerName;
    this.selectedMovie=movie;
+  }
+
+  dialogCreate() {
+    let dialogRef = this.dialog.open(ManufacturerCreateComponent, {
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAll()
+    });
   }
 }
