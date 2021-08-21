@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../service/cart.service';
 import {DrugCart} from '../../model/cart/drug-cart';
 import {Currency} from '../../model/cart/currency';
@@ -8,6 +8,8 @@ import {Currency} from '../../model/cart/currency';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -20,7 +22,8 @@ declare let paypal: any;
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, AfterViewChecked {
+export class CartComponent implements OnInit {
+  //#region DATA TEST
   list = [
     {
       img: 'https://image.pharmacity.vn/live/uploads/2019/04/P00066_1_l-300x300.jpg',
@@ -69,6 +72,12 @@ export class CartComponent implements OnInit, AfterViewChecked {
     {id: 3, code: '1234567892', money: '150000'},
     {id: 4, code: '1234567893', money: '50000'},
   ];
+  account = {
+    accountName: "Khánh Phan",
+    email: "khanhphan900@gmail.com"
+  };
+  // #endregion
+
   //#region CART
   medicines: DrugCart[];
   medicine!: DrugCart;
@@ -79,6 +88,8 @@ export class CartComponent implements OnInit, AfterViewChecked {
   currencyDateNow = '';
   currencyMoney = 0;
   resultMsg = '';
+  deleteId: number;
+  deleteInfo = '';
   // #endregion
 
   //#region PAYPAL
@@ -116,8 +127,14 @@ export class CartComponent implements OnInit, AfterViewChecked {
         this.resultMsg = 'Thanh toán thành công';
         this.medicines = null;
         localStorage.removeItem('medicineList');
+        localStorage.setItem('totalCart', '0');
+        this.showMessageSuccess();
         // Send email.
-
+        this.cartService.sendEmail().subscribe(e => {
+          console.log('ok');
+        }, error => {
+          console.log('error');
+        });
       });
     }
   };
@@ -135,15 +152,25 @@ export class CartComponent implements OnInit, AfterViewChecked {
   // #endregion
 
   constructor(private cartService: CartService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
     this.getMedicineList();
+    this.getTotal();
+    this.postTotalCartLocalStorage()
   }
-
+  postTotalCartLocalStorage(){
+    localStorage.setItem('totalCart', String(this.medicineTotal))
+  }
   getMedicineList() {
-    // localStorage.setItem('medicineList', JSON.stringify(this.list));
+
+    //#region Set data in LOCALSTORAGE
+    localStorage.setItem('medicineList', JSON.stringify(this.list));
+    // localStorage.setItem('account', JSON.stringify(this.account))    ;
+    //#endreion
+
 
     this.resultMsg = '';
     this.medicines = JSON.parse(localStorage.getItem('medicineList'));
@@ -151,6 +178,12 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
 
   //#region ADD + SUB + DEL + UPDATE
+
+  sendDeleteId(i: number, info: string) {
+    this.deleteId = i;
+    this.deleteInfo = info;
+  }
+
   medicineSub(i: number) {
     if (this.medicines[i].amount > 0) {
       this.medicines[i].amount--;
@@ -167,9 +200,10 @@ export class CartComponent implements OnInit, AfterViewChecked {
     localStorage.setItem('medicines', JSON.stringify(this.medicine));
   }
 
-  delMedicine(i: number) {
+  delMedicine(i) {
     this.medicines.splice(i, 1);
     localStorage.setItem('medicineList', JSON.stringify(this.medicines));
+    this.postTotalCartLocalStorage();
   }
 
   getTotal() {
@@ -189,6 +223,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
     this.moneyPayPal = 0;
     this.getTotal();
     localStorage.setItem('medicineList', JSON.stringify(this.medicines));
+    this.postTotalCartLocalStorage();
+    if (!this.moneyTotal){
+      this.showMessageNotFound();
+    }
+    this.getPaypPal()
   }
 
   // #endregion
@@ -208,12 +247,11 @@ export class CartComponent implements OnInit, AfterViewChecked {
   // #endregion
 
   //#region Paypal
-  ngAfterViewChecked(): void {
-    if (!this.addScript) {
+  getPaypPal(): void {
+    if (!this.addScript && this.medicineTotal) {
       this.addPaypalScript().then(() => {
         paypal.Button.render(this.paypalConfig, '#myPaypalButton');
         this.paypalLoad = false;
-        // alert('ok successful');
       });
     }
   }
@@ -230,6 +268,7 @@ export class CartComponent implements OnInit, AfterViewChecked {
 
   // #endregion
 
+  //#region Voucher
   checkVoucher() {
     this.isVoucher = false;
     for (let i = 0; i < this.listVoucher.length; i++) {
@@ -247,5 +286,19 @@ export class CartComponent implements OnInit, AfterViewChecked {
       }
     }
     this.voucherMsg = 'Mã phiếu ưu đãi không tồn tại';
+  }
+  // #endregion
+
+  showMessageNotFound() {
+    this.toastrService.error('Bạn chưa có sản phẩm trong giỏ hàng', 'Thông báo', {
+      timeOut: 3000,
+      progressBar: true,
+    });
+  }
+  showMessageSuccess() {
+    this.toastrService.success('Thanh toán thành công', 'Thông báo', {
+      timeOut: 3000,
+      progressBar: true,
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
 import {DrugGroupClientService} from '../../service/drug-group-client.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,13 +11,15 @@ import {TokenStorageService} from '../../user/user-service/token-storage.service
   templateUrl: './header-client.component.html',
   styleUrls: ['./header-client.component.css']
 })
-export class HeaderClientComponent implements OnInit {
+export class HeaderClientComponent implements OnInit, AfterContentChecked {
   drugGroups: DrugGroup[] = [];
   search: any;
   private roles: string[];
   isLoggedIn = false;
   username: string;
   ismod : boolean;
+  totalProduct = 0;
+
   constructor(private drugGroupService: DrugGroupClientService, private router: Router,
               private route: ActivatedRoute,private dialog : MatDialog,
               private tokenStorageService: TokenStorageService) { }
@@ -62,4 +64,9 @@ export class HeaderClientComponent implements OnInit {
 
     });
   }
+
+  ngAfterContentChecked(): void {
+    this.totalProduct = JSON.parse(localStorage.getItem("totalCart"));
+  }
+
 }
