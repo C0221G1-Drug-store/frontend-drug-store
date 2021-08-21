@@ -3,9 +3,6 @@ import {ManufacturerService} from '../../../service/manufacturer.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
-class DialogOverviewExampleDialog {
-}
-
 @Component({
   selector: 'app-manufacturer-create',
   templateUrl: './manufacturer-create.component.html',

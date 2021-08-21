@@ -31,6 +31,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   };
   drugMoney;
   importSystemCode;
+
   constructor(private fb: FormBuilder,
               private manufacturerService: ManufacturerService,
               public dialog: MatDialog,
@@ -45,11 +46,11 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     this.manufacturerService.findAllNormal().subscribe(value => {
       this.manufacturers = value;
     });
-    this.importSystemCode ='HD' + (Math.floor((Math.random() * (100000 - 9999))) + 10000);
+    this.importSystemCode = 'HD' + (Math.floor((Math.random() * (100000 - 9999))) + 10000);
     this.form = this.fb.group({
       importSystemCode: [this.importSystemCode],
       accountingVoucher: ['', Validators.required],
-      invoiceDate: ['', [Validators.required]],
+      invoiceDate: ['', [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T[0-9]{2}:[0-9]{2}$')]],
       flag: true,
       payment: this.fb.group({
         paymentId: [''],
@@ -67,7 +68,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   confirmBox() {
-    if(typeof this.childImportDrugList.choiceDelete != 'undefined' ){
+    if (typeof this.childImportDrugList.choiceDelete != 'undefined') {
       Swal.fire({
         title: 'Bạn có muons xóa thuốc này không?',
         text: 'thuốc trong danh sách sẽ bị xóa!',
@@ -91,7 +92,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
           );
         }
       });
-    }else {
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Bạn chưa chọn thuốc để xóa',
@@ -111,29 +112,31 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       });
     }
   }
- get checkSubmit() {
-   if (this.form.get('invoiceDate').invalid || this.form.get('accountingVoucher').invalid ) {
-     this.errorAlert('form nhập không hợp lệ');
-     return false;
-   }
-   if (this.form.get('importSystemCode').value!= this.importSystemCode) {
-     this.errorAlert('Mã hóa đơn được tạo tự động .không thể sửa');
-     return false;
-   }
-   if (this.payment.invalid) {
-     this.errorAlert('Thông tin thanh toán bị sai');
-     return false;
-   }
-   if (this.childImportDrugList.formArrayDrugs.invalid) {
-     this.errorAlert('Danh sách thuốc bị sai');
-     return  false;
-   }
-   if (this.manufacturerForm.invalid) {
-     this.errorAlert('Thông tin nhà cung cấp sai');
-     return false;
-   }
-   return  true;
+
+  get checkSubmit() {
+    if (this.form.get('invoiceDate').invalid || this.form.get('accountingVoucher').invalid) {
+      this.errorAlert('form nhập không hợp lệ');
+      return false;
+    }
+    if (this.form.get('importSystemCode').value != this.importSystemCode) {
+      this.errorAlert('Mã hóa đơn được tạo tự động .không thể sửa');
+      return false;
+    }
+    if (this.payment.invalid) {
+      this.errorAlert('Thông tin thanh toán bị sai');
+      return false;
+    }
+    if (this.childImportDrugList.formArrayDrugs.invalid) {
+      this.errorAlert('Danh sách thuốc bị sai');
+      return false;
+    }
+    if (this.manufacturerForm.invalid) {
+      this.errorAlert('Thông tin nhà cung cấp sai');
+      return false;
+    }
+    return true;
   }
+
   errorAlert(reason) {
     Swal.fire({
       icon: 'error',
@@ -204,32 +207,50 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     return this.payment.get('totalMoney').value !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
   }
 
-  addNewImportBillDrug(importBill) {
+  addNewImportBillDrug(importBill): boolean {
+    const idImportBillDrug = [];
+    let check = false;
     this.childImportDrugList.formArrayDrugs.getRawValue().forEach(importBillDrug => {
       importBillDrug.importBill = importBill;
-      this.importBillDrugService.create(importBillDrug).subscribe(() => {
+      this.importBillDrugService.create(importBillDrug).subscribe(next => {
+        idImportBillDrug.push(next.importBillDrugId);
       }, error => {
-        this.errorAlert('Có lỗi từ hệ thống');
+        check = true;
       });
     });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'hợp đồng đã được thêm mới',
-      showConfirmButton: false,
-      timer: 1500
-    }).finally(
-      () => {
-        this.router.navigate(['']);
-      }
-    );
+    if (check) {
+      idImportBillDrug.forEach(value => {
+        this.importBillDrugService.remove(value).subscribe();
+      });
+      this.errorAlert('Có lỗi từ hệ thống');
+      return false;
+    } else {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'hợp đồng đã được thêm mới',
+        showConfirmButton: false,
+        timer: 1500
+      }).finally(
+        () => {
+          this.router.navigate(['']);
+        }
+      );
+      return true;
+    }
+
   }
 
   addNewImportBill(value) {
+    const idPayment = value.paymentId;
     this.payment.setValue(value);
     this.importBillService.create(this.form.value).subscribe(importBill => {
-        this.addNewImportBillDrug(importBill);
+      const check = this.addNewImportBillDrug(importBill);
+      if (!check) {
+        this.importBillService.remove(importBill.importBillId).subscribe();
+      }
     }, error => {
+      this.paymentService.remove(idPayment).subscribe();
       this.errorAlert('Có lỗi từ hệ thống');
     });
   }
@@ -237,7 +258,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   dateValidator(c: AbstractControl) {
     // Not sure if c will come in as a date or if we have to convert is somehow
     const today = new Date();
-    if(c.value > today) {
+    if (c.value > today) {
       return null;
     } else {
       return {dateValidator: {valid: false}};
