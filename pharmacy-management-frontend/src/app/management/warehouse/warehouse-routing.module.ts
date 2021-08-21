@@ -4,8 +4,6 @@ import {ExportBillPrintComponent} from "./warehouse-export/export-bill-print/exp
 
 
 const routes: Routes = [
-  {path: 'export-bill/import', component: ExportBillImportComponent
-  },
   {path: 'export-bill/print', component: ExportBillPrintComponent},
   {
     path: 'warehouse-export',
