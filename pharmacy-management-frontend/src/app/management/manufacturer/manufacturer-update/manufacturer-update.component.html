@@ -1,11 +1,11 @@
-<div class="container " style="margin-top: 30px">
-
-  <form class=" p-3" [formGroup]="manufacturerForm" (ngSubmit)="submit()">
-
+<div class="container ">
+  <form  [formGroup]="manufacturerForm" (ngSubmit)="submit()">
     <div class="">
-      <div class="container" style="background: #567FEA;height: 50px"><h2 style="text-align: center;line-height: 50px">THÊM NHÀ CUNG CẤP</h2></div>
-      <div class="row mb-3 mt-3">
-        <label for="manufacturerCode" class="label-text col-3">Mã nhà cung cấp (<span style="color: red">*</span>)</label>
+      <div class="container" style="background: #567FEA;height: 50px"><h2
+        style="text-align: center;line-height: 50px">CHỈNH SỬA NHÀ CUNG CẤP</h2>
+      </div>
+      <div class="row mt-5">
+        <label for="manufacturerCode" class="label-text col-3 ">Mã nhà cung cấp (<span style="color: red">*</span>)</label>
         <div class="col-9">
 
           <input formControlName="manufacturerCode" class="form-control m-0" type="text" id="manufacturerCode">
@@ -17,9 +17,7 @@
         <div class="col-9">
           <input formControlName="manufacturerName" class="form-control" type="text" id="manufacturerName">
           <small *ngIf="manufacturerForm.get('manufacturerName')?.hasError('required')&& manufacturerForm.get('manufacturerName')?.touched" style="color: red">Tên nhà cung cấp không được để rỗng</small>
-
           <small *ngIf="manufacturerForm.get('manufacturerName')?.hasError('pattern')&& manufacturerForm.get('manufacturerName')?.touched" style="color: red">Nhâp đúng định dạng tên nhà cung cấp </small>
-
         </div>
       </div>
       <div class="row mb-3 mt-3">
@@ -27,16 +25,13 @@
         <div class="col-9">
           <input formControlName="manufacturerAddress" class="form-control" type="text" id="manufacturerAddress">
           <small *ngIf="manufacturerForm.get('manufacturerAddress')?.hasError('required')&& manufacturerForm.get('manufacturerAddress')?.touched" style="color: red">Địa chỉ không được để rỗng</small>
-
           <small *ngIf="manufacturerForm.get('manufacturerAddress')?.hasError('pattern')&& manufacturerForm.get('manufacturerAddress')?.touched" style="color: red">Nhâp đúng định dạng địa chỉ </small>
-
         </div>
       </div>
       <div class="row mb-3 mt-3">
         <label for="manufacturerPhoneNumber" class="label-text col-3">Số điện thoại (<span style="color: red">*</span>)</label>
         <div class="col-9">
-
-          <input formControlName="manufacturerPhoneNumber"  class="form-control" type="text" id="manufacturerPhoneNumber">
+          <input formControlName="manufacturerPhoneNumber" class="form-control" type="text" id="manufacturerPhoneNumber">
           <small *ngIf="manufacturerForm.get('manufacturerPhoneNumber')?.hasError('required')&& manufacturerForm.get('manufacturerPhoneNumber')?.touched" style="color: red">Số điện thoại không được để rỗng</small>
           <small *ngIf="manufacturerForm.get('manufacturerPhoneNumber')?.hasError('pattern')&& manufacturerForm.get('manufacturerPhoneNumber')?.touched" style="color: red">Nhâp đúng định dạng số điện thoại </small>
         </div>
@@ -46,9 +41,7 @@
         <div class="col-9">
           <input formControlName="manufacturerEmail" class="form-control" type="text" id="email">
           <small *ngIf="manufacturerForm.get('manufacturerEmail')?.hasError('required')&& manufacturerForm.get('manufacturerEmail')?.touched" style="color: red">Email không được để rỗng</small>
-
           <small *ngIf="manufacturerForm.get('manufacturerEmail')?.hasError('email')&& manufacturerForm.get('manufacturerEmail')?.touched" style="color: red">Nhâp đúng định dạng email </small>
-
         </div>
       </div>
       <div class="row mb-3 mt-3">
@@ -60,12 +53,11 @@
       </div>
     </div>
     <div class="modal-footer">
-
-   <button mat-dialog-close="" routerLink="/manufacturer/list"  style="background: #567FEA;color: white" class="btn " ><i class="icon-sidebar fa fa-reply "></i>
-        Trở về
+      <button mat-dialog-close="" style="background: #567FEA" type="button" class="btn ve" data-dismiss="modal"><i class="icon-sidebar fa fa-reply "></i> Trở
+        về
       </button>
-
-      <button mat-dialog-close="" type="submit" [disabled]="manufacturerForm.invalid"  class="btn btn-info">Thêm mới</button>
+      <button type="submit"  [disabled]="manufacturerForm.invalid" class="btn   btn-warning">Chỉnh sửa</button>
     </div>
   </form>
 </div>
+

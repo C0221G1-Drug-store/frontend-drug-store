@@ -13,6 +13,8 @@ import {DrugModule} from './management/warehouse/drug/drug.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {FormsModule} from '@angular/forms';
+import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,11 @@ import {FormsModule} from '@angular/forms';
     DrugModule,
     HttpClientModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ManufacturerModule,
+    ToastrModule.forRoot({
+      timeOut:2000,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

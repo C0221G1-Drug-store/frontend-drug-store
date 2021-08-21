@@ -14,6 +14,7 @@ import {ImportBillService} from '../../../../service/import-bill.service';
 import {ImportBilDrugService} from '../../../../service/import-bil-drug.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ImportListDrugComponent} from '../import-list-drug/import-list-drug.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-warehouse-import-create',
@@ -39,7 +40,8 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
               private importBillService: ImportBillService,
               private importBillDrugService: ImportBilDrugService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -168,6 +170,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(ManufacturerCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       if (typeof result !== 'undefined') {
         this.manufacturerForm.setValue(result);
       }
@@ -225,17 +228,8 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       this.errorAlert('Có lỗi từ hệ thống');
       return false;
     } else {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'hợp đồng đã được thêm mới',
-        showConfirmButton: false,
-        timer: 1500
-      }).finally(
-        () => {
-          this.router.navigate(['']);
-        }
-      );
+      this.toastr.success('Thêm mới thành công.', 'Thêm mới');
+      this.router.navigate(['']);
       return true;
     }
 
