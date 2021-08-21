@@ -109,7 +109,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
     this.exportBillForm = new FormGroup({
       exportBillType: new FormControl('',[Validators.required]),
       exportBillCode: new FormControl('',[Validators.required]),
-      exportBillDate: new FormControl('',[Validators.required,validateDate]),
+      exportBillDate: new FormControl('',[Validators.required,validateDate,Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
       employee: new FormControl({value: '', disabled: true}),
       exportBillReason: new FormControl('',[Validators.required]),
       exportBillAddress: new FormControl('',[Validators.required]),
@@ -155,7 +155,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
     let res = this.bankCtrl.value;
     if (this.drugRefund.includes(res) == false) {
       this.drugRefund.push(res);
-      this.total += (res.importAmount * res.importPrice) - (res.discountRate * res.importPrice / 100) - (res.importAmount * res.importPrice * res.vat / 100);
+      this.total += (res.importAmount * res.importPrice) - (res.discountRate * res.importPrice * res.importAmount / 100) - (res.importAmount * res.importPrice * res.vat / 100);
       this.getListDrug();
     }
   }
@@ -332,6 +332,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
       console.log(exportBill);
       exportBill.exportBillDate += " " + this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
       this.exportbillService.createExportBill(exportBill).subscribe(data => {
+        console.log(data);
         for (let i = 0; i < this.drugRefund.length; i++) {
           let exportBillDetail = {
             exportBill: data,
@@ -346,6 +347,5 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
         this.warn('Tạo hóa đơn thất bại')
       });
     }
+    }
   }
-
-}
