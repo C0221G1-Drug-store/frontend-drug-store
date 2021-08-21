@@ -3,9 +3,10 @@ import {PrescriptionService} from '../../../../service/prescription.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IndicativeService} from '../../../../service/indicative.service';
 import {Router} from '@angular/router';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {PrescriptionDto} from '../../../../model/prescriptionDto';
 import {Indicative} from '../../../../model/indicative';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-prescription-edit',
@@ -21,11 +22,16 @@ export class PrescriptionEditComponent implements OnInit {
               private fb: FormBuilder,
               private indicativeService: IndicativeService,
               private router: Router,
+              public dialogRef: MatDialogRef<PrescriptionEditComponent>,
+              private  toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.getIndicative();
     this.ngOnInit();
+
   }
+
   prescriptionForm: FormGroup = new FormGroup({});
+
   ngOnInit(): void {
     this.prescriptionService.findById(this.data.id).subscribe(prescriptions => {
       this.prescription = prescriptions;
@@ -49,11 +55,20 @@ export class PrescriptionEditComponent implements OnInit {
   }
 
   getIndicative() {
-    this.prescriptionService.getIdicative(this.data.id).subscribe(indicatives => {
-      this.indicativeList = indicatives;
+    this.prescriptionService.getIdicative(this.data.id).subscribe(ind => {
+      this.indicativeList = ind;
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < ind.length; i++) {
+        // @ts-ignore
+        this.indicatives.push(ind[i]);
+      }
       console.log('indicative');
-      console.log(this.indicativeList);
+      console.log(ind);
     });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 
@@ -70,6 +85,8 @@ export class PrescriptionEditComponent implements OnInit {
     }));
   }
 
+
+
   deleteIndicative(index) {
     this.indicatives.removeAt(index);
   }
@@ -77,12 +94,17 @@ export class PrescriptionEditComponent implements OnInit {
   submit() {
     const prescription = this.prescriptionForm.value;
     this.prescriptionService.updatePrescription(this.data.id, prescription).subscribe(() => {
-        this.prescriptionForm.reset();
-        this.router.navigateByUrl('/prescription/prescription-list');
-        alert(' Thêm mới thành công ! ');
+        this.showSuccessEdit();
       }, e => {
-        alert(' Thêm mới thất bại !');
+       this.showErrorEdit();
       }
     );
+  }
+  showSuccessEdit() {
+    this.toastr.success('Đã cập nhật thành công !', 'Thông báo : ');
+  }
+
+  showErrorEdit() {
+    this.toastr.error('Vui lòng chọn hàng bạn muốn cập nhật !', 'Cảnh báo : ');
   }
 }

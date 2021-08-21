@@ -50,7 +50,6 @@
 
 
         </tr>
-
         <tr *ngFor="let p of prescriptions" (click)="getId(p.prescriptionId) ; getPres(p)"
             [style]="{background: p.prescriptionId==idEdit?'#63B8FF':null}">
           <td>{{p.prescriptionCode}}</td>
@@ -59,13 +58,11 @@
           <td>{{p.symptom}}</td>
           <td>{{p.note}}</td>
         </tr>
-
-
       </table>
 
     </div>
     <br>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end" >
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item"><a class="page-link" (click)="previous()">Trước</a></li>
@@ -79,7 +76,7 @@
 
   <div class="d-flex justify-content-end pt-4 pb-5">
     <button class="mr-5 btn btn-success" type="button"  [routerLink]="['/prescription/prescription-create']"><i class="fa fa-plus" aria-hidden="true"></i>
-     Thêm
+      Thêm
     </button>
     <button class="mr-5 btn btn-edit" type="button"  (click)="onEditHandler()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
       Sửa

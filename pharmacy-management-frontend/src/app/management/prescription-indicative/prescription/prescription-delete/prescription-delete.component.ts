@@ -9,10 +9,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class PrescriptionDeleteComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<PrescriptionDeleteComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
   ngOnInit(): void {
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

@@ -4,6 +4,7 @@ import {PrescriptionService} from '../../../../service/prescription.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PrescriptionDeleteComponent} from '../prescription-delete/prescription-delete.component';
 import {PrescriptionEditComponent} from '../prescription-edit/prescription-edit.component';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class PrescriptionListComponent implements OnInit {
 
 
   constructor(private prescriptionService: PrescriptionService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -37,13 +39,14 @@ export class PrescriptionListComponent implements OnInit {
   getPrescriptions() {
     // tslint:disable-next-line:max-line-length
     this.prescriptionService.getAllPrescription(this.prescriptionName, this.prescriptionCode, this.object, this.symptom, this.page, this.sortBy).subscribe(prescriptions => {
-      if (prescriptions === null) {
-        alert('Không tìm thấy trang');
-        this.prescriptions = [];
-      }
-      this.prescriptions = prescriptions['content'];
-      this.pages = new Array<any>(prescriptions['totalPages']);
-      // console.log(this.pages);
+      // if (prescriptions === null) {
+      //   alert('Không tìm thấy trang');
+      //   this.prescriptions = [];
+      // }
+      this.prescriptions = prescriptions.content;
+      this.pages = new Array<any>(prescriptions.totalPages);
+      console.log(prescriptions);
+      console.log(this.prescriptions);
     });
   }
 
@@ -55,7 +58,7 @@ export class PrescriptionListComponent implements OnInit {
 
   previous() {
     if (this.page === 0) {
-      alert('Không tìm thấy trang');
+      this.showErrorPage();
     } else {
       this.page = this.page - 1;
       this.getPrescriptions();
@@ -64,7 +67,7 @@ export class PrescriptionListComponent implements OnInit {
 
   next() {
     if (this.page > this.pages.length - 2) {
-      alert('Không tìm thấy trang ');
+      this.showErrorPage();
     } else {
       this.page = this.page + 1;
       this.getPrescriptions();
@@ -76,34 +79,43 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   onDeleteHandler(prescription: PrescriptionDto): void {
-    const dialogRef = this.dialog.open(PrescriptionDeleteComponent, {
-      data: prescription
-    });
+    if (this.idEdit == null) {
+      this.showErrorDelete();
+    } else {
+      const dialogRef = this.dialog.open(PrescriptionDeleteComponent, {
+        data: prescription
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result) {
-        this.prescriptionService.deletePrescription(prescription.prescriptionId).subscribe(next => {
-          this.getPrescriptions();
-        });
-      }
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        if (result) {
+          this.prescriptionService.deletePrescription(prescription.prescriptionId).subscribe(next => {
+            this.getPrescriptions();
+            this.showSuccessDelete();
+          });
+        }
+      });
+    }
   }
 
   onEditHandler() {
-    const id = this.idEdit;
-    const dialogRef = this.dialog.open(PrescriptionEditComponent, {
-      data: {id}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    if (this.idEdit == null) {
+      this.showErrorEdit();
+    } else {
+      const id = this.idEdit;
+      const dialogRef = this.dialog.open(PrescriptionEditComponent, {
+        data: {id}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.getPrescriptions();
+      });
+    }
   }
 
   getId(prescriptionId: number) {
     this.idEdit = prescriptionId;
     console.log(this.idEdit);
   }
-
 
   search() {
     switch (this.select) {
@@ -130,18 +142,28 @@ export class PrescriptionListComponent implements OnInit {
         this.getPrescriptions();
         console.log(this.getPrescriptions());
         break;
-      default:
-        // this.prescriptionName = this.valueSearch;
-        // this.prescriptionCode = '';
-        // this.object = '';
-        // this.symptom = '';
-        alert('vui long chọn trường cần tìm kiếm')
-        this.getPrescriptions();
-        console.log(this.getPrescriptions());
     }
   }
 
   sort() {
     this.getPrescriptions();
+  }
+
+  showSuccessEdit() {
+    this.toastr.success('Đã cập nhật thành công !', 'Thông báo : ');
+  }
+
+  showErrorEdit() {
+    this.toastr.error('Vui lòng chọn hàng bạn muốn cập nhật !', 'Cảnh báo : ');
+  }
+
+  showSuccessDelete() {
+    this.toastr.success('Đã xóa thành công !', 'Thông báo : ');
+  }
+  showErrorDelete() {
+    this.toastr.error('Vui lòng chọn vào hàng bạn muốn xóa !', 'Cảnh báo : ');
+  }
+  showErrorPage() {
+    this.toastr.error('Không tìm thấy trang !', 'Cảnh báo : ');
   }
 }

@@ -4,6 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {Router} from '@angular/router';
 import {IndicativeService} from '../../../../service/indicative.service';
 import validate = WebAssembly.validate;
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-prescription-create',
@@ -17,7 +18,8 @@ export class PrescriptionCreateComponent implements OnInit {
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
               private indicativeService: IndicativeService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   prescriptionForm: FormGroup;
@@ -63,11 +65,18 @@ export class PrescriptionCreateComponent implements OnInit {
     this.prescriptionService.savePrescription(prescription).subscribe(() => {
         this.prescriptionForm.reset();
         this.router.navigateByUrl('/prescription/prescription-list');
-        alert(' Thêm mới thành công ! ');
+        this.showSuccess();
       }, error => {
-        alert(' Thêm mới thất bại !');
+      this.showError();
       }
     );
+  }
+
+  showSuccess() {
+    this.toastr.success('Thêm mới thành công !', 'Thông báo : ');
+  }
+  showError() {
+    this.toastr.error('Thêm mới không thành công !', 'Cảnh báo : ');
   }
 }
 

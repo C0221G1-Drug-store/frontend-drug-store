@@ -1,6 +1,6 @@
-<div class="container" style="width: 800px ; height:900px">
+<div class="container" style="width: 700px ; height:550px">
   <h1 class="text-center mb-3">Đơn thuốc</h1>
-  <form [formGroup]="prescriptionForm" (ngSubmit)="submit()">
+  <form [formGroup]="prescriptionForm" >
 
     <div class="">
       <div class="d-flex mb-3">
@@ -70,6 +70,7 @@
           <option value="Người lớn">Người lớn</option>
           <option value="Phụ nữ mang thai">Phụ nữ mang thai</option>
         </select>
+
       </div>
 
       <div class="col-2">
@@ -81,7 +82,7 @@
     <div class="d-flex"
          *ngIf="!prescriptionForm.get('numberOfDay').valid && (prescriptionForm.get('numberOfDay').dirty ||prescriptionForm.get('numberOfDay').touched)">
       <div [hidden]="!prescriptionForm.get('numberOfDay').errors.required">
-        <span style="color: red; margin-left: 540px;margin-top: -17px ">vui lòng không được nhập trống !</span>
+        <span style="color: red; margin-left: 400px;margin-top: -17px ">vui lòng không được nhập trống !</span>
       </div>
     </div>
 
@@ -142,14 +143,13 @@
     </div>
     <div class="col-8">
       <div class="d-flex flex-row-reverse pt-4 pb-5">
-        <button class=" btn btn-danger huy" type="button" [routerLink]="['/prescription/prescription-list']"><i
+        <button class=" btn btn-danger huy" type="button" (click)="dialogRef.close(false)" ><i
           class="fa fa-times-circle"
-          aria-hidden="true"></i>Hủy
+          aria-hidden="true" ></i>Hủy
         </button>
-        <button class="mr-5 btn btn-success" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa
+        <button class="mr-5 btn btn-success" type="submit" (click)="submit();dialogRef.close(true)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa
         </button>
       </div>
     </div>
   </form>
 </div>
-
