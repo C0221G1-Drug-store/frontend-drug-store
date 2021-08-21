@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DrugService} from '../../../../service/drug.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
 
 @Component({
   selector: 'app-drug-delete',
@@ -10,7 +11,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class DrugDeleteComponent implements OnInit {
   drugId;
   drugCode;
+  deleted = false;
   constructor(private drugService: DrugService,
+              private dialog: MatDialog,
               private dialogRef: MatDialogRef<DrugDeleteComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -22,9 +25,20 @@ export class DrugDeleteComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  notificationDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotificationComponent, {
+      width: '500px',
+      data: {data1: false, data2: false, data3: this.deleted}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
   delete() {
     this.drugService.deleteDrug(this.drugId).subscribe(data => {
       this.dialogRef.close();
+      this.deleted = true;
+      this.notificationDialog();
+      this.deleted = false;
     });
   }
 }

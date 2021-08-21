@@ -1,5 +1,6 @@
 <div class="modal-header">
-  <h3 class="modal-title font-weight-bold" >Xóa thuốc</h3>
+  <h3 class="modal-title font-weight-bold" *ngIf="selected">Xóa và sửa thuốc</h3>
+  <h3 class="modal-title font-weight-bold" *ngIf="notFound">Không thể tìm kiếm</h3>
   <button type="button" class="close" aria-hidden="true" (click)="onNoClick()">&times;</button>
 </div>
 <div class="modal-body">

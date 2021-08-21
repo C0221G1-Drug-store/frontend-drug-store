@@ -12,11 +12,11 @@
                     style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
                     type="text" [(ngModel)]="field" name="field">
               <option [ngValue]="''">-Chọn trường-</option>
-              <option [ngValue]="'d.drug_code'">Mã thuốc</option>
-              <option [ngValue]="'dg.drug_group_name'">Nhóm thuốc</option>
-              <option [ngValue]="'d.drug_name'">Tên thuốc</option>
-              <option [ngValue]="'d.active_element'">Hoạt chất</option>
-              <option [ngValue]="'ibd.import_price'">Gía nhập</option>
+              <option [ngValue]="'drugCode'">Mã thuốc</option>
+              <option [ngValue]="'drugGroup'">Nhóm thuốc</option>
+              <option [ngValue]="'drugName'">Tên thuốc</option>
+              <option [ngValue]="'activeElement'">Hoạt chất</option>
+              <option [ngValue]="'importPrice'">Gía nhập</option>
               <option
                 [ngValue]="'wholesalePrice'">
                 Gía bán sỉ
@@ -34,18 +34,18 @@
               <option [ngValue]="'like'">- Điều kiện -</option>
               <option [ngValue]="'='">Bằng</option>
               <option [ngValue]="'>'"
-                      *ngIf="field != 'd.drug_code' && field != 'dg.drug_group_name' && field != 'd.drug_name' && field != 'd.active_element'">
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn
               </option>
               <option [ngValue]="'>='"
-                      *ngIf="field != 'd.drug_code' && field != 'dg.drug_group_name' && field != 'd.drug_name' && field != 'd.active_element'">
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn bằng
               </option>
               <option [ngValue]="'<='"
-                      *ngIf="field != 'd.drug_code' && field != 'dg.drug_group_name' && field != 'd.drug_name' && field != 'd.active_element'">
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Nhỏ hơn bằng
               </option>
-              <option [ngValue]="'<>'">Khác</option>
+              <option [ngValue]="'!='">Khác</option>
               <option [ngValue]="'all'">Tất cả</option>
             </select>
           </div>
@@ -163,10 +163,10 @@
               <button class="mr-3 btn btn-edit button" type="button"><i
                 class="fa fa-edit"></i> Sửa
               </button>
-              <button class="mr-3 btn btn-danger button" *ngIf="selected" (click)="deleteDialog()"><i
+              <button class="mr-3 btn btn-danger button" *ngIf="!notSelected" (click)="deleteDialog()"><i
                 class="fa fa-trash-o"></i> Xóa
               </button>
-              <button class="mr-3 btn btn-danger button" *ngIf="!selected" (click)="notSelectedDialog()"><i
+              <button class="mr-3 btn btn-danger button" *ngIf="notSelected" (click)="notificationDialog()"><i
                 class="fa fa-trash-o"></i> Xóa
               </button>
               <button class=" btn btn-return button " type="button"><i
