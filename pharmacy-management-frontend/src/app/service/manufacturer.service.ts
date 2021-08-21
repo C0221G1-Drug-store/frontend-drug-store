@@ -76,6 +76,11 @@ export class ManufacturerService {
   findByIdImportBill(id: number){
     return this.http.get<ImportBill>(API_URL + '/manufacturer/importBill?id='+id);
   }
+  deleteManufacturer(id:number, manufacturer: Manufacturer):Observable<Manufacturer>{
+    console.log('abv');
+    console.log(manufacturer);
+    return  this.http.put<Manufacturer>(API_URL +'/manufacturer/delete?id='+id,manufacturer);
 
+  }
 }
 

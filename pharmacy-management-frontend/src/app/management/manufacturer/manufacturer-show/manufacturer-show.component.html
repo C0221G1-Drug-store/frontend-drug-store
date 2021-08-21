@@ -5,41 +5,41 @@
       style="text-align: center;line-height: 50px">CHI TIẾT NHÀ CUNG CẤP</h2>
     </div>
     <fieldset class="scheduler-border">
-      <legend class="scheduler-border">Thông tin chi tiết</legend>
+      <legend class="scheduler-border">Thông tin chi tiết:</legend>
       <form>
         <div class="row">
-          <label class="label-text col-2 ">Mã nhà cung cấp</label>
+          <label class="label-text col-2 ">Mã nhà cung cấp:</label>
           <div class="col-3">
             <input  [value]="manufacturer.manufacturerCode"  class="form-control" type="text">
           </div>
-          <label class="label-text col">Tên nhà cung cấp</label>
+          <label class="label-text col">Tên nhà cung cấp:</label>
           <div class="col-5">
             <input [value]="manufacturer.manufacturerName" disabled class="form-control" type="text">
           </div>
         </div>
         <div class="row mt-3">
-          <label class="label-text col-2 ">Số điện thoại</label>
+          <label class="label-text col-2 ">Số điện thoại:</label>
           <div class="col-3">
             <input [value]="manufacturer.manufacturerPhoneNumber" disabled class="form-control " type="text">
           </div>
-          <label class="label-text col">Địa chỉ</label>
+          <label class="label-text col">Địa chỉ:</label>
           <div class="col-5">
             <input [value]="manufacturer.manufacturerAddress" disabled class="form-control" type="text">
           </div>
         </div>
         <div class="row mt-3">
-          <label class="label-text col-2 ">Công nợ</label>
+          <label class="label-text col-2 ">Công nợ:</label>
           <div class="col-3">
             <input [value]="manufacturer.manufacturerDebts" disabled class="form-control " type="text">
           </div>
-          <label class="label-text col">Ghi chú</label>
+          <label class="label-text col">Ghi chú:</label>
           <div class="col-5">
             <input disabled [value]="manufacturer.manufacturerNote" class="form-control" type="text">
           </div>
         </div>
         <div class="row mt-3">
 
-          <label class="label-text col-lg-2">Email</label>
+          <label class="label-text col-lg-2">Email:</label>
           <div class="col-lg-10">
             <input [value]="manufacturer.manufacturerEmail" disabled class="form-control" type="text">
           </div>
@@ -50,28 +50,28 @@
 
 
     <fieldset class="scheduler-border">
-      <legend class="scheduler-border">Bộ lọc</legend>
+      <legend class="scheduler-border">Bộ lọc:</legend>
       <form class=" p-3">
 
         <div class="row">
 
-          <label  for="startDate" class="col-lg-2">Từ ngày</label>
+          <label  for="startDate" class="col-lg-2">Từ ngày:</label>
           <input [(ngModel)]="sd"  name="sd" id="startDate" class="col-lg-3" style="height: 30px;width: 130px"
                  type="date"
                  placeholder="Tên nhà...">
 
 
-          <label for="endDate" class="col-lg-2 ">Đến ngày</label>
+          <label for="endDate" class="col-lg-2 ">Đến ngày:</label>
           <input [(ngModel)]="ed"  name="ed" id="endDate" class="col-lg-3" style="height: 30px;width: 130px"
                  type="date"
                  placeholder="Tên nhà...">
 
         </div >
         <div class="row mt-3">
-          <label for="startTime" class=" col-lg-2">Từ giờ</label>
+          <label for="startTime" class=" col-lg-2">Từ giờ:</label>
           <input [(ngModel)]="st"  name="st" id="startTime" class=" col-lg-3" style="height: 30px;width: 130px" type="time"
                 >
-          <label for="endTime" class=" col-lg-2 ">Đến giờ</label>
+          <label for="endTime" class=" col-lg-2 ">Đến giờ:</label>
           <input [(ngModel)]="et"  name="et" id="endTime" class="col-lg-3" style="height: 30px;width: 130px" type="time"
                  >
 
@@ -108,7 +108,7 @@
         <tbody *ngFor="let importBill of importBills,let i=index">
 
         <tr (click)="getId(importBill.importBillId, importBill) " [class.selected]="importBill===selectedMovie">
-          <td>{{page * 2 + 1 + i}}</td>
+          <td>{{page * 5 + 1 + i}}</td>
           <td>{{importBill.importSystemCode}}</td>
           <td class="ct">{{importBill.accountingVoucher}}</td>
           <td class="ct">{{importBill.invoiceDate| date:"dd/mm/yyyy"}}</td>
@@ -146,10 +146,8 @@
               Trở về
             </button>
           </a>
-
         </div>
       </div>
-
     </div>
   </div>
 </div>

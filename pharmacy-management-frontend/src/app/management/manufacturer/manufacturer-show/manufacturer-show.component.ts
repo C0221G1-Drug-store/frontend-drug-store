@@ -6,6 +6,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ImportBillShowComponent} from '../import-bill-show/import-bill-show.component';
 import { Manufacturer } from 'src/app/model/manufacturer';
 import {ImportBill} from "../../../model/import-bill";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ManufacturerShowComponent implements OnInit {
  et:string="11:11";
 
 
-  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService, private activatedRoute: ActivatedRoute) {
+  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService, private activatedRoute: ActivatedRoute,private  toastr:ToastrService) {
     activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
       manufacturerService.findByIdManufacture(this.id).subscribe(data => {
@@ -43,7 +44,7 @@ export class ManufacturerShowComponent implements OnInit {
 
   }
   setFormValue(){
-    
+
   }
   ngOnInit(): void {
 
@@ -70,7 +71,7 @@ export class ManufacturerShowComponent implements OnInit {
   previous() {
 
     if (this.page <= 0) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang", 'Trang trước')
     } else {
       this.page = this.page - 1;
       this.getAllImportBill();
@@ -81,7 +82,7 @@ export class ManufacturerShowComponent implements OnInit {
 
     this.max = this.pages.length;
     if (this.page + 2 > this.max) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang", 'Trang sau')
     } else {
       this.page = this.page + 1;
       this.getAllImportBill();

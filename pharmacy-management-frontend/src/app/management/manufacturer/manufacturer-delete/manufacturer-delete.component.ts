@@ -43,10 +43,10 @@ export class ManufacturerDeleteComponent implements OnInit {
     this.manufacturerForm.get('flag').setValue(0);
     const manufacturer = this.manufacturerForm.value;
     console.log(manufacturer);
-    this.manufacturerService.updateManufacturer(manufacturer.manufacturerId, manufacturer).subscribe(() => {
-        this.toastr.success("Xóa thành công", 'Xóa')
+    this.manufacturerService.deleteManufacturer(manufacturer.manufacturerId, manufacturer).subscribe(() => {
+        this.toastr.success("Xóa thành công.", 'Xóa')
       },error => {
-      this.toastr.error("Xóa thất bại", 'Xóa')
+      this.toastr.error("Xóa thất bại.", 'Xóa')
       }
     );
   }
