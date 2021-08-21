@@ -23,6 +23,7 @@ import {Overlay} from '@angular/cdk/overlay';
   declarations: [
     AppComponent
   ],
+<<<<<<< HEAD
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,6 +47,31 @@ import {Overlay} from '@angular/cdk/overlay';
 
 
   ],
+=======
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      SaleRetailModule,
+      BrowserAnimationsModule,
+      ManagementModule,
+      CommonModule,
+      MatDialogModule,
+      HttpClientModule,
+      WarehouseExportModule,
+      MatSelectModule,
+      NgxPrintModule,
+      MatSelectModule,
+      FormsModule,
+      NgxPaginationModule,
+      ReactiveFormsModule,
+      NgxPrintModule,
+      MatIconModule,
+      MatDialogModule,
+      MatButtonModule
+
+
+    ],
+>>>>>>> management-export-bill
   providers: [MatDialog ,Overlay],
   bootstrap: [AppComponent]
 })
