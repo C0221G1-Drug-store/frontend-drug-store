@@ -9,6 +9,7 @@ import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -22,6 +23,7 @@ declare let paypal: any;
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  //#region DATA TEST
   list = [
     {
       img: 'https://image.pharmacity.vn/live/uploads/2019/04/P00066_1_l-300x300.jpg',
@@ -70,6 +72,12 @@ export class CartComponent implements OnInit {
     {id: 3, code: '1234567892', money: '150000'},
     {id: 4, code: '1234567893', money: '50000'},
   ];
+  account = {
+    accountName: "Khánh Phan",
+    email: "khanhphan900@gmail.com"
+  };
+  // #endregion
+
   //#region CART
   medicines: DrugCart[];
   medicine!: DrugCart;
@@ -120,6 +128,7 @@ export class CartComponent implements OnInit {
         this.medicines = null;
         localStorage.removeItem('medicineList');
         localStorage.setItem('totalCart', '0');
+        this.showMessageSuccess();
         // Send email.
         this.cartService.sendEmail().subscribe(e => {
           console.log('ok');
@@ -142,19 +151,13 @@ export class CartComponent implements OnInit {
 
   // #endregion
 
-
   constructor(private cartService: CartService,
               private fb: FormBuilder,
-              private router: Router) {
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
     this.getMedicineList();
-    this.cartService.sendEmail().subscribe(e => {
-      console.log('ok');
-    }, error => {
-      console.log('error');
-    });
     this.getTotal();
     this.postTotalCartLocalStorage()
   }
@@ -162,7 +165,12 @@ export class CartComponent implements OnInit {
     localStorage.setItem('totalCart', String(this.medicineTotal))
   }
   getMedicineList() {
-    // localStorage.setItem('medicineList', JSON.stringify(this.list));
+
+    //#region Set data in LOCALSTORAGE
+    localStorage.setItem('medicineList', JSON.stringify(this.list));
+    // localStorage.setItem('account', JSON.stringify(this.account))    ;
+    //#endreion
+
 
     this.resultMsg = '';
     this.medicines = JSON.parse(localStorage.getItem('medicineList'));
@@ -217,7 +225,7 @@ export class CartComponent implements OnInit {
     localStorage.setItem('medicineList', JSON.stringify(this.medicines));
     this.postTotalCartLocalStorage();
     if (!this.moneyTotal){
-      alert("Bạn chưa có sản phẩm trong giỏ hàng")
+      this.showMessageNotFound();
     }
     this.getPaypPal()
   }
@@ -260,6 +268,7 @@ export class CartComponent implements OnInit {
 
   // #endregion
 
+  //#region Voucher
   checkVoucher() {
     this.isVoucher = false;
     for (let i = 0; i < this.listVoucher.length; i++) {
@@ -278,5 +287,18 @@ export class CartComponent implements OnInit {
     }
     this.voucherMsg = 'Mã phiếu ưu đãi không tồn tại';
   }
+  // #endregion
 
+  showMessageNotFound() {
+    this.toastrService.error('Bạn chưa có sản phẩm trong giỏ hàng', 'Thông báo', {
+      timeOut: 3000,
+      progressBar: true,
+    });
+  }
+  showMessageSuccess() {
+    this.toastrService.success('Thanh toán thành công', 'Thông báo', {
+      timeOut: 3000,
+      progressBar: true,
+    });
+  }
 }

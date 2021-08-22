@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
@@ -11,6 +10,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import { ClientModule } from './client/client.module';
 import {ToastrModule} from 'ngx-toastr';
+import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import {ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     ClientModule,
     ToastrModule.forRoot(),
+    ManufacturerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
