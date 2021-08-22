@@ -29,8 +29,9 @@ export class ExportbillService {
     return this.http.get<String>(this.API_EMPLOYEE+ '/employees');
   }
 
+  //LIST
   getAllCaseRecord(pageNumber: number): Observable<ExportBill[]> {
-    return this.http.get<ExportBill[]>(this.API_EXPORT_BILL + '?page=' + pageNumber);
+    return this.http.get<ExportBill[]>(this.API_EXPORT_BILL+'?page='+pageNumber);
   }
 
   getCaseRecordById(id: number): Observable<ExportBill> {
@@ -40,11 +41,11 @@ export class ExportbillService {
   // tslint:disable-next-line:max-line-length
   getCaseRecordByFields(field1: string, field2: string, field3: string, field4: string, field5: string, pageNumber: number): Observable<ExportBill[]> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<ExportBill[]>(this.API_EXPORT_BILL + '/find/' + field1 + '/' + field2 + '/' + field3 + '/' + field4 + '/' + field5 + '?page=' + pageNumber);
+    return this.http.get<ExportBill[]>(this.API_EXPORT_BILL + '/find/' + field1 + '/' + field2 + '/' + field3 + '/' + field4 + '/' + field5 +'?page='+pageNumber );
   }
 
-  delete(id: number): void {
-    this.http.delete(this.API_EXPORT_BILL + '/delete/' + id );
+  delete(id: number): Observable<ExportBill> {
+    return this.http.delete(this.API_EXPORT_BILL + '/delete/' + id );
   }
 
 }

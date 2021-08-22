@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ExportBillPrintComponent} from "./warehouse-export/export-bill-print/export-bill-print.component";
+import {ExportBillListComponent} from "./warehouse-export/export-bill-list/export-bill-list.component";
 
 
 const routes: Routes = [
-  {path: 'export-bill/import', component: ExportBillImportComponent
+  {path: 'export-bill', component: ExportBillListComponent
   },
   {path: 'export-bill/print', component: ExportBillPrintComponent},
   {
