@@ -6,12 +6,12 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DrugClientService {
-  private URl = 'http://localhost:8080/drug';
+  private URl = 'http://localhost:8080/drug-client';
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.URl}/not-pagination`);
+    return this.http.get(`${this.URl}/list`);
   }
 
   searchDrug(search: any): Observable<any> {
