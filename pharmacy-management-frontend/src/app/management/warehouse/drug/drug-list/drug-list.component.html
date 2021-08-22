@@ -156,10 +156,13 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 text-right">
-              <button class="mr-3 btn btn-create button" type="button"><i
+              <button [routerLink]="['/drug/create']" class="mr-3 btn btn-create button" type="button"><i
                 class="fa fa-plus"></i> Thêm
               </button>
-              <button class="mr-3 btn btn-edit button" type="button"><i
+              <button class="mr-3 btn btn-edit button" *ngIf="!notSelected" (click)="updateDialog()"><i
+                class="fa fa-edit"></i> Sửa
+              </button>
+              <button class="mr-3 btn btn-edit button" *ngIf="notSelected" (click)="notificationDialog()"><i
                 class="fa fa-edit"></i> Sửa
               </button>
               <button class="mr-3 btn btn-danger button" *ngIf="!notSelected" (click)="deleteDialog()"><i

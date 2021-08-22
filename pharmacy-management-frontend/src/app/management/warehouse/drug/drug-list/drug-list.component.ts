@@ -3,9 +3,10 @@ import {DrugService} from '../../../../service/drug.service';
 import {DrugDTO} from '../../../../model/DrugDTO';
 import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {MatDialog} from '@angular/material/dialog';
-import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.component';
+
 import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
-import {transcode} from 'buffer';
+
+import {DrugEditComponent} from '../drug-edit/drug-edit.component';
 
 @Component({
   selector: 'app-drug-list',
@@ -25,7 +26,11 @@ export class DrugListComponent implements OnInit {
   input = '';
   sign = 'like';
   searched = false;
+
   notFound = false;
+
+
+
   constructor(private drugService: DrugService,
               private dialog: MatDialog) {
   }
@@ -107,10 +112,12 @@ export class DrugListComponent implements OnInit {
       });
     });
   }
+
   notificationDialog(): void {
     const dialogRef = this.dialog.open(DrugNotificationComponent, {
       width: '500px',
       data: {data1: this.notSelected, data2: this.notFound, data3: false}
+
     });
     dialogRef.afterClosed().subscribe(result => {
       this.notFound = false;
@@ -153,4 +160,19 @@ export class DrugListComponent implements OnInit {
       this.searched = true;
     }
   }
+
+  updateDialog(): void {
+    this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
+      const dialogRef = this.dialog.open(DrugEditComponent, {
+        width: '1000px',
+        height: '950px',
+        data: {data1: drug}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+    });
+  }
+
 }
