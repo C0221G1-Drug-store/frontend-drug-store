@@ -3,10 +3,9 @@ import {DrugService} from '../../../../service/drug.service';
 import {DrugDTO} from '../../../../model/DrugDTO';
 import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {MatDialog} from '@angular/material/dialog';
-import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.component';
+
 import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
-import {transcode} from 'buffer';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 import {DrugEditComponent} from '../drug-edit/drug-edit.component';
 
 @Component({
@@ -23,7 +22,7 @@ export class DrugListComponent implements OnInit {
   drugSelectedId;
   notSelected = true;
   selectedColor = '';
-  field = '';
+  field = 'drugCode';
   input = '';
   sign = 'like';
   searched = false;
@@ -139,7 +138,7 @@ export class DrugListComponent implements OnInit {
   }
 
   search() {
-    if (this.sign === 'all' || (this.field === '' && this.sign === 'like')) {
+    if (this.sign === 'all') {
       this.ngOnInit();
       this.searched = false;
     } else {
@@ -161,17 +160,6 @@ export class DrugListComponent implements OnInit {
       this.searched = true;
     }
   }
-
-
-  // noSelectUpdateDialog(): void {
-  //   const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
-  //     width: '500px'
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.ngOnInit();
-  //   });
-  // }
 
   updateDialog(): void {
     this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
