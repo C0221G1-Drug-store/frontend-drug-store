@@ -1,4 +1,5 @@
-2021-08-16T00:00:00
+<!--2021-08-16T00:00:00-->
+{{sDate}}------{{eTime}}
 <div class="container justify-content-between">
   <div *ngIf="displayDate">
     <fieldset class="scheduler-border">
@@ -40,7 +41,8 @@
           Báo cáo chi tiết nhập kho
         </div>
         <div class="col-4">
-          <input type="radio" name="check" value="reportTurnover" [(ngModel)]="choice"> Báo cáo doanh thu
+          <input type="radio" name="check" value="reportTurnover" (click)="showDate()" [(ngModel)]="choice"> Báo cáo
+          doanh thu
         </div>
         <div class="col-4">
           <input type="radio" name="check" value="medicinesNeedToBeImporteds" (click)="hiddenDate()"
