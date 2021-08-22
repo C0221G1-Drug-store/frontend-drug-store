@@ -10,7 +10,9 @@
 h4{
   margin: 10px 0 0;
 }
-
+small{
+  color: red;
+}
 .btn-search:hover {
   background-color: #52B6C1;
 }

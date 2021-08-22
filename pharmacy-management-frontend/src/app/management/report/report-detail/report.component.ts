@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ReportService} from '../../../service/report.service';
 
 
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -12,13 +11,14 @@ export class ReportComponent implements OnInit {
   choice = '';
   sDate = '';
   eDate = '';
-  sTime = '';
-  eTime = '';
+  sTime = '00:00';
+  eTime = '23:59';
   msgChoice: string;
   msgDate: string;
   displayDate = true;
 
   constructor(private sv: ReportService) {
+
   }
 
   ngOnInit(): void {
@@ -34,29 +34,33 @@ export class ReportComponent implements OnInit {
 
   exportExcelHaveDate() {
     if ((this.sDate === '' || this.eDate === '' || this.sTime === '' || this.eTime === '') && this.displayDate) {
-      this.msgDate = 'Vui lòng chọn ngày giờ';
+      this.msgDate = 'Vui lòng chọn ngày giờ.';
       return;
     }
-    if ((Date.parse(this.sDate) > Date.parse(this.eDate) && this.displayDate)) {
-      this.msgDate = 'Vui lòng chọn ngày bắt đầu trước ngày kết thúc';
+    if (((Date.parse(this.sDate) - Date.parse(this.eDate) > 86400000) && (this.displayDate))) {
+      this.msgDate = 'Vui lòng chọn ngày bắt đầu trước ngày kết thúc.';
       return;
     }
     if (this.choice === '') {
-      this.msgChoice = 'Vui lòng chọn loại báo cáo';
+      this.msgDate = '';
+      this.msgChoice = 'Vui lòng chọn loại báo cáo.';
       return;
     }
     const startDate = this.sDate + 'T' + this.sTime;
     const endDate = this.eDate + 'T' + this.eTime;
     this.sv.importDetails(this.choice, startDate, endDate).subscribe(r => {
-      if (r == null) {
-        this.msgChoice = 'Không tìm thấy dữ liệu (null)';
+      if (r.length < 1) {
+        this.msgDate = '';
+        this.msgChoice = 'Không tìm thấy dữ liệu.';
         return;
       }
-
       this.sv.exportExcel(r, this.choice);
       this.msgDate = '';
+      this.msgChoice = '';
     }, e => {
-      this.msgChoice = 'Không tìm thấy dữ liệu (error)';
+      console.log('error');
+      this.msgDate = '';
+      this.msgChoice = 'Không tìm thấy dữ liệu.';
     });
   }
 

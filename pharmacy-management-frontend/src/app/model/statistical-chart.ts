@@ -1,3 +1,5 @@
 export interface StatisticalChart {
-  doanhThu?: string;
+  turnover?: number;
+  profit?: number;
+  dateSale?: string;
 }
