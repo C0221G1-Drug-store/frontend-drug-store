@@ -21,7 +21,7 @@ export class DrugListComponent implements OnInit {
   drugSelectedId;
   notSelected = true;
   selectedColor = '';
-  field = '';
+  field = 'drugCode';
   input = '';
   sign = 'like';
   searched = false;
@@ -131,7 +131,7 @@ export class DrugListComponent implements OnInit {
   }
 
   search() {
-    if (this.sign === 'all' || (this.field === '' && this.sign === 'like')) {
+    if (this.sign === 'all') {
       this.ngOnInit();
       this.searched = false;
     } else {
