@@ -30,22 +30,8 @@ export class DrugListComponent implements OnInit {
 
   notFound = false;
 
-drugForm: FormGroup = new FormGroup({
-    drugName: new FormControl(''),
-    drugFaculty: new FormControl(''),
-    activeElement: new FormControl(''),
-    drugSideEffect: new FormControl(''),
-    conversionRate: new FormControl(''),
-    drugImageDetails: new FormControl(''),
-    wholesaleProfitRate: new FormControl(''),
-    retailProfitRate: new FormControl(''),
-    unit: new FormControl(''),
-    conversionUnit: new FormControl(''),
-    manufacturer: new FormControl(''),
-    origin: new FormControl(''),
-    drugGroup: new FormControl(''),
-    note: new FormControl('')
-  });
+
+
   constructor(private drugService: DrugService,
               private dialog: MatDialog) {
   }
@@ -174,16 +160,19 @@ drugForm: FormGroup = new FormGroup({
       });
       this.searched = true;
     }
-
-      noSelectUpdateDialog(): void {
-    const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
-      width: '500px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.ngOnInit();
-    });
   }
+
+
+  // noSelectUpdateDialog(): void {
+  //   const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
+  //     width: '500px'
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     this.ngOnInit();
+  //   });
+  // }
+
   updateDialog(): void {
     this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
       const dialogRef = this.dialog.open(DrugEditComponent, {
