@@ -11,6 +11,12 @@ export class DrugService {
 
   constructor(private http: HttpClient) { }
 
+  getAllDrugsSearch(field: string, sign: string, input: string, index: number): Observable<any> {
+    return this.http.get(this.URl + '/search?field=' + field + '&sign=' + sign + '&input=' + input + '&index=' + index);
+  }
+  getAllDrugsSearchNotPagination(field: string, sign: string, input: string): Observable<any> {
+    return this.http.get(this.URl + '/search-not-pagination?field=' + field + '&sign=' + sign + '&input=' + input);
+  }
   getAllPagination(index: number): Observable<any> {
     return this.http.get(this.URl + '?index=' + index);
   }

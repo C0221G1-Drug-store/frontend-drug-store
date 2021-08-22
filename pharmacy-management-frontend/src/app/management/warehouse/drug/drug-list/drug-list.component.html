@@ -10,36 +10,52 @@
           <div class="col-lg-3">
             <select class="form-control"
                     style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
-                    type="text">
-              <option>Mã thuốc</option>
-              <option>Nhóm thuốc</option>
-              <option>Tên thuốc</option>
-              <option>Hoạt chất</option>
-              <option>Gía nhập</option>
-              <option>Gía bán lẻ</option>
-              <option>Gía bán sỉ</option>
+                    type="text" [(ngModel)]="field" name="field">
+              <option [ngValue]="''">-Chọn trường-</option>
+              <option [ngValue]="'drugCode'">Mã thuốc</option>
+              <option [ngValue]="'drugGroup'">Nhóm thuốc</option>
+              <option [ngValue]="'drugName'">Tên thuốc</option>
+              <option [ngValue]="'activeElement'">Hoạt chất</option>
+              <option [ngValue]="'importPrice'">Gía nhập</option>
+              <option
+                [ngValue]="'wholesalePrice'">
+                Gía bán sỉ
+              </option>
+              <option
+                [ngValue]="'retailPrice'">
+                Gía bán lẻ
+              </option>
             </select>
           </div>
           <div class="col-lg-3">
             <select class="form-control"
                     style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
-                    type="text">
-              <option>- Điều kiện -</option>
-              <option>Bằng</option>
-              <option>Lớn hơn</option>
-              <option>Lớn hơn bằng</option>
-              <option>Nhỏ hơn bằng</option>
-              <option>Khác</option>
-              <option>Tất cả</option>
+                    type="text" [(ngModel)]="sign" name="sign">
+              <option [ngValue]="'like'">- Điều kiện -</option>
+              <option [ngValue]="'='">Bằng</option>
+              <option [ngValue]="'>'"
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                Lớn hơn
+              </option>
+              <option [ngValue]="'>='"
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                Lớn hơn bằng
+              </option>
+              <option [ngValue]="'<='"
+                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                Nhỏ hơn bằng
+              </option>
+              <option [ngValue]="'!='">Khác</option>
+              <option [ngValue]="'all'">Tất cả</option>
             </select>
           </div>
           <div class="col-lg-3">
             <input class="form-control"
-                   style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid"
-                   type="text">
+                   style="height: 30px; width: 200px;border-radius: 4px;border: 2px solid" name="input"
+                   type="text" [(ngModel)]="input">
           </div>
           <div class="col-lg-2">
-            <button style="height: 30px" class=" btn btn-search" type="button"><i
+            <button style="height: 30px" class=" btn btn-search" type="button" (click)="search()"><i
               class="fa fa-search" aria-hidden="true"></i> Lọc
               kết
               quả
@@ -78,7 +94,7 @@
           <tbody>
           <tr *ngFor="let drug of drugs, index as i" (click)="selectDrug(drug.drugId)"
               [ngStyle]="{'background': drug.drugId == drugSelectedId ? selectedColor:''}">
-            <td>{{i+1+(indexPagination-1)*5}}</td>
+            <td>{{i + 1 + (indexPagination - 1) * 5}}</td>
             <td>{{drug.drugCode}}</td>
             <td>{{drug.drugGroup}}</td>
             <td>{{drug.drugName}}</td>
@@ -100,6 +116,16 @@
     </div>
     <div class="d-flex justify-content-end mt-3">
       <nav aria-label="Page navigation example">
+        <ul class="pagination" *ngIf="indexPagination == 1">
+          <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
+          <li class="page-item"><a class="page-link font-weight-bold" (click)="previousPage()">{{indexPagination}}</a></li>
+          <li class="page-item" *ngIf="indexPagination +1 <= totalPagination" (click)="this.nextPage()"><a
+            class="page-link">{{indexPagination + 1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination +2 <= totalPagination" (click)="this.nextPage()"><a class="page-link"
+                                                                                 (click)="nextPage()">{{indexPagination + 2}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
+        </ul>
         <ul class="pagination" *ngIf="indexPagination > 1 && indexPagination<totalPagination">
           <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
           <li class="page-item" *ngIf="indexPagination -1 >= 1"><a class="page-link"
@@ -111,23 +137,13 @@
           </li>
           <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
         </ul>
-        <ul class="pagination" *ngIf="indexPagination == 1">
-          <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
-          <li class="page-item"><a class="page-link font-weight-bold" (click)="previousPage()">{{indexPagination}}</a>
-          </li>
-          <li class="page-item" *ngIf="indexPagination +1 <= totalPagination"><a
-            class="page-link">{{indexPagination + 1}}</a></li>
-          <li class="page-item" *ngIf="indexPagination +2 <= totalPagination"><a class="page-link"
-                                                                                 (click)="nextPage()">{{indexPagination + 2}}</a>
-          </li>
-          <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
-        </ul>
+
         <ul class="pagination" *ngIf="indexPagination == totalPagination && indexPagination !=1">
           <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
           <li class="page-item" *ngIf="indexPagination -2 >= 1"><a class="page-link"
                                                                    (click)="previousPage()">{{indexPagination - 2}}</a>
           </li>
-          <li class="page-item"><a class="page-link">{{indexPagination -1}}</a></li>
+          <li class="page-item"><a class="page-link">{{indexPagination - 1}}</a></li>
           <li class="page-item"><a class="page-link font-weight-bold" (click)="nextPage()">{{indexPagination}}</a>
           </li>
           <li class="page-item"><a class="page-link" (click)="nextPage()">Sau</a></li>
@@ -150,10 +166,10 @@
               <button class="mr-3 btn btn-edit button" *ngIf="!selected" (click)="noSelectUpdateDialog()"><i
                 class="fa fa-edit"></i> Sửa
               </button>
-              <button class="mr-3 btn btn-danger button" *ngIf="selected" (click)="deleteDialog()"><i
+              <button class="mr-3 btn btn-danger button" *ngIf="!notSelected" (click)="deleteDialog()"><i
                 class="fa fa-trash-o"></i> Xóa
               </button>
-              <button class="mr-3 btn btn-danger button" *ngIf="!selected" (click)="notSelectedDialog()"><i
+              <button class="mr-3 btn btn-danger button" *ngIf="notSelected" (click)="notificationDialog()"><i
                 class="fa fa-trash-o"></i> Xóa
               </button>
               <button class=" btn btn-return button " type="button"><i
