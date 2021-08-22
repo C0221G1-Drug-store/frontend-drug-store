@@ -4,6 +4,8 @@ import {DrugDTO} from '../../../../model/DrugDTO';
 import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DrugNotSelectedComponent} from '../drug-not-selected/drug-not-selected.component';
+import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
+import {transcode} from 'buffer';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DrugEditComponent} from '../drug-edit/drug-edit.component';
 
@@ -19,12 +21,14 @@ export class DrugListComponent implements OnInit {
   indexPagination: number;
   totalPagination: number;
   drugSelectedId;
-  selected = false;
+  notSelected = true;
   selectedColor = '';
   field = '';
   input = '';
   sign = 'like';
   searched = false;
+
+  notFound = false;
 
 drugForm: FormGroup = new FormGroup({
     drugName: new FormControl(''),
@@ -117,12 +121,69 @@ drugForm: FormGroup = new FormGroup({
         data: {data1: drug}
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.ngOnInit();
+        this.notSelected = true;
+        this.notFound = false;
       });
     });
   }
 
+  notificationDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotificationComponent, {
+      width: '500px',
+      data: {data1: this.notSelected, data2: this.notFound, data3: false}
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.notFound = false;
+      this.notSelected = true;
+    });
+  }
+
+  selectDrug(drudId) {
+    if (this.drugSelectedId === drudId) {
+      this.drugSelectedId = '';
+      this.selectedColor = '';
+      this.notSelected = true;
+    } else {
+      this.drugSelectedId = drudId;
+      this.notSelected = false;
+      this.selectedColor = '#62b8ff';
+    }
+  }
+
+  search() {
+    if (this.sign === 'all' || (this.field === '' && this.sign === 'like')) {
+      this.ngOnInit();
+      this.searched = false;
+    } else {
+      this.getAllSearchPagination(this.field, this.sign, this.input, 0);
+      this.indexPagination = 1;
+      this.drugService.getAllDrugsSearchNotPagination(this.field, this.sign, this.input).subscribe((drugs: DrugDTO[]) => {
+        this.drugsSearchNotPagination = drugs;
+        if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) === 0) {
+          this.totalPagination = this.drugsSearchNotPagination.length / 5;
+        } else if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) !== 0) {
+          this.totalPagination = (Math.floor(this.drugsSearchNotPagination.length / 5)) + 1;
+        } else {
+          this.totalPagination = 0;
+          this.notFound = true;
+          this.notSelected = false;
+          this.notificationDialog();
+        }
+      });
+      this.searched = true;
+    }
+
+      noSelectUpdateDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
+      width: '500px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
   updateDialog(): void {
     this.drugService.getDrugById(this.drugSelectedId).subscribe(drug => {
       const dialogRef = this.dialog.open(DrugEditComponent, {
@@ -137,54 +198,4 @@ drugForm: FormGroup = new FormGroup({
     });
   }
 
-  notSelectedDialog(): void {
-    const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
-      width: '500px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.ngOnInit();
-    });
-  }
-
-  selectDrug(drudId) {
-    if (this.drugSelectedId === drudId) {
-      this.drugSelectedId = '';
-      this.selectedColor = '';
-      this.selected = false;
-    } else {
-      this.drugSelectedId = drudId;
-      this.selected = true;
-      this.selectedColor = '#62b8ff';
-    }
-  }
-
-  search() {
-    if (this.sign === 'all' || (this.field === '' && this.sign === 'like')) {
-      this.ngOnInit();
-      this.searched = false;
-    } else {
-      this.getAllSearchPagination(this.field, this.sign, this.input, 0);
-      this.indexPagination = 1;
-      this.drugService.getAllDrugsSearchNotPagination(this.field, this.sign, this.input).subscribe((drugs: DrugDTO[]) => {
-        this.drugsSearchNotPagination = drugs;
-        if ((this.drugsSearchNotPagination.length % 5) === 0) {
-          this.totalPagination = this.drugsSearchNotPagination.length / 5;
-        } else {
-          this.totalPagination = (Math.floor(this.drugsSearchNotPagination.length / 5)) + 1;
-        }
-      });
-      this.searched = true;
-      console.log(this.totalPagination);
-    }
-
-      noSelectUpdateDialog(): void {
-    const dialogRef = this.dialog.open(DrugNotSelectedComponent, {
-      width: '500px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.ngOnInit();
-    });
-  }
 }

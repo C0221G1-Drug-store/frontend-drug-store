@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-drug-not-selected',
@@ -7,10 +7,14 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./drug-not-selected.component.css']
 })
 export class DrugNotSelectedComponent implements OnInit {
-
-  constructor(  private dialogRef: MatDialogRef<DrugNotSelectedComponent>) { }
+  selected = false;
+  notFound = false;
+  constructor(  private dialogRef: MatDialogRef<DrugNotSelectedComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    this.selected = this.data.data1;
+    this.notFound = this.data.data2;
   }
   onNoClick(): void {
     this.dialogRef.close();
