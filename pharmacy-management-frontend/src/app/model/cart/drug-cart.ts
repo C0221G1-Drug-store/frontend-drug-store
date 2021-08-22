@@ -1,8 +1,9 @@
 export interface DrugCart {
-  img?: string;
-  info?: string;
-  unit?: number;
-  amount?: number;
-  price?: number;
-  maxAmount?: number;
+    drugId?: number;
+    drugName?: string;
+    wholesalePrice?: number;
+    drugAmount?: number;
+    drugImageDetails?: number;
+    count?: number;
+    price?: number;
 }

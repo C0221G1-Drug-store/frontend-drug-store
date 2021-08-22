@@ -40,7 +40,7 @@
             <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: indianred" disabled href="#">HẾT HÀNG</a>
             </div>
             <ng-template #elseBlockAmount>
-              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
+              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA"  (click)="addCart(drug.drugId, drug.drugName)">THÊM
                 VÀO GIỎ</a>
             </ng-template>
           </div>

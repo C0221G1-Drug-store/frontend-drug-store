@@ -1,28 +1,34 @@
-import {AfterContentChecked, Component, OnInit} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DrugGroup} from '../../model/drug-group';
 import {DrugGroupClientService} from '../../service/drug-group-client.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginRegisterComponent} from '../../user/user-component/login-register/login-register.component';
 import {TokenStorageService} from '../../user/user-service/token-storage.service';
+import {DrugCart} from "../../model/cart/drug-cart";
+// ADD DRUG IN CART
+const CART_KEY = 'drug-cart-id';
 
 @Component({
   selector: 'app-header-client',
   templateUrl: './header-client.component.html',
   styleUrls: ['./header-client.component.css']
 })
-export class HeaderClientComponent implements OnInit, AfterContentChecked {
+export class HeaderClientComponent implements OnInit, AfterViewChecked {
   drugGroups: DrugGroup[] = [];
   search: any;
   private roles: string[];
   isLoggedIn = false;
   username: string;
-  ismod : boolean;
+  ismod: boolean;
   totalProduct = 0;
+  drugCartList: DrugCart[] = [];
 
   constructor(private drugGroupService: DrugGroupClientService, private router: Router,
-              private route: ActivatedRoute,private dialog : MatDialog,
-              private tokenStorageService: TokenStorageService) { }
+              private route: ActivatedRoute, private dialog: MatDialog,
+              private tokenStorageService: TokenStorageService,
+              private cdref: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
     this.getAllDrugGroup();
@@ -38,7 +44,7 @@ export class HeaderClientComponent implements OnInit, AfterContentChecked {
       this.username = user.accountName;
 
       // @ts-ignore
-      this.ismod = ( this.roles == 'ROLE_MODERATOR' || this.roles == 'ROLE_ADMIN')
+      this.ismod = (this.roles == 'ROLE_MODERATOR' || this.roles == 'ROLE_ADMIN')
     }
   }
 
@@ -49,24 +55,37 @@ export class HeaderClientComponent implements OnInit, AfterContentChecked {
   }
 
   pressEnter($event: any) {
-    this.router.navigate(['search', this.search], { relativeTo: this.route });
+    this.router.navigate(['search', this.search], {relativeTo: this.route});
   }
-  logout(){
+
+  logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
 
   openDialogLogin() {
-    let dialogRef = this.dialog.open(LoginRegisterComponent, {
-
-    });
+    let dialogRef = this.dialog.open(LoginRegisterComponent, {});
     dialogRef.afterClosed().subscribe(() => {
 
     });
   }
 
-  ngAfterContentChecked(): void {
-    this.totalProduct = JSON.parse(localStorage.getItem("totalCart"));
+
+  ngAfterViewChecked(): void {
+    this.cdref.detectChanges();
+    if (this.totalProduct != 0) {
+
+      this.totalProduct = 0;
+    }
+    this.drugCartList = JSON.parse(localStorage.getItem(CART_KEY));
+    if (!this.drugCartList) {
+      return;
+    }
+    for (let i = 0; i < this.drugCartList.length; i++) {
+      this.totalProduct += this.drugCartList[i].count;
+    }
+    // fix error expressionchangedafterithasbeencheckederror
+    this.cdref.detectChanges();
   }
 
 }

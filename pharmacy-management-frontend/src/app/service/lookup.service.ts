@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CustomerGroupLookup} from '../model/lookup/customer-group-lookup';
-import {CustomerLookup} from '../model/lookup/customer-lookup';
-import {ManufacturerLookup} from '../model/lookup/manufacturer-lookup';
 
 @Injectable({
   providedIn: 'root'

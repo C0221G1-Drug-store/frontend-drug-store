@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {DrugCartBackend} from "../model/cart/drug-cart-backend";
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class DrugClientService {
 
   findDrugById(drugId: any): Observable<any> {
     return this.http.get(`${this.URl}/client/${drugId}`);
+  }
+
+  findDrugCartById(drugId: number): Observable<DrugCartBackend>{
+    return this.http.get<DrugCartBackend>(`${this.URl}/cart/${drugId}`)
   }
 }
