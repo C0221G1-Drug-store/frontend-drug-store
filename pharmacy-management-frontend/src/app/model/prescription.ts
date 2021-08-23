@@ -1,8 +1,10 @@
 export interface Prescription {
-  id?: number;
-  code?: string;
-  name?: string;
+  prescriptionId?: number;
+  prescriptionCode?: string;
+  prescriptionName?: string;
   customerType?: string;
-  sign?: string;
+  symptom?: string;
   note?: string;
+  numberOfDay?: number;
+  object?: string;
 }

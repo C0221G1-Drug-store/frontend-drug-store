@@ -8,6 +8,7 @@ import {Prescription} from '../../../model/prescription';
 
 
 
+
 @Component({
   selector: 'app-prescription',
   templateUrl: './prescription.component.html',
@@ -17,6 +18,9 @@ export class PrescriptionComponent implements OnInit {
   id: number;
   drugOfBills: DrugOfBill[] = [] ;
   prescriptions: Prescription[] = [];
+  pres: Prescription;
+  fieldSearch = '';
+  valueSearch = '';
   constructor(private http: HttpClient,
               private prescriptionService: PrescriptionService,
               private dialog: MatDialog,
@@ -30,7 +34,6 @@ export class PrescriptionComponent implements OnInit {
     this.prescriptionService.getAll().subscribe(next => {
       this.prescriptions = next;
     });
-    console.log(this.prescriptions);
   }
 
 
@@ -43,4 +46,13 @@ export class PrescriptionComponent implements OnInit {
   }
 
 
+  showChoose(p: Prescription) {
+    this.pres = p;
+  }
+
+  search() {
+    this.prescriptionService.search(this.fieldSearch, this.valueSearch).subscribe( next => {
+      this.prescriptions = next;
+    });
+  }
 }
