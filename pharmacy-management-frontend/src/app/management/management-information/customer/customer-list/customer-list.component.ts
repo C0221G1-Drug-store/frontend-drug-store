@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CustomerService} from '../../../../service/customer.service';
 import {Customer} from '../../../../model/customer';
-import {NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-customer-list',
@@ -18,8 +18,7 @@ export class CustomerListComponent implements OnInit {
   keyWord = '';
   typeSearch;
 
-  constructor(private customerService: CustomerService,
-  ) {
+  constructor(private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
@@ -57,7 +56,8 @@ export class CustomerListComponent implements OnInit {
   deleteCustomer() {
     this.customerDelete.flag = false;
     this.customerService.updateStatusDelete(this.id, this.customerDelete).subscribe(() => {
-      this.getAllCustomer();
+      this.getCustomerByPagination();
+      this.id = null;
     });
   }
 

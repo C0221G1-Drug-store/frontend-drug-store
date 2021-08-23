@@ -4,9 +4,9 @@
     <div class="row text-center">
       <div>
         <span>Lọc theo:</span>
-        <select class="custom-select" style="width: 250px" #typeSearch >
+        <select class="custom-select" style="width: 250px" #typeSearch>
           <option value="customer_code">Mã khách hàng</option>
-<!--          <option value="customer_group">Nhóm khách hàng</option>-->
+          <!--          <option value="customer_group">Nhóm khách hàng</option>-->
           <option value="customer_name">Tên khách hàng</option>
           <option value="customer_address">Địa chỉ</option>
           <option value="customer_phone">Điện thoại</option>
@@ -35,7 +35,7 @@
   </div>
   <div class="container pb-3">
     <fieldset class="scheduler-border">
-      <legend class="scheduler-border">Danh sách Khách hàng</legend>
+      <legend class="scheduler-border">Danh sách khách hàng</legend>
       <table class="table table-bordered table-striped ">
         <thead style="background: #567FEA ; color: white">
         <tr>
@@ -56,9 +56,9 @@
             <td style="background: darkgrey">{{i + 1}}</td>
             <td style="background: darkgrey">{{c.customerCode}}</td>
             <td style="background: darkgrey">{{c.customerName}}</td>
-            <td style="background: darkgrey">{{c.customerAge}}</td>
+            <td style=" text-align: right ; background: darkgrey">{{c.customerAge}}</td>
             <td style="background: darkgrey">{{c.customerAddress}}</td>
-            <td style="background: darkgrey">{{c.customerPhone}}</td>
+            <td style="background: darkgrey ;text-align: right">{{c.customerPhone}}</td>
             <td style="background: darkgrey">{{c.customerGroup.customerGroupName}}</td>
             <td style="background: darkgrey">{{c.customerNote}}</td>
           </ng-container>
@@ -66,9 +66,9 @@
             <td>{{i + 1}}</td>
             <td>{{c.customerCode}}</td>
             <td>{{c.customerName}}</td>
-            <td>{{c.customerAge}}</td>
+            <td style="text-align: right " >{{c.customerAge}}</td>
             <td>{{c.customerAddress}}</td>
-            <td>{{c.customerPhone}}</td>
+            <td style="text-align: right " >{{c.customerPhone}}</td>
             <td>{{c.customerGroup.customerGroupName}}</td>
             <td>{{c.customerNote}}</td>
           </ng-container>
@@ -160,8 +160,9 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reset()">Không
                     </button>
                     <button [hidden]="!customerDelete" [disabled]="!customerDelete" type="button" class="btn btn-danger"
-                            data-dismiss="modal"
+                            data-dismiss="modal" data-toggle="modal" data-target="#myModal"
                             (click)="deleteCustomer()">Xóa
+
                     </button>
                   </div>
                   <div [hidden]="customerDelete" class="modal-footer">
@@ -194,3 +195,22 @@
   </div>
 </div>
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thông Báo</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        Đã xóa khách hàng thành công
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Trở về</button>
+      </div>
+    </div>
+  </div>
+</div>

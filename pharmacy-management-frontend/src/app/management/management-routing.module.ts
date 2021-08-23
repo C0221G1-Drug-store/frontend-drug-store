@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'sale-retail',
-    loadChildren: () => import('./sale-retail/sale-retail.module').then(module => module.SaleRetailModule)
+    loadChildren: () => import('./sale-retail/sale-retail.module') .then(module => module.SaleRetailModule)
   },
   {
     path: 'common',
