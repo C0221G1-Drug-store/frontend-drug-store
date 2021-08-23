@@ -12,9 +12,11 @@ export class ExportbillService {
   private API_EMPLOYEE = "http://localhost:8080/api";
   constructor(private http: HttpClient) { }
 
-  // @ts-ignore
   createCodeExportBillRefund(): Observable<any> {
     return this.http.get(`${this.API_EXPORT_BILL}/createCode`);
+  }
+  createCodeExportBillDestroy(): Observable<any> {
+    return this.http.get(`${this.API_EXPORT_BILL}/create-code-destroy`);
   }
 
   createExportBill(exportBill: ExportBill): Observable<any>{

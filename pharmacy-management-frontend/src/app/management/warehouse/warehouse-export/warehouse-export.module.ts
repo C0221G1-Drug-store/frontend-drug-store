@@ -3,24 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { WarehouseExportRoutingModule } from './warehouse-export-routing.module';
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
-import {MatSelectModule} from '@angular/material/select';
+import {MatSelectModule} from "@angular/material/select";
+import {NgxMatSelectSearchModule} from "ngx-mat-select-search";
+import {MatDialogModule} from "@angular/material/dialog";
+import {CustomCurrencyPipe} from "./custom-currency.pipe";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxPrintModule} from 'ngx-print';
 import { DialogComponent } from './dialog/dialog.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {CustomCurrencyPipe} from "./custom-currency.pipe"
-import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {ExportBillPrintComponent} from './export-bill-print/export-bill-print.component';
 import {ExportBillListComponent} from './export-bill-list/export-bill-list.component';
 import {ExportBillDeleteComponent} from './export-bill-delete/export-bill-delete.component';
+import {ExportBillDestroyComponent} from './export-bill-destroy/export-bill-destroy.component';
 
 
 @NgModule({
-  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe,ExportBillPrintComponent,ExportBillListComponent,ExportBillDeleteComponent],
+  declarations: [DialogComponent,CustomCurrencyPipe,ExportBillPrintComponent,ExportBillListComponent,ExportBillDeleteComponent,ExportBillRefundComponent,ExportBillDestroyComponent],
   imports: [
     CommonModule,
     WarehouseExportRoutingModule,
@@ -31,9 +32,10 @@ import {ExportBillDeleteComponent} from './export-bill-delete/export-bill-delete
     NgxPrintModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatButtonModule,
     NgxMatSelectSearchModule,
-  ]
+  ],
 })
 export class WarehouseExportModule { }
