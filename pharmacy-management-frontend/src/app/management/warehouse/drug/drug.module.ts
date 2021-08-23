@@ -16,7 +16,7 @@ import { DrugNotificationComponent } from './drug-notification/drug-notification
 
 @NgModule({
 
-  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent, DrugDeleteComponent,DrugNotificationComponent],
+  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent, DrugDeleteComponent, DrugNotificationComponent],
 
   imports: [
     CommonModule,

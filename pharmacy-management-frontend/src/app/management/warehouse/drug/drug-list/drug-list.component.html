@@ -33,15 +33,15 @@
               <option [ngValue]="'like'">- Điều kiện -</option>
               <option [ngValue]="'='">Bằng</option>
               <option [ngValue]="'>'"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn
               </option>
               <option [ngValue]="'>='"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn bằng
               </option>
               <option [ngValue]="'<='"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Nhỏ hơn bằng
               </option>
               <option [ngValue]="'!='">Khác</option>
@@ -68,9 +68,9 @@
 <div class="container pb-3">
   <fieldset class="scheduler-border">
     <legend class="scheduler-border">Danh sách thuốc</legend>
-    <div class="container" style="height: 350px">
+    <div class="container">
       <div class="row">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" *ngIf="!notFound">
           <thead class="thead">
           <tr>
             <th class="col-lg-0.5">STT</th>
@@ -81,9 +81,9 @@
             <th class="col-lg-1">ĐVT</th>
             <th class="col-lg-1">ĐV QB</th>
             <th class="col-lg-1">Số lượng</th>
-            <th class="col-lg-1">Gía nhập</th>
-            <th class="col-lg-1">Gía sỉ</th>
-            <th class="col-lg-1">Gía lẻ</th>
+            <th class="col-lg-1">Giá nhập</th>
+            <th class="col-lg-1">Giá sỉ</th>
+            <th class="col-lg-1">Giá lẻ</th>
             <th class="col-lg-0.5">%CK</th>
             <th class="col-lg-0.5">%LN XS</th>
             <th class="col-lg-0.5">%LN XL</th>
@@ -100,20 +100,25 @@
             <td>{{drug.activeElement}}</td>
             <td>{{drug.unit}}</td>
             <td>{{drug.conversionUnit}}</td>
-            <td>{{drug.drugAmount}}</td>
-            <td>{{drug.importPrice| number: '1.2-2'}}</td>
-            <td>{{drug.wholesalePrice | number: '1.2-2'}}</td>
-            <td>{{drug.retailPrice | number: '1.2-2'}}</td>
-            <td>{{drug.discountRate | number: '1.2-2'}}</td>
-            <td>{{drug.wholesaleProfitRate}}</td>
-            <td>{{drug.retailProfitRate}}</td>
-            <td>{{drug.vat | number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.drugAmount| number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.importPrice| number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.wholesalePrice | number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.retailPrice | number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.discountRate | number: '1.2-2'}}</td>
+            <td style="text-align: right">{{drug.wholesaleProfitRate}}</td>
+            <td style="text-align: right">{{drug.retailProfitRate}}</td>
+            <td style="text-align: right">{{drug.vat | number: '1.2-2'}}</td>
           </tr>
           </tbody>
         </table>
+        <table *ngIf="notFound" class="table">
+          <tr>
+            <td style="text-align: center">Không tìm thấy kết quả</td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div class="d-flex justify-content-end mt-3">
+    <div class="d-flex justify-content-end mt-3" *ngIf="!notFound">
       <nav aria-label="Page navigation example">
         <ul class="pagination" *ngIf="indexPagination == 1">
           <li class="page-item"><a class="page-link" (click)="previousPage()">Trước</a></li>
