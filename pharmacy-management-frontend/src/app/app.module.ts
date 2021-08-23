@@ -45,9 +45,7 @@ registerLocaleData(localeVi, 'vi-VN');
     NgxPrintModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
-
-
+    MatButtonModule,
   ],
   providers: [MatDialog ,Overlay],
   bootstrap: [AppComponent]
