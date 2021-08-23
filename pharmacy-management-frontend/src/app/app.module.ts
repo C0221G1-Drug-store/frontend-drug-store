@@ -1,16 +1,23 @@
+// @ts-ignore
 import { BrowserModule } from '@angular/platform-browser';
+// @ts-ignore
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
+// @ts-ignore
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
+// @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
+
 import {ToastrModule} from 'ngx-toastr';
 import {NgxPrintModule} from 'ngx-print';
+
+import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
+
 
 @NgModule({
   declarations: [
@@ -25,8 +32,12 @@ import {NgxPrintModule} from 'ngx-print';
     CommonModule,
     MatDialogModule,
     HttpClientModule,
+
     ToastrModule.forRoot(),
     NgxPrintModule
+
+    ManufacturerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
