@@ -1,9 +1,9 @@
 div input {
-  width: 95%;
+  width: 105%;
   margin-left: 3%
 }
 div select {
-  min-width: 95%;
+  min-width: 105%;
   height: 39px;
   margin-left: 3%;
   border-radius: 4px
@@ -179,8 +179,8 @@ html{
 #form{
   width: 100%;
   margin: 0px;
-  /*box: 3px 3px 3px 3px #5f6062;*/
-}
+  padding: 0px;
+ }
 .icon{
   padding: 10px 10px 0 0;
 }
@@ -397,4 +397,9 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   min-height: inherit;
   max-height: inherit;
+}
+::ng-deep .snack-bar {
+  background: green !important;
+  color: white;
+  width: auto;
 }

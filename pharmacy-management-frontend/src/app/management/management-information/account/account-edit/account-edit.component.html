@@ -4,6 +4,7 @@
         <p class="ml-3 mt-2 font-weight-bold">Thông tin tài khoản</p>
       </div>
       <div class="border mx-1 mt-2 pt-2 px-2">
+
         <div class="row d-flex mb-3 align-items-center">
           <div class="col-lg-2">
             <label class="label-text">Mã người dùng</label>
@@ -15,6 +16,7 @@
             <label class="label-text" style="color: red"></label>
           </div>
         </div>
+
         <div class="row d-flex mb-3 align-items-center">
           <div class="col-lg-2">
             <label class="label-text">Tên người dùng</label>
@@ -26,40 +28,46 @@
             <label class="label-text" style="color: red"></label>
           </div>
         </div>
+
         <div class="row d-flex mb-3 align-items-center">
           <div class="col-lg-2">
-            <label class="label-text">Tên tài khoản</label>
+            <label class="label-text ">Tên tài khoản (*)</label>
           </div>
           <div class="col-lg-9">
-            <input formControlName="accountName" class="form-control border border-dark" type="text">
+            <input formControlName="accountName" name="accountName" class="form-control border border-dark" type="text">
           </div>
-          <div class="col-lg-1 px-0">
-            <label class="label-text" style="color: red">(*)</label>
-          </div>
+          <div style="color: red" *ngIf="accountForm.controls.accountName.hasError('required')&&accountForm.controls.accountName.touched">Tên tài khoản không được trống.</div>
+          <div style="color: red" *ngIf="accountForm.controls.accountName.hasError('minlength')&&accountForm.controls.accountName.touched">Tên tài khoản phải > 5 kí tự.</div>
+          <div style="color: red" *ngIf="accountForm.controls.accountName.hasError('maxlength')&&accountForm.controls.accountName.touched">Tên tài khoản phải < 20 Kí tự. </div>
+          <div style="color: red" *ngIf="accountForm.controls.accountName.hasError('pattern')&&accountForm.controls.accountName.touched">Tài khoản không chứa kí tự đặc biệt.</div>
+          <div *ngFor="let er of messageErrors" style="color:red">{{er}}</div>
         </div>
+
         <div class="row d-flex mb-3 align-items-center">
           <div class="col-lg-2">
-            <label class="label-text">Chức vụ</label>
+            <label class="label-text">Chức vụ (*)</label>
           </div>
           <div class="col-lg-9">
-            <select formControlName="role" [compareWith]="compareFn">
+            <select formControlName="role" name="role" [compareWith]="compareFn">
               <option *ngFor="let r of roles" [ngValue]="r">{{r.roleName}}</option>
             </select>
           </div>
-          <div class="col-lg-1 px-0">
-            <label class="label-text" style="color: red">(*)</label>
-          </div>
+          <div style="color: red" *ngIf="accountForm.controls.role.hasError('required')&&accountForm.controls.role.touched">Account name is not empty!</div>
         </div>
       </div>
+
       <div class="row d-flex p-2">
+
         <div class="col-lg-4">
           <label class="label-text">(*) Thông tin bắt buộc</label>
         </div>
+
         <div class="col-lg-8 d-flex justify-content-end ">
           <button class="mr-3 btn btn-success button p-1" type="submit" (click)="confirmUpdateHandler()"><i class="fa fa-edit p-1"></i> Chấp nhận </button>
           <button class="mr-3 btn btn-pay button p-1" type="button" (click)="confirmResetHandler()"><i class="ti-bolt-alt p-1"></i> Reset mật khẩu </button>
-          <a href="management/management-information/account/list" style="color: black;text-decoration: none"><button class="mr-3 btn btn-edit button p-1 " type="button"><i class="fa fa-undo p-1"></i> Trở về </button></a>
+          <button style="color: black" class="mr-3 btn btn-edit button p-1 " type="button" (click)="dialogRef.close(false)"><i class="fa fa-undo p-1"></i> Trở về </button>
         </div>
+
       </div>
     </form>
 

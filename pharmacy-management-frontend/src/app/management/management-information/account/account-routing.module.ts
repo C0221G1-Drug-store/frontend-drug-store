@@ -8,7 +8,7 @@ const routes: Routes = [{
   path: 'list',
   component: AccountListComponent
 }, {
-  path: 'edit/:id',
+  path: 'edit',
   component: AccountEditComponent
 }];
 

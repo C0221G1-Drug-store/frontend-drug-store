@@ -6,6 +6,7 @@ import { AccountListComponent } from './account-list/account-list.component';
 import { AccountEditComponent } from './account-edit/account-edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DialogComponent } from './dialog/dialog.component';
         CommonModule,
         AccountRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSnackBarModule
     ]
 })
 export class AccountModule { }

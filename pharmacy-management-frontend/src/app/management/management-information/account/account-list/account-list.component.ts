@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AccountService} from "../../../../service/account/account.service";
 import {newArray} from "@angular/compiler/src/util";
 import {DialogComponent} from "../dialog/dialog.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AccountEditComponent} from "../account-edit/account-edit.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-account-list',
@@ -20,27 +21,35 @@ export class AccountListComponent implements OnInit {
     totalPages: 0
   };
   idAccount: number;
-  constructor(
-    private accountService: AccountService,
-    public dialog: MatDialog
+  idAccountReClick: boolean;
+    constructor(
+      private accountService: AccountService,
+      public dialog: MatDialog,
+      private _snackBar: MatSnackBar
   ) {
   }
 
   ngOnInit(): void {
     this.findAllAccount(this.page, this.size, this.keyWord, this.property);
-  }
+      }
 
   findAllAccount(page: number, size: number, keyword: string, property: number) {
       this.page = page;
       this.accountService.getAllAccount(page, this.size, this.keyWord, this.property).subscribe(next => {
       this.accounts = next.content;
       this.pagination.totalPages = next.totalPages;
-      console.log(this.accounts);
+      if (this.accounts.length==0){
+        this._snackBar.open("Không có kết quả tìm kiếm!!!" , null,{
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['snack-bar-find']
+        });
+      }
     });
   }
 
   onchangeProperty(e) {
-    console.log(e);
     if (e == 0) {
       this.keyWord = '';
     }
@@ -77,7 +86,13 @@ export class AccountListComponent implements OnInit {
   }
 
   getIdAccount(id: number) {
-    this.idAccount = id;
+    if (id == this.idAccount){
+      this.idAccountReClick = false;
+      this.idAccount = 0;
+    } else {
+      this.idAccountReClick = true;
+      this.idAccount = id;
+    }
   }
 
   onUpdateHendler(idAccount: number) {

@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {AccountService} from "../../../../service/account/account.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {Role} from "../../../../model/account/role";
 import {RoleService} from "../../../../service/account/role.service";
 import {UserRole} from "../../../../model/account/user-role";
@@ -9,6 +9,8 @@ import {UserRoleService} from "../../../../service/account/user-role.service";
 import {Account} from "../../../../model/account/account";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+
 
 @Component({
   selector: 'app-account-edit',
@@ -19,14 +21,18 @@ export class AccountEditComponent implements OnInit {
   accountForm: FormGroup = new FormGroup({
     userCode: new FormControl('', [Validators.required]),
     userName: new FormControl('', [Validators.required]),
-    accountName: new FormControl('', [Validators.required]),
+    accountName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern("^[0-9a-zA-Z]*$")]),
     encrytedPassword: new FormControl(''),
     enabled: new FormControl(''),
-    role: new FormControl(''),
+    role: new FormControl('', [Validators.required]),
   });
   roles: Role[];
   account: any;
   id: number;
+  messageErrors: string[];
+  @Input()
+  messageSussess: string;
+
   constructor(
     public dialogRef: MatDialogRef<AccountEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -35,8 +41,9 @@ export class AccountEditComponent implements OnInit {
     private roleService: RoleService,
     private userRoleService: UserRoleService,
     private router: Router,
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -46,6 +53,7 @@ export class AccountEditComponent implements OnInit {
     this.getAccount(this.data);
     this.getRole();
   }
+
   getAccount(id: number) {
     return this.accountService.findById(id).subscribe(account => {
       this.account = account;
@@ -64,32 +72,45 @@ export class AccountEditComponent implements OnInit {
   }
 
   submit() {
-    const accountNew =  this.accountForm.value;
-    console.log(accountNew);
-    this.accountService.updateAccount(this.data,accountNew).subscribe(next => {
-      const userRole = {
-        role: accountNew.role,
-        user: next
-      };
-      this.userRoleService.updateAccount(next.userId,userRole).subscribe()
-          });
+    if (this.accountForm.invalid) return;
+    const accountNew = this.accountForm.value;
+    this.accountService.updateAccount(this.data, accountNew).subscribe(next => {
+      if (next.status) {
+        this.messageSussess = next.msg;
+        const userRole = {
+          role: accountNew.role,
+          user: next.account
+        };
+
+        this.userRoleService.updateAccount(next.account.userId, userRole).subscribe();
+        this.dialogRef.close(true);
+
+        this._snackBar.open(this.messageSussess , null,{
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['snack-bar']
+        });
+      } else {
+        this.messageErrors = next.errors;
+      }
+    });
   }
+
   compareFn(c1: Role, c2: Role): boolean {
     return c1 && c2 ? c1.roleId === c2.roleId : c1 === c2;
   }
 
 
-
   confirmUpdateHandler() {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '300px',
-          });
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-           if (result){
-            this.submit();
-             this.dialogRef.close(true);
+      if (result) {
+        this.submit()
       }
     });
   }
@@ -100,12 +121,18 @@ export class AccountEditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-          this.accountForm.get('encrytedPassword').setValue('123456');
-          const accountNew =  this.accountForm.value;
-          this.accountService.updateAccount(this.id,accountNew).subscribe(next => {
+      if (result) {
+        this.accountForm.get('encrytedPassword').setValue('123456');
+        const accountNew = this.accountForm.value;
+        this.accountService.updateAccount(this.data, accountNew).subscribe(next => {
+          this._snackBar.open("Reset mật khẩu thành công!!!" , null,{
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ['snack-bar']
           });
-          this.router.navigateByUrl("management/management-information/account/list")
+        });
+        this.router.navigateByUrl("management/management-information/account/list")
       }
     });
   }
