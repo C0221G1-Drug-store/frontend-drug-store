@@ -15,12 +15,13 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  getAllAccount(page: number, size: number, keyWord: string, property: number): Observable<any> {
+  getAllAccount(page: number, size: number, keyWord: string, property: number, roleId: number): Observable<any> {
     const params = new HttpParams()
       .set('page', `${page}`)
       .set('size', `${size}`)
       .set('keyWord', keyWord)
-      .set('property', `${property}`);
+      .set('property', `${property}`)
+      .set('roleId', `${roleId}`);
     return this.http.get<any>(API_URL + '/users', {params});
   }
 

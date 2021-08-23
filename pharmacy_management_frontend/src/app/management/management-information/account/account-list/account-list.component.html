@@ -7,7 +7,13 @@
             <div class="mb-3">
               <label class="label-text" >Tìm kiếm tài khoản</label>
               <div class="d-flex">
-                <input [readOnly]="property==0" [(ngModel)]="keyWord" name="keyWord" class="width-input mr-2" type="text"  >
+                <input [hidden]="property==4" [readOnly]="property==0" [(ngModel)]="keyWord" name="keyWord" class="width-input mr-2" type="text">
+                <select class="mr-2 selectFind" [hidden]="property!=4" name="roleId" [(ngModel)]="roleId">
+                  <option value="0" [selected]="true" style="font-weight: lighter;font-style: italic">--Chọn Loại Tài Khoản--</option>
+                  <option value="1">Người Dùng</option>
+                  <option value="2">Nhân Viên</option>
+                  <option value="3">Quản Lý</option>
+                </select>
                 <select class="mr-2 selectFind" (ngModelChange)="onchangeProperty($event)" [(ngModel)]="property" name="property">
                   <option value="0" selected>Chọn</option>
                   <option value="1">Tên người dùng</option>
@@ -15,7 +21,7 @@
                   <option value="3">Tên tài khoản</option>
                   <option value="4">Loại tài khoản</option>
                 </select>
-                <input type="button" class="btn-search btn pl-0" value="Tìm Kiếm" (click)="searchAccount()">
+                <input [disabled]="roleId==0&&property==4" type="button" class="btn-search btn pl-0" value="Tìm Kiếm" (click)="searchAccount()">
               </div>
             </div>
           </div>

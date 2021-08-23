@@ -22,6 +22,7 @@ export class AccountListComponent implements OnInit {
   };
   idAccount: number;
   idAccountReClick: boolean;
+  roleId = 0;
     constructor(
       private accountService: AccountService,
       public dialog: MatDialog,
@@ -30,12 +31,12 @@ export class AccountListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+    this.findAllAccount(this.page, this.size, this.keyWord, this.property, this.roleId);
       }
 
-  findAllAccount(page: number, size: number, keyword: string, property: number) {
+  findAllAccount(page: number, size: number, keyword: string, property: number, roleId: number) {
       this.page = page;
-      this.accountService.getAllAccount(page, this.size, this.keyWord, this.property).subscribe(next => {
+      this.accountService.getAllAccount(page, size, keyword, property, roleId).subscribe(next => {
       this.accounts = next.content;
       console.log(this.accounts);
       this.pagination.totalPages = next.totalPages;
@@ -62,14 +63,14 @@ export class AccountListComponent implements OnInit {
 
   changePage(i: number) {
     this.page = i;
-    this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+    this.findAllAccount(this.page, this.size, this.keyWord, this.property, this.roleId);
   }
 
   backPage() {
     if (this.page == 0) { return; }
     this.page--;
     if (this.page >= 0) {
-      this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+      this.findAllAccount(this.page, this.size, this.keyWord, this.property, this.roleId);
     }
   }
 
@@ -77,13 +78,13 @@ export class AccountListComponent implements OnInit {
     if (this.page == this.pagination.totalPages - 1) { return; }
     this.page++;
     if (this.page <= this.pagination.totalPages) {
-      this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+      this.findAllAccount(this.page, this.size, this.keyWord, this.property, this.roleId);
     }
   }
 
   searchAccount() {
     this.page = 0;
-    this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+    this.findAllAccount(this.page, this.size, this.keyWord, this.property, this.roleId);
   }
 
   getIdAccount(id: number) {
@@ -105,7 +106,7 @@ export class AccountListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result){
-        this.findAllAccount(this.page, this.size, this.keyWord, this.property);
+        this.findAllAccount(this.page, this.size, this.keyWord, this.property,  this.roleId);
       }
     });
   }
