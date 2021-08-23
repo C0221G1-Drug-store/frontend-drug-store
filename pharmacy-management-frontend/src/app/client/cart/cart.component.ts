@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../service/cart.service';
-import {DrugCart} from '../../model/cart/drug-cart';
 import {Currency} from '../../model/cart/currency';
+import {DrugCart} from "../../model/cart/drug-cart";
+
+const CART_KEY = 'drug-cart-id';
 
 //#region USD100 >> 100 USD
-
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {logger} from "codelyzer/util/logger";
+import {HttpClient} from "@angular/common/http";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -24,48 +26,6 @@ declare let paypal: any;
 })
 export class CartComponent implements OnInit {
   //#region DATA TEST
-  list = [
-    {
-      img: 'https://image.pharmacity.vn/live/uploads/2019/04/P00066_1_l-300x300.jpg',
-      info: 'Dầu gió xanh Thiên Thảo (Chai12ml)',
-      unit: 19500,
-      amount: 10,
-      price: 195000,
-      maxAmount: 11,
-    },
-    {
-      img: 'https://image.pharmacity.vn/live/uploads/2019/04/P00779_1_l.jpg',
-      info: 'Fugacar Mebendazole (500mg)',
-      unit: 19000,
-      amount: 5,
-      price: 95000,
-      maxAmount: 20,
-    },
-    {
-      img: 'https://image.pharmacity.vn/live/uploads/2021/07/P20426_1_l-300x300.jpg',
-      info: 'Tăm bông kháng khuẩn đầu xoán Sakura(Lọ 200 que giấy)',
-      unit: 44000,
-      amount: 1,
-      price: 44000,
-      maxAmount: 3,
-    },
-    {
-      img: 'https://image.pharmacity.vn/live/uploads/2021/07/P20426_1_l-300x300.jpg',
-      info: 'Tăm bông kháng khuẩn đầu xoán Sakura(Lọ 200 que giấy)',
-      unit: 44000,
-      amount: 3,
-      price: 132000,
-      maxAmount: 20,
-    },
-    {
-      img: 'https://image.pharmacity.vn/live/uploads/2021/07/P20426_1_l-300x300.jpg',
-      info: 'Tăm bông kháng khuẩn đầu xoán Sakura(Lọ 200 que giấy)',
-      unit: 44000,
-      amount: 2,
-      price: 88000,
-      maxAmount: 20,
-    }
-  ];
   listVoucher = [
     {id: 1, code: '1234567890', money: '100000'},
     {id: 2, code: '1234567891', money: '200000'},
@@ -79,8 +39,8 @@ export class CartComponent implements OnInit {
   // #endregion
 
   //#region CART
-  medicines: DrugCart[];
-  medicine!: DrugCart;
+  drugCart!: DrugCart;
+  drugCartListShow: DrugCart[] = [];
   moneyTotal = 0;
   moneyPayPal = 0;
   medicineTotal = 0;
@@ -90,6 +50,7 @@ export class CartComponent implements OnInit {
   resultMsg = '';
   deleteId: number;
   deleteInfo = '';
+  moneyPayVN = 0;
   // #endregion
 
   //#region PAYPAL
@@ -125,9 +86,8 @@ export class CartComponent implements OnInit {
         // Do something when payment is successful.
         this.voucherMoney = 0;
         this.resultMsg = 'Thanh toán thành công';
-        this.medicines = null;
-        localStorage.removeItem('medicineList');
-        localStorage.setItem('totalCart', '0');
+        this.drugCartListShow = [];
+        localStorage.removeItem(CART_KEY);
         this.showMessageSuccess();
         // Send email.
         this.cartService.sendEmail().subscribe(e => {
@@ -153,78 +113,96 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private fb: FormBuilder,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.getMedicineList();
-    this.getTotal();
-    this.postTotalCartLocalStorage()
+    this.getDrugCartList();
+    this.postTotalCartLocalStorage();
   }
-  postTotalCartLocalStorage(){
-    localStorage.setItem('totalCart', String(this.medicineTotal))
+
+  postTotalCartLocalStorage() {
+
   }
-  getMedicineList() {
 
-    //#region Set data in LOCALSTORAGE
-    localStorage.setItem('medicineList', JSON.stringify(this.list));
-    // localStorage.setItem('account', JSON.stringify(this.account))    ;
-    //#endreion
-
-
+  getDrugCartList() {
     this.resultMsg = '';
-    this.medicines = JSON.parse(localStorage.getItem('medicineList'));
+    let data = JSON.parse(localStorage.getItem(CART_KEY));
+    if (data == null) {
+      return;
+    }
+    for (let i = 0; i < data.length; i++) {
+      let count = data[i].count;
+      this.cartService.findDrugCartById(data[i].drugId).subscribe(drug => {
+        this.drugCart = {
+          drugId: drug.drugId,
+          drugName: drug.drugName,
+          wholesalePrice: drug.wholesalePrice,
+          drugAmount: drug.drugAmount,
+          drugImageDetails: drug.drugImageDetails,
+          count: data[i].count,
+          price: drug.wholesalePrice * data[i].count,
+        };
+        this.drugCartListShow.push(this.drugCart);
+      });
+    }
   }
 
 
   //#region ADD + SUB + DEL + UPDATE
-
   sendDeleteId(i: number, info: string) {
     this.deleteId = i;
     this.deleteInfo = info;
   }
 
   medicineSub(i: number) {
-    if (this.medicines[i].amount > 0) {
-      this.medicines[i].amount--;
+    if (this.drugCartListShow[i].count > 0) {
+      this.drugCartListShow[i].count--;
     }
-    this.medicines[i].price = this.medicines[i].unit * this.medicines[i].amount;
-    localStorage.setItem('medicines', JSON.stringify(this.medicine));
+    this.drugCartListShow[i].price = this.drugCartListShow[i].wholesalePrice * this.drugCartListShow[i].count;
+    localStorage.setItem(CART_KEY, JSON.stringify(this.drugCart));
   }
 
   medicineAdd(i: number) {
-    if (this.medicines[i].amount < this.medicines[i].maxAmount) {
-      this.medicines[i].amount++;
+    if (this.drugCartListShow[i].count >= this.drugCartListShow[i].drugAmount) {
+      this.showMessageOutOfDrug();
+      return;
     }
-    this.medicines[i].price = this.medicines[i].unit * this.medicines[i].amount;
-    localStorage.setItem('medicines', JSON.stringify(this.medicine));
+    this.drugCartListShow[i].count++;
+    this.drugCartListShow[i].price = this.drugCartListShow[i].wholesalePrice * this.drugCartListShow[i].count;
+    localStorage.setItem(CART_KEY, JSON.stringify(this.drugCartListShow));
   }
 
   delMedicine(i) {
-    this.medicines.splice(i, 1);
-    localStorage.setItem('medicineList', JSON.stringify(this.medicines));
+    this.drugCartListShow.splice(i, 1);
+    localStorage.setItem(CART_KEY, JSON.stringify(this.drugCartListShow));
     this.postTotalCartLocalStorage();
   }
 
   getTotal() {
-    for (let i = 0; i < this.medicines.length; i++) {
-      this.moneyTotal += this.medicines[i].price;
-      this.medicineTotal += this.medicines[i].amount;
-      if (this.medicines[i].amount === 0) {
+    for (let i = 0; i < this.drugCartListShow.length; i++) {
+      this.moneyTotal += this.drugCartListShow[i].price;
+      this.medicineTotal += this.drugCartListShow[i].count;
+      if (this.drugCartListShow[i].count === 0) {
         this.delMedicine(i);
       }
     }
-    this.convertUsdCurrency(this.moneyTotal);
+    this.moneyPayVN = this.moneyTotal + 30000 - this.voucherMoney;
+    if (this.moneyPayVN <0 ) {
+      this.moneyPayVN = 0;
+    }
+    this.convertUsdCurrency(this.moneyPayVN);
   }
 
   update() {
     this.medicineTotal = 0;
-    this.moneyTotal = -this.voucherMoney;
+    this.moneyTotal = 0;
     this.moneyPayPal = 0;
     this.getTotal();
-    localStorage.setItem('medicineList', JSON.stringify(this.medicines));
+    localStorage.setItem(CART_KEY, JSON.stringify(this.drugCartListShow));
     this.postTotalCartLocalStorage();
-    if (!this.moneyTotal){
+    if (!this.moneyTotal) {
       this.showMessageNotFound();
     }
     this.getPaypPal()
@@ -243,7 +221,6 @@ export class CartComponent implements OnInit {
       this.moneyPayPal = usd * VND / vnd;
     });
   }
-
   // #endregion
 
   //#region Paypal
@@ -287,6 +264,7 @@ export class CartComponent implements OnInit {
     }
     this.voucherMsg = 'Mã phiếu ưu đãi không tồn tại';
   }
+
   // #endregion
 
   showMessageNotFound() {
@@ -295,6 +273,14 @@ export class CartComponent implements OnInit {
       progressBar: true,
     });
   }
+
+  showMessageOutOfDrug() {
+    this.toastrService.error('Thuốc đã hết hàng', 'Thông báo', {
+      timeOut: 3000,
+      progressBar: true,
+    });
+  }
+
   showMessageSuccess() {
     this.toastrService.success('Thanh toán thành công', 'Thông báo', {
       timeOut: 3000,

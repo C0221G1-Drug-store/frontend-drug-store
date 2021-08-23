@@ -36,7 +36,7 @@
             </div>
             <ng-template #elseBlockAmount>
               <a class="info" style="border-radius: 8px; background-color: #2FC1A6" [routerLink]="['details',drug.drugId]">CHI TIẾT</a>
-              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA" href="#">THÊM
+              <a class="info" style="border-radius: 8px; margin-top: 5px; background-color: #567FEA"  (click)="addCart(drug.drugId, drug.drugName)">THÊM
                 VÀO GIỎ</a>
             </ng-template>
           </div>
