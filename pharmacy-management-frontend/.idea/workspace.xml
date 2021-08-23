@@ -1,770 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="a1550631-f2a4-4e59-ac7f-852422bd635a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/modules/Bai_Thi_Module3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.gradle/5.2.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.gradle/5.2.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/modules/BaiThiModule3.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/database_bai_thi.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/cotroller/ProductServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/bean/Catelory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/bean/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/repository/BaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/repository/CateloryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/service/IProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/bai_thi/model/service/Impl/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/java/common/Validate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bai_thi/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bai_thi/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bai_thi/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bai_thi/main_page.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/bootstrap413/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/css/furama_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.bootstrap4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.bootstrap4.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.foundation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.foundation.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.jqueryui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.jqueryui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.semanticui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/dataTables.semanticui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/jquery.dataTables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/css/jquery.dataTables.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/images/sort_asc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/images/sort_asc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/images/sort_both.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/images/sort_desc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/images/sort_desc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.bootstrap4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.bootstrap4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.foundation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.foundation.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.jqueryui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.jqueryui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.semanticui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/dataTables.semanticui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/datatables/js/jquery.dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiModule3/src/main/webapp/jquery/jquery-3.5.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/controller/EmployeeServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/model/bean/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/model/repository/BaseRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/model/repository/EmployeeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/model/servcie/IEmployee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/classes/java/main/model/servcie/Impl/EmployeeServciesIMpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/build/libs/BaiThiThu-1.0-SNAPSHOT.war" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/controller/EmployeeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/model/bean/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/model/repository/BaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/model/repository/EmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/model/servcie/IEmployee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/java/model/servcie/Impl/EmployeeServciesIMpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/webapp/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/webapp/view/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/webapp/view/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BaiThiThu/src/main/webapp/view/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/.idea/Bai_Tap_Css.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/casestudy_furama/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/casestudy_furama/furama_css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/casestudy_furama/furama_css/furama_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/casestudy_furama/list_furama.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/casestudy_furama/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercies_layout/exercise_layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercies_layout_rwd/file_css/layout_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercies_layout_rwd/layout_rwd.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_01/exercise_01.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_01/file_css/css_exercise_01.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_02/excercise_02.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_02/exercise_css/exercise_02.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_03/excercise_css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_03/excercise_css/exercise_03.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_03/exercise_03.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_cartoon_live/cartoon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_cartoon_live/file_css/base_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_cartoon_live/file_css/cartoon_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_gallery_bootrap/bootrap_gallery.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_gallery_bootrap/file_css/gallery_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_landing_page/file_css/landing_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_landing_page/file_img/microsoft-gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercise_landing_page/landing_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercises_facebook/facebook.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercises_facebook/file_css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/exercises_facebook/file_css/facebook_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_bootrap_login_form/bootrap_login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_bootrap_login_form/login_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_box_model/practices_box_model.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_horizontal_menu/horizontal_menu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_horizontal_menu/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_html_01/FileCSS/practices_01.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_html_01/practices_01.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HamCoSan/.idea/HamCoSan.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Landing Page/.idea/Landing Page.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Module 1_BaiThi/.idea/Module 1_BaiThi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/config/ConfigValidate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/controller/QuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/entity/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/entity/QuestionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/repository/IQuestionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/repository/QuestionTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/service/IQuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/service/IQuestionTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/service/Impl/QuestionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/java/com/example/testmodule4/model/service/Impl/QuestionTypeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/About.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/Blog-Template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/Contact.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/Home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/Post-Template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/blog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post-5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/blog/post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/images/-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/images/1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/images/2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/images/3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/images/default-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/nicepage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/static/nicepage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/templates/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/Test-Module-4/src/main/resources/validation.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/angular-demo/src/app/child/child.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/angular-demo/src/app/child/child.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/angular-demo/src/app/child/child.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/controller/BlogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/entity/Blog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/entity/Catelory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/repository/IBlogReporitory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/repository/ICateloryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/service/IBlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/service/ICateloryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/service/Impl/BlogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/blog-rest/src/main/java/com/example/blogrest/model/service/Impl/CateloryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/config/ConfigValidate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/contract/ContractController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/contract/ContractDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/customer/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/employee/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/main/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/controller/service/ServiceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/dto/contract/ContractDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/dto/customer/CustomerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/dto/employee/EmployeeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/dto/service/ServiceDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/contract/AttachService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/contract/Contract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/contract/ContractDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/customer/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/customer/CustomerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/AppRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/AppUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/Division.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/EducationDegree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/employee/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/service/RentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/service/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/entity/service/ServiceType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/contract/IAttachServiceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/contract/IContractDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/contract/IContractRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/customer/ICustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/customer/ICustomerTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IAppRoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IAppUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IDivisionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IEducationDegreeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IEmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IPositionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/employee/IRoleUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/service/IRentTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/service/IServiceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/repository/service/IServiceTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/IAttachServiceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/IContractDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/IContractService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/Impl/AttachServiceServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/Impl/ContractDetailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/contract/Impl/ContractServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/customer/ICustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/customer/ICustomerTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/customer/Impl/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/customer/Impl/CustomerTypeServieImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IAppRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IAppUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IDivisionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IEducationDegreeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IEmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IPositionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/IUserRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/AppRoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/AppUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/DivisionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/EducationDegreeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/PositionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/employee/Impl/UserRoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/IRentTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/IServiceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/IServiceTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/Impl/RentTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/Impl/ServiceServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/model/service/service/Impl/ServiceTypeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/utils/EncrytedPasswordUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/java/com/example/casestudymodule4/utils/WebUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/bootstrap413/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/css/furama_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/img/300px-Một_biệt_thự_xây_1937.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/img/Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/img/logo-chinh-thuc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/img/logo@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/static/jquery/jquery-3.5.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/403Page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/contract/contract-detail-create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/contract/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/contract/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/contract/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/contract/view_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/customer/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/customer/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/customer/list_customer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/employee/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/employee/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/employee/list_employee.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/homePage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/loginPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/service/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/service/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/templates/userInfoPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/casestudy-module4/src/main/resources/validation.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/connect-backend/src/main/java/com/example/connectbackend/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/connect-backend/src/main/java/com/example/connectbackend/model/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/connect-backend/src/main/java/com/example/connectbackend/model/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/connect-backend/src/main/java/com/example/connectbackend/model/service/Impl/ProductServcieImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/connect-backend/src/main/java/com/example/connectbackend/model/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/java/com/example/crudflash/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/java/com/example/crudflash/model/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/java/com/example/crudflash/model/repository/IProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/java/com/example/crudflash/model/service/IProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/java/com/example/crudflash/model/service/Impl/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/resources/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/crud-flash/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/controller/BlogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/entity/Blog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/repository/IBlogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/repository/ICategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/service/IBlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/service/ICategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/service/Impl/BlogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/java/com/example/demoblog/model/service/Impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/demo-blog/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/controller/RestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/entity/ProductType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/repository/IProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/repository/IProductTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/service/IProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/service/IProductTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/service/Impl/IProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/java/com/example/exampletest/model/service/Impl/IProductTypeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/resources/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/resources/templates/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example-test/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/example.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_04.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_05.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_06.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_07.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_08.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_09.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/bai_tap_10.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/example/src/test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/java/com/example/registerformvalidation/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/java/com/example/registerformvalidation/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/java/com/example/registerformvalidation/model/repository/IUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/java/com/example/registerformvalidation/model/service/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/java/com/example/registerformvalidation/model/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/resources/templates/create_user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/register-form-validation/src/main/resources/templates/list_user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_database/src/main/java/com/example/sprint_1_database/model/entity/ExportBill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_database/src/main/java/com/example/sprint_1_database/model/entity/ListOfDrugs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_database/src/main/java/com/example/sprint_1_database/model/entity/TypeExportBill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_export_bill/src/main/java/com/example/sprint_1_export_bill/model/entity/Drug.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_export_bill/src/main/java/com/example/sprint_1_export_bill/model/entity/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_export_bill/src/main/java/com/example/sprint_1_export_bill/model/entity/ExportBill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_export_bill/src/main/java/com/example/sprint_1_export_bill/model/entity/ExportBillType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../New folder/sprint_1_export_bill/src/main/java/com/example/sprint_1_export_bill/model/entity/Manufacturer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan-list/benhan-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan-list/benhan-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan-list/benhan-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan-list/benhan-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan/benhan.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan/benhan.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan/benhan.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan/benhan.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan/gte.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/model/BenhNhan.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/model/Benhan.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/model/Product.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/model/Type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/service/benhan.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/service/benhnhan.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/service/product.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/app/service/type.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/About.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../angular-test/src/assets/nicepage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../clone-customer_manager/tu_dien_don_gian/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../file-config/BaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../file-config/hibernate.conf.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/custom-currency.pipe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/dialog/dialog.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/dialog/dialog.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/dialog/dialog.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/dialog/dialog.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/validateDate.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/drug.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/employee.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/exportBill.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/exportBillDetails.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/exportbilltype.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/importBill.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/importbilldrug.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/export-bill/manufacturer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/dialog.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/drug.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/exportbill.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/exportbilltype.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/importbilldrug.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/export-bill/manufacturer.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/controller/ExportBillController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/dto/ExportBillDetailDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/dto/ExportBillDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/DrugRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/EmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ExportBillDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ExportBillRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ExportBillTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ImportBillDrugRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ImportBillRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/repository/ManufactureRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/DrugService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/ExportBillService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/ExportBillTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/ImportBillDrugService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/ImportBillService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/ManufacturerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/DrugImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/EmployeeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ExportBillImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ExportBillTypeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ImportBillDrugImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ImportBillServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ManufactureImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/BaiTap_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/VeHinhSao/BaiTap_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/VeHinhSao/HinhSao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/VeHinhSao/LuyenMang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/VeHinhSao/TamGiacSao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap2/VeHinhSao/VeHinhSo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_SuDungHamCoSanCuaMang/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_SuDungHamCoSanCuaMang/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_SuDungHamCoSanCuaMang/Bai_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_SuDungHamCoSanCuaMang/Bai_TextArea.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiTap_TuDien.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiThucHanh_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiThucHanh_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiThucHanh_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/BaiThucHanh_5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/ThucHanh_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/Tic_Tok_Toe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/Từ Điển.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/BaiTap_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/HinhSao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/LuyenMang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/TamGiacSao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/VeHinhSaoRong.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/VeHinhSao/VeHinhSo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/pikachu2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Array/pikachu2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiCodeGit.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_Castudy.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_Castudy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_ChuyenChuHoa.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_ChuyenChuHoa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_ThemThongTin.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/BaiTap_ThemThongTin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/TamGiacVuongRong.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/TamGiacVuongRong.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Array/VeHinhSao/Vidu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_ChuyenFeetSangMeters.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_ChuyenFeetSangMeters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_5.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_KiemTraTuDoiXung.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/BaiTap_KiemTraTuDoiXung.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/Demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/QuanLiSanPham.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/QuanLiSanPham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/UngDungQuanLySanPham.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap1/UngDungQuanLySanPham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_5.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_6.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_7.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_8.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_9.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_LuyenTap2/BaiTap_9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_SoNguyenTo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/Bai_Tap/BaiTap_SoNguyenTo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_ChuyenDoiNhietDo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_ChuyenDoiNhietDo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_TimGiaTriNhoNhatCuaMang.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Function/ThucHanh_TimGiaTriNhoNhatCuaMang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_AdamEva.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_AdamEva.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_BongDen.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/BaiTap_BongDen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/CatAndMouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/CatAndMouse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/DemoCat_Mouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/DemoCat_Mouse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/DienThoai.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/DienThoai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/Tivi.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/Tivi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/a47ba59b4a353e0928ef0551ca44f980.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Bai_Tap/pikachu2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Demo_QuanLiSinhVIen.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Demo_QuanLiSinhVIen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Demo_ThongTinSinhVien.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Demo_ThongTinSinhVien.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/Demo_TruongTanHai.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/Demo_TruongTanHai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BaiTap/Object/Thuc_Hanh/ThucHanh_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTapGit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/.idea/BaiTap_HTML.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiNangCaoVeKhaiBaoNguoiDung.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiTapTaoBangDonGian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiTapTaoBangNangCao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiTapTinhDiemTrungBinh.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiThucHanhVeOnChange.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiViDuVeMayTinh.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/BaiVidu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/Baividuvebien.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ChuongTrinhChuyenNhietDo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ChuongTrinhTinhDienTichHinhTron.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ChuyenDoiNgoaiTeQuaVe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ChuyenDoiTienTe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/FormDangKyHocVien.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/FormLayDuLieuKhachHang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/KhaiBaoHoSoHocSinh.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/MayTinhDonGian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/SuKienOnclick.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoBangCoBan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoBangNangCao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoFormCoBan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoFormDonGian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoFormTimKiem.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoGiaoDienFormDangKyNgDung.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TaoLichMotThang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ThucHanhKhaiBaoVaSuDungBien.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/ThucHanhSuDungToanTu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/TinhChuViHinhTron.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaiTap_HTML/UngDungGoodFastCheap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/.idea/Bai_Tap2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_DoYouLoveME.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_LuyenTapCauTrucIF_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_LuyenTapCauTrucIF_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_SwitchCase.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_TinhChiSoCanNangCoThe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/BaiTap_UngDungDoVui.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/MayTinhDonGian.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_CauTrucI.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_If..else..If.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_KiemTraNamNhuan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_SuKienBanPhim.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_SuKienChuot.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_SwitchCase.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bai_Tap2/ThucHanh_ToanTu3Ngoi.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Baitap.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BaitapGit.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Baitapgitchinh.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../C0321G1-TruongQuocPhap/Module-1-TruongQuocPhap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/.idea/fileColors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/.idea/fileColors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/BaiThi_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/Bai_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/Bai_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/Bai_Tap4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiLuyenTap/Bai_Tap4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaiTap_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/Bai_Tap_6.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/Bai_Tap_6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaifTap_5.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/BaifTap_5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/LuyenTap_TamGiacSao.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/LuyenTap_TamGiacSao.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Array/vidu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Array/vidu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/BaiTap_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/Demo_Table.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/Demo_Table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/HTML/DemoOOP.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/HTML/DemoOOP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/HTML/vidu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/HTML/vidu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/OOP.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/BaiTap_Chuoi/OOP.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/HackCrank/Baigiai.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/HackCrank/Baigiai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/In_Hinh_Tam_Giac/InHinhTamGiac.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/In_Hinh_Tam_Giac/InHinhTamGiac.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/In_Hinh_Tam_Giac/TamGiacCanRong.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/In_Hinh_Tam_Giac/TamGiacCanRong.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Case Study/Mang_2Chieu/Bai_Tap1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Case Study/Mang_2Chieu/Bai_Tap1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/Fibonacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/Fibonacy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/HamKiemTraSoNguyenTo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/HamKiemTraSoNguyenTo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/LaiXuatNganHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/LaiXuatNganHang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/Mang2chieu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/Mang2chieu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Bai1_YC3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Bai1_YC3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Bai2_YC2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Bai2_YC2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Bai3_YC3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Bai3_YC3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Bai4_Yc4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Bai4_Yc4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Bai5_Yc5.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Bai5_Yc5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/HTML&amp;CSS/DựngKhung.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/HTML&amp;CSS/DựngKhung.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/HTML&amp;CSS/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/HTML&amp;CSS/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/HTML.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/HTML.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/Object.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/Object.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/New folder/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/New folder/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HamCoSan/quanlisanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HamCoSan/quanlisanpham.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module 1_BaiThi/Bai_4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/.idea/Vong_Lap.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_BangCuuChuong.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_SoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/.idea/BaiTap_VongLap.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiSoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/BaiTap_DemSoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiTap_VongLap/LuyenTap_SoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiVongLap_2/BaiTap4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiVongLap_2/BaiTap5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiVongLap_2/BaiTap_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiVongLap_2/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BaiVongLap_2/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/BangCuuChuong.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/.idea/LuyenTap_VongLap.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/Bai!.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiLaiMeDeLaiCon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap_Fibo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/BaiTap_SoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/GameDoanSo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/HamDao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/LuyenTap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/LuyenTap_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/LuyenTap_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/SoNguyenTo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/baigiai.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/LuyenTap_VongLap/vonglapfor2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_FastCheat.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_While.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_While2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_dowhile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/ThucHanh_while1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/VongLap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/baividu_vonglap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Vong_Lap/good-fast-cheap2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baitap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/export-bill/exportbill.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/export-bill/exportbill.service.ts" afterDir="false" />
+=======
+    <list default="true" id="86dd2deb-316b-49f2-9a7d-df1ae6b09914" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" afterDir="false" />
+>>>>>>> origin/HaLK
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1wfAdkAPjVGH80YELIJjuDYo2vq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1wtxGlQrcKKOMIeI2CeuPGsl3G9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projec-Back-End/frontend-drug-store/pharmacy-management-frontend" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/font" />
+>>>>>>> origin/HaLK
     <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\ADMIN\Desktop\pharmacy-management-frontend\node_modules\typescript\lib" />
+<<<<<<< HEAD
+    <property name="ts.external.directory.path" value="C:\Users\ADMIN\Desktop\New folder (3)\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
+=======
+    <property name="ts.external.directory.path" value="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
+>>>>>>> origin/HaLK
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ADMIN\Desktop\pharmacy-management-frontend\src\assets" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ADMIN\Desktop\pharmacy-management-frontend\src\app\service" />
+      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets\font" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets\font" />
+      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -802,10 +101,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a1550631-f2a4-4e59-ac7f-852422bd635a" name="Default Changelist" comment="" />
-      <created>1628839359102</created>
+      <changelist id="86dd2deb-316b-49f2-9a7d-df1ae6b09914" name="Default Changelist" comment="" />
+      <created>1629291593065</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1628839359102</updated>
       <workItem from="1628839363321" duration="4818000" />
       <workItem from="1628845261590" duration="1050000" />
@@ -841,35 +141,86 @@
       <workItem from="1629700791058" duration="9275000" />
       <workItem from="1629716685387" duration="766000" />
       <workItem from="1629718962139" duration="2293000" />
+      <workItem from="1629724638891" duration="1122000" />
+=======
+      <updated>1629291593065</updated>
+      <workItem from="1629291598294" duration="59000" />
+      <workItem from="1629291743215" duration="5881000" />
+      <workItem from="1629299404749" duration="6000" />
+      <workItem from="1629334930391" duration="51000" />
+      <workItem from="1629335191472" duration="61000" />
+      <workItem from="1629335310215" duration="2339000" />
+      <workItem from="1629423190985" duration="8078000" />
+      <workItem from="1629447443656" duration="5351000" />
+      <workItem from="1629680134659" duration="24114000" />
+      <workItem from="1629715309729" duration="128000" />
+      <workItem from="1629716786213" duration="155000" />
+>>>>>>> origin/HaLK
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629548079030">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629548079030" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629213051232">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629724864022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629213051232" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629213051232">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629724864022" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629724864021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629213051232" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629213051232">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629724864021" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629724864021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629213051232" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629213051232">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629724864021" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629724864022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629213051232" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629724864022" />
+=======
+    <state x="543" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629710655846">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="543" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1629710655846" />
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1629294819841">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1629294819841" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629445716147">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629445716147" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629716941850">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629716941850" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629716941849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629716941849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629716941849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1629706687336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1629706687336" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1629445677199">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1629445677199" />
+>>>>>>> origin/HaLK
   </component>
 </project>
