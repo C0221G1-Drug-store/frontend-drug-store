@@ -89,36 +89,4 @@ export class SearchPageComponent implements OnInit {
       return 0;
     });
   }
-
-  sortDrugAmountDesc() {
-    this.drugs = this.drugs.sort((n1, n2) => {
-      if (n1.drugAmount < n2.drugAmount) {
-        this.toggleBooleanAmount = true;
-        return 1;
-      }
-
-      if (n1.drugAmount > n2.drugAmount) {
-        this.toggleBooleanAmount = true;
-        return -1;
-      }
-      this.toggleBooleanAmount = true;
-      return 0;
-    });
-  }
-
-  sortDrugAmountAsc() {
-    this.drugs = this.drugs.sort((n1, n2) => {
-      if (n1.drugAmount < n2.drugAmount) {
-        this.toggleBooleanAmount = false;
-        return -1;
-      }
-
-      if (n1.drugAmount > n2.drugAmount) {
-        this.toggleBooleanAmount = false;
-        return 1;
-      }
-      this.toggleBooleanAmount = false;
-      return 0;
-    });
-  }
 }
