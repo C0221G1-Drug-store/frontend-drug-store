@@ -103,6 +103,9 @@ export class CustomerListComponent implements OnInit {
             this.customersPagination = data;
             // console.log(data);
           });
+          this.customerService.getNumberOfRecordCode(keyword).subscribe(data => {
+            this.totalPagination = (Math.round((data / 5) + 0.4999999));
+          });
           break;
         case'customer_group':
           this.customerService.searchByCustomerGroupPagination(0, keyword).subscribe(data => {
@@ -113,22 +116,25 @@ export class CustomerListComponent implements OnInit {
         case'customer_name':
           this.customerService.searchByCustomerNamePagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
-            console.log(data);
           });
-          this.customerService.getNumberOfRecord(keyword).subscribe(data => {
+          this.customerService.getNumberOfRecordName(keyword).subscribe(data => {
             this.totalPagination = (Math.round((data / 5) + 0.4999999));
-            console.log(data);
           });
           break;
         case'customer_address':
           this.customerService.searchByCustomerAddressPagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
           });
-
+          this.customerService.getNumberOfRecordAddress(keyword).subscribe(data => {
+            this.totalPagination = (Math.round((data / 5) + 0.4999999));
+          });
           break;
         case'customer_phone':
           this.customerService.searchByCustomerPhonePagination(0, keyword).subscribe(data => {
             this.customersPagination = data;
+          });
+          this.customerService.getNumberOfRecordPhone(keyword).subscribe(data => {
+            this.totalPagination = (Math.round((data / 5) + 0.4999999));
           });
           break;
       }

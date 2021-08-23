@@ -1,37 +1,59 @@
 <div class="container ">
   <div class="container mt-5 pt-5">
-    <legend>Bộ lọc</legend>
-    <div class="row text-center">
-      <div>
-        <span>Lọc theo:</span>
-        <select class="custom-select" style="width: 250px" #typeSearch>
-          <option value="customer_code">Mã khách hàng</option>
-          <!--          <option value="customer_group">Nhóm khách hàng</option>-->
-          <option value="customer_name">Tên khách hàng</option>
-          <option value="customer_address">Địa chỉ</option>
-          <option value="customer_phone">Điện thoại</option>
-        </select>
+    <form>
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Bộ lọc</legend>
+        <div class="row text-center">
+          <div class="col-lg-4 col-md-push-6">
+            <div class="row">
+              <div class="col-4 ">
+                <span>Lọc theo:</span>
+              </div>
+              <div class="col-8">
+                <select class="custom-select" #typeSearch>
+                  <option value="customer_code">Mã khách hàng</option>
+                  <!--          <option value="customer_group">Nhóm khách hàng</option>-->
+                  <option value="customer_name">Tên khách hàng</option>
+                  <option value="customer_address">Địa chỉ</option>
+                  <option value="customer_phone">Điện thoại</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-push-4">
+            <div class="row">
+              <div class="col-10">
+                <input type="text" class="form-control"  #searchName [(ngModel)]="keyWord"
+                       placeholder="từ khóa...."
+                       aria-label="Recipient's username" aria-describedby="button-addon2">
+              </div>
+              <div class="col-2">
+                <button class=" btn btn-search" (click)="chooseTypeSearch(typeSearch.value,searchName.value)">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-push-6">
+            <div class="row">
+              <div class="col-4">
+                <span>Sắp xếp :</span>
+              </div>
+              <div class="col-8">
+                <select class="custom-select" (input)="sort(typeSort.value)" #typeSort>
+                  <option value="customer_code">Mã khách hàng</option>
+                  <option value="customer_group">Nhóm khách hàng</option>
+                  <option value="customer_name">Tên khách hàng</option>
+                  <option value="customer_address">Địa chỉ</option>
+                  <option value="customer_phone">Điện thoại</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
 
-      </div>
-      <div class="input-group mb-4 col-4">
-        <input type="text" class="form-control" #searchName [(ngModel)]="keyWord"
-               placeholder="từ khóa...."
-               aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class=" btn btn-search" (click)="chooseTypeSearch(typeSearch.value,searchName.value)">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </div>
-      <div class="col-4  ">
-        <span>Sắp xếp</span>
-        <select class="custom-select" style="width: 250px" (input)="sort(typeSort.value)" #typeSort>
-          <option value="customer_code">Mã khách hàng</option>
-          <option value="customer_group">Nhóm khách hàng</option>
-          <option value="customer_name">Tên khách hàng</option>
-          <option value="customer_address">Địa chỉ</option>
-          <option value="customer_phone">Điện thoại</option>
-        </select>
-      </div>
-    </div>
   </div>
   <div class="container pb-3">
     <fieldset class="scheduler-border">
@@ -66,9 +88,9 @@
             <td>{{i + 1}}</td>
             <td>{{c.customerCode}}</td>
             <td>{{c.customerName}}</td>
-            <td style="text-align: right " >{{c.customerAge}}</td>
+            <td style="text-align: right ">{{c.customerAge}}</td>
             <td>{{c.customerAddress}}</td>
-            <td style="text-align: right " >{{c.customerPhone}}</td>
+            <td style="text-align: right ">{{c.customerPhone}}</td>
             <td>{{c.customerGroup.customerGroupName}}</td>
             <td>{{c.customerNote}}</td>
           </ng-container>
@@ -96,7 +118,7 @@
                     </svg>
                   </a>
                 </li>
-                <li class="page-item"><a class="page-link">{{indexPagination}}</a></li>
+                <li class="page-item"><a class="page-link">{{indexPagination}}/ {{totalPagination}}</a></li>
                 <li class="page-item"><a class="page-link" (click)="nextPage()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-chevron-double-right" viewBox="0 0 16 16">
@@ -214,3 +236,5 @@
     </div>
   </div>
 </div>
+
+

@@ -58,7 +58,16 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${API_URL}/customer/searchField/customerPhone/${index}/${keyword}`);
   }
 
-  getNumberOfRecord(keyword: string): Observable<number> {
-    return this.httpClient.get<number>(`${API_URL}/customer/getNumberOfRecord/${keyword}`);
+  getNumberOfRecordCode(keyword: string): Observable<number> {
+    return this.httpClient.get<number>(`${API_URL}/customer/getNumberOfRecordCode/${keyword}`);
+  }
+  getNumberOfRecordName(keyword: string): Observable<number> {
+    return this.httpClient.get<number>(`${API_URL}/customer/getNumberOfRecordName/${keyword}`);
+  }
+  getNumberOfRecordAddress(keyword: string): Observable<number> {
+    return this.httpClient.get<number>(`${API_URL}/customer/getNumberOfRecordNameAddress/${keyword}`);
+  }
+  getNumberOfRecordPhone(keyword: string): Observable<number> {
+    return this.httpClient.get<number>(`${API_URL}/customer/getNumberOfRecordPhone/${keyword}`);
   }
 }
