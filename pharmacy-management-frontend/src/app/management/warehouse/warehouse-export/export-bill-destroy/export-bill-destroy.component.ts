@@ -288,7 +288,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
       },
     },);
     doc.text('Tổng tiền : '+this.totalMoney,230,this.drugDestroys.length*12.5+ 105);
-    doc.save('table.pdf');
+    doc.save('Hóa đơn xuất kho '+this.getDateNow()+'.pdf');
   }
 
   returnList() {
