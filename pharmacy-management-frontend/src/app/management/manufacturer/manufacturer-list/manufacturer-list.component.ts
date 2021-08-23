@@ -6,6 +6,7 @@ import {ManufacturerService} from "../../../service/manufacturer.service";
 import { Manufacturer } from 'src/app/model/manufacturer';
 import {ToastrService} from "ngx-toastr";
 import {ManufacturerCreateComponent} from "../manufacturer-create/manufacturer-create.component";
+import {WarehouseImportPaymentComponent} from '../../warehouse/warehouse-import/warehouse-import-payment/warehouse-import-payment.component';
 
 
 
@@ -115,6 +116,15 @@ selectedMovie: Manufacturer;
 
   dialogCreate() {
     let dialogRef = this.dialog.open(ManufacturerCreateComponent, {
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAll()
+    });
+  }
+
+  dialogPayment() {
+    let dialogRef = this.dialog.open(WarehouseImportPaymentComponent, {
       }
     );
     dialogRef.afterClosed().subscribe(() => {

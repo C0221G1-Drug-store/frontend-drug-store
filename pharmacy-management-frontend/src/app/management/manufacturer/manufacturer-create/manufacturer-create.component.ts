@@ -51,4 +51,8 @@ manufacturers: Manufacturer[]=[];
       this.toastr.error("Thêm mới thất bại.", 'Thêm mới')
     }
   }
+
+  closeDB() {
+    this.dialogRef.close();
+  }
 }

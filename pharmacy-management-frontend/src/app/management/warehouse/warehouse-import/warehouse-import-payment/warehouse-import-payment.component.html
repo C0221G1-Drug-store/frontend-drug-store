@@ -1,4 +1,4 @@
-<div class="col-md-12 col-sm-12 col-lg-3 " formGroupName="payment">
+<div class="col-md-12 col-sm-12 col-lg-12 " formGroupName="payment">
   <fieldset class="scheduler-border ">
     <legend class="scheduler-border">Thanh toán</legend>
     <div class="mb-3">
@@ -44,4 +44,14 @@
       </div>
     </div>
   </fieldset>
+  <div class="container d-flex justify-content-end pt-4 pb-5">
+    <div class="d-flex">
+      <button class="mr-4 btn btn-primary button"
+              type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Hoàn tất
+      </button>
+      <button class="mr-4 btn btn-return button" type="button" (click)="onNoClick()"><i class="icon-sidebar fa fa-reply text-warning"></i>
+        Trở về
+      </button>
+    </div>
+  </div>
 </div>

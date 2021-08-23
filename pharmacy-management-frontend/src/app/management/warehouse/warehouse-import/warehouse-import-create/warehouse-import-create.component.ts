@@ -1,9 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {WarehouseImportDrugListComponent} from '../warehouse-import-drug-list/warehouse-import-drug-list.component';
 import Swal from 'sweetalert2';
-import {DrugService} from '../../../../service/drug.service';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Payment} from '../../../../model/payment';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {ManufacturerService} from '../../../../service/manufacturer.service';
 import {Manufacturer} from '../../../../model/manufacturer';
 import {MatDialog} from '@angular/material/dialog';
@@ -51,8 +48,8 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     this.importSystemCode = 'HD' + (Math.floor((Math.random() * (100000 - 9999))) + 10000);
     this.form = this.fb.group({
       importSystemCode: [this.importSystemCode],
-      accountingVoucher: ['', Validators.required],
-      invoiceDate: ['', [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T[0-9]{2}:[0-9]{2}$')]],
+      accountingVoucher: ['', [Validators.required, this.accountingVoucherValidator()]],
+      invoiceDate: ['', [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T[0-9]{2}:[0-9]{2}$'),this.dateValidator()]],
       flag: true,
       payment: this.fb.group({
         paymentId: [''],
@@ -72,7 +69,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   confirmBox() {
     if (typeof this.childImportDrugList.choiceDelete != 'undefined') {
       Swal.fire({
-        title: 'Bạn có muons xóa thuốc này không?',
+        title: 'Bạn có muốn xóa thuốc này không?',
         text: 'thuốc trong danh sách sẽ bị xóa!',
         icon: 'warning',
         showCancelButton: true,
@@ -105,7 +102,6 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    console.log(this.form);
     if (this.checkSubmit) {
       this.paymentService.create(this.payment.value).subscribe(value => {
         this.addNewImportBill(value);
@@ -116,26 +112,31 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   get checkSubmit() {
-    if (this.form.get('invoiceDate').invalid || this.form.get('accountingVoucher').invalid) {
-      this.errorAlert('form nhập không hợp lệ');
+    if (this.manufacturerForm.invalid) {
+      this.errorAlert('Thông tin nhà cung cấp sai');
+      return false;
+    }
+    if (this.form.get('invoiceDate').invalid) {
+      this.errorAlert('Ngày nhập không hợp lệ');
+      return false;
+    }
+    if ( this.form.get('accountingVoucher').invalid) {
+      this.errorAlert('Chứng từ không hợp lệ');
       return false;
     }
     if (this.form.get('importSystemCode').value != this.importSystemCode) {
       this.errorAlert('Mã hóa đơn được tạo tự động .không thể sửa');
       return false;
     }
-    if (this.payment.invalid) {
-      this.errorAlert('Thông tin thanh toán bị sai');
-      return false;
-    }
     if (this.childImportDrugList.formArrayDrugs.invalid) {
       this.errorAlert('Danh sách thuốc bị sai');
       return false;
     }
-    if (this.manufacturerForm.invalid) {
-      this.errorAlert('Thông tin nhà cung cấp sai');
+    if (this.payment.invalid) {
+      this.errorAlert('Thông tin thanh toán bị sai');
       return false;
     }
+
     return true;
   }
 
@@ -170,7 +171,6 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(ManufacturerCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (typeof result !== 'undefined') {
         this.manufacturerForm.setValue(result);
       }
@@ -186,7 +186,9 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
 
   choiceManufacturer(e) {
     this.manufacturerService.findByIdManufacture(e.target.value).subscribe(value => {
+      if (value !== null) {
       this.manufacturerForm.setValue(value);
+      }
     });
   }
 
@@ -209,11 +211,14 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   get totalMoney() {
     return this.payment.get('totalMoney').value !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
   }
-
+  get prepayment(){
+    return this.payment.get('prepayment').value !== undefined ? Math.round(this.payment.get('prepayment').value) : '';
+  }
   addNewImportBillDrug(importBill): boolean {
     const idImportBillDrug = [];
     let check = false;
     this.childImportDrugList.formArrayDrugs.getRawValue().forEach(importBillDrug => {
+      importBillDrug.importPrice = importBillDrug.importPrice.replace(/\D+/g, '');
       importBillDrug.importBill = importBill;
       this.importBillDrugService.create(importBillDrug).subscribe(next => {
         idImportBillDrug.push(next.importBillDrugId);
@@ -249,13 +254,35 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     });
   }
 
-  dateValidator(c: AbstractControl) {
-    // Not sure if c will come in as a date or if we have to convert is somehow
-    const today = new Date();
-    if (c.value > today) {
-      return null;
-    } else {
-      return {dateValidator: {valid: false}};
+  dateValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const today = new Date().getTime();
+
+      if(!(control && control.value)) {
+        // if there's no control or no value, that's ok
+        return null;
+      }
+
+      // return null if there's no errors
+      return this.parseDate(control.value).getTime() > today
+        ? {invalidDate: 'You cannot use past dates' }
+        : null;
+    }
+  }
+  parseDate(input) {
+    const parts = input.match(/(\d+)/g);
+    // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+    return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+  }
+
+  accountingVoucherValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      if(!(control && control.value)) {
+        return null;
+      }
+      return control.value.trim() == "" ?
+        {"required": true} :
+        null;
     }
   }
 }

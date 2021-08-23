@@ -10,6 +10,7 @@
                 <label class="col-3 pl-0">Mã nhà cung cấp</label>
                 <select class="border-dark border-2 col-8  form-control-sm d-inline-block"
                         (change)="choiceManufacturer($event)">
+                  <option value="-1">Chọn nhà cung cấp</option>
                   <option *ngFor=" let manufacturer of manufacturers "
                           [value]="manufacturer.manufacturerId"
                           [selected]="manufacturerForm.value.manufacturerCode == manufacturer.manufacturerCode? 'selected':''">{{manufacturer.manufacturerCode}} </option>
@@ -90,6 +91,9 @@
               <small
                 *ngIf="form.get('invoiceDate')?.hasError('pattern') && form.get('invoiceDate').touched"
                 class="d-block position-absolute text-danger pt-1 px-0">ngày lập sai format</small>
+              <small
+                *ngIf="form.get('invoiceDate')?.hasError('invalidDate') && form.get('invoiceDate').touched"
+                class="d-block position-absolute text-danger pt-1 px-0">ngày lập đang lớn hơn ngày hiện tại</small>
             </div>
             <div class="mb-3">
               <div class="w-100 d-inline-flex">
@@ -112,7 +116,7 @@
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Tiền thuốc</label>
             <input class="form-control-sm border-dark w-100" type="text"
-                   [value]="drugMoney  !== undefined ? drugMoney : ''">
+                   [value]="drugMoney  !== undefined ?( drugMoney| currency:'VND') : ''">
           </div>
         </div>
         <div class="mb-3">
@@ -137,8 +141,8 @@
         <div class="mb-3">
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Tổng tiền</label>
-            <input formControlName="totalMoney"
-                   [value]="totalMoney"
+            <input
+                   [value]="totalMoney| currency:'VND'"
                    class="form-control-sm border-dark w-100"
                    type="text">
             <small
@@ -149,13 +153,13 @@
         <div class="mb-3">
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Thanh toán</label>
-            <input formControlName="prepayment" class="form-control-sm border-dark w-100" type="text">
+            <input   formControlName="prepayment" class="form-control-sm border-dark w-100" type="text">
           </div>
         </div>
         <div class="mb-4">
           <div class="w-100 d-inline-flex">
             <label class="col-6 pl-0">Còn lại</label>
-            <input [value]="cashInReturn" class="form-control-sm border-dark w-100" type="text">
+            <input [value]="cashInReturn| currency:'VND'" class="form-control-sm border-dark w-100" type="text">
 
           </div>
         </div>
@@ -166,6 +170,7 @@
     <legend class="scheduler-border">Danh sách thuốc</legend>
     <app-import-list-drug (sendTotal)="passTotalMonney($event)"></app-import-list-drug>
     <div class="container d-flex justify-content-end pt-4 pb-5">
+      <div class="d-flex">
       <button class="mr-4 btn btn-primary button"
               type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Hoàn tất
       </button>
@@ -177,8 +182,7 @@
       <button class="mr-4 btn btn-return button" type="button"><i class="icon-sidebar fa fa-reply text-warning"></i>
         Trở về
       </button>
-
-
+      </div>
     </div>
 
   </fieldset>
