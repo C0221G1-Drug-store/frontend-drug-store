@@ -31,4 +31,9 @@ export class ImportBillServiceService {
     return this.http.get<any>(API_URL + 'api/import-bills/search-sort-page?codeBill=' + codeBill + '&startDate=' + startDate + '&endDate=' + endDate + '&col=' + col +
       '&page=' + page);
   }
+
+  getSearchSort(codeBill: string, startDate: string, endDate: string, col: string, sort: string, page: number): Observable<any> {
+    return this.http.get<any>(API_URL + 'api/import-bills/search-sort-page-bill?codeBill=' + codeBill + '&startDate=' + startDate + '&endDate=' + endDate + '&col=' + col +
+      '&sort'+sort+'&page=' + page);
+  }
 }

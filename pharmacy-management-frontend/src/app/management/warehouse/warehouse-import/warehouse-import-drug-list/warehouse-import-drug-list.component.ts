@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {WarehouseImportDerugDeleteComponent} from '../warehouse-import-derug-delete/warehouse-import-derug-delete.component';
 import {IImportBillDto} from '../model/iimport-bill-dto';
+import {Route} from '@angular/router';
 
 @Component({
   selector: 'app-warehouse-import-drug-list',
@@ -18,6 +19,7 @@ export class WarehouseImportDrugListComponent implements OnInit {
   pages: Array<number>;
   totalPage = 0;
   invoiceDate = 'invoiceDate';
+  desc = 'desc';
   message = '';
   startDateTime = '';
   endDateTime = '';
@@ -26,8 +28,8 @@ export class WarehouseImportDrugListComponent implements OnInit {
   startTime = '';
   endTime = '';
   newDate = new Date();
-  nowDate = this.newDate.getFullYear().toString() + '-' + this.newDate.getMonth().toString() + '-' + this.newDate.getDate().toString();
-  nowTime = this.newDate.getHours().toString() + this.newDate.getMinutes().toString() + this.newDate.getMilliseconds().toString();
+  nowDate = this.newDate.getFullYear().toString() + '-' + (this.newDate.getMonth() + 2).toString() + '-' + this.newDate.getDate().toString();
+  nowTime = this.newDate.getHours().toString() + ':' + this.newDate.getMinutes().toString() + ':' + this.newDate.getMilliseconds().toString();
   public searchBill: FormGroup;
   idDialog: any;
   nameDialog: any;
@@ -36,10 +38,11 @@ export class WarehouseImportDrugListComponent implements OnInit {
     date: [
       {type: 'pattern', message: '* ex:dd-mm-yyyy'}
     ], time: [
-      {type: 'pattern', message: '* ex:hh:mm:ss'}
+      {type: 'pattern', message: '* ex:hh:mm'}
     ],
 
   };
+  private router: any;
 
   constructor(private importBillServiceService: ImportBillServiceService,
               private dialog: MatDialog) {
@@ -52,15 +55,35 @@ export class WarehouseImportDrugListComponent implements OnInit {
       billCode: new FormControl(''),
       startDate: new FormControl('', [Validators.pattern('^\\d{4}\\-\\d{2}\\-\\d{2}$')]),
       endDate: new FormControl('', [Validators.pattern('^\\d{4}\\-\\d{2}\\-\\d{2}$')]),
-      startTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}\\:\\d{2}$')]),
-      endTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}\\:\\d{2}$')]),
+      startTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}$')]),
+      endTime: new FormControl('', [Validators.pattern('^\\d{2}\\:\\d{2}$')]),
       sortBill: new FormControl(''),
+      sortOrder: new FormControl(''),
     });
   }
 
-  setPage(i) {
-    this.page = i;
-    this.search(i);
+  firstPage(page) {
+    if (this.flag) {
+      this.search(page);
+    } else {
+      this.getListBill(page);
+    }
+  }
+
+  lastPage(page) {
+    if (this.flag) {
+      this.search(page);
+    } else {
+      this.getListBill(page);
+    }
+  }
+
+  choosePage(page) {
+    if (this.flag) {
+      this.search(page);
+    } else {
+      this.getListBill(page);
+    }
   }
 
   openDialogDelete(): void {
@@ -71,7 +94,7 @@ export class WarehouseImportDrugListComponent implements OnInit {
       }
     );
     dialogRef.afterClosed().subscribe(() => {
-      this.importBillServiceService.getAllBill(this.page);
+      this.ngOnInit();
     });
   }
 
@@ -109,7 +132,7 @@ export class WarehouseImportDrugListComponent implements OnInit {
     // Date
     this.flag = true;
     if (this.searchBill.value.startDate == '' && this.searchBill.value.endDate == '') {
-      this.searchBill.value.startDate = this.startDate;
+      this.searchBill.value.startDate = '1000-01-01';
       this.searchBill.value.endDate = this.nowDate;
     } else if (this.searchBill.value.endDate == '') {
       this.searchBill.value.endDate = this.nowDate;
@@ -120,12 +143,12 @@ export class WarehouseImportDrugListComponent implements OnInit {
     if (this.searchBill.value.sortBill == '') {
       this.searchBill.value.sortBill = this.invoiceDate;
     }
-    this.startDateTime = this.searchBill.value.startDate + this.searchBill.value.startTime;
-    this.endDateTime = this.searchBill.value.endDate + this.searchBill.value.endTime;
-    console.log('ngày bắt đầu' + this.startDateTime);
-    console.log('ngày Kết thúc' + this.endDateTime);
-
-    this.importBillServiceService.getSearchSortPaging(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, page).subscribe((data: IImportBillDto[]) => {
+    if (this.searchBill.value.sortOrder == '') {
+      this.searchBill.value.sortOrder ='desc';
+    }
+    this.startDateTime = this.searchBill.value.startDate + ' ' + this.searchBill.value.startTime;
+    this.endDateTime = this.searchBill.value.endDate + ' ' + this.searchBill.value.endTime;
+    this.importBillServiceService.getSearchSort(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, this.searchBill.value.sortOrder, page).subscribe((data: IImportBillDto[]) => {
       if (data == null) {
         this.message = 'Thông tin bạn tìm kiếm hiện không có trong hệ thống ';
         alert(this.message);
@@ -140,41 +163,6 @@ export class WarehouseImportDrugListComponent implements OnInit {
       }
     });
   }
-
-  // search(page) {
-  //   this.flag = true;
-  //   if (this.searchBill.value.startDate == '' && this.searchBill.value.endDate == '') {
-  //     this.searchBill.value.startDate = this.startDate;
-  //     this.searchBill.value.endDate = this.endDate;
-  //   }
-  //   //  else if(this.searchBill.value.endDate == ''){
-  //   //   this.searchBill.value.endDate =this.nowDate;
-  //   //   this.searchBill.value.endDate =this.endDate;
-  //   // }
-  //   if (this.searchBill.value.sortBill == '') {
-  //     this.searchBill.value.sortBill = this.invoiceDate;
-  //   }
-  //   this.startTime = this.searchBill.value.startTime;
-  //   this.endTime = this.searchBill.value.endTime;
-  //   this.startDateTime = this.startDate + this.startTime;
-  //   this.endDateTime = this.endDate + this.endTime;
-  //   // tslint:disable-next-line:max-line-length
-  //
-  //   this.importBillServiceService.getSearchSortPaging(this.searchBill.value.billCode, this.startDateTime, this.endDateTime, this.searchBill.value.sortBill, page).subscribe((data: IImportBillDto[]) => {
-  //     if (data == null) {
-  //       this.message = 'Thông tin bạn tìm kiếm hiện không có trong hệ thống ';
-  //       alert(this.message);
-  //     } else {
-  //       data['content'].forEach(b => {
-  //         b.date = this.subDate(b.invoiceDate);
-  //         b.time = this.subTime(b.invoiceDate);
-  //       });
-  //       this.bills = data['content'];
-  //       this.pages = new Array(data['totalPages']);
-  //       this.totalPage = this.pages.length - 1;
-  //     }
-  //   });
-  // }
 
   getId(id: any, name: any) {
     this.idDialog = id;
@@ -196,6 +184,10 @@ export class WarehouseImportDrugListComponent implements OnInit {
       this.pages = new Array(data['totalPages']);
       this.totalPage = this.pages.length - 1;
     }, error => console.log(error));
+  }
+
+  addNewImportBill() {
+    this.router.navigate(['warehouse/import/add']);
   }
 }
 
