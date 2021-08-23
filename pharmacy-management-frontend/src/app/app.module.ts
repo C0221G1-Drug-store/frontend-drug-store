@@ -12,7 +12,12 @@ import {CommonModule} from './management/common/common.module';
 import {MatDialogModule} from '@angular/material/dialog';
 // @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
+
+import {ToastrModule} from 'ngx-toastr';
+import {NgxPrintModule} from 'ngx-print';
+
 import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import {ManufacturerModule} from "./management/manufacturer/manufacturer.module"
     CommonModule,
     MatDialogModule,
     HttpClientModule,
+
+    ToastrModule.forRoot(),
+    NgxPrintModule
+
     ManufacturerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

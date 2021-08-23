@@ -11,6 +11,10 @@
 .select{
   min-width: 50%;
 }
+.selected {
+  background-color: #7c98e1 !important;
+  color: white;
+}
 .vien{
   max-width: 40px;
 }
