@@ -42,9 +42,14 @@
                       <div class="form-group">
                         <label>Số HD:</label>
                         <input type="text" formControlName="exportBillCode" disabled>
-                        <div class='text-danger' style="padding-left: 120px" *ngIf='exportBillForm.controls.exportBillCode.touched'>
+                        <div class='text-danger' style="padding-left: 120px" *ngIf='exportBillForm.controls.exportBillCode.touched || exportBillForm.controls.exportBillCode.dirty'>
                           <div *ngIf="exportBillForm.controls.exportBillCode.hasError('required')">
                             <small style="font-size: 14px">Mã hóa đơn không dươc để trống.</small>
+                          </div>
+                        </div>
+                        <div class='text-danger' style="padding-left: 120px" *ngIf='exportBillForm.controls.exportBillCode.touched || exportBillForm.controls.exportBillCode.dirty'>
+                          <div *ngIf="exportBillForm.controls.exportBillCode.hasError('pattern')">
+                            <small style="font-size: 14px">Mã hóa đơn phải đúng định dạng.</small>
                           </div>
                         </div>
                       </div>
@@ -53,7 +58,7 @@
                       <div class="form-group">
                         <label>Địa Chỉ:</label>
                         <input formControlName="exportBillAddress" type="text" disabled>
-                        <div class='text-danger' style="padding-left: 120px;" *ngIf='exportBillForm.controls.exportBillAddress.touched'>
+                        <div class='text-danger' style="padding-left: 120px;" *ngIf='exportBillForm.controls.exportBillAddress.touched || exportBillForm.controls.exportBillCode.dirty'>
                           <div *ngIf="exportBillForm.controls.exportBillAddress.hasError('required')">
                             <small style="font-size: 14px">Địa chỉ không được để trống</small>
                           </div>
@@ -65,7 +70,7 @@
                     <div class="col-6 col-md-6 col-sm-12">
                       <div class="form-group">
                         <label class="">Ngày lập:</label>
-                        <input  type="date" formControlName="exportBillDate">
+                        <input  type="date" disabled formControlName="exportBillDate">
                         <div class='text-danger' style="padding-left: 120px;" *ngIf='exportBillForm.controls.exportBillDate.touched'>
                           <div *ngIf="exportBillForm.controls.exportBillDate.hasError('required')">
                             <small style="font-size: 14px">Ngày lập không dươc để trống.</small>
@@ -78,11 +83,6 @@
                       <div class="mt-2">
                         <label>Nhân viên:</label>
                         <input type="text" formControlName="employee" disabled>
-                        <div class='text-danger' style="padding-left: 120px;" *ngIf='exportBillForm.controls.employee.touched'>
-                          <div *ngIf="exportBillForm.controls.employee.hasError('required')">
-                            <small style="font-size: 14px">Tên nhân viên không được để trống</small>
-                          </div>
-                        </div>
                       </div>
                     </div>
                     <div class="col-6 col-md-6 col-sm-12">
@@ -103,7 +103,7 @@
             <fieldset class="scheduler-border">
               <legend class="scheduler-border">Danh sách thuốc</legend>
               <div class="scroll outer">
-                <table class="table table-bordered"  style="height: 300px">
+                <table class="table table-bordered" id="content" style="height: 300px">
                   <thead class="head">
                   <tr>
                     <th style="width: 120px">Tên Thuốc</th>
@@ -164,13 +164,15 @@
                   </tbody>
                 </table>
                 <div class="d-flex justify-content-end">
-                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  <pagination-controls  previousLabel="Sau"
+                                        nextLabel="Trước"
+                                        responsive="true" (pageChange)="p = $event"></pagination-controls>
                 </div>
               </div>
               <div class="form-group row text-right pt-3">
                 <div class="col">
                   <label class="pr-3">Tổng Tiền :</label>
-                  <input type="text" disabled style="width:200px; height: 40px" [value]="total | currencyVND">
+                  <input type="text" disabled style="width:200px; height: 40px; text-align: right; padding-right: 5px; margin-left: 10px" [value]="total | currencyVND">
                 </div>
               </div>
             </fieldset>
@@ -183,7 +185,7 @@
                 <button (click)="deleteDrug()"  data-toggle="modal" data-target="#exampleModal1" class="mr-4 btn btn-danger button " type="button">
                   <i class="fa fa-trash-o"></i>Xóa thuốc
                 </button>
-                <button  class="mr-4 btn btn-edit button" type="button" (click)="htmlToPDF()"><i class="fa fa-print"></i> In phiếu</button>
+                <button  class="mr-4 btn btn-edit button" ngxPrint type="button" (click)="htmlToPDF()"><i class="fa fa-print"></i> In phiếu</button>
                 <button (click)="getBackExportManagerment()" data-toggle="modal" data-target="#exampleModal2" class="mr-4 btn btn-return button" type="button"><i
                   class="fa fa-undo"></i> Trở về
                 </button>
