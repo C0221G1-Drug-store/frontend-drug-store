@@ -34,11 +34,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr role="button" id="btn1"  *ngFor="let acc of accounts" (click)="getIdAccount(acc.userId)" [style]="acc.userId==idAccount&&idAccountReClick?'background-color: aquamarine':''">
+        <tr role="button" id="btn1"  *ngFor="let acc of accounts" (click)="getIdAccount(acc.id)" [style]="acc.id==idAccount&&idAccountReClick?'background-color: aquamarine':''">
           <td>{{acc.userCode}}</td>
           <td>{{acc.userName}}</td>
           <td>{{acc.accountName}}</td>
-          <td>{{acc.userRoles[0].role.roleName}}</td>
+          <td>
+            <label *ngIf="acc.roles[0].name=='ROLE_USER'">Người Dùng</label>
+            <label *ngIf="acc.roles[0].name=='ROLE_MODERATOR'">Nhân Viên</label>
+            <label *ngIf="acc.roles[0].name=='ROLE_ADMIN'">Quản Lý</label>
+          </td>
         </tr>
         </tbody>
       </table>

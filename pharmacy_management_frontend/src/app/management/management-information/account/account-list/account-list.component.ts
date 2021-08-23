@@ -37,6 +37,7 @@ export class AccountListComponent implements OnInit {
       this.page = page;
       this.accountService.getAllAccount(page, this.size, this.keyWord, this.property).subscribe(next => {
       this.accounts = next.content;
+      console.log(this.accounts);
       this.pagination.totalPages = next.totalPages;
       if (this.accounts.length==0){
         this._snackBar.open("Không có kết quả tìm kiếm!!!" , null,{

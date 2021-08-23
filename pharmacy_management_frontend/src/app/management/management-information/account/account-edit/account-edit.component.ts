@@ -4,12 +4,11 @@ import {AccountService} from "../../../../service/account/account.service";
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {Role} from "../../../../model/account/role";
 import {RoleService} from "../../../../service/account/role.service";
-import {UserRole} from "../../../../model/account/user-role";
-import {UserRoleService} from "../../../../service/account/user-role.service";
 import {Account} from "../../../../model/account/account";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+
 
 
 @Component({
@@ -22,8 +21,7 @@ export class AccountEditComponent implements OnInit {
     userCode: new FormControl('', [Validators.required]),
     userName: new FormControl('', [Validators.required]),
     accountName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern("^[0-9a-zA-Z]*$")]),
-    encrytedPassword: new FormControl(''),
-    enabled: new FormControl(''),
+    password: new FormControl(''),
     role: new FormControl('', [Validators.required]),
   });
   roles: Role[];
@@ -39,7 +37,6 @@ export class AccountEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private accountService: AccountService,
     private roleService: RoleService,
-    private userRoleService: UserRoleService,
     private router: Router,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar
@@ -59,7 +56,7 @@ export class AccountEditComponent implements OnInit {
       this.account = account;
       console.log(this.account);
       this.accountForm.patchValue(this.account);
-      this.accountForm.get('role').setValue(this.account.userRoles[0].role);
+      this.accountForm.get('role').setValue(this.account.roles[0]);
       console.log(this.accountForm.value);
     });
   }
@@ -67,24 +64,25 @@ export class AccountEditComponent implements OnInit {
   getRole() {
     return this.roleService.getAllRole().subscribe(roles => {
       this.roles = roles;
-      console.log(this.roles);
     });
   }
 
   submit() {
     if (this.accountForm.invalid) return;
-    const accountNew = this.accountForm.value;
-    this.accountService.updateAccount(this.data, accountNew).subscribe(next => {
+    let accountDto: Account;
+    accountDto = {
+      id: this.data,
+      userName: this.accountForm.value.userName,
+      userCode: this.accountForm.value.userCode,
+      accountName: this.accountForm.value.accountName,
+      password: this.accountForm.value.password,
+      roles: [this.accountForm.value.role]
+    };
+    console.log(accountDto);
+    this.accountService.updateAccount(this.data, accountDto).subscribe(next => {
       if (next.status) {
         this.messageSussess = next.msg;
-        const userRole = {
-          role: accountNew.role,
-          user: next.account
-        };
-
-        this.userRoleService.updateAccount(next.account.userId, userRole).subscribe();
         this.dialogRef.close(true);
-
         this._snackBar.open(this.messageSussess , null,{
           duration: 4000,
           horizontalPosition: "right",
@@ -98,7 +96,7 @@ export class AccountEditComponent implements OnInit {
   }
 
   compareFn(c1: Role, c2: Role): boolean {
-    return c1 && c2 ? c1.roleId === c2.roleId : c1 === c2;
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
 
@@ -108,7 +106,6 @@ export class AccountEditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.submit()
       }

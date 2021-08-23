@@ -49,7 +49,11 @@
           </div>
           <div class="col-lg-9">
             <select formControlName="role" name="role" [compareWith]="compareFn">
-              <option *ngFor="let r of roles" [ngValue]="r">{{r.roleName}}</option>
+              <option *ngFor="let r of roles" [ngValue]="r">
+                <label *ngIf="r.name=='ROLE_USER'">Người Dùng</label>
+                <label *ngIf="r.name=='ROLE_MODERATOR'">Nhân Viên</label>
+                <label *ngIf="r.name=='ROLE_ADMIN'">Quản Lý</label>
+              </option>
             </select>
           </div>
           <div style="color: red" *ngIf="accountForm.controls.role.hasError('required')&&accountForm.controls.role.touched">Account name is not empty!</div>
