@@ -24,7 +24,6 @@ export class ManufacturerListComponent implements OnInit {
   selects: any;
   sort: any;
   max: number;
-
   idDialog: any;
   nameDialog: any;
   background: string;
@@ -45,6 +44,9 @@ export class ManufacturerListComponent implements OnInit {
     this.manufacturerService.getAll(this.page, this.search, this.selects, this.sort).subscribe(manufacturer => {
       this.manufacturers = manufacturer['content'];
       this.pages = new Array(manufacturer['totalPages']);
+      if(this.manufacturers.length==0){
+        this.toastr.error("Không tìm thấy nhà cung cấp nào.", 'Danh sách')
+      }
     });
   }
 
@@ -73,9 +75,8 @@ export class ManufacturerListComponent implements OnInit {
   }
 
   previous() {
-
     if (this.page <= 0) {
-      this.toastr.error("Không tìm thấy trang", 'Trang trước')
+      this.toastr.error("Không tìm thấy trang.", 'Trang trước')
     } else {
       this.page = this.page - 1;
       this.getAll();
@@ -83,10 +84,9 @@ export class ManufacturerListComponent implements OnInit {
   }
 
   next() {
-
     this.max = this.pages.length;
     if (this.page + 2 > this.max) {
-      this.toastr.error("Không tìm thấy trang", 'Trang sau')
+      this.toastr.error("Không tìm thấy trang.", 'Trang sau')
     } else {
       this.page = this.page + 1;
       this.getAll();

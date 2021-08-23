@@ -56,15 +56,15 @@
         <div class="row">
 
           <label  for="startDate" class="col-lg-2">Từ ngày:</label>
-          <input [(ngModel)]="sd"  name="sd" id="startDate" class="col-lg-3" style="height: 30px;width: 130px"
+          <input [(ngModel)]="sd" value="{{sd}}" name="startDate"  id="startDate" class="col-lg-3" style="height: 30px;width: 130px"
                  type="date"
-                 placeholder="Tên nhà...">
+          >
 
 
           <label for="endDate" class="col-lg-2 ">Đến ngày:</label>
-          <input [(ngModel)]="ed"  name="ed" id="endDate" class="col-lg-3" style="height: 30px;width: 130px"
+          <input [(ngModel)]="ed" value="{{ed}}"  id="endDate" class="col-lg-3" name="endDate" style="height: 30px;width: 130px"
                  type="date"
-                 placeholder="Tên nhà...">
+                 >
 
         </div >
         <div class="row mt-3">
@@ -111,7 +111,7 @@
           <td>{{page * 5 + 1 + i}}</td>
           <td>{{importBill.importSystemCode}}</td>
           <td class="ct">{{importBill.accountingVoucher}}</td>
-          <td class="ct">{{importBill.invoiceDate| date:"dd/mm/yyyy"}}</td>
+          <td class="ct">{{importBill.invoiceDate | date:'dd/MM/yyyy'}}</td>
           <td class="ct">{{importBill.invoiceDate.substr(11,14)}}</td>
           <td class="ct">{{importBill.payment.totalMoney}}</td>
           <td class="ct">{{importBill.payment.totalMoney - importBill.payment.prepayment}}</td>

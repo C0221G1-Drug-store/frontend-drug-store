@@ -17,15 +17,15 @@ export class ManufacturerService {
   getAll(page: number, search:any, selects:any, sort: any) {
 
       if(selects=="name"){
-        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&name='+search);
+        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&name='+search+'&sort='+sort);
       }else if(selects=="address"){
-        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&address='+search);
+        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&address='+search+'&sort='+sort);
       }else if(selects=="phoneNumber"){
-        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&phoneNumber='+search);
+        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&phoneNumber='+search+'&sort='+sort);
       }else if(selects=="note"){
-        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&note='+search);
+        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&note='+search+'&sort='+sort);
       }else if(selects=="code"){
-        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&code='+search);
+        return this.http.get<Manufacturer[]>(API_URL +'/manufacturer/list?page='+page+'&code='+search+'&sort='+sort);
       }
       if(sort!=null){
         switch (sort) {
