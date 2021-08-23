@@ -14,10 +14,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {CustomCurrencyPipe} from "./custom-currency.pipe"
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {ExportBillPrintComponent} from './export-bill-print/export-bill-print.component';
+import {ExportBillListComponent} from './export-bill-list/export-bill-list.component';
+import {ExportBillDeleteComponent} from './export-bill-delete/export-bill-delete.component';
 
 
 @NgModule({
-  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe],
+  declarations: [ExportBillRefundComponent, DialogComponent,CustomCurrencyPipe,ExportBillPrintComponent,ExportBillListComponent,ExportBillDeleteComponent],
   imports: [
     CommonModule,
     WarehouseExportRoutingModule,

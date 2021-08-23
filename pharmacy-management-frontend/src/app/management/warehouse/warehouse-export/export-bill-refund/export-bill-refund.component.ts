@@ -344,7 +344,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   backToManagementScreen() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/export-bill');
   }
   today = new Date();
 
