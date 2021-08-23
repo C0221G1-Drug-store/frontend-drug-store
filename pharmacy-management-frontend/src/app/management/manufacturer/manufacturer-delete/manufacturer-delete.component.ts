@@ -31,7 +31,7 @@ export class ManufacturerDeleteComponent implements OnInit {
         manufacturerPhoneNumber: new FormControl(''),
         manufacturerNote: new FormControl(''),
         manufacturerDebts: new FormControl(0.0),
-        flag: new FormControl(0),
+        flag: new FormControl('')
       }
     )
   }
@@ -40,14 +40,13 @@ export class ManufacturerDeleteComponent implements OnInit {
   }
 
   delete() {
-    this.manufacturerForm.get('flag').setValue(0);
-    const manufacturer = this.manufacturerForm.value;
-    console.log(manufacturer);
-    this.manufacturerService.deleteManufacturer(manufacturer.manufacturerId, manufacturer).subscribe(() => {
-        this.toastr.success("Xóa thành công.", 'Xóa')
-      },error => {
-      this.toastr.error("Xóa thất bại.", 'Xóa')
-      }
-    );
+      this.manufacturerForm.get('flag').setValue(0);
+      const manufacturer = this.manufacturerForm.value;
+      this.manufacturerService.deleteManufacturer(manufacturer.manufacturerId, manufacturer).subscribe(() => {
+          this.toastr.success("Xóa thành công.", 'Xóa')
+        },error => {
+          this.toastr.error("Xóa thất bại.", 'Xóa')
+        }
+      );
   }
 }

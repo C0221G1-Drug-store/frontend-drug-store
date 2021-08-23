@@ -10,6 +10,7 @@
 
           <input formControlName="manufacturerCode" class="form-control m-0" type="text" id="manufacturerCode">
           <small style="color: red" *ngIf="manufacturerForm.get('manufacturerCode')?.hasError('required')&& manufacturerForm.get('manufacturerCode')?.touched">Mã nhà cung cấp không được để rỗng.</small>
+          <small style="color: red" *ngIf="manufacturerForm.get('manufacturerCode')?.hasError('pattern')&& manufacturerForm.get('manufacturerCode')?.touched">Nhập đúng định dạng mã nhà cung cấp.</small>
         </div>
       </div>
       <div class="row mb-3 mt-3">

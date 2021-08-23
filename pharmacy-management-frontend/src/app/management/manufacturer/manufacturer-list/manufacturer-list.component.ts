@@ -54,7 +54,8 @@ export class ManufacturerListComponent implements OnInit {
     const id = this.idDialog;
     const name = this.nameDialog;
     let dialogRef = this.dialog.open(ManufacturerUpdateComponent, {
-        data: {id, name}
+        data: {id, name},
+        width:'750px'
       }
     );
     dialogRef.afterClosed().subscribe(() => {
@@ -115,6 +116,7 @@ selectedMovie: Manufacturer;
 
   dialogCreate() {
     let dialogRef = this.dialog.open(ManufacturerCreateComponent, {
+      width:'750px'
       }
     );
     dialogRef.afterClosed().subscribe(() => {
