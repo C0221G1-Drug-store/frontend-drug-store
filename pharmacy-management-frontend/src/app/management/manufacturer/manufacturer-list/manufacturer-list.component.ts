@@ -94,7 +94,7 @@ export class ManufacturerListComponent implements OnInit {
   }
 
 
-  setPage(i: number) {
+  setPage(i: number): void {
     this.page = i;
     this.getAll();
   }
