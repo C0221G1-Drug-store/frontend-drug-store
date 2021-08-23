@@ -37,4 +37,8 @@ export class PrescriptionService {
   getIdicative(id: number): Observable<Indicative[]> {
     return this.http.get<Indicative[]>(`${API_URL}/indicatives/indicative-list/${id}`);
   }
+
+  getPress(): Observable<PrescriptionDto[]> {
+    return this.http.get<PrescriptionDto[]>(API_URL + '/prescriptions/list');
+  }
 }

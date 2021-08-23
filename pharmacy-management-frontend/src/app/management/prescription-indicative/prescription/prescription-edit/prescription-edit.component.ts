@@ -17,6 +17,9 @@ export class PrescriptionEditComponent implements OnInit {
   drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
   prescription: PrescriptionDto;
   indicativeList: Indicative[];
+  drinkDay: number;
+  drinkTime: number;
+  totalPill = this.drinkDay * this.drinkTime;
 
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
@@ -47,7 +50,7 @@ export class PrescriptionEditComponent implements OnInit {
       indicatives: this.fb.array([this.fb.group({
         indicativeId: new FormControl(''),
         drug: new FormControl(''),
-        totalPill: new FormControl(''),
+        totalPill: new FormControl(this.totalPill),
         drinkDay: new FormControl(''),
         drinkTime: new FormControl('')
       })])
@@ -86,7 +89,6 @@ export class PrescriptionEditComponent implements OnInit {
   }
 
 
-
   deleteIndicative(index) {
     this.indicatives.removeAt(index);
   }
@@ -94,17 +96,23 @@ export class PrescriptionEditComponent implements OnInit {
   submit() {
     const prescription = this.prescriptionForm.value;
     this.prescriptionService.updatePrescription(this.data.id, prescription).subscribe(() => {
-        this.showSuccessEdit();
+        this.showError();
       }, e => {
-       this.showErrorEdit();
+        this.showSuccessEdit();
       }
     );
   }
+
+
   showSuccessEdit() {
     this.toastr.success('Đã cập nhật thành công !', 'Thông báo : ');
   }
 
   showErrorEdit() {
     this.toastr.error('Vui lòng chọn hàng bạn muốn cập nhật !', 'Cảnh báo : ');
+  }
+
+  showError() {
+    this.toastr.error('Cập nhật không thành công !', 'Cảnh báo : ');
   }
 }

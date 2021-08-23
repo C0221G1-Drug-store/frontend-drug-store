@@ -1,7 +1,18 @@
-<p>Bạn có muốn xóa :</p>
-<p> Mã đơn thuốc : {{data.prescriptionCode}}</p>
-<p> Tên đơn thuốc :{{data.prescriptionName}}</p>
-<p>-----------------------------------------------------</p>
-<button id="cancel" type="button" (click)="dialogRef.close(false)">cancel</button>
-<button id="delete"  type="button" (click)="dialogRef.close(true)">delete</button>
+<div class="" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 style="margin-left: 45px;margin-top: 30px"><dt  style="color: red">Xác nhận xóa đơn thuốc</dt></h2>
+    </div>
+    <div class="modal-body">
+      <h3>Bạn có muốn xóa đơn thuốc có : </h3>
+      <p>+ Mã đơn thuốc : {{data.prescriptionCode}}</p>
+      <p>+ Tên đơn thuốc :{{data.prescriptionName}}</p>
+    </div>
+    <div class="modal-footer" style="margin-right: 80px">
+      <button class="btn btn-danger" id="delete" type="button" (click)="dialogRef.close(true)">Xóa</button>
+      <button class="btn btn-primary " id="cancel" type="button" (click)="dialogRef.close(false)">Hủy</button>
+
+    </div>
+  </div>
+</div>
 

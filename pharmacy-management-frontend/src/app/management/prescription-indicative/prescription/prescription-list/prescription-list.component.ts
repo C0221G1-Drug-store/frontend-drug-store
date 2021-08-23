@@ -14,8 +14,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PrescriptionListComponent implements OnInit {
   idEdit: number;
-  prescriptions: PrescriptionDto[];
-  pages: Array<any>;
+  prescriptions: PrescriptionDto[] = [];
+  pages: Array<any> = [];
   prescription: PrescriptionDto;
   prescriptionName = '';
   prescriptionCode = '';
@@ -25,6 +25,7 @@ export class PrescriptionListComponent implements OnInit {
   sortBy = 'prescription_id';
   select: any;
   valueSearch: any;
+  err = true;
 
 
   constructor(private prescriptionService: PrescriptionService,
@@ -39,14 +40,12 @@ export class PrescriptionListComponent implements OnInit {
   getPrescriptions() {
     // tslint:disable-next-line:max-line-length
     this.prescriptionService.getAllPrescription(this.prescriptionName, this.prescriptionCode, this.object, this.symptom, this.page, this.sortBy).subscribe(prescriptions => {
-      // if (prescriptions === null) {
-      //   alert('Không tìm thấy trang');
-      //   this.prescriptions = [];
-      // }
+      if (prescriptions === null) {
+        this.showErrorSearch();
+        this.prescriptions = [];
+      }
       this.prescriptions = prescriptions.content;
       this.pages = new Array<any>(prescriptions.totalPages);
-      console.log(prescriptions);
-      console.log(this.prescriptions);
     });
   }
 
@@ -92,6 +91,7 @@ export class PrescriptionListComponent implements OnInit {
           this.prescriptionService.deletePrescription(prescription.prescriptionId).subscribe(next => {
             this.getPrescriptions();
             this.showSuccessDelete();
+            this.idEdit = null;
           });
         }
       });
@@ -108,13 +108,19 @@ export class PrescriptionListComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         this.getPrescriptions();
+        // this.showSuccessEdit();
       });
     }
   }
 
   getId(prescriptionId: number) {
-    this.idEdit = prescriptionId;
-    console.log(this.idEdit);
+    this.err = !this.err;
+    if (this.err === false) {
+      this.idEdit = prescriptionId;
+
+    } else {
+      this.idEdit = null;
+    }
   }
 
   search() {
@@ -122,6 +128,8 @@ export class PrescriptionListComponent implements OnInit {
       case 'tenThuoc':
         this.prescriptionName = this.valueSearch;
         this.getPrescriptions();
+        console.log(this.prescriptionName);
+        console.log(this.valueSearch);
         break;
       case 'maToaThuoc':
         this.prescriptionName = '';
@@ -134,7 +142,7 @@ export class PrescriptionListComponent implements OnInit {
         this.object = this.valueSearch;
         this.getPrescriptions();
         break;
-      case 'trieuChu  ng':
+      case 'trieuChung':
         this.prescriptionCode = '';
         this.prescriptionName = '';
         this.object = '';
@@ -142,6 +150,8 @@ export class PrescriptionListComponent implements OnInit {
         this.getPrescriptions();
         console.log(this.getPrescriptions());
         break;
+      default:
+        this.getPrescriptions();
     }
   }
 
@@ -160,10 +170,16 @@ export class PrescriptionListComponent implements OnInit {
   showSuccessDelete() {
     this.toastr.success('Đã xóa thành công !', 'Thông báo : ');
   }
+
   showErrorDelete() {
     this.toastr.error('Vui lòng chọn vào hàng bạn muốn xóa !', 'Cảnh báo : ');
   }
+
   showErrorPage() {
     this.toastr.error('Không tìm thấy trang !', 'Cảnh báo : ');
+  }
+
+  showErrorSearch() {
+    this.toastr.error('Không tìm kết quả !', 'Cảnh báo : ');
   }
 }

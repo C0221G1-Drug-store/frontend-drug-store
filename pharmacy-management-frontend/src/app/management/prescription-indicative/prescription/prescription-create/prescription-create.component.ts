@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PrescriptionService} from '../../../../service/prescription.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {IndicativeService} from '../../../../service/indicative.service';
-import validate = WebAssembly.validate;
 import {ToastrService} from 'ngx-toastr';
+import {PrescriptionDto} from '../../../../model/prescriptionDto';
 
 @Component({
   selector: 'app-prescription-create',
@@ -13,8 +13,12 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PrescriptionCreateComponent implements OnInit {
   drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
-  idPres = 0;
-
+  drinkDay: number;
+  drinkTime: number;
+  totalPill = this.drinkDay * this.drinkTime;
+  pres: PrescriptionDto[];
+  code = 'TT001';
+  lastId: number;
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
               private indicativeService: IndicativeService,
@@ -25,22 +29,32 @@ export class PrescriptionCreateComponent implements OnInit {
   prescriptionForm: FormGroup;
 
   ngOnInit(): void {
+    this.prescriptionService.getPress().subscribe(pres => {
+      this.pres = pres;
+      this.lastId = this.pres[this.pres.length - 1].prescriptionId;
+      if (this.lastId < 10) {
+        this.code = 'TT00' + (this.lastId + 1);
+      } else if (this.lastId < 100) {
+        this.code = 'TT0' + (this.lastId + 1);
+      } else {
+        this.code = 'TT' + (this.lastId + 1);
+      }
+    });
     this.prescriptionForm = this.fb.group({
       prescriptionCode: new FormControl('', [Validators.required]),
       prescriptionName: new FormControl('', [Validators.required]),
       symptom: new FormControl('', [Validators.required]),
       object: new FormControl('', [Validators.required]),
       numberOfDay: new FormControl('', [Validators.required]),
-      note: new FormControl('', [Validators.required]),
+      note: new FormControl(''),
       indicatives: this.fb.array([this.fb.group({
         drug: new FormControl(''),
-        totalPill: new FormControl(''),
+        totalPill: new FormControl(this.totalPill),
         drinkDay: new FormControl(''),
         drinkTime: new FormControl(''),
       })])
     });
   }
-
   get indicatives() {
     return this.prescriptionForm.get('indicatives') as FormArray;
   }
@@ -67,7 +81,7 @@ export class PrescriptionCreateComponent implements OnInit {
         this.router.navigateByUrl('/prescription/prescription-list');
         this.showSuccess();
       }, error => {
-      this.showError();
+        this.showError();
       }
     );
   }
@@ -75,8 +89,10 @@ export class PrescriptionCreateComponent implements OnInit {
   showSuccess() {
     this.toastr.success('Thêm mới thành công !', 'Thông báo : ');
   }
+
   showError() {
-    this.toastr.error('Thêm mới không thành công !', 'Cảnh báo : ');
+    this.toastr.error('Thêm mới không thành công !' +
+      'Vui lòng nhập đầy đủ các trường ', 'Cảnh báo : ');
   }
 }
 

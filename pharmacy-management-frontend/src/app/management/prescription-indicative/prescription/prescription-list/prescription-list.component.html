@@ -7,7 +7,8 @@
           <label class="mt-2">Lọc theo</label>
 
           <select class="form-control ml-1" style="width: 70%" [(ngModel)]="select">
-            <option value="tenThuoc" [selected]="true">Tên thuốc</option>
+<!--            <option value=""  [selected]="true">&#45;&#45;&#45;&#45;Chọn&#45;&#45;&#45;&#45;</option>-->
+            <option value="tenThuoc">Tên toa thuốc</option>
             <option value="maToaThuoc">Mã toa thuốc</option>
             <option value="doiTuong">Đối tượng</option>
             <option value="trieuChung">Triệu chứng</option>
@@ -25,6 +26,7 @@
         <div class="mr-5 col-3 d-flex">
           <label class="mt-2 ">Sắp xếp </label>
           <select class="form-control ml-1" style="width: 70%" [(ngModel)]="sortBy" (change)="sort()" >
+            <option value=""  [selected]="true">----Chọn----</option>
             <option value="prescription_code">Mã toa thuốc</option>
             <option value="prescription_name">Tên toa thuốc</option>
             <option value="object">Đối tượng</option>
@@ -40,24 +42,25 @@
     <legend class="scheduler-border">Danh sách toa thuốc</legend>
     <div class="outer scroll">
       <table class="table table-striped ">
-
+        <thead>
         <tr>
           <th>Mã toa thuốc</th>
           <th>Tên toa thuốc</th>
           <th>Đối tượng</th>
           <th>Triệu chứng</th>
           <th>Ghi chú</th>
-
-
         </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let p of prescriptions" (click)="getId(p.prescriptionId) ; getPres(p)"
-            [style]="{background: p.prescriptionId==idEdit?'#63B8FF':null}">
+            [class.selected]="err? null: p.prescriptionId === idEdit">
           <td>{{p.prescriptionCode}}</td>
           <td>{{p.prescriptionName}}</td>
           <td>{{p.object}}</td>
           <td>{{p.symptom}}</td>
           <td>{{p.note}}</td>
         </tr>
+        </tbody>
       </table>
 
     </div>
@@ -65,9 +68,9 @@
     <div class="d-flex justify-content-end" >
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item"><a class="page-link" (click)="previous()">Trước</a></li>
-          <li class="page-item" *ngFor="let p of pages; let i=index"><a class="page-link" (click)="setPage(i)">{{i+1}}</a></li>
-          <li class="page-item"><a class="page-link" (click)="next()">Tiếp</a></li>
+          <li class="page-item"><a class="page-link" (click)="previous()" *ngIf="page">Trước</a></li>
+          <li class="page-item" *ngFor="let p of pages; let i=index"><a class="page-link" (click)="setPage(i)"[style]="(page == i) ? 'background: #63B8FF; color: white': ''">{{i+1}}</a></li>
+          <li class="page-item"><a class="page-link" (click)="next()" *ngIf="page<pages.length-1">Tiếp</a></li>
         </ul>
       </nav>
     </div>
