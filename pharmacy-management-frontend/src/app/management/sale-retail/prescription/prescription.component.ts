@@ -19,6 +19,8 @@ export class PrescriptionComponent implements OnInit {
   drugOfBills: DrugOfBill[] = [] ;
   prescriptions: Prescription[] = [];
   pres: Prescription;
+  fieldSearch = '';
+  valueSearch = '';
   constructor(private http: HttpClient,
               private prescriptionService: PrescriptionService,
               private dialog: MatDialog,
@@ -46,5 +48,11 @@ export class PrescriptionComponent implements OnInit {
 
   showChoose(p: Prescription) {
     this.pres = p;
+  }
+
+  search() {
+    this.prescriptionService.search(this.fieldSearch, this.valueSearch).subscribe( next => {
+      this.prescriptions = next;
+    });
   }
 }

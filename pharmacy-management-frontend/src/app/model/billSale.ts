@@ -7,4 +7,5 @@ export interface BillSale {
   totalMoney?: number;
   billSaleNote?: string;
   flag?: boolean;
+  code?: string;
 }

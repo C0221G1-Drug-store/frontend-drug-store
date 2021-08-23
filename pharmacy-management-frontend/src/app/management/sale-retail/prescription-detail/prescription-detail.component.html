@@ -1,4 +1,4 @@
-<div class="container mt-3 mb-3">
+<div class="container mt-3 mb-3" id="print-me">
   <form id="form" class="border p-3" [formGroup]="fromPrescription"  (ngSubmit)="sendData()">
     <div class="d-flex justify-content-between ">
       <p class="ml-3 mt-2 font-weight-bold">Thông tin toa thuốc</p>
@@ -50,7 +50,7 @@
     </div>
     <div class="d-flex flex-row-reverse pt-4 pb-5">
       <button class=" btn btn-danger huy" type="button" routerLink="/sale" ><i class="fa fa-close"></i> Hủy</button>
-      <button class="mr-4 btn btn-print" type="button" ><i class="fa fa-print"></i> In toa</button>
+      <button class="mr-4 btn btn-print" type="button" printTitle="print-me" printSectionId="print-me" ngxPrint ><i class="fa fa-print"></i> In toa</button>
       <button (click)="addToBill(drugOfbills)" class="mr-4 btn btn-success" type="button" ><i class="fa fa-plus"></i> Thêm vào hóa đơn</button>
     </div>
 

@@ -8,6 +8,7 @@ import { PrescriptionComponent } from './prescription/prescription.component';
 import { PrescriptionDetailComponent } from './prescription-detail/prescription-detail.component';
 import { DeleteComponent } from './delete/delete.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {NgxPrintModule} from 'ngx-print';
 
 
 
@@ -21,7 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         SaleRetailRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        MatDialogModule
+        MatDialogModule,
+        NgxPrintModule
     ]
 })
 export class SaleRetailModule { }
