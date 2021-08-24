@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 # tam hello hai !
 <<<<<<< HEAD
+<<<<<<< HEAD
 helllllllllllll
 helo
 <<<<<<< HEAD
@@ -18,3 +19,8 @@ cập nhật 1\
 cập nhật 2
 cập nhật 3
 >>>>>>> origin/HauDT
+=======
+helooooo
+abccccc
+
+>>>>>>> origin/client

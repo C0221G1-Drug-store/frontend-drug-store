@@ -25,6 +25,7 @@ import {Overlay} from '@angular/cdk/overlay';
 import localeVi from '@angular/common/locales/vi';
 import {registerLocaleData} from '@angular/common';
 import {WholesaleModule} from './management/wholesale/wholesale.module';
+import {ClientModule} from "./client/client.module";
 
 registerLocaleData(localeVi, 'vi-VN');
 
@@ -61,6 +62,9 @@ registerLocaleData(localeVi, 'vi-VN');
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+    HttpClientModule,
+    ClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [MatDialog , Overlay],
   bootstrap: [AppComponent]

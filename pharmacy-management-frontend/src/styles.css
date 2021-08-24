@@ -137,7 +137,10 @@ legend.scheduler-border {
   width: 90px;
 
 }
-.btn-danger{
+.btn-danger {
   width: 90px;
-
+}
+* {
+  margin: 0;
+  padding: 0;
 }
