@@ -243,7 +243,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
           });
         }
         this.success('Tạo hóa đơn thành công');
-        this.route.navigateByUrl('');
+        this.route.navigateByUrl('/management/warehouse/warehouse-export/export-bill');
       }, error => {
         this.warn('Tạo hóa đơn thất bại');
       });
@@ -295,7 +295,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
   returnList() {
     this.dialogService.openConfirm('Bạn có muốn hủy hóa đơn đang lâp không?').afterClosed().subscribe(result => {
       if (result === true) {
-        this.route.navigateByUrl('');
+        this.route.navigateByUrl('/management/warehouse/warehouse-export/export-bill');
       }
     }, error => {
       console.log('Not found!!!');
