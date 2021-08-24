@@ -1,6 +1,5 @@
 export interface StatisticalChart {
-  doanhThu?: number;
-  loiNhuan?: number;
-  ngayDoanhThu?: string;
-  ngayLoiNhuan?: string;
+  turnover?: number;
+  profit?: number;
+  dateSale?: string;
 }

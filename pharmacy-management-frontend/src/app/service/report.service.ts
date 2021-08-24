@@ -30,4 +30,8 @@ export class ReportService {
   importDetails(choice: string, startDate: string, endDate: string): Observable<[]> {
     return this.http.get<[]>(`${API_URL}/report/${choice}/${startDate}/${endDate}`);
   }
+
+  showChart( startDate: string, endDate: string): Observable<[]> {
+    return this.http.get<[]>(`${API_URL}/report/chart/${startDate}/${endDate}`);
+  }
 }
