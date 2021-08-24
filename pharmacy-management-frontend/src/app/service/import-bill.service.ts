@@ -11,15 +11,15 @@ export class ImportBillService {
 
   constructor(private http: HttpClient) { }
   getAll(): Observable<ImportBill[]> {
-    return  this.http.get<ImportBill[]>(API_URL + '/importBills');
+    return  this.http.get<ImportBill[]>(API_URL + '/import-bills');
   }
   create(value): Observable<ImportBill> {
-    return  this.http.post<ImportBill>(API_URL + '/importBills', value);
+    return  this.http.post<ImportBill>(API_URL + '/import-bills', value);
   }
   update(value, id) {
-    return  this.http.put<ImportBill[]>(`${API_URL}/importBills/${id}`, value);
+    return  this.http.put<ImportBill[]>(`${API_URL}/import-bills/${id}`, value);
   }
   remove(id) {
-    return this.http.delete<ImportBill[]>(`${API_URL}/importBills/${id}`);
+    return this.http.delete<ImportBill[]>(`${API_URL}/import-bills/${id}`);
   }
 }

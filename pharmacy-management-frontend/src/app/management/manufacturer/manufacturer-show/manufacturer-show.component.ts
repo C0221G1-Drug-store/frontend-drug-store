@@ -24,10 +24,10 @@ export class ManufacturerShowComponent implements OnInit {
   endDate: string="9999-11-11T11:11";
  importBills: ImportBill[];
  idDialog: number;
- sd: string="1000-01-01";
+ sd:string="1111-12-30";
  ed:string="9999-11-11";
- st:string="11:11";
- et:string="11:11";
+ st:string="11:11:11";
+ et:string="11:11:11";
 
 
   constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService, private activatedRoute: ActivatedRoute,private  toastr:ToastrService) {
@@ -43,9 +43,7 @@ export class ManufacturerShowComponent implements OnInit {
     });
 
   }
-  setFormValue(){
 
-  }
   ngOnInit(): void {
 
   }
@@ -71,7 +69,7 @@ export class ManufacturerShowComponent implements OnInit {
   previous() {
 
     if (this.page <= 0) {
-      this.toastr.error("Không tìm thấy trang", 'Trang trước')
+      this.toastr.error("Không tìm thấy trang.", 'Trang trước')
     } else {
       this.page = this.page - 1;
       this.getAllImportBill();
@@ -82,7 +80,7 @@ export class ManufacturerShowComponent implements OnInit {
 
     this.max = this.pages.length;
     if (this.page + 2 > this.max) {
-      this.toastr.error("Không tìm thấy trang", 'Trang sau')
+      this.toastr.error("Không tìm thấy trang.", 'Trang sau')
     } else {
       this.page = this.page + 1;
       this.getAllImportBill();

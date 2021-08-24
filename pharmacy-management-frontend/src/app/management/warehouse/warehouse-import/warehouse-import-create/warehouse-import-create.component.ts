@@ -169,8 +169,10 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(ManufacturerCreateComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(ManufacturerCreateComponent,{
+      width:'750px'
+    });
+    dialogRef.afterClosed().subscribe((result:any) => {
       if (typeof result !== 'undefined') {
         this.manufacturerForm.setValue(result);
       }
