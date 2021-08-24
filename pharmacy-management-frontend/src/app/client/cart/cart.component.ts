@@ -26,12 +26,6 @@ declare let paypal: any;
 })
 export class CartComponent implements OnInit {
   //#region DATA TEST 1
-  // listVoucher = [
-  //     {id: 1, code: '1234567890', money: '100000'},
-  //   {id: 2, code: '1234567891', money: '200000'},
-  //   {id: 3, code: '1234567892', money: '150000'},
-  //   {id: 4, code: '1234567893', money: '50000'},
-  // ];
   // account = {
   //   accountName: "Khánh Phan",
   //   email: "khanhphan900@gmail.com"
@@ -139,7 +133,6 @@ export class CartComponent implements OnInit {
     // localStorage.setItem(USER_KEY, JSON.stringify(this.account));
     this.getAccount();
     this.getVoucherList();
-    console.log(this.voucherListIdUsed);
   }
 
   getVoucherList() {

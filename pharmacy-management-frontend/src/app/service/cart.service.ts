@@ -11,7 +11,7 @@ export class CartService {
   // API_URL = 'http://api.exchangeratesapi.io/v1/latest?access_key=9dae1030427407802f422bf0524ac146';
   API_URL = '';
   API_EMAIL = 'http://localhost:8080/email/send';
-  API_BACKEND = 'http://localhost:8080/drug/cart';
+  API_BACKEND = 'http://localhost:8080/drug-client/cart';
   API_VOUCHER = 'http://localhost:8080/cart/voucher';
   constructor(private http: HttpClient) {
   }
