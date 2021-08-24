@@ -13,6 +13,9 @@ import {DrugModule} from './management/warehouse/drug/drug.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {FormsModule} from '@angular/forms';
     DrugModule,
     HttpClientModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatSelectModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
