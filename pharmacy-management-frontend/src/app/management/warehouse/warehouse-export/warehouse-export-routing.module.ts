@@ -14,7 +14,6 @@ const routes: Routes = [
 
   {path: 'export-bill' , component: ExportBillListComponent},
 
-
   {path: 'export-bill-destroy' , component: ExportBillDestroyComponent},
 
   {path: '' , component: HomeComponent},

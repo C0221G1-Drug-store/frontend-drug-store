@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 import {ReplaySubject, Subject} from 'rxjs';
 import {MatSelect} from '@angular/material/select';
 import {take, takeUntil} from 'rxjs/operators';
-
 import jsPDF from 'jspdf'
 import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
 import autoTable from 'jspdf-autotable';
