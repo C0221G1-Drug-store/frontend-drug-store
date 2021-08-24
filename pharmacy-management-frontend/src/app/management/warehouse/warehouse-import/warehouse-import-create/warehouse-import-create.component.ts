@@ -187,6 +187,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   choiceManufacturer(e) {
+    console.log(e);
     this.manufacturerService.findByIdManufacture(e.target.value).subscribe(value => {
       if (value !== null) {
       this.manufacturerForm.setValue(value);
