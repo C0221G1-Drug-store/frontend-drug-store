@@ -2,18 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {DrugModule} from './management/warehouse/drug/drug.module';
-// @ts-ignore
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {ManufacturerModule} from './management/manufacturer/manufacturer.module';
-// @ts-ignore
 import {ToastrModule} from 'ngx-toastr';
 import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
 import {MatSelectModule} from '@angular/material/select';
@@ -36,11 +34,11 @@ registerLocaleData(localeVi, 'vi-VN');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SaleRetailModule,
     WholesaleModule,
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,
+    HttpClientModule,
     MatDialogModule,
     DrugModule,
     HttpClientModule,

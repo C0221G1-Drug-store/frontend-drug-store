@@ -1,0 +1,94 @@
+<div id="content" class="">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Bộ lọc</legend>
+    <div class="container-fluid ">
+      <div class="d-flex  mt-4">
+        <div class=" col-3 d-flex">
+          <label class="mt-2">Lọc theo</label>
+
+          <select class="form-control ml-1" style="width: 70%" [(ngModel)]="select">
+<!--            <option value=""  [selected]="true">&#45;&#45;&#45;&#45;Chọn&#45;&#45;&#45;&#45;</option>-->
+            <option value="tenThuoc">Tên toa thuốc</option>
+            <option value="maToaThuoc">Mã toa thuốc</option>
+            <option value="doiTuong">Đối tượng</option>
+            <option value="trieuChung">Triệu chứng</option>
+          </select>
+
+        </div>
+        <div class="col-6 d-flex">
+          <input type="text" class="mr-2 form-control ml-5" style="width: 50%" [(ngModel)]="valueSearch">
+          <div class="ml-1 d-flex">
+            <button class="btn border   " style="height: 92%  " (click)="search()"><i
+              class="fa fa-search "></i> Lọc kết quả
+            </button>
+          </div>
+        </div>
+        <div class="mr-5 col-3 d-flex">
+          <label class="mt-2 ">Sắp xếp </label>
+          <select class="form-control ml-1" style="width: 70%" [(ngModel)]="sortBy" (change)="sort()" >
+            <option value=""  [selected]="true">----Chọn----</option>
+            <option value="prescription_code">Mã toa thuốc</option>
+            <option value="prescription_name">Tên toa thuốc</option>
+            <option value="object">Đối tượng</option>
+            <option value="symptom">Triệu chứng</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Danh sách toa thuốc</legend>
+    <div class="outer scroll">
+      <table class="table table-striped ">
+        <thead>
+        <tr>
+          <th>Mã toa thuốc</th>
+          <th>Tên toa thuốc</th>
+          <th>Đối tượng</th>
+          <th>Triệu chứng</th>
+          <th>Ghi chú</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of prescriptions" (click)="getId(p.prescriptionId) ; getPres(p)"
+            [class.selected]="err? null: p.prescriptionId === idEdit">
+          <td>{{p.prescriptionCode}}</td>
+          <td>{{p.prescriptionName}}</td>
+          <td>{{p.object}}</td>
+          <td>{{p.symptom}}</td>
+          <td>{{p.note}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <br>
+    <div class="d-flex justify-content-end" >
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" (click)="previous()" *ngIf="page">Trước</a></li>
+          <li class="page-item" *ngFor="let p of pages; let i=index"><a class="page-link" (click)="setPage(i)"[style]="(page == i) ? 'background: #63B8FF; color: white': ''">{{i+1}}</a></li>
+          <li class="page-item"><a class="page-link" (click)="next()" *ngIf="page<pages.length-1">Tiếp</a></li>
+        </ul>
+      </nav>
+    </div>
+  </fieldset>
+
+
+  <div class="d-flex justify-content-end pt-4 pb-5">
+    <button class="mr-5 btn btn-success" type="button"  [routerLink]="['/prescription/prescription-create']"><i class="fa fa-plus" aria-hidden="true"></i>
+      Thêm
+    </button>
+    <button class="mr-5 btn btn-edit" type="button"  (click)="onEditHandler()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Sửa
+    </button>
+    <button class="mr-5 btn btn-danger" type="button" (click)="onDeleteHandler(prescription)">
+      <i class="fa fa-trash-o" aria-hidden="true"></i> xóa
+    </button>
+    <button class="mr-1 btn btn-back" type="button" style=" width: auto;" [routerLink]="['/common']"><i class="icon-sidebar fa fa-reply ">
+    </i>Trở về
+    </button>
+  </div>
+</div>
