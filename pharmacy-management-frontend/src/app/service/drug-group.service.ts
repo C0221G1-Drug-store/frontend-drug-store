@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DrugGroupService {
-  public apiUrl = 'http://localhost:8080/api/drug/drugGroup';
+  public apiUrl = 'http://localhost:8080/drug/drugGroup';
   constructor(private http: HttpClient) { }
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);

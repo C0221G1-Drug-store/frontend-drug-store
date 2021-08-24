@@ -23,8 +23,12 @@
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
     "bootstrap": "^4.6.0",
+<<<<<<< HEAD
     "firebase": "^8.9.1",
     "jquery": "^3.6.0",
+=======
+    "firebase": "^8.10.0",
+>>>>>>> dd3a28ddf9a9271e48b99439b1912adf2376f82a
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
