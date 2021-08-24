@@ -48,7 +48,6 @@ export class CustomerRefundComponent implements OnInit {
         this.billSaleService.getDrugOfBillByBillSaleId(this.inputSearch).subscribe(data1 => {
           this.drugOfBillList = data1;
           if (data1 == null) {
-            this.toast.error('Không có thuốc để hoàn trả', 'Alert');
           }
           this.total = 0;
           // tslint:disable-next-line:prefer-for-of
@@ -88,7 +87,7 @@ export class CustomerRefundComponent implements OnInit {
 
   payment() {
     if (this.drugOfBillListDelete.length === 0) {
-      this.toast.error('Thất bại', 'Alert');
+      this.toast.error('Hoàn trả thất bại', 'Alert');
     } else {
       this.billSale.totalMoney = this.total;
       this.billSaleService.updateBillSale(this.billSale).subscribe(() => {
@@ -108,10 +107,11 @@ export class CustomerRefundComponent implements OnInit {
             this.getIDTest = this.drugOfBill.drug.drugId;
             this.searchDrug(this.getIDTest);
             this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-              console.log(this.drugInBill);
+              // console.log(this.drugInBill);
               this.drugInBill.drugAmount = this.drugInBill.drugAmount + this.drugOfBill.quantity;
-              this.billSaleService.updateDrug(this.drugInBill).subscribe(() => {
-              });
+              // this.billSaleService.updateDrug(this.drugInBill).subscribe(() => {
+              // });
+              this.searchBillSale();
             });
             this.searchBillSale();
           }

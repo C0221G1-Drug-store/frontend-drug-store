@@ -9,8 +9,12 @@
           <div class="row">
             <div class="col-lg-4 my-2">
               <div class="row ">
+                <label for="inputBillId1" class="label-text">Số phiếu</label>
+                <input  type="text" id="inputBillId1" readonly value="HDBS{{this.numRandom}}">
+              </div>
+              <div class="row " hidden>
                 <label for="inputBillId" class="label-text">Số phiếu</label>
-                <input formControlName="billSaleId" type="text" id="inputBillId" readonly>
+                <input formControlName="billSaleId"  type="text" id="inputBillId" readonly>
               </div>
               <div class="row mt-3 ">
                 <label for="inputEmployee" class="label-text">Nhân viên</label>
@@ -22,7 +26,7 @@
             <div class="col-lg-4 my-2">
               <div class="row ">
                 <label for="inputDate" class="label-text">Ngày lập</label>
-                <input formControlName="invoiceDate" type="date" id="inputDate" readonly>
+                <input formControlName="invoiceDate" type="date"  id="inputDate" readonly>
               </div>
               <div class="row mt-3 ">
                 <label for="selectEmployee" class="label-text">Khách hàng<i class="text-danger">*</i></label>
@@ -61,7 +65,7 @@
             <tbody>
             <td>
               <select [(ngModel)]="selectDrug" [ngModelOptions]="{standalone: true}">
-                <option [selected]="true" [hidden]="true">Thêm thuốc</option>
+                <option [selected]="true" [hidden]="true" [ngValue]="null">Thêm thuốc</option>
                 <option *ngFor="let drug of drugs" [ngValue]="drug">{{drug.drugName}}</option>
               </select>
             </td>
@@ -95,7 +99,7 @@
         </div>
         <div class="d-flex justify-content-end mt-3 ">
           <label for="inputTotal" class="mr-3">Tổng tiền </label>
-          <input formControlName="totalMoney" type="text" id="inputTotal" readonly value="{{total | currency : 'VND'}}">
+          <input formControlName="totalMoney"  type="text" id="inputTotal"  readonly value="{{total | currency : 'VND'}}">
         </div>
       </fieldset>
 

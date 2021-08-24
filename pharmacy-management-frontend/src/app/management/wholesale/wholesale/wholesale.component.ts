@@ -84,7 +84,7 @@ export class WholesaleComponent implements OnInit {
 
   payment() {
     // tslint:disable-next-line:max-line-length
-    if (this.billSaleForm.get('customer').value == null || this.billSaleForm.get('employee').value == null || this.drugOfBillList.length === 0 ) {
+    if (this.billSaleForm.get('customer').value == null || this.billSaleForm.get('employee').value == null || this.drugOfBillList.length === 0) {
       this.toast.error('Thanh toán thất bại', 'Alert');
     } else {
       this.billSaleForm.get('totalMoney').setValue(this.total);
@@ -94,10 +94,11 @@ export class WholesaleComponent implements OnInit {
           // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < this.drugOfBillList.length; i++) {
             this.drugOfBill = this.drugOfBillList[i];
-            this.drugOfBill.drug.drugAmount = this.drugOfBill.drug.drugAmount - this.drugOfBill.quantity ;
+            // console.log(this.drugOfBillList[i]);
+            this.drugOfBill.drug.drugAmount = this.drugOfBill.drug.drugAmount - this.drugOfBill.quantity;
             this.billSaleService.createDrugOfBill(this.drugOfBill).subscribe(() => {
-              this.billSaleService.updateDrug(this.drugOfBill.drug).subscribe(() => {
-              });
+              // this.billSaleService.updateDrug(this.drugOfBill.drug).subscribe(() => {
+              // });
             });
           }
           this.toast.success('Thanh toán thành công', 'Alert');
@@ -111,20 +112,24 @@ export class WholesaleComponent implements OnInit {
   send(drugOfBill, index) {
     this.drugOfBill = drugOfBill;
     this.idSelect = index;
-  }
+}
 
   openDeleteDialog() {
     const drugOfBill = this.drugOfBill;
-    const dialog = this.dialog.open(DeleteComponent, {
-      data: [this.drugOfBillList, {drugOfBill}]
-    });
-    dialog.afterClosed().subscribe(() => {
-      this.total = 0;
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.drugOfBillList.length; i++) {
-        this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
-      }
-    });
+    if (drugOfBill == null || drugOfBill === undefined) {
+      this.toast.error('Chưa chọn thuốc để xóa', 'Alert');
+    } else {
+      const dialog = this.dialog.open(DeleteComponent, {
+        data: [this.drugOfBillList, {drugOfBill}]
+      });
+      dialog.afterClosed().subscribe(() => {
+        this.total = 0;
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.drugOfBillList.length; i++) {
+          this.total += this.drugOfBillList[i].quantity * this.drugOfBillList[i].drug.wholesaleProfitRate;
+        }
+      });
+    }
   }
 
   addDrug(drug, number1) {
@@ -132,7 +137,7 @@ export class WholesaleComponent implements OnInit {
       this.toast.warning('Nhập thông tin hóa đơn trước khi thêm thuốc', 'Alert');
     } else if (this.selectDrug === null || this.quantity === undefined) {
       this.toast.warning('Vui lòng chọn thuốc và nhập số lượng', 'Alert');
-    } else if (this.quantity <= 0 ) {
+    } else if (this.quantity <= 0) {
       this.toast.warning('Số lượng không hợp lệ', 'Alert');
     } else {
       this.drugOfBill = {drug, quantity: number1, billSale: this.billSaleForm.value};

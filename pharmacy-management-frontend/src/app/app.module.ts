@@ -29,7 +29,6 @@ import { NgxPrintModule } from 'ngx-print';
     NgxPrintModule,
     ToastrModule.forRoot({
       timeOut: 2000,
-      progressBar: true,
       }
     )
   ],
