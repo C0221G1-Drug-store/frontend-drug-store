@@ -8,16 +8,18 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../environments/environment';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [ListEmployeeComponent, EmployeeDeleteComponent, PhonePipe, EmployeeCreateComponent, DialogComponent],
-  imports: [
-    CommonModule,
-    EmployeeRoutingModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        EmployeeRoutingModule,
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        ReactiveFormsModule,
+        MatDialogModule
+    ]
 })
 export class EmployeeModule { }
