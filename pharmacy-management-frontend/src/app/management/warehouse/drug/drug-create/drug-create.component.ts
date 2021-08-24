@@ -7,7 +7,7 @@ import {finalize} from 'rxjs/operators';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {Router} from '@angular/router';
-import {DrugImageDetail} from '../../../../model/drugImageDetail';
+
 
 @Component({
   selector: 'app-drug-create',
@@ -17,23 +17,24 @@ import {DrugImageDetail} from '../../../../model/drugImageDetail';
 export class DrugCreateComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
   selectedImage;
-  urlImage = [];
+  urlImage;
   drugForm: FormGroup = new FormGroup({
   drugName: new FormControl('', [Validators.required, Validators.maxLength(25)]),
     drugFaculty: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     activeElement: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     drugSideEffect: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     conversionRate: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^\d*$/)]),
-    // drugImageDetails: new FormControl(''),
-    wholesaleProfitRate: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern(/^\d*$/)]),
-    retailProfitRate: new FormControl('', [Validators.min(0), Validators.pattern(/^\d*$/)]),
+
+    wholesaleProfitRate: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern(/^\d*\.?\d*$/)]),
+    retailProfitRate: new FormControl('', [Validators.min(0), Validators.pattern(/^\d*\.?\d*$/)]),
     unit: new FormControl('', [Validators.required]),
     conversionUnit: new FormControl('', [Validators.required]),
     manufacturer: new FormControl('', [Validators.maxLength(25)]),
     origin: new FormControl('', [Validators.required]),
-    drugGroup: new FormControl('', [Validators.required]),
+    drugGroup: new FormControl(null, Validators.required),
     note: new FormControl('', [Validators.maxLength(250)])
   });
+  // select = null;
 
   constructor(private drugService: DrugService,
               private drugGroupService: DrugGroupService,
@@ -45,28 +46,7 @@ export class DrugCreateComponent implements OnInit {
   }
 
   submit() {
-    // console.log(this.urlImage);
-    // for (let i = 0; i<this.drugImageDetails)
-      // const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
-      // const fileRef = this.storage.ref(nameImg);
-      // this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
-      //   finalize(() => {
-      //     fileRef.getDownloadURL().subscribe((url) => {
-      //       this.drugForm.patchValue({drugImageDetails: url});
-      //       this.drugService.save(this.drugForm.value).subscribe(() => {
-      //         alert('Tạo thành công');
-      //         // this.drugForm.reset();
-      //         this.backToList();
-      //       });
-      //     });
-      //   })
-      // ).subscribe();
-
-      // this.drugForm.patchValue({drugImageDetails: this.urlImage});
       this.drugService.save(this.drugForm.value).subscribe(data => {
-        alert('Tạo thành công');
-        this.backToList();
-        // console.log(data);
         for (let i = 0; i<this.urlImage.length; i++){
           let drugImage = {
             drugImageDetailUrl: this.urlImage[i],
@@ -74,19 +54,22 @@ export class DrugCreateComponent implements OnInit {
           };
           console.log(drugImage);
           this.drugService.saveImage(drugImage).subscribe(() => {
+          }, error => {
+            alert("Tạo ảnh thất bại!")
           })
         }
-        // // this.drugForm.reset();
-        // this.backToList();
+        alert('Tạo thành công');
+        this.backToList();
+      },error => {
+        alert("Tạo thất bại!")
       });
-
-
   }
   backToList() {
     this.router.navigateByUrl('/drug/list');
   }
 
   uploadFile(imageFile) {
+    this.urlImage = [];
     const nameImg = this.getCurrentDateTime() + imageFile.name;
     const fileRef = this.storage.ref(nameImg);
     this.storage.upload(nameImg, imageFile).snapshotChanges().pipe(
@@ -98,7 +81,7 @@ export class DrugCreateComponent implements OnInit {
     ).subscribe();
   }
   showPreview(event) {
-    // this.selectedImage = event.target.files[0];
+
     this.selectedImage = [];
     const files = event.target.files;
     if (files) {

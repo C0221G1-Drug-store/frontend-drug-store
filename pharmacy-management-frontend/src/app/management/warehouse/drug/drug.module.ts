@@ -6,9 +6,11 @@ import { DrugCreateComponent } from './drug-create/drug-create.component';
 import { DrugEditComponent } from './drug-edit/drug-edit.component';
 import { DrugListComponent } from './drug-list/drug-list.component';
 
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import { DrugDeleteComponent } from './drug-delete/drug-delete.component';
-import { DrugNotSelectedComponent } from './drug-not-selected/drug-not-selected.component';
+
+import {FormsModule} from '@angular/forms';
+import { DrugNotificationComponent } from './drug-notification/drug-notification.component';
 
 
 
@@ -16,7 +18,8 @@ import { DrugNotSelectedComponent } from './drug-not-selected/drug-not-selected.
 
 @NgModule({
 
-  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent, DrugDeleteComponent, DrugNotSelectedComponent],
+  declarations: [DrugCreateComponent, DrugEditComponent, DrugListComponent, DrugDeleteComponent, DrugNotificationComponent],
+
   imports: [
     CommonModule,
     DrugRoutingModule,
