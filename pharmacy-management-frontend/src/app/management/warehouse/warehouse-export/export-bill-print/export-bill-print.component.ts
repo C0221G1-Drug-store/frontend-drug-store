@@ -48,4 +48,16 @@ export class ExportBillPrintComponent implements OnInit {
     window.print();
   }
 
+  setTotal(): number {
+    let totalMoney: number;
+    this.exportBillService.getExportBillDetail(this.data.id).subscribe(exportBillDetail => {
+      if (exportBillDetail.exportBill.exportBillType.exportBillTypeId == 1) {
+        totalMoney = (exportBillDetail.importBillDrug.importAmount * exportBillDetail.importBillDrug.importPrice) - (exportBillDetail.importBillDrug.discountRate * exportBillDetail.importBillDrug.importPrice / 100) - (exportBillDetail.importBillDrug.importAmount * exportBillDetail.importBillDrug.importPrice * exportBillDetail.importBillDrug.vat / 100);
+      } else {
+        totalMoney = (exportBillDetail.importBillDrug.importAmount * exportBillDetail.importBillDrug.importPrice) - (exportBillDetail.importBillDrug.discountRate * exportBillDetail.importBillDrug.importPrice / 100);
+      }
+    });
+    return totalMoney;
+  }
+
 }
