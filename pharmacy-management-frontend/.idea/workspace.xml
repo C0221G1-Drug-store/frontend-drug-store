@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="a1550631-f2a4-4e59-ac7f-852422bd635a" name="Default Changelist" comment="">
+    <list default="true" id="2b46e9e8-3c7e-4e97-ae44-48ecac4a8050" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-delete/export-bill-delete.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-list/export-bill-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-print/export-bill-print.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/export-bill/exportbill.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/export-bill/exportbill.service.ts" afterDir="false" />
-=======
-    <list default="true" id="86dd2deb-316b-49f2-9a7d-df1ae6b09914" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" afterDir="false" />
->>>>>>> origin/HaLK
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1wtxGlQrcKKOMIeI2CeuPGsl3G9" />
+  <component name="ProjectId" id="1xA406OL4wq4Hfd8F9gd5aUv8Zo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,30 +24,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-=======
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/font" />
->>>>>>> origin/HaLK
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-<<<<<<< HEAD
-    <property name="ts.external.directory.path" value="C:\Users\ADMIN\Desktop\New folder (3)\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
-=======
-    <property name="ts.external.directory.path" value="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
->>>>>>> origin/HaLK
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets\font" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets\font" />
-      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\src\assets" />
-    </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (pharmacy-management-frontend)" type="JavaScriptTestRunnerKarma">
@@ -101,126 +65,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="86dd2deb-316b-49f2-9a7d-df1ae6b09914" name="Default Changelist" comment="" />
-      <created>1629291593065</created>
+      <changelist id="2b46e9e8-3c7e-4e97-ae44-48ecac4a8050" name="Default Changelist" comment="" />
+      <created>1629784332916</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
-      <updated>1628839359102</updated>
-      <workItem from="1628839363321" duration="4818000" />
-      <workItem from="1628845261590" duration="1050000" />
-      <workItem from="1628856311080" duration="3459000" />
-      <workItem from="1628946595269" duration="3121000" />
-      <workItem from="1628993442764" duration="8369000" />
-      <workItem from="1629011451192" duration="7619000" />
-      <workItem from="1629030336617" duration="7167000" />
-      <workItem from="1629075340415" duration="9154000" />
-      <workItem from="1629094519403" duration="13924000" />
-      <workItem from="1629115458745" duration="4849000" />
-      <workItem from="1629121533246" duration="1663000" />
-      <workItem from="1629159554627" duration="11432000" />
-      <workItem from="1629181744954" duration="4342000" />
-      <workItem from="1629189602870" duration="5494000" />
-      <workItem from="1629201244322" duration="7222000" />
-      <workItem from="1629247942763" duration="8785000" />
-      <workItem from="1629266479942" duration="10311000" />
-      <workItem from="1629279088555" duration="2711000" />
-      <workItem from="1629287835024" duration="3610000" />
-      <workItem from="1629335083247" duration="4147000" />
-      <workItem from="1629354496837" duration="5349000" />
-      <workItem from="1629423592241" duration="5528000" />
-      <workItem from="1629440387566" duration="5124000" />
-      <workItem from="1629449887641" duration="2001000" />
-      <workItem from="1629460582986" duration="2078000" />
-      <workItem from="1629532922142" duration="2811000" />
-      <workItem from="1629548059843" duration="3618000" />
-      <workItem from="1629595586111" duration="1250000" />
-      <workItem from="1629603129298" duration="1254000" />
-      <workItem from="1629618100044" duration="1671000" />
-      <workItem from="1629680559518" duration="8106000" />
-      <workItem from="1629700791058" duration="9275000" />
-      <workItem from="1629716685387" duration="766000" />
-      <workItem from="1629718962139" duration="2293000" />
-      <workItem from="1629724638891" duration="1122000" />
-=======
-      <updated>1629291593065</updated>
-      <workItem from="1629291598294" duration="59000" />
-      <workItem from="1629291743215" duration="5881000" />
-      <workItem from="1629299404749" duration="6000" />
-      <workItem from="1629334930391" duration="51000" />
-      <workItem from="1629335191472" duration="61000" />
-      <workItem from="1629335310215" duration="2339000" />
-      <workItem from="1629423190985" duration="8078000" />
-      <workItem from="1629447443656" duration="5351000" />
-      <workItem from="1629680134659" duration="24114000" />
-      <workItem from="1629715309729" duration="128000" />
-      <workItem from="1629716786213" duration="155000" />
->>>>>>> origin/HaLK
+      <updated>1629784332916</updated>
+      <workItem from="1629784335592" duration="1335000" />
+      <workItem from="1629795181108" duration="68000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-<<<<<<< HEAD
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629548079030">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629548079030" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629724864022">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629724864022" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629724864021">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629724864021" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629724864021">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629724864021" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629724864022">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629724864022" />
-=======
-    <state x="543" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629710655846">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="543" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1629710655846" />
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1629294819841">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1629294819841" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629445716147">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629445716147" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629716941850">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629716941850" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629716941849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629716941849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629716941849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629716941849" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1629706687336">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1629706687336" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1629445677199">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1629445677199" />
->>>>>>> origin/HaLK
   </component>
 </project>
