@@ -12,9 +12,11 @@ export class ExportbillService {
   private API_EMPLOYEE = "http://localhost:8080/api";
   constructor(private http: HttpClient) { }
 
-  // @ts-ignore
   createCodeExportBillRefund(): Observable<any> {
     return this.http.get(`${this.API_EXPORT_BILL}/createCode`);
+  }
+  createCodeExportBillDestroy(): Observable<any> {
+    return this.http.get(`${this.API_EXPORT_BILL}/create-code-destroy`);
   }
 
   createExportBill(exportBill: ExportBill): Observable<any>{
@@ -28,6 +30,7 @@ export class ExportbillService {
   getEmployee():Observable<any>{
     return this.http.get<String>(this.API_EMPLOYEE+ '/employees');
   }
+
 
   //LIST
   getAllCaseRecord(pageNumber: number): Observable<ExportBill[]> {
@@ -48,6 +51,7 @@ export class ExportbillService {
     return this.http.delete(this.API_EXPORT_BILL + '/delete/' + id );
   }
 
+
   getExportBillDetail(id: number): Observable<ExportBillDetails> {
     return this.http.get<ExportBillDetails>(this.API_EXPORT_BILL + '-detail/find/' + id);
   }
@@ -55,5 +59,6 @@ export class ExportbillService {
   getAllExportBillDetail(): Observable<ExportBillDetails[]> {
     return  this.http.get<ExportBillDetails[]>(this.API_EXPORT_BILL + '-detail')
   }
+
 
 }

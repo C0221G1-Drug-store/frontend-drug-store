@@ -1,14 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
-import {ExportBill} from "../../../../model/export-bill/exportBill";
-import {Observable} from "rxjs";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-export-bill-delete',
   templateUrl: './export-bill-delete.component.html',
-  styleUrls: ['./export-bill-delete.component.css']
+
 })
 export class ExportBillDeleteComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import {Manufacturer} from "../../../../model/export-bill/manufacturer";
 @Component({
   selector: 'app-export-bill-print',
   templateUrl: './export-bill-print.component.html',
-  styleUrls: ['./export-bill-print.component.css']
+
 })
 export class ExportBillPrintComponent implements OnInit {
 
