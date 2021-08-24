@@ -120,7 +120,6 @@ export class DrugListComponent implements OnInit {
 
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.notFound = false;
       this.notSelected = true;
     });
   }
@@ -140,6 +139,7 @@ export class DrugListComponent implements OnInit {
   search() {
     if (this.sign === 'all') {
       this.ngOnInit();
+      this.notFound = false;
       this.searched = false;
     } else {
       this.getAllSearchPagination(this.field, this.sign, this.input, 0);
@@ -148,8 +148,10 @@ export class DrugListComponent implements OnInit {
         this.drugsSearchNotPagination = drugs;
         if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) === 0) {
           this.totalPagination = this.drugsSearchNotPagination.length / 5;
+          this.notFound = false;
         } else if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) !== 0) {
           this.totalPagination = (Math.floor(this.drugsSearchNotPagination.length / 5)) + 1;
+          this.notFound = false;
         } else {
           this.totalPagination = 0;
           this.notFound = true;

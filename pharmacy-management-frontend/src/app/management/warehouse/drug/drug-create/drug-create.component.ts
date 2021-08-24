@@ -54,6 +54,7 @@ export class DrugCreateComponent implements OnInit {
       this.drugService.save(this.drugForm.value).subscribe(data => {
         this.created = true;
         this.notificationDialog();
+        this.backToList();
         this.created = false;
         for (let i = 0; i<this.urlImage.length; i++){
           let drugImage = {
