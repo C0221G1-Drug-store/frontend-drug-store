@@ -96,38 +96,6 @@ export class GroupComponent implements OnInit {
     });
   }
 
-  sortDrugAmountDesc() {
-    this.drugs = this.drugs.sort((n1, n2) => {
-      if (n1.drugAmount < n2.drugAmount) {
-        this.toggleBooleanAmount = true;
-        return 1;
-      }
-
-      if (n1.drugAmount > n2.drugAmount) {
-        this.toggleBooleanAmount = true;
-        return -1;
-      }
-      this.toggleBooleanAmount = true;
-      return 0;
-    });
-  }
-
-  sortDrugAmountAsc() {
-    this.drugs = this.drugs.sort((n1, n2) => {
-      if (n1.drugAmount < n2.drugAmount) {
-        this.toggleBooleanAmount = false;
-        return -1;
-      }
-
-      if (n1.drugAmount > n2.drugAmount) {
-        this.toggleBooleanAmount = false;
-        return 1;
-      }
-      this.toggleBooleanAmount = false;
-      return 0;
-    });
-  }
-
   //#region ADD DRUG IN CART
   addCart(drugId: number, drugName: string) {
     this.drugCartList = JSON.parse(localStorage.getItem(CART_KEY));
