@@ -96,4 +96,15 @@ legend.scheduler-border {
   padding: 0 10px; /* To give a bit of padding on the left and right */
   border-bottom: none;
 }
+.selected {
+  background: #63B8FF !important;
+  color: white;
+}
+.btn-create {
+  background-color: #2fc1a6;
+  color: white;
+}
+.btn-create:hover {
+  background-color: #52B6C1;
+}
 

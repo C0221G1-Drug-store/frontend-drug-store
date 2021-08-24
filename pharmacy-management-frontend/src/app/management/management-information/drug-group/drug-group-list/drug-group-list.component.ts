@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {DrugGroup} from "../../../../model/drug-group";
+import {DrugGroupDto} from "../../../../model/drug-group";
 import {DrugGroupService} from "../../../../service/drug-group.service";
 import {DrugGroupDeleteComponent} from "../drug-group-delete/drug-group-delete.component";
-import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-
-
+import { FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 
@@ -16,26 +14,32 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./drug-group-list.component.css']
 })
 export class DrugGroupListComponent implements OnInit {
-
-  drugGroups: DrugGroup[];
+  drugGroups: DrugGroupDto[];
+  drugGroupList: DrugGroupDto[];
   drugGroupIdColor: number;
-  drugGroup: DrugGroup;
-  code = "";
-  name = "";
-  id: number;
-  smgCode = "";
-  smgName = "";
-  pages: Array<any>;
+  drugGroup: DrugGroupDto;
+  pages: Array<any> = [];
   page = 0;
+  code = 'NT001';
+  codeId: number;
+  err = true;
+  name = '';
+  drugGroupForm: FormGroup = new FormGroup({
+    drugGroupCode: new FormControl(''),
+    drugGroupName: new FormControl('', [Validators.required, Validators.maxLength(30)])
+  })
 
 
   constructor(private drugGroupService: DrugGroupService,
               private dialog: MatDialog,
               private toastr: ToastrService) {
+
   }
 
   ngOnInit(): void {
     this.getAll();
+    this.getDrugGroup();
+
 
   }
 
@@ -44,12 +48,25 @@ export class DrugGroupListComponent implements OnInit {
       this.drugGroups = next['content'];
       this.pages = new Array<any>(next['totalPages']);
     });
+  }
 
+  getDrugGroup() {
+    this.drugGroupService.getAll().subscribe(next => {
+      this.drugGroupList = next;
+      this.codeId = next.length;
+      if (this.codeId <= 9) {
+        this.code = 'NT00' + (this.codeId + 1);
+      } else if (this.codeId < 100) {
+        this.code = 'NT0' + (this.codeId + 1);
+      } else {
+        this.code = 'NT' + (this.codeId + 1);
+      }
+    });
   }
 
   previous() {
     if (this.page === 0) {
-      alert('Khong tim thay trang');
+      this.showPage()
     } else {
       this.page = this.page - 1;
       this.getAll();
@@ -58,106 +75,139 @@ export class DrugGroupListComponent implements OnInit {
 
   next() {
     if (this.page > this.pages.length - 2) {
-      alert('ko tim thay trang');
+      this.showPage()
     } else {
       this.page = this.page + 1;
       this.getAll();
     }
   }
+
   setPage(i: number) {
     this.page = i;
     this.getAll();
   }
+
   color(drugGroupId: number) {
-    this.drugGroupIdColor = drugGroupId
+    this.err = !this.err;
+    if (this.err === false) {
+      this.drugGroupIdColor = drugGroupId;
+
+    } else {
+      this.drugGroupIdColor = null;
+      this.drugGroupForm.reset();
+      this.getDrugGroup();
+
+
+    }
+
   }
 
 
-  getObj(drugGroup: DrugGroup) {
-    this.name = drugGroup.drugGroupName;
-    this.code = drugGroup.drugGroupCode;
+
+  getObj(drugGroup: DrugGroupDto) {
+
+    this.drugGroupForm = new FormGroup({
+      drugGroupCode: new FormControl(drugGroup.drugGroupCode),
+      drugGroupName: new FormControl(drugGroup.drugGroupName, [Validators.required, Validators.maxLength(30)])
+    })
     this.drugGroup = drugGroup
+
+
   }
 
   update() {
-    if (this.code == "") {
-      this.smgCode = "Mã nhóm thuốc không được để trống."
-    }else {
-      this.smgCode ="";
-    }
-    if (this.name == "") {
-      this.smgName = "Tên nhóm thuốc không được để trống."
-    } else {
-      this.smgName ="";
-    }
-    this.drugGroup.drugGroupCode = this.code;
-    this.drugGroup.drugGroupName = this.name;
-    this.drugGroupService.update(this.drugGroup.drugGroupId, this.drugGroup).subscribe(() => {
-      console.log(this.id)
-      this.showEdit()
-      this.name = "";
-      this.code = "";
+  if(this.drugGroupIdColor==null){
+    this.showEditErrs();
+  }
+    const drugGroup = this.drugGroupForm.value;
+    this.drugGroupService.update(this.drugGroup.drugGroupId, drugGroup).subscribe(() => {
+      this.getAll();
+      this.showEdit();
+      this.drugGroupForm.reset();
+      this.getDrugGroup()
     }, e => {
-      this.showEditErr()
-      console.log(e);
+      this.showEditErr();
     });
 
   }
 
   create() {
-    const drugGroup = {
-      drugGroupId: null,
-      drugGroupCode: "",
-      drugGroupName: ""
-    }
-    if (this.code == "") {
-      this.smgCode = "Mã nhóm thuốc không được để trống."
-    }else {
-      this.smgCode ="";
-    }
-    if (this.name == "") {
-      this.smgName = "Tên nhóm thuốc không được để trống."
-    } else {
-      this.smgName =" ";
-    }
-    drugGroup.drugGroupName = this.name;
+    const drugGroup = this.drugGroupForm.value;
     drugGroup.drugGroupCode = this.code;
+
     this.drugGroupService.save(drugGroup).subscribe(() => {
-      this.showCreate()
+      this.getAll();
+      this.showCreate();
+      this.drugGroupForm.reset();
+      this.getDrugGroup();
+
     }, e => {
       this.showCreateErr()
-      console.log(e);
-    });
-  }
-  showCreate() {
-    this.toastr.success('tạo mới thành công', 'Toastr fun!');
-  }
-  showCreateErr() {
-    this.toastr.success('tạo mới thất bại', 'Toastr fun!');
-  }
-  showEdit() {
-    this.toastr.success('cập nhật thành công', 'Toastr fun!');
-  }
-  showEditErr() {
-    this.toastr.error('cập nhật thất bại', 'Toastr fun!');
-  }
-  showDelete(){
-    this.toastr.success('xóa thành công', 'Toastr fun!');
-  }
-  onDeleteHandler(): void {
-    const dialogRef = this.dialog.open(DrugGroupDeleteComponent, {
-      width: '250px',
-      data: this.drugGroup
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.drugGroupService.delete(this.drugGroup.drugGroupId).subscribe(next => {
-          this.showDelete()
-          this.getAll();
-        });
-      }
     });
+  }
+
+
+  onDeleteHandler(): void {
+    if (this.drugGroupIdColor == null) {
+      this.showDeleteErr();
+    }else {
+      const dialogRef = this.dialog.open(DrugGroupDeleteComponent, {
+        width: '400px',
+        data: this.drugGroup
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.drugGroupService.delete(this.drugGroup.drugGroupId).subscribe(next => {
+            this.showDelete()
+            this.drugGroupForm.reset();
+            this.getDrugGroup();
+            this.drugGroupIdColor = null;
+            this.getAll();
+          });
+        }
+      });
+    }
+
+
+
+  }
+
+
+
+  get drugGroupName() {
+    return this.drugGroupForm.get('drugGroupName');
+  }
+  showEditErrs() {
+    this.toastr.error('Chọn trừơng muốn sửa', 'Cảnh báo!');
+  }
+  showPage() {
+    this.toastr.error('không tìm thấy trang', 'Cảnh báo!');
+  }
+
+  showCreate() {
+    this.toastr.success('Tạo mới thành công', 'Thông báo!');
+  }
+
+  showCreateErr() {
+    this.toastr.error('Tạo mới thất bại', 'Cảnh Báo!');
+  }
+
+  showEdit() {
+    this.toastr.success('Cập nhật thành công', 'Thông báo!');
+  }
+
+  showEditErr() {
+    this.toastr.error('Cập nhật thất bại', 'Cảnh báo!');
+  }
+
+  showDelete() {
+    this.toastr.success('Xóa thành công', 'Thông báo!');
+  }
+
+  showDeleteErr() {
+    this.toastr.error('Không thành công', 'Cảnh báo!');
   }
 
 

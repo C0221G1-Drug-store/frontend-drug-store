@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DrugGroupRoutingModule } from './drug-group-routing.module';
 import {DrugGroupListComponent} from './drug-group-list/drug-group-list.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DrugGroupDeleteComponent} from "./drug-group-delete/drug-group-delete.component";
 
 
@@ -12,7 +12,8 @@ import {DrugGroupDeleteComponent} from "./drug-group-delete/drug-group-delete.co
     imports: [
         CommonModule,
         DrugGroupRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class DrugGroupModule { }
