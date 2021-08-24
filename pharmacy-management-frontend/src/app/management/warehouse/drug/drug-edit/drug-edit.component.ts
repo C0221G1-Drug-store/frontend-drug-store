@@ -64,7 +64,7 @@ export class DrugEditComponent implements OnInit {
         unit: new FormControl(drug.unit, [Validators.required]),
         conversionUnit: new FormControl(drug.conversionUnit, [Validators.required]),
         manufacturer: new FormControl(drug.manufacturer, [Validators.maxLength(25)]),
-        origin: new FormControl('',[Validators.required]),
+        origin: new FormControl(drug.origin,[Validators.required]),
         drugGroup: new FormControl(drug.drugGroup, [Validators.required]),
         note: new FormControl(drug.note, [Validators.maxLength(250)])
       });
