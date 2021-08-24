@@ -63,7 +63,7 @@
                   <label class="label-text"></label>
                   <div style="margin-left: 30%">
                     <button class="btn-search btn"
-                            (click)="getCaseRecordByFields(date1.value, date2.value, time1.value, time2.value, type.value,1)">
+                            (click)="getCaseRecordByFields(date1.value, date2.value, time1.value, time2.value, type.value)" (keydown.enter)="getCaseRecordByFields(date1.value, date2.value, time1.value, time2.value, type.value)">
                       <i class="fa fa-search" style="position: sticky; bottom: 0px;"></i>
                       Tìm kiếm
                     </button>
@@ -92,29 +92,38 @@
                     (click)="selectRecords(exportBill.exportBillId)"
                     [ngClass]="{'row-selected': selectRecord.indexOf(exportBill.exportBillId) !== -1}">
                   <td hidden></td>
-                  <td>{{exportBill.exportBillCode}}</td>
+                  <td style="max-width: 10%">{{exportBill.exportBillCode}}</td>
                   <td>{{exportBill.exportBillDate | date: 'dd/MM/yyyy'}}</td>
                   <td>{{exportBill.exportBillDate | date: 'HH:mm'}}</td>
-                  <td>{{exportBill.employee.employeeName}}</td>
-                  <td>{{0 | currencyVND}}</td>
-                  <td>{{exportBill.manufacturer.manufacturerName}}</td>
-                  <td>{{exportBill.exportBillReason}}</td>
+                  <td style="max-width: 10%">{{exportBill.employee.employeeName}}</td>
+                  <td>{{totalMoney[i] | currencyVND}}</td>
+                  <td style="max-width: 10%">{{exportBill.manufacturer.manufacturerName}}</td>
+                  <td style="max-width: 10%">{{exportBill.exportBillReason}}</td>
                 </tr>
                 </tbody>
               </table>
             </div>
 
-            <div class="d-flex justify-content-end">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" (click)="previous()">Trang trước</a></li>
-                  <li class="page-item" *ngFor="let p of pages;let i=index"><a class="page-link"
-                                                                               (click)="setPage(i)">{{i + 1}}</a></li>
-                  <li class="page-item"><a class="page-link" (click)="next()">Trang sau</a></li>
-                </ul>
-              </nav>
-            </div>
+
+
+
+
           </fieldset>
+          <div class="d-flex justify-content-end">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
+
+          <!--            <div>-->
+          <!--              <nav aria-label="Page navigation example">-->
+          <!--                <ul class="pagination">-->
+          <!--                  <li class="page-item"><a class="page-link" (click)="previous()">Trang trước</a></li>-->
+          <!--                  <li class="page-item" *ngFor="let p of pages;let i=index"><a class="page-link"-->
+          <!--                                                                               (click)="setPage(i)">{{i + 1}}</a></li>-->
+          <!--                  <li class="page-item"><a class="page-link" (click)="next()">Trang sau</a></li>-->
+          <!--                </ul>-->
+          <!--              </nav>-->
+          <!--            </div>-->
+
           <div class="d-flex justify-content-end pt-4 pb-5">
             <button class="mr-5  btn btn-pay" type="button" [routerLink]="['/export-bill-refund']"><i
               class="fa fa-plus"></i> Thêm hóa đơn

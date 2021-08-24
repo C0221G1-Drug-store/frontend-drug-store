@@ -48,4 +48,12 @@ export class ExportbillService {
     return this.http.delete(this.API_EXPORT_BILL + '/delete/' + id );
   }
 
+  getExportBillDetail(id: number): Observable<ExportBillDetails> {
+    return this.http.get<ExportBillDetails>(this.API_EXPORT_BILL + '-detail/find/' + id);
+  }
+
+  getAllExportBillDetail(): Observable<ExportBillDetails[]> {
+    return  this.http.get<ExportBillDetails[]>(this.API_EXPORT_BILL + '-detail')
+  }
+
 }
