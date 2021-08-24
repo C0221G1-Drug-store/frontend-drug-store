@@ -116,10 +116,11 @@ export class DrugListComponent implements OnInit {
   notificationDialog(): void {
     const dialogRef = this.dialog.open(DrugNotificationComponent, {
       width: '500px',
-      data: {data1: this.notSelected, data2: this.notFound, data3: false}
+      data: {data1: this.notSelected, data2: this.notFound, data3: false, data4: false, data5: false}
 
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.notFound = false;
       this.notSelected = true;
     });
   }
@@ -139,7 +140,6 @@ export class DrugListComponent implements OnInit {
   search() {
     if (this.sign === 'all') {
       this.ngOnInit();
-      this.notFound = false;
       this.searched = false;
     } else {
       this.getAllSearchPagination(this.field, this.sign, this.input, 0);
@@ -148,10 +148,8 @@ export class DrugListComponent implements OnInit {
         this.drugsSearchNotPagination = drugs;
         if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) === 0) {
           this.totalPagination = this.drugsSearchNotPagination.length / 5;
-          this.notFound = false;
         } else if (this.drugsSearchNotPagination != null && (this.drugsSearchNotPagination.length % 5) !== 0) {
           this.totalPagination = (Math.floor(this.drugsSearchNotPagination.length / 5)) + 1;
-          this.notFound = false;
         } else {
           this.totalPagination = 0;
           this.notFound = true;
