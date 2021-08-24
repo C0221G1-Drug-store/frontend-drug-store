@@ -60,7 +60,6 @@ export class StatisticalChartComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   }
 
 
@@ -82,16 +81,15 @@ export class StatisticalChartComponent implements OnInit {
       return;
     }
     this.isLoad = true;
+    this.paintChartByDate();
     setTimeout(() => {
-      this.isLoad = false;
-      this.paintChartByDate();
       this.chartOption.series[0].data = [];
       this.chartOption.series[1].data = [];
-      this.isSuccess = true;
       this.showChartByWeekMonth();
+      this.isLoad = false;
+      this.isSuccess = true;
       this.isShowChart = true;
-    }, 2000);
-
+    },  2000 );
   }
 
   showChartByWeekMonth() {

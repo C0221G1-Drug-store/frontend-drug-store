@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {StatisticalChartComponent} from './statistical-chart/statistical-chart.component';
 import {NgApexchartsModule} from 'ng-apexcharts';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [ReportComponent, StatisticalChartComponent],
@@ -14,7 +15,8 @@ import {MatTabsModule} from '@angular/material/tabs';
         ReportRoutingModule,
         FormsModule,
         NgApexchartsModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressSpinnerModule
     ]
 })
 export class ReportModule {
