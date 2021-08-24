@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReportService} from '../../../service/report.service';
 
+
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -38,7 +39,7 @@ export class ReportComponent implements OnInit {
   }
 
   exportExcelHaveDate() {
-    if ((this.sDate === '' || this.eDate === '' || this.sTime === '' || this.eTime === '') && this.displayDate) {
+    if ((this.sDate === '' || this.eDate === '') && this.displayDate) {
       this.msgDate = 'Vui lòng chọn ngày.';
       return;
     }
