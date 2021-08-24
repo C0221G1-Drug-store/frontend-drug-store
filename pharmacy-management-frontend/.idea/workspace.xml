@@ -2,63 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ac4ff7c-9fac-4613-bea7-3425219b760d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete-customer-refund/delete-customer-refund.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete-customer-refund/delete-customer-refund.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete-customer-refund/delete-customer-refund.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete-customer-refund/delete-customer-refund.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete/delete.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete/delete.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete/delete.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/delete/delete.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/bill-sale.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/customer-group.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/customer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/bill-sale.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/bill-sale.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/content/content.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/common/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/warehouse-export.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-import/import-list-drug/import-list-drug.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-import/import-list-drug/import-list-drug.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-import/warehouse-import-create/warehouse-import-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-import/warehouse-import-create/warehouse-import-create.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/drug-of-bill.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/drug-of-bill.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/drug.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/drug.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/employee.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/service/drug.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/drug.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/export-bill/drug.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/export-bill/manufacturer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/export-bill/manufacturer.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +84,7 @@
       <workItem from="1629035723373" duration="1834000" />
       <workItem from="1629445672240" duration="512000" />
       <workItem from="1629561499308" duration="647000" />
+      <workItem from="1629793018215" duration="1471000" />
     </task>
     <servers />
   </component>
@@ -155,5 +101,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
