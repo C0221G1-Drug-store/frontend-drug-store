@@ -119,9 +119,16 @@ export class AccountEditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.accountForm.get('encrytedPassword').setValue('123456');
-        const accountNew = this.accountForm.value;
-        this.accountService.updateAccount(this.data, accountNew).subscribe(next => {
+        let accountDto: Account;
+        accountDto = {
+          id: this.data,
+          userName: this.accountForm.value.userName,
+          userCode: this.accountForm.value.userCode,
+          accountName: this.accountForm.value.accountName,
+          password: '123456',
+          roles: [this.accountForm.value.role]
+        };
+        this.accountService.updateAccount(this.data, accountDto).subscribe(next => {
           this._snackBar.open("Reset mật khẩu thành công!!!" , null,{
             duration: 4000,
             horizontalPosition: "right",
