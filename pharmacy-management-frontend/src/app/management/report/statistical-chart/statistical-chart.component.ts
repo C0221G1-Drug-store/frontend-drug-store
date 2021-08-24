@@ -12,7 +12,7 @@ import {
 } from 'ng-apexcharts';
 import {StatisticalChart} from '../../../model/statistical-chart';
 import {ReportService} from '../../../service/report.service';
-import {formatDate} from '@angular/common';
+
 
 export class ChartOptions {
   series: ApexAxisChartSeries;
@@ -34,7 +34,7 @@ export class StatisticalChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   chartOption?: Partial<ChartOptions>;
   isShowChart = false;
-  statisticalCharts: StatisticalChart[];
+  statisticalCharts: StatisticalChart[] = [];
   week: number;
   month: number;
   year: number;
@@ -53,19 +53,21 @@ export class StatisticalChartComponent implements OnInit {
   isSuccess = false;
   msgSuccess = '';
   type: string;
+  isLoad = false;
 
   constructor(private sv: ReportService) {
   }
 
 
   ngOnInit(): void {
-    console.log(this.subDate('2021-01-16T00:00:00'));
-    this.paintChartByDate();
+
   }
+
 
   showChart() {
     if (this.isWeek === false && this.isMonth === false && this.isYear === false) {
       this.msgDate = 'Vui lòng chọn theo tuần/tháng/năm.';
+      this.isSuccess = false;
       this.isShowChart = false;
       return;
     }
@@ -75,11 +77,21 @@ export class StatisticalChartComponent implements OnInit {
     }
     if (this.startDate === '' || this.endDate === '') {
       this.msgDate = 'Vui lòng chọn thời gian muốn hiển thị.';
+      this.isSuccess = false;
       this.isShowChart = false;
       return;
     }
-    this.showChartByWeekMonth();
-    this.isShowChart = true;
+    this.isLoad = true;
+    setTimeout(() => {
+      this.isLoad = false;
+      this.paintChartByDate();
+      this.chartOption.series[0].data = [];
+      this.chartOption.series[1].data = [];
+      this.isSuccess = true;
+      this.showChartByWeekMonth();
+      this.isShowChart = true;
+    }, 2000);
+
   }
 
   showChartByWeekMonth() {
@@ -93,13 +105,12 @@ export class StatisticalChartComponent implements OnInit {
     this.averageProfit = 0;
     this.turnover = 0;
     this.profit = 0;
-    this.chartOption.series[0].data = [];
-    this.chartOption.series[1].data = [];
     this.sv.showChart(this.startDate, this.endDate).subscribe(o => {
         this.statisticalCharts = o;
         if (this.statisticalCharts.length < 1) {
-          this.msgDate = 'Không tìm thấy dữ liệu.(null)';
           this.isShowChart = false;
+          this.msgDate = 'Không tìm thấy dữ liệu.';
+          this.isSuccess = false;
           return;
         }
         // tslint:disable-next-line:prefer-for-of
@@ -119,15 +130,21 @@ export class StatisticalChartComponent implements OnInit {
           this.chartOption.series[1].data.push({x: this.statisticalCharts[i].dateSale, y: this.statisticalCharts[i].profit});
           this.profit += this.statisticalCharts[i].profit;
         }
-        this.msgDate = '';
         this.averageTurnover = this.turnover / this.statisticalCharts.length;
         this.averageProfit = this.profit / this.statisticalCharts.length;
         this.turnover = Number(this.turnover.toFixed(1));
         this.profit = Number(this.profit.toFixed(1));
         this.averageTurnover = Number(this.averageTurnover.toFixed(1));
         this.averageProfit = Number(this.averageProfit.toFixed(1));
+        if (this.averageTurnover === 0 && this.averageProfit === 0 && this.turnover === 0 && this.profit === 0) {
+          this.isShowChart = false;
+          this.msgDate = 'Không tìm thấy dữ liệu.';
+          this.isSuccess = false;
+          return;
+        }
       }, e => {
-        this.msgDate = 'Không tìm thấy dữ liệu.(error)';
+        this.msgDate = 'Không tìm thấy dữ liệu.';
+        this.isSuccess = false;
         this.isShowChart = false;
       }
     );
@@ -176,6 +193,8 @@ export class StatisticalChartComponent implements OnInit {
   }
 
   choiceDate(choice) {
+    this.startDate = '';
+    this.endDate = '';
     this.month = undefined;
     this.year = undefined;
     this.week = undefined;

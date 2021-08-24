@@ -1,19 +1,18 @@
-<!--2021-08-16T00:00:00-->
 <div class="container justify-content-between">
   <div *ngIf="displayDate">
     <fieldset class="scheduler-border">
       <legend class="scheduler-border">Thời gian</legend>
       <div class="row ">
-        <div class="mx-3 col">Từ ngày:
+        <div class="mx-3 col"><b>Từ ngày:</b>
           <input type="date" [(ngModel)]="sDate" class=" form-control ">
         </div>
-        <div class="mx-3 col">Đến ngày:
+        <div class="mx-3 col"><b>Đến ngày:</b>
           <input type="date" [(ngModel)]="eDate" class=" form-control">
         </div>
-        <div class="mx-3 col">Từ giờ:
+        <div class="mx-3 col"><b>Từ giờ:</b>
           <input type="time" [(ngModel)]="sTime" class=" form-control">
         </div>
-        <div class="mx-3 col">Đến giờ:
+        <div class="mx-3 col"><b>Đến giờ:</b>
           <input type="time" [(ngModel)]="eTime" class=" form-control">
         </div>
       </div>
@@ -25,22 +24,24 @@
       <legend class="scheduler-border">Hệ thống báo cáo</legend>
       <div class="row">
         <div class="col-4">
-          <legend class="scheduler-border"><h4>HÀNG HÓA, KHÁCH HÀNG</h4></legend>
+          <legend class="scheduler-border"><h4><b>HÀNG HÓA, KHÁCH HÀNG</b></h4></legend>
         </div>
         <div class="col-4">
-          <legend class="scheduler-border"><h4>THU CHI, CÔNG NỢ</h4></legend>
+          <legend class="scheduler-border"><h4><b>THU CHI, CÔNG NỢ</b></h4></legend>
         </div>
         <div class="col-4">
-          <legend class="scheduler-border"><h4>DANH SÁCH, PHÂN TÍCH</h4></legend>
+          <legend class="scheduler-border"><h4><b>DANH SÁCH, PHÂN TÍCH</b></h4></legend>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
-          <input type="radio" name="check" value="reportImportDetails" [(ngModel)]="choice" (click)="showDate()">
+          <input tabindex="0" type="radio" name="check" value="reportImportDetails" [(ngModel)]="choice"
+                 (click)="showDate()">
           Báo cáo chi tiết nhập kho
         </div>
         <div class="col-4">
-          <input type="radio" name="check" value="reportTurnover" (click)="showDate()" [(ngModel)]="choice"> Báo cáo doanh thu
+          <input tabindex="1" type="radio" name="check" value="reportTurnover" (click)="showDate()"
+                 [(ngModel)]="choice"> Báo cáo doanh thu
         </div>
         <div class="col-4">
           <input type="radio" name="check" value="medicinesNeedToBeImporteds" (click)="hiddenDate()"
@@ -128,4 +129,3 @@
     </div>
   </div>
 </div>
-
