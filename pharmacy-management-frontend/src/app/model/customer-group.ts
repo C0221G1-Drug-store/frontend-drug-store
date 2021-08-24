@@ -1,4 +1,4 @@
 export interface CustomerGroup {
-  id?: number;
-  name?: string;
+  customerGroupId?: number;
+  customerGroupName?: string;
 }

@@ -4,11 +4,12 @@ import { ManagementInformationRoutingModule } from './management-information-rou
 import {DrugGroupModule} from './drug-group/drug-group.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CustomerListComponent],
   imports: [
     CommonModule,
     ManagementInformationRoutingModule,

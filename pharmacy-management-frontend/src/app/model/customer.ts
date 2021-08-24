@@ -1,11 +1,13 @@
 import {CustomerGroup} from './customer-group';
 
 export interface Customer {
-  id?: number;
-  address?: string;
-  age?: number;
-  customerCode?: string;
-  name?: string;
-  phone?: string;
-  customerGroup?: CustomerGroup;
+  customerId?: number;
+  customerCode: string;
+  customerName?: string;
+  customerAge?: number;
+  customerAddress?: string;
+  customerPhone?: string;
+  customerGroup: CustomerGroup;
+  customerNote?: string;
+  flag?: boolean;
 }

@@ -11,6 +11,7 @@ import {Employee} from '../../../model/employee';
 import {DeleteComponent} from '../delete/delete.component';
 import {formatDate} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {CustomerService} from "../../../service/customer.service";
 
 @Component({
   selector: 'app-wholesale',
@@ -48,7 +49,8 @@ export class WholesaleComponent implements OnInit {
               private router: Router,
               private billSaleService: BillSaleService,
               private  toast: ToastrService,
-              private drugService: DrugService) {
+              private drugService: DrugService,
+              private customerService: CustomerService) {
     const state = this.router.getCurrentNavigation().extras.state as { data };
     if (state != null) {
       this.drugOfBillList = state.data;
@@ -73,7 +75,7 @@ export class WholesaleComponent implements OnInit {
   }
 
   getAllCustomer() {
-    this.billSaleService.getListCustomer().subscribe(next => {
+    this.customerService.getAll().subscribe(next => {
       this.customerList = next;
     });
   }

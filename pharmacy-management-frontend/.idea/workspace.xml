@@ -2,29 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ac4ff7c-9fac-4613-bea7-3425219b760d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/employee.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/employee.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/customer.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/employee/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/employee/employee.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-list/manufacturer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-list/manufacturer-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-update/manufacturer-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-update/manufacturer-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/customer-group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/customer-group.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/customer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/customer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/management/management-information" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -72,6 +64,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management\management-information" />
       <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\service" />
       <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management" />
     </key>
@@ -125,7 +118,7 @@
       <workItem from="1629793018215" duration="3852000" />
       <workItem from="1629800495414" duration="3250000" />
       <workItem from="1629804337239" duration="493000" />
-      <workItem from="1629810412007" duration="3008000" />
+      <workItem from="1629810412007" duration="6630000" />
     </task>
     <servers />
   </component>
