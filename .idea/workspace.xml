@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="46c65acd-ed74-4561-b304-97e6b22ead2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../module4/11_web_service_restful/bai_tap/01_ung_dung_blog/src/main/java/com/codegym/blog/model/entity/Blog1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/controller/BenhAnRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/entity/BenhAn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/entity/BenhNhan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/entity/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/entity/Medicine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/repository/BenhAnRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/service/BenhAnServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/src/main/java/demo/service/IBenhAnService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem-tra-module5/src/app/data/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/controller/BenhAnRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/entity/BenhAn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/entity/BenhNhan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/repository/BenhAnRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/service/BenhAnServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kiem_tra_module5_back_end/src/main/java/service/IBenhAnService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/Drug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/ExportBill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/ExportBillDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/ExportBillType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../module6/code/back-end/hoa_don_xuat_huy/src/main/java/hoadon/entity/Manufacturer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/11_web_service_restful/bai_tap/01_ung_dung_blog/src/main/java/com/codegym/blog/controller/BlogRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/11_web_service_restful/bai_tap/01_ung_dung_blog/src/main/java/com/codegym/blog/controller/BlogRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/11_web_service_restful/bai_tap/01_ung_dung_blog/src/main/java/com/codegym/blog/model/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/11_web_service_restful/bai_tap/01_ung_dung_blog/src/main/java/com/codegym/blog/model/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/contract/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/contract/Contract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/customer/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/customer/CustomerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/entity/customer/CustomerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/IGenerateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/IGenerateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/ContractDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/ContractDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/ContractServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/ContractServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study/src/main/java/com/codegym/model/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/contract/contract-edit/contract-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/contract/contract-edit/contract-edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/contract/contract-edit/contract-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/contract/contract-edit/contract-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/contract/contract-list/contract-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/contract/contract-list/contract-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/contract/contract-list/contract-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/contract/contract-list/contract-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/contract/contract.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/contract/contract.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/customer/customer-list/customer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/customer/customer-list/customer-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/customer/customer-list/customer-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/customer/customer-list/customer-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/employee/employee-list/employee-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/employee/employee-list/employee-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/module/employee/employee-list/employee-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/module/employee/employee-list/employee-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/employee-service/employee.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/employee-service/employee.service.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1vkK9dPNeNH6EyESry7gy578WAE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/node_modules/protractor" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\C0221G1-LeKhanhHa\module5\angular-case-study\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (angular-case-study)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (angular-case-study)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$/node_modules/protractor" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46c65acd-ed74-4561-b304-97e6b22ead2c" name="Default Changelist" comment="" />
+      <created>1627100496701</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627100496701</updated>
+      <workItem from="1627100499673" duration="15974000" />
+      <workItem from="1627124874139" duration="10005000" />
+      <workItem from="1627190147425" duration="2218000" />
+      <workItem from="1627192644416" duration="7568000" />
+      <workItem from="1627222306376" duration="5195000" />
+      <workItem from="1627261632086" duration="23269000" />
+      <workItem from="1627350772338" duration="2160000" />
+      <workItem from="1627356761807" duration="10549000" />
+      <workItem from="1627434177011" duration="11559000" />
+      <workItem from="1627476151264" duration="7813000" />
+      <workItem from="1627522189823" duration="1434000" />
+      <workItem from="1627542977703" duration="4663000" />
+      <workItem from="1627548987142" duration="1495000" />
+      <workItem from="1627738045234" duration="1072000" />
+      <workItem from="1627889559524" duration="1181000" />
+      <workItem from="1627896278575" duration="2893000" />
+      <workItem from="1627954775192" duration="4461000" />
+      <workItem from="1628041515268" duration="140000" />
+      <workItem from="1628041683382" duration="4397000" />
+      <workItem from="1628047968037" duration="853000" />
+      <workItem from="1628126633068" duration="1716000" />
+      <workItem from="1628433280097" duration="2002000" />
+      <workItem from="1628998598078" duration="292000" />
+      <workItem from="1628999542022" duration="34000" />
+      <workItem from="1629020270155" duration="660000" />
+      <workItem from="1629021271844" duration="36000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1627195310433">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1627195310433" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1628130970087">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1628130970087" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1627972665026">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1627972665026" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1627972665026">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1627972665026" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1627972665025">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1627972665025" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1627972665026">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1627972665026" />
+    <state x="510" y="43" key="refactoring.ChangeSignatureDialog" timestamp="1627544871456">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="510" y="43" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1627544871456" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1627482708695">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1627482708695" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1627101222578">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1627101222578" />
+  </component>
+</project>

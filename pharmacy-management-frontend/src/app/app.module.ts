@@ -7,14 +7,25 @@ import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import {DrugModule} from './management/warehouse/drug/drug.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {FormsModule} from '@angular/forms';
 import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
 import {ToastrModule} from "ngx-toastr";
+import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
+import {MatSelectModule} from '@angular/material/select';
+import {NgxPrintModule} from 'ngx-print';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {Overlay} from '@angular/cdk/overlay';
+import localeVi from '@angular/common/locales/vi';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localeVi, 'vi-VN');
 
 @NgModule({
   declarations: [
@@ -35,9 +46,21 @@ import {ToastrModule} from "ngx-toastr";
     ManufacturerModule,
     ToastrModule.forRoot({
       timeOut:2000,
-    })
+    }),
+    HttpClientModule,
+    WarehouseExportModule,
+    MatSelectModule,
+    NgxPrintModule,
+    MatSelectModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NgxPrintModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
-  providers: [],
+  providers: [MatDialog ,Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
