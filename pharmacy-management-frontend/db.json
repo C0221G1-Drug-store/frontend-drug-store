@@ -1,0 +1,48 @@
+{
+  "Customer": [
+    {
+      "id": 1,
+      "idCustomer": "json-server",
+      "name": "typicode",
+      "age": "typicode",
+      "address": "typicode",
+      "phone": "typicode",
+      "customerGroup": "typicode",
+      "note": "typicode",
+      "statusDelete": true
+    },
+    {
+      "id": 2,
+      "idCustomer": "json-server",
+      "name": "typicode",
+      "age": "typicode",
+      "address": "typicode",
+      "phone": "typicode",
+      "customerGroup": "typicode",
+      "note": "typicode",
+      "statusDelete": true
+    },
+    {
+      "id": 3,
+      "idCustomer": "json-server",
+      "name": "typicode",
+      "age": "typicode",
+      "address": "typicode",
+      "phone": "typicode",
+      "customerGroup": "typicode",
+      "note": "typicode",
+      "statusDelete": true
+    },
+    {
+      "id": 4,
+      "idCustomer": "json-server",
+      "name": "typicode",
+      "age": "typicode",
+      "address": "typicode",
+      "phone": "typicode",
+      "customerGroup": "typicode",
+      "note": "typicode",
+      "statusDelete": true
+    }
+  ]
+}
