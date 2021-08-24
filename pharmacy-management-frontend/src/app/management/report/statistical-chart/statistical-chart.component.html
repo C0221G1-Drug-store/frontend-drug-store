@@ -1,3 +1,11 @@
+<!--<div class="d-flex" id="load" >-->
+<!--  <span id="load1" style="display: none" class="spinner-grow mx-1"></span>-->
+<!--  <span id="load2" style="display: none" class="spinner-grow mx-1"></span>-->
+<!--  <span id="load3" style="display: none" class="spinner-grow mx-1"></span>-->
+<!--  <span id="load4" style="display: none" class="spinner-grow mx-1"></span>-->
+<!--  <span id="load5" style="display: none" class="spinner-grow mx-1"></span>-->
+<!--</div>-->
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-sm-12">
@@ -5,7 +13,7 @@
         <fieldset class="scheduler-border">
           <legend class="scheduler-border">Thời gian</legend>
           <div class="d-flex">
-            <span>Theo:</span>
+            <span style="position: absolute; top: 33px; left: 20px; font-size: 14px">Theo: </span>
             <select class="ml-4 w-100 form-control" style="height: 33px" (change)="choiceDate($event.target)">
               <option disabled selected value="">Chọn</option>
               <option value="week">Tuần</option>
@@ -35,6 +43,11 @@
           <div>
             <p style="color: red" *ngIf="!isSuccess" class="my-2">- {{msgDate}}</p>
             <p *ngIf="isSuccess" class="my-2">- {{msgDate}}</p>
+            <div [style]="isLoad?'display:block':'display:none'"
+                 style="position: absolute;top: 103px;left: 40px; z-index: 10; font-size: 16px; color: rgba(86,127,234,0.7)">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span>  Loading...</span>
+            </div>
             <div class="text-right">
               <button class="btn btn-search button" (click)="showChart()"><i class="fa fa-area-chart"> Xem</i></button>
             </div>
@@ -48,25 +61,27 @@
           <div class="d-flex py-3 " *ngIf="isShowChart">
             <div class="col-5">Doanh thu</div>
             <div class="col-7 "><input readonly style="height: 33px; background-color: white"
-                                       class=" w-100 text-right form-control" type="text" value="{{turnover}}"></div>
+                                       class=" w-100 text-right form-control" type="text" value="{{turnover}} ₫"></div>
           </div>
           <div class="d-flex py-3" *ngIf="isShowChart">
             <div class="col-5">Lợi nhuận</div>
             <div class="col-7 "><input style="height: 33px; background-color: white" readonly
-                                       class="w-100 text-right form-control" type="text" value="{{profit}}"></div>
+                                       class="w-100 text-right form-control" type="text" value="{{profit}} ₫"></div>
           </div>
           <div class="d-flex py-3" *ngIf="isShowChart">
             <div class="col-5">Doanh thu TB</div>
             <div class="col-7 "><input style="height: 33px; background-color: white" readonly
-                                       class="w-100 text-right form-control" type="text" value="{{averageTurnover}}">
+                                       class="w-100 text-right form-control" type="text" value="{{averageTurnover}} ₫">
             </div>
           </div>
           <div class="d-flex py-3" *ngIf="isShowChart">
             <div class="col-5">Lợi Nhuận TB</div>
-            <div class="col-7 "><input style="height: 33px; background-color: white" readonly value="{{averageProfit}}"
+            <div class="col-7 "><input style="height: 33px; background-color: white" readonly
+                                       value="{{averageProfit}} ₫"
                                        class="w-100 text-right form-control" type="text"></div>
           </div>
-          <p *ngIf="!isShowChart" style="position: absolute; top: 100px; left: 170px">Không tìm thấy dữ liệu. </p>
+          <p *ngIf="!isShowChart" style="position: absolute; top: 100px; left: 170px">Không tìm thấy dữ
+            liệu. </p>
         </fieldset>
       </div>
     </div>
@@ -76,7 +91,7 @@
       <fieldset class="scheduler-border ">
         <legend class="scheduler-border">Biểu đồ</legend>
         <div *ngIf="isShowChart" style="margin: 31.5px 0">
-          <apx-chart id="chart"
+          <apx-chart id="chart" style="z-index: 2"
                      [series]="chartOption.series"
                      [chart]="chartOption.chart"
                      [xaxis]="chartOption.xaxis"
@@ -87,6 +102,12 @@
           ></apx-chart>
         </div>
         <div *ngIf="!isShowChart" style="position: relative;height: 428px; ">
+          <!--          <button class="btn btn-light" type="button" disabled-->
+          <!--                  [style]="isLoad?'display:block':'display:none'"-->
+          <!--                  style="position: absolute;top: 230px;left: 165px; z-index: 100000000">-->
+          <!--            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+          <!--            Loading...-->
+          <!--          </button>-->
           <p style=" position: absolute; top: 200px; left: 160px"> Không tìm thấy dữ liệu. </p>
         </div>
 
@@ -102,4 +123,5 @@
   </div>
   <br>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+

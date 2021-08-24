@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ReportService} from '../../../service/report.service';
 
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -22,6 +21,11 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  tabfocus() {
+    const check1 = document.getElementById('check1');
+    const check2 = document.getElementById('check2');
 
   }
 
@@ -35,10 +39,10 @@ export class ReportComponent implements OnInit {
 
   exportExcelHaveDate() {
     if ((this.sDate === '' || this.eDate === '' || this.sTime === '' || this.eTime === '') && this.displayDate) {
-      this.msgDate = 'Vui lòng chọn ngày giờ.';
+      this.msgDate = 'Vui lòng chọn ngày.';
       return;
     }
-    if (((Date.parse(this.sDate) - Date.parse(this.eDate) > 86400000) && (this.displayDate))) {
+    if (((Date.parse(this.sDate) - Date.parse(this.eDate) > 43100000))) {
       this.msgDate = 'Vui lòng chọn ngày bắt đầu trước ngày kết thúc.';
       return;
     }

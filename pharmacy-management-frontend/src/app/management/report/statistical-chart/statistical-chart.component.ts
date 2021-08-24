@@ -12,7 +12,7 @@ import {
 } from 'ng-apexcharts';
 import {StatisticalChart} from '../../../model/statistical-chart';
 import {ReportService} from '../../../service/report.service';
-import {formatDate} from '@angular/common';
+
 
 export class ChartOptions {
   series: ApexAxisChartSeries;
@@ -34,7 +34,7 @@ export class StatisticalChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   chartOption?: Partial<ChartOptions>;
   isShowChart = false;
-  statisticalCharts: StatisticalChart[];
+  statisticalCharts: StatisticalChart[] = [];
   week: number;
   month: number;
   year: number;
@@ -53,20 +53,42 @@ export class StatisticalChartComponent implements OnInit {
   isSuccess = false;
   msgSuccess = '';
   type: string;
+  isLoad = false;
 
   constructor(private sv: ReportService) {
   }
 
 
   ngOnInit(): void {
-    this.paintChartByDate();
+    // setTimeout(() => {
+    //   document.getElementById('load1').style.display = 'block';
+    //   setTimeout(() => {
+    //     document.getElementById('load2').style.display = 'block';
+    //     setTimeout(() => {
+    //       document.getElementById('load3').style.display = 'block';
+    //       setTimeout(() => {
+    //         document.getElementById('load4').style.display = 'block';
+    //         setTimeout(() => {
+    //           document.getElementById('load5').style.display = 'block';
+    //           setTimeout(() => {
+    //             // document.getElementById('load5').style.display = 'none';
+    //             // document.getElementById('load4').style.display = 'none';
+    //             // document.getElementById('load3').style.display = 'none';
+    //             // document.getElementById('load2').style.display = 'none';
+    //             // document.getElementById('load1').style.display = 'none';
+    //           }, 600);
+    //         }, 300);
+    //       }, 300);
+    //     }, 300);
+    //   }, 300);
+    // }, 300);
   }
 
+
   showChart() {
-    this.chartOption.series[0].data = [];
-    this.chartOption.series[1].data = [];
     if (this.isWeek === false && this.isMonth === false && this.isYear === false) {
       this.msgDate = 'Vui lòng chọn theo tuần/tháng/năm.';
+      this.isSuccess = false;
       this.isShowChart = false;
       return;
     }
@@ -76,11 +98,21 @@ export class StatisticalChartComponent implements OnInit {
     }
     if (this.startDate === '' || this.endDate === '') {
       this.msgDate = 'Vui lòng chọn thời gian muốn hiển thị.';
+      this.isSuccess = false;
       this.isShowChart = false;
       return;
     }
-    this.showChartByWeekMonth();
-    this.isShowChart = true;
+    this.isLoad = true;
+    setTimeout(() => {
+      this.isLoad = false;
+      this.paintChartByDate();
+      this.chartOption.series[0].data = [];
+      this.chartOption.series[1].data = [];
+      this.isSuccess = true;
+      this.showChartByWeekMonth();
+      this.isShowChart = true;
+    }, 2000);
+
   }
 
   showChartByWeekMonth() {
@@ -97,8 +129,9 @@ export class StatisticalChartComponent implements OnInit {
     this.sv.showChart(this.startDate, this.endDate).subscribe(o => {
         this.statisticalCharts = o;
         if (this.statisticalCharts.length < 1) {
-          this.msgDate = 'Không tìm thấy dữ liệu.(null)';
           this.isShowChart = false;
+          this.msgDate = 'Không tìm thấy dữ liệu.';
+          this.isSuccess = false;
           return;
         }
         // tslint:disable-next-line:prefer-for-of
@@ -124,8 +157,15 @@ export class StatisticalChartComponent implements OnInit {
         this.profit = Number(this.profit.toFixed(1));
         this.averageTurnover = Number(this.averageTurnover.toFixed(1));
         this.averageProfit = Number(this.averageProfit.toFixed(1));
+        if (this.averageTurnover === 0 && this.averageProfit === 0 && this.turnover === 0 && this.profit === 0) {
+          this.isShowChart = false;
+          this.msgDate = 'Không tìm thấy dữ liệu.';
+          this.isSuccess = false;
+          return;
+        }
       }, e => {
-        this.msgDate = 'Không tìm thấy dữ liệu.(error)';
+        this.msgDate = 'Không tìm thấy dữ liệu.';
+        this.isSuccess = false;
         this.isShowChart = false;
       }
     );
