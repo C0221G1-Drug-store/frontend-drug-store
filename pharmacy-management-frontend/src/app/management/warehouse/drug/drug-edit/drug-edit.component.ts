@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DrugService} from '../../../../service/drug.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {formatDate} from '@angular/common';
 import {finalize} from 'rxjs/operators';
@@ -9,7 +9,8 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {Drug} from '../../../../model/drug';
-
+import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
+declare var $: any;
 @Component({
   selector: 'app-drug-edit',
   templateUrl: './drug-edit.component.html',
@@ -23,10 +24,12 @@ export class DrugEditComponent implements OnInit {
   drugGroup;
   selectedImage;
   urlImage;
+  edited;
 
   constructor(private drugService: DrugService,
+              private dialog: MatDialog,
               private drugGroupService: DrugGroupService,
-              private dialogRef: MatDialogRef<DrugDeleteComponent>,
+              private dialogRef: MatDialogRef<DrugEditComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private storage: AngularFireStorage) {
     this.drugId = this.data.data1.drugId;
@@ -36,6 +39,9 @@ export class DrugEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(() => {
+      $('.select2').select2();
+    });
     this.getAllDrugGroup();
   }
   compareFn(c1: Drug, c2: Drug): boolean {
@@ -56,7 +62,7 @@ export class DrugEditComponent implements OnInit {
         unit: new FormControl(drug.unit, [Validators.required]),
         conversionUnit: new FormControl(drug.conversionUnit, [Validators.required]),
         manufacturer: new FormControl(drug.manufacturer, [Validators.maxLength(25)]),
-        origin: new FormControl(drug.origin, [Validators.required]),
+        origin: new FormControl('',[Validators.required]),
         drugGroup: new FormControl(drug.drugGroup, [Validators.required]),
         note: new FormControl(drug.note, [Validators.maxLength(250)])
       });
@@ -64,9 +70,11 @@ export class DrugEditComponent implements OnInit {
   }
   updateDrug() {
     this.drugService.update(this.drugId, this.drugCode,this.drugForm.value).subscribe(data => {
-      alert('Cập nhật thành công');
+
       this.dialogRef.close();
-      // console.log(data);
+      this.edited = true;
+      this.notificationDialog();
+      this.edited = false;
       for (let i = 0; i < this.urlImage.length; i++) {
         let drugImage = {
           drugImageDetailUrl: this.urlImage[i],
@@ -113,6 +121,14 @@ export class DrugEditComponent implements OnInit {
   getAllDrugGroup() {
     this.drugGroupService.getAll().subscribe(drugGroups => {
       this.drugGroups = drugGroups;
+    });
+  }
+  notificationDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotificationComponent, {
+      width: '500px',
+      data: {data1: false, data2: false, data3: false, data4: false, data5: this.edited}
+    });
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 }

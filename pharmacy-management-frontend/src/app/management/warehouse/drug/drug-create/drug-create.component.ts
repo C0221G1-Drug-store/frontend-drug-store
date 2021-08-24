@@ -7,6 +7,9 @@ import {finalize} from 'rxjs/operators';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {Router} from '@angular/router';
+import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+declare var $: any;
 
 
 @Component({
@@ -18,6 +21,7 @@ export class DrugCreateComponent implements OnInit {
   drugGroups: DrugGroup[] = [];
   selectedImage;
   urlImage;
+  created = false;
   drugForm: FormGroup = new FormGroup({
   drugName: new FormControl('', [Validators.required, Validators.maxLength(25)]),
     drugFaculty: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -39,27 +43,32 @@ export class DrugCreateComponent implements OnInit {
   constructor(private drugService: DrugService,
               private drugGroupService: DrugGroupService,
               private storage: AngularFireStorage,
+              private dialog: MatDialog,
               private router: Router) { }
 
   ngOnInit(): void {
+    $(() => {
+      $('.select2').select2();
+    });
     this.getAllDrugGroup();
   }
 
   submit() {
       this.drugService.save(this.drugForm.value).subscribe(data => {
+        this.created = true;
+        this.notificationDialog();
+        this.created = false;
         for (let i = 0; i<this.urlImage.length; i++){
           let drugImage = {
             drugImageDetailUrl: this.urlImage[i],
             drug: data,
           };
-          console.log(drugImage);
           this.drugService.saveImage(drugImage).subscribe(() => {
           }, error => {
             alert("Tạo ảnh thất bại!")
           })
         }
-        alert('Tạo thành công');
-        this.backToList();
+
       },error => {
         alert("Tạo thất bại!")
       });
@@ -103,5 +112,16 @@ export class DrugCreateComponent implements OnInit {
       this.drugGroups = drugGroups;
     });
   }
+  notificationDialog(): void {
+    const dialogRef = this.dialog.open(DrugNotificationComponent, {
+      width: '500px',
+      data: {data1: false, data2: false, data3: false, data4: this.created, data5: false}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 
 }
+
+
+
