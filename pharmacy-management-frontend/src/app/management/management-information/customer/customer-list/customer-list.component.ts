@@ -57,14 +57,15 @@ export class CustomerListComponent implements OnInit {
     this.customerDelete.flag = false;
     this.customerService.updateStatusDelete(this.id, this.customerDelete).subscribe(() => {
       this.getCustomerByPagination();
-      this.id = null;
     });
   }
+
 
   reset() {
     this.id = null;
     this.customerDelete = null;
   }
+
 
   sort(typeSort: string) {
     if (typeSort === 'customer_group') {
@@ -209,8 +210,8 @@ export class CustomerListComponent implements OnInit {
     this.customerService.getCustomerByPagination(0).subscribe(data => {
       this.customersPagination = data;
       this.totalPagination = (Math.round((this.customers.length / 5) + 0.4999999));
-
     });
+    this.reset();
   }
 
 

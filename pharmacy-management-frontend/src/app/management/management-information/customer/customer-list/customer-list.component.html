@@ -23,7 +23,7 @@
           <div class="col-lg-4 col-md-push-4">
             <div class="row">
               <div class="col-10">
-                <input type="text" class="form-control"  #searchName [(ngModel)]="keyWord"
+                <input type="text" class="form-control" #searchName [(ngModel)]="keyWord"
                        placeholder="từ khóa...."
                        aria-label="Recipient's username" aria-describedby="button-addon2">
               </div>
@@ -171,12 +171,15 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body" *ngIf="customerDelete">
-                    Bạn có muốn xóa khách hàng <i> <b style="color: red">{{customerDelete.customerName}}  </b></i> không
-                    ?
-                  </div>
-                  <div *ngIf="!customerDelete" class="modal-body">
-                    Chưa chọn khách hàng để xóa
+                  <div class="modal-body">
+                    <div *ngIf="customerDelete">
+                      Bạn có muốn xóa khách hàng <i> <b style="color: red">{{customerDelete.customerName}}  </b></i>
+                      không
+                      ?
+                    </div>
+                    <div *ngIf="!customerDelete">
+                      Chưa chọn khách hàng để xóa
+                    </div>
                   </div>
                   <div [hidden]="!customerDelete" class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reset()">Không
@@ -184,7 +187,6 @@
                     <button [hidden]="!customerDelete" [disabled]="!customerDelete" type="button" class="btn btn-danger"
                             data-dismiss="modal" data-toggle="modal" data-target="#myModal"
                             (click)="deleteCustomer()">Xóa
-
                     </button>
                   </div>
                   <div [hidden]="customerDelete" class="modal-footer">

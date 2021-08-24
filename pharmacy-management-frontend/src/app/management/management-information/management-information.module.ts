@@ -19,7 +19,6 @@ import {FormsModule} from '@angular/forms';
     NgxPaginationModule,
     NgbPaginationModule,
     FormsModule,
-
   ]
 })
 export class ManagementInformationModule {
