@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'indicative',
     loadChildren: () => import('./prescription-indicative/indicative/indicative.module').then(module => module.IndicativeModule)
+  },
+  {
+    path: 'employee',
+    loadChildren: () => import('./employee/employee.module').then(module => module.EmployeeModule)
   }
 ];
 

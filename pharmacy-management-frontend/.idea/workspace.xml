@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ac4ff7c-9fac-4613-bea7-3425219b760d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/dialog/dialog.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-delete/employee-delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/employee.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/employee/list-employee/list-employee.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/employee.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/employee.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/user-entity/signupRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/user-entity/signupRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/user-service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/user-service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/employee/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/employee/employee.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +59,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -49,6 +69,12 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\service" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (pharmacy-management-frontend)" type="JavaScriptTestRunnerKarma">
@@ -82,7 +108,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -99,7 +125,7 @@
       <workItem from="1629793018215" duration="3852000" />
       <workItem from="1629800495414" duration="3250000" />
       <workItem from="1629804337239" duration="493000" />
-      <workItem from="1629810412007" duration="1090000" />
+      <workItem from="1629810412007" duration="3008000" />
     </task>
     <servers />
   </component>
