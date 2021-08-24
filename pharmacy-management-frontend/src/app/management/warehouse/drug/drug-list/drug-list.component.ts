@@ -116,7 +116,7 @@ export class DrugListComponent implements OnInit {
   notificationDialog(): void {
     const dialogRef = this.dialog.open(DrugNotificationComponent, {
       width: '500px',
-      data: {data1: this.notSelected, data2: this.notFound, data3: false}
+      data: {data1: this.notSelected, data2: this.notFound, data3: false, data4: false, data5: false}
 
     });
     dialogRef.afterClosed().subscribe(result => {

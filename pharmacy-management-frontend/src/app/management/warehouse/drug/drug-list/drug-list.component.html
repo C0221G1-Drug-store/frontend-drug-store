@@ -33,15 +33,15 @@
               <option [ngValue]="'like'">- Điều kiện -</option>
               <option [ngValue]="'='">Bằng</option>
               <option [ngValue]="'>'"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn
               </option>
               <option [ngValue]="'>='"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Lớn hơn bằng
               </option>
               <option [ngValue]="'<='"
-                      *ngIf="field != 'drugCode' && field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
+                      *ngIf="field != 'drugGroup' && field != 'drugName' && field != 'activeElement'">
                 Nhỏ hơn bằng
               </option>
               <option [ngValue]="'!='">Khác</option>
@@ -68,7 +68,7 @@
 <div class="container pb-3">
   <fieldset class="scheduler-border">
     <legend class="scheduler-border">Danh sách thuốc</legend>
-    <div class="container" style="height: 350px">
+    <div class="container">
       <div class="row">
         <table class="table table-bordered table-striped">
           <thead class="thead">
@@ -100,14 +100,14 @@
             <td>{{drug.activeElement}}</td>
             <td>{{drug.unit}}</td>
             <td>{{drug.conversionUnit}}</td>
-            <td>{{drug.drugAmount}}</td>
+            <td>{{drug.drugAmount| number: '1.2-2'}}</td>
             <td>{{drug.importPrice| number: '1.2-2'}}</td>
             <td>{{drug.wholesalePrice | number: '1.2-2'}}</td>
             <td>{{drug.retailPrice | number: '1.2-2'}}</td>
-            <td>{{drug.discountRate}}</td>
+            <td>{{drug.discountRate| number: '1.2-2'}}</td>
             <td>{{drug.wholesaleProfitRate}}</td>
             <td>{{drug.retailProfitRate}}</td>
-            <td>{{drug.vat}}</td>
+            <td>{{drug.vat| number: '1.2-2'}}</td>
           </tr>
           </tbody>
         </table>
