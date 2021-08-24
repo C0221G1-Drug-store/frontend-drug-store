@@ -6,6 +6,8 @@ import {DrugService} from '../../../service/drug.service';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {Drug} from '../../../model/drug';
 import {Prescription} from '../../../model/prescription';
+import {DeleteComponent} from '../delete/delete.component';
+import {DrugOfBill} from '../../../model/drug-of-bill';
 
 @Component({
   selector: 'app-prescription-detail',
@@ -14,7 +16,7 @@ import {Prescription} from '../../../model/prescription';
 })
 export class PrescriptionDetailComponent implements OnInit {
   drugs: Drug[] = [];
-  drugOfbills: [];
+  drugOfbills: DrugOfBill[];
   id: number;
   prescription: Prescription;
   fromPrescription: FormGroup;
@@ -40,11 +42,12 @@ export class PrescriptionDetailComponent implements OnInit {
     this.getPrescription();
   }
 
-  openDeleteDialog() {
-    // const dialog = this.dialog.open(DeleteDialogComponent , {
-    //   height: '250px' , width: '300px',
-    //   data: {}
-    // });
+  openDeleteDialog(drugOfBill) {
+    const dialog = this.dialog.open(DeleteComponent , {
+      height: '250px' , width: '300px',
+      data: [this.drugOfbills,  {drugOfBill}]
+    });
+    console.log(drugOfBill);
   }
   getAll() {
     this.drugService.getAll().subscribe(next => {
@@ -55,12 +58,12 @@ export class PrescriptionDetailComponent implements OnInit {
     this.prescriptionService.findAll(this.id).subscribe(next => {
       this.drugOfbills = next;
     });
+    console.log(this.drugOfbills);
   }
   getPrescription() {
     this.prescriptionService.findPrescriptionById(this.id).subscribe( next => {
       this.prescription = next;
     });
-    console.log(this.prescription);
   }
 
   addToBill(drugOfBills) {

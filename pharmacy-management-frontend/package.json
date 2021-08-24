@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.0.7",
+    "@angular/animations": "^9.0.7",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.0.7",
     "@angular/compiler": "~9.0.7",
@@ -30,7 +30,11 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "ngx-pagination": "^5.1.1",
+    "ngx-print": "^1.2.1",
+    "ngx-toastr": "^14.1.0",
+    "print": "^1.2.0",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^11.1.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
