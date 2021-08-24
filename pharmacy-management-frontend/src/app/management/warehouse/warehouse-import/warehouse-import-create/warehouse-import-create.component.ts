@@ -23,7 +23,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   form: FormGroup;
   manufacturers: Manufacturer[] = [];
   employee: Employee = {
-    employeeId: '1',
+    employeeId: 1,
     employeeCode: 'NV23123',
     employeeName: 'Trần việt'
   };
@@ -49,7 +49,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     this.form = this.fb.group({
       importSystemCode: [this.importSystemCode],
       accountingVoucher: ['', [Validators.required, this.accountingVoucherValidator()]],
-      invoiceDate: ['', [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T[0-9]{2}:[0-9]{2}$'),this.dateValidator()]],
+      invoiceDate: ['', [Validators.required, Validators.pattern('^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T[0-9]{2}:[0-9]{2}$'), this.dateValidator()]],
       flag: true,
       payment: this.fb.group({
         paymentId: [''],
@@ -67,7 +67,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   confirmBox() {
-    if (typeof this.childImportDrugList.choiceDelete != 'undefined') {
+    if (typeof this.childImportDrugList.choiceDelete !== 'undefined') {
       Swal.fire({
         title: 'Bạn có muốn xóa thuốc này không?',
         text: 'thuốc trong danh sách sẽ bị xóa!',
@@ -120,11 +120,11 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
       this.errorAlert('Ngày nhập không hợp lệ');
       return false;
     }
-    if ( this.form.get('accountingVoucher').invalid) {
+    if (this.form.get('accountingVoucher').invalid) {
       this.errorAlert('Chứng từ không hợp lệ');
       return false;
     }
-    if (this.form.get('importSystemCode').value != this.importSystemCode) {
+    if (this.form.get('importSystemCode').value !== this.importSystemCode) {
       this.errorAlert('Mã hóa đơn được tạo tự động .không thể sửa');
       return false;
     }
@@ -169,10 +169,10 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(ManufacturerCreateComponent,{
-      width:'750px'
+    const dialogRef = this.dialog.open(ManufacturerCreateComponent, {
+      width: '750px'
     });
-    dialogRef.afterClosed().subscribe((result:any) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (typeof result !== 'undefined') {
         this.manufacturerForm.setValue(result);
       }
@@ -190,7 +190,7 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
     console.log(e);
     this.manufacturerService.findByIdManufacture(e.target.value).subscribe(value => {
       if (value !== null) {
-      this.manufacturerForm.setValue(value);
+        this.manufacturerForm.setValue(value);
       }
     });
   }
@@ -214,9 +214,11 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   get totalMoney() {
     return this.payment.get('totalMoney').value !== undefined ? Math.round(this.payment.get('totalMoney').value) : '';
   }
-  get prepayment(){
+
+  get prepayment() {
     return this.payment.get('prepayment').value !== undefined ? Math.round(this.payment.get('prepayment').value) : '';
   }
+
   addNewImportBillDrug(importBill): boolean {
     const idImportBillDrug = [];
     let check = false;
@@ -258,34 +260,35 @@ export class WarehouseImportCreateComponent implements OnInit, AfterViewInit {
   }
 
   dateValidator(): ValidatorFn {
-    return (control: AbstractControl): {[key: string]: any} | null => {
+    return (control: AbstractControl): { [key: string]: any } | null => {
       const today = new Date().getTime();
 
-      if(!(control && control.value)) {
+      if (!(control && control.value)) {
         // if there's no control or no value, that's ok
         return null;
       }
 
       // return null if there's no errors
       return this.parseDate(control.value).getTime() > today
-        ? {invalidDate: 'You cannot use past dates' }
+        ? {invalidDate: 'You cannot use past dates'}
         : null;
-    }
+    };
   }
+
   parseDate(input) {
     const parts = input.match(/(\d+)/g);
     // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
-    return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+    return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
   }
 
   accountingVoucherValidator(): ValidatorFn {
-    return (control: AbstractControl): {[key: string]: any} | null => {
-      if(!(control && control.value)) {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (!(control && control.value)) {
         return null;
       }
-      return control.value.trim() == "" ?
-        {"required": true} :
+      return control.value.trim() === '' ?
+        {required: true} :
         null;
-    }
+    };
   }
 }

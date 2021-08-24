@@ -25,7 +25,10 @@ export class DrugService {
     return this.http.get(this.URl + '/not-pagination');
 
   }
+  getAllNormal(): Observable<any> {
+    return this.http.get(this.URl + '/get-normal');
 
+  }
   deleteDrug(id: number): Observable<any> {
     return this.http.delete(`${this.URl}/delete/${id}`);
   }
@@ -38,7 +41,7 @@ export class DrugService {
     return this.http.post<any>(this.URl, drug);
   }
   saveImage(drugImage: any): Observable<any> {
-    return this.http.post<any>(this.URl+'/image', drugImage);
+    return this.http.post<any>(this.URl +'/image', drugImage);
   }
   update(id: number, code: number, drug: Drug): Observable<any> {
     return this.http.put<any>(`${this.URl}/${id}&${code}`, drug);

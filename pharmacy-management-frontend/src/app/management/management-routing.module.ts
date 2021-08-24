@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-
 const routes: Routes = [
   {
     path: 'sale-retail',
@@ -27,10 +25,14 @@ const routes: Routes = [
   {
     path: 'information-lookup',
     loadChildren: () => import('./information-lookup/information-lookup.module').then(module => module.InformationLookupModule)
-  },{
+  }, {
   path : 'manufacturer',
   loadChildren: () => import('./manufacturer/manufacturer.module').then(module => module.ManufacturerModule)
-}
+},
+  {
+    path: 'wholesale',
+    loadChildren: () => import('./wholesale/wholesale.module').then(module => module.WholesaleModule)
+  }
 ];
 
 @NgModule({

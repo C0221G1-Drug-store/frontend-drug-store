@@ -35,7 +35,7 @@ export class ImportListDrugComponent implements OnInit {
 
   }
   getAllDrug(){
-    this.drugService.getAll().subscribe(value => {
+    this.drugService.getAllNormal().subscribe(value => {
       this.drugs = value;
     });
   }

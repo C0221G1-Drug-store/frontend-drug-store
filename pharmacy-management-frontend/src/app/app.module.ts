@@ -12,8 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {DrugModule} from './management/warehouse/drug/drug.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {ManufacturerModule} from "./management/manufacturer/manufacturer.module";
-import {ToastrModule} from "ngx-toastr";
+import {ManufacturerModule} from './management/manufacturer/manufacturer.module';
+import {ToastrModule} from 'ngx-toastr';
 import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
 import {MatSelectModule} from '@angular/material/select';
 import {NgxPrintModule} from 'ngx-print';
@@ -24,6 +24,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {Overlay} from '@angular/cdk/overlay';
 import localeVi from '@angular/common/locales/vi';
 import {registerLocaleData} from '@angular/common';
+import {WholesaleModule} from './management/wholesale/wholesale.module';
 
 registerLocaleData(localeVi, 'vi-VN');
 
@@ -35,6 +36,7 @@ registerLocaleData(localeVi, 'vi-VN');
     BrowserModule,
     AppRoutingModule,
     SaleRetailModule,
+    WholesaleModule,
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,
@@ -45,7 +47,7 @@ registerLocaleData(localeVi, 'vi-VN');
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ManufacturerModule,
     ToastrModule.forRoot({
-      timeOut:2000,
+      timeOut: 2000,
     }),
     HttpClientModule,
     WarehouseExportModule,
@@ -60,7 +62,7 @@ registerLocaleData(localeVi, 'vi-VN');
     MatDialogModule,
     MatButtonModule,
   ],
-  providers: [MatDialog ,Overlay],
+  providers: [MatDialog , Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

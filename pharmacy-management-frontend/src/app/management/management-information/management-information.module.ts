@@ -13,7 +13,6 @@ import {ToastrModule} from "ngx-toastr";
     CommonModule,
     ManagementInformationRoutingModule,
     DrugGroupModule,
-
   ]
 })
 export class ManagementInformationModule { }

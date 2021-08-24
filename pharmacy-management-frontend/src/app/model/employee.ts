@@ -1,12 +1,12 @@
 export interface Employee {
-   employeeId?;
-    employeeCode?;
-    employeeName?;
-    employeeAddress?;
-    employeeImage?;
-    employeePhone?;
-    employeeStartDate?;
-    employeeNote?;
-    position?;
-    accountName?;
+  employeeId?: number;
+  accountName?: string;
+  employeeAddress?: string;
+  employeeCode?: string;
+  employeeImage?: string;
+  employeeName?: string;
+  employeeNote?: string;
+  employeePhone?: string;
+  employeeStartDate?: string;
+  position?: number;
 }

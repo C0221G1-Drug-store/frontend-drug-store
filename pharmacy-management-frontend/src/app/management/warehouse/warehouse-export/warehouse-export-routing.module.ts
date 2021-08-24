@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {ExportBillRefundComponent} from './export-bill-refund/export-bill-refund.component';
 import {HomeComponent} from '../../common/home/home.component';
 
-import {ExportBillListComponent} from "./export-bill-list/export-bill-list.component";
+import {ExportBillListComponent} from './export-bill-list/export-bill-list.component';
 
 import {ExportBillDestroyComponent} from './export-bill-destroy/export-bill-destroy.component';
 

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { WarehouseExportRoutingModule } from './warehouse-export-routing.module';
 import { ExportBillRefundComponent } from './export-bill-refund/export-bill-refund.component';
-import {MatSelectModule} from "@angular/material/select";
-import {NgxMatSelectSearchModule} from "ngx-mat-select-search";
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from '@angular/material/select';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {MatDialogModule} from '@angular/material/dialog';
 import {CustomCurrencyPipe} from "./custom-currency.pipe";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatIconModule} from "@angular/material/icon";
@@ -37,5 +37,6 @@ import {ExportBillDestroyComponent} from './export-bill-destroy/export-bill-dest
     MatButtonModule,
     NgxMatSelectSearchModule,
   ],
+
 })
 export class WarehouseExportModule { }
