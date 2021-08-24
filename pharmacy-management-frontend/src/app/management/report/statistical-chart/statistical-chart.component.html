@@ -43,13 +43,13 @@
           <div>
             <p style="color: red" *ngIf="!isSuccess" class="my-2">- {{msgDate}}</p>
             <p *ngIf="isSuccess" class="my-2">- {{msgDate}}</p>
-            <div [style]="isLoad?'display:block':'display:none'"
-                 style="position: absolute;top: 103px;left: 40px; z-index: 10; font-size: 16px; color: rgba(86,127,234,0.7)">
-              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              <span>  Loading...</span>
-            </div>
-            <div class="text-right">
-              <button class="btn btn-search button" (click)="showChart()"><i class="fa fa-area-chart"> Xem</i></button>
+
+            <div  class="text-right">
+              <button  class="btn btn-search button" [style]="isLoad?'display:inline':'display:none'">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span> Loading...</span>
+              </button>
+              <button *ngIf="!isLoad" class="btn btn-search button" (click)="showChart()"><i class="fa fa-area-chart"> Xem</i></button>
             </div>
           </div>
         </fieldset>
@@ -125,3 +125,4 @@
 </div>
 
 
+<!--<mat-spinner></mat-spinner>-->

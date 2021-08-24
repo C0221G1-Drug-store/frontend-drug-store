@@ -60,28 +60,6 @@ export class StatisticalChartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   document.getElementById('load1').style.display = 'block';
-    //   setTimeout(() => {
-    //     document.getElementById('load2').style.display = 'block';
-    //     setTimeout(() => {
-    //       document.getElementById('load3').style.display = 'block';
-    //       setTimeout(() => {
-    //         document.getElementById('load4').style.display = 'block';
-    //         setTimeout(() => {
-    //           document.getElementById('load5').style.display = 'block';
-    //           setTimeout(() => {
-    //             // document.getElementById('load5').style.display = 'none';
-    //             // document.getElementById('load4').style.display = 'none';
-    //             // document.getElementById('load3').style.display = 'none';
-    //             // document.getElementById('load2').style.display = 'none';
-    //             // document.getElementById('load1').style.display = 'none';
-    //           }, 600);
-    //         }, 300);
-    //       }, 300);
-    //     }, 300);
-    //   }, 300);
-    // }, 300);
   }
 
 
@@ -103,16 +81,15 @@ export class StatisticalChartComponent implements OnInit {
       return;
     }
     this.isLoad = true;
+    this.paintChartByDate();
     setTimeout(() => {
-      this.isLoad = false;
-      this.paintChartByDate();
       this.chartOption.series[0].data = [];
       this.chartOption.series[1].data = [];
-      this.isSuccess = true;
       this.showChartByWeekMonth();
+      this.isLoad = false;
+      this.isSuccess = true;
       this.isShowChart = true;
-    }, 2000);
-
+    },  2000 );
   }
 
   showChartByWeekMonth() {
