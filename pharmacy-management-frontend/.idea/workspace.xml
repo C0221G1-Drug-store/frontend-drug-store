@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="46c65acd-ed74-4561-b304-97e6b22ead2c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out-tsc/e2e/app.e2e-spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out-tsc/e2e/app.e2e-spec.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out-tsc/e2e/app.po.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out-tsc/e2e/app.po.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +43,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (angular-case-study)" type="JavaScriptTestRunnerKarma">
@@ -123,6 +123,8 @@
       <workItem from="1629796488315" duration="18000" />
       <workItem from="1629796508289" duration="18000" />
       <workItem from="1629796586932" duration="113000" />
+      <workItem from="1629796717693" duration="147000" />
+      <workItem from="1629796882687" duration="339000" />
     </task>
     <servers />
   </component>
@@ -138,25 +140,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629796785330" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629796700360">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629797223773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629796700360" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629796700360">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629797223773" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629797223773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629796700360" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629796700360">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629797223773" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629797223773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629796700360" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629796700360">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629797223773" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629797223773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629796700360" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629797223773" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1629796520127">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1629796520127" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1629797090760">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1629797090760" />
   </component>
 </project>
