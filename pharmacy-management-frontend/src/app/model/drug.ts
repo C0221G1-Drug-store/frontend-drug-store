@@ -1,23 +1,23 @@
-import {DrugGroup} from './drug-group';
 
 export interface Drug {
   drugId?: number;
-  drugCode?: number;
+  drugCode?: string;
   drugName?: string;
-  drugFaculty?: string;
   activeElement?: string;
+  drugAmount?: number;
   unit?: string;
   conversionUnit?: string;
-  conversionRate?: string;
+  conversionRate?: number;
   wholesaleProfitRate?: number;
   retailProfitRate?: number;
+  drugFaculty?: string;
   manufacturer?: string;
   origin?: string;
   note?: string;
   drugSideEffect?: string;
+  flag?: true;
   drugGroup?: any;
-  flag?: boolean;
-  drugAmount?: number;
   wholesalePrice?: number;
   retailPrice?: number;
+  drugImageDetails?: string;
 }

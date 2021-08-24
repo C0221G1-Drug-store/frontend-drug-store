@@ -50,20 +50,19 @@ export class LookupComponent implements OnInit {
   thead = null;
 
   //#region SEARCH INFO
-  customers!: CustomerLookup[];
+  customers: CustomerLookup[] = [];
   customerTh = ['Mã KH', 'Tên khách hàng', 'Tuổi', 'Địa chỉ', 'Số điện thoại', 'Nhóm KH', 'Ghi chú'];
-  customerGroup!: CustomerGroupLookup[];
+  customerGroup: CustomerGroupLookup[] = [];
 
-  manufacturers!: ManufacturerLookup[];
+  manufacturers: ManufacturerLookup[] = [];
   manufacturerTh = ['Mã NXS', 'Tên nhà sản xuất', 'Địa chỉ', 'Số điện thoại', 'Ghi chú'];
 
   messageError = '';
   inputLook = '';
-  selectAttr = '';
   //#endregion
 
   //#region PAGE
-  pages: Array<any>;
+  pages: Array<any> = [];
   page = 0;
   //#endregion
 
@@ -77,7 +76,6 @@ export class LookupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.lookupService.getCustomerGroups().subscribe(list => {
       this.customerGroup = list;
     });
@@ -85,23 +83,26 @@ export class LookupComponent implements OnInit {
 
   //#region SEARCH INFO
   search() {
-    // this.selectAttr = this.myChoose.value.selectAttribute;
     this.selectLookup();
-    if (!this.selectAttr) {
-      this.selectAttr = 'all';
+    if (!this.selectAttribute) {
+      this.selectAttribute = 'all';
     }
-    this.inputLook = this.mySearch.value.inputLookup    ;
-    this.listLookup.push([this.selectItem, this.selectAttr, this.inputLook]);
-    this.searchByKeys(this.selectItem, this.selectAttr, this.inputLook);
+    this.inputLook = this.mySearch.value.inputLookup.trim();
+    this.listLookup.push([this.selectItem, this.selectAttribute, this.inputLook]);
+    this.searchByKeys(this.selectItem, this.selectAttribute, this.inputLook);
   }
 
   searchByKeys(item: string, attribute: string, inputLookup: string) {
-    this.thead = null;
-    this.pages = null;
+    this.pages = [];
+    console.log(attribute);
+    console.log(inputLookup);
     this.messageError = '';
     switch (item) {
       case 'customer':
-        this.manufacturers = null;
+        if (this.thead != this.customerTh){
+          this.thead = this.customerTh;
+        }
+        this.manufacturers = [];
         if (attribute  == 'groupId' && inputLookup == null){
           inputLookup = '';
         }
@@ -114,13 +115,15 @@ export class LookupComponent implements OnInit {
         }, error => {
           alert('error');
         });
-        this.thead = this.customerTh;
         if( attribute == 'groupId') {
           this.mySearch.reset();
         }
         break;
       case 'manufacturer':
-        this.customers = null;
+        if (this.thead != this.manufacturerTh){
+          this.thead = this.manufacturerTh  ;
+        }
+        this.customers = [];
         this.lookupService.getManufacturerByKeyWord(attribute, inputLookup, this.page).subscribe(data => {
           this.manufacturers = data.content;
           this.pages = new Array<any>(data.totalPages);
@@ -149,7 +152,7 @@ export class LookupComponent implements OnInit {
 
   selectLookup() {
     this.selectItem = this.myChoose.value.selectItem;
-    this.selectAttr = this.myChoose.value.selectAttribute;
+    this.selectAttribute = this.myChoose.value.selectAttribute;
   }
 
   //#endregion
@@ -186,7 +189,10 @@ export class LookupComponent implements OnInit {
     if (this.listLookup.length > 1) {
       this.listLookup.pop();
       earlierSearch = this.listLookup[this.listLookup.length - 1];
-      this.searchByKeys(earlierSearch[0], earlierSearch[1], earlierSearch[2]);
+      this.selectItem = earlierSearch[0];
+      this.selectAttribute = earlierSearch[1];
+      this.inputLook = earlierSearch[2];
+      this.searchByKeys(this.selectItem, this.selectAttribute, this.inputLook);
       return;
     }
     this.router.navigateByUrl('/management').then(e => {

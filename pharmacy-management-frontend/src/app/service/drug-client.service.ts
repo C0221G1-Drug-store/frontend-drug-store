@@ -7,12 +7,12 @@ import {DrugCartBackend} from "../model/cart/drug-cart-backend";
   providedIn: 'root'
 })
 export class DrugClientService {
-  private URl = 'http://localhost:8080/drug-client';
+  private URl = 'http://localhost:8080/drug';
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.URl}/list`);
+    return this.http.get(`${this.URl}/not-pagination`);
   }
 
   searchDrug(search: any): Observable<any> {
