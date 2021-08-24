@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/angular-case-study.iml" filepath="$PROJECT_DIR$/.idea/angular-case-study.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/frontend-drug-store.iml" filepath="$PROJECT_DIR$/.idea/frontend-drug-store.iml" />
+>>>>>>> origin/HauDT
     </modules>
   </component>
 </project>
