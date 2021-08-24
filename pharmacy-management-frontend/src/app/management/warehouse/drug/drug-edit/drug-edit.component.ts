@@ -10,7 +10,7 @@ import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {Drug} from '../../../../model/drug';
 import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
-
+declare var $: any;
 @Component({
   selector: 'app-drug-edit',
   templateUrl: './drug-edit.component.html',
@@ -39,6 +39,9 @@ export class DrugEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(() => {
+      $('.select2').select2();
+    });
     this.getAllDrugGroup();
   }
   compareFn(c1: Drug, c2: Drug): boolean {
