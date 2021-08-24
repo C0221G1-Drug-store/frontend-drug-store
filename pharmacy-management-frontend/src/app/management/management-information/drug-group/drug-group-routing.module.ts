@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {DrugGroupListComponent} from './drug-group-list/drug-group-list.component';
 
 
 const routes: Routes = [
   {
-    path: 'drugGroup',
-    loadChildren: () => import('./drug-group/drug-group-routing.module').then(module => module.DrugGroupRoutingModule)
+    path: '',
+    component: DrugGroupListComponent
   }
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ManagementInformationRoutingModule { }
+export class DrugGroupRoutingModule { }

@@ -9,6 +9,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {Drug} from '../../../../model/drug';
+import {DrugGroupDto} from '../../../../model/drug-group';
 
 @Component({
   selector: 'app-drug-edit',
@@ -16,7 +17,7 @@ import {Drug} from '../../../../model/drug';
   styleUrls: ['./drug-edit.component.css']
 })
 export class DrugEditComponent implements OnInit {
-  drugGroups: DrugGroup[] = [];
+  drugGroups: DrugGroupDto[] = [];
   drugForm: FormGroup;
   drugId;
   drugCode;

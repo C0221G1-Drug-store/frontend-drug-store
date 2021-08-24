@@ -7,6 +7,7 @@ import {finalize} from 'rxjs/operators';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {DrugGroupService} from '../../../../service/drug-group.service';
 import {Router} from '@angular/router';
+import {DrugGroupDto} from '../../../../model/drug-group';
 
 
 @Component({
@@ -15,7 +16,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./drug-create.component.css']
 })
 export class DrugCreateComponent implements OnInit {
-  drugGroups: DrugGroup[] = [];
+  drugGroups: DrugGroupDto[] = [];
   selectedImage;
   urlImage;
   drugForm: FormGroup = new FormGroup({
