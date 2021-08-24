@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {IndicativeService} from '../../../../service/indicative.service';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {PrescriptionDto} from '../../../../model/prescriptionDto';
+import {Prescription} from '../../../../model/prescription';
 import {Indicative} from '../../../../model/indicative';
 import {ToastrService} from 'ngx-toastr';
 
@@ -15,7 +15,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PrescriptionEditComponent implements OnInit {
   drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
-  prescription: PrescriptionDto;
+  prescription: Prescription;
   indicativeList: Indicative[];
   drinkDay: number;
   drinkTime: number;

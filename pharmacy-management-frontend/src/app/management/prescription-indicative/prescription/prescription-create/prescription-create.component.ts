@@ -4,7 +4,7 @@ import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validat
 import {Router} from '@angular/router';
 import {IndicativeService} from '../../../../service/indicative.service';
 import {ToastrService} from 'ngx-toastr';
-import {PrescriptionDto} from '../../../../model/prescriptionDto';
+import {Prescription} from '../../../../model/prescription';
 import {DrugService} from "../../../../service/drug.service";
 import {Drug} from "../../../../model/drug";
 
@@ -18,7 +18,7 @@ export class PrescriptionCreateComponent implements OnInit {
   drinkDay: number;
   drinkTime: number;
   totalPill = this.drinkDay * this.drinkTime;
-  pres: PrescriptionDto[];
+  pres: Prescription[];
   code = 'TT001';
   lastId: number;
   constructor(private prescriptionService: PrescriptionService,

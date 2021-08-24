@@ -1,8 +1,8 @@
-import {PrescriptionDto} from './prescriptionDto';
+import {Prescription} from './prescription';
 import {Indicative} from './indicative';
 
 export interface PrescriptionIndicative {
   prescriptionIndicativeId?: number;
-  prescription?: PrescriptionDto;
+  prescription?: Prescription;
   indicative?: Indicative;
 }

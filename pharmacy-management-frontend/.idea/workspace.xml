@@ -2,21 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ac4ff7c-9fac-4613-bea7-3425219b760d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/customer/customer-list/customer-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/service/customer.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/delete/delete.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/delete/delete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/delete/delete.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/delete/delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription/prescription.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription/prescription.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription/prescription.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription/prescription.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale-retail-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale-retail.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-delete/sales-invoice-delete.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-delete/sales-invoice-delete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-delete/sales-invoice-delete.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-delete/sales-invoice-delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-detail/sales-invoice-detail.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-detail/sales-invoice-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-detail/sales-invoice-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-detail/sales-invoice-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-management-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-management.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/home/home.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-list/manufacturer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-list/manufacturer-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-update/manufacturer-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/manufacturer/manufacturer-update/manufacturer-update.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/wholesale/wholesale/wholesale.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/customer-group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/customer-group.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/customer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/customer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-edit/prescription-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-edit/prescription-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-list/prescription-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-list/prescription-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sale-retail/prescription-detail/prescription-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sale-retail/sale/sale.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/wholesale/customer-refund/customer-refund.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/bill-sale.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/bill-sale.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/indicative.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/indicative.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/prescription-indicative.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/prescription-indicative.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/prescriptionDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/prescription.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/bill-sale.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/bill-sale.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/drug.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/drug.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/prescription.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/prescription.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +85,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/management/management-information" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/management" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -64,9 +98,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management\sale-retail" />
       <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management\management-information" />
       <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\service" />
-      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -118,7 +153,7 @@
       <workItem from="1629793018215" duration="3852000" />
       <workItem from="1629800495414" duration="3250000" />
       <workItem from="1629804337239" duration="493000" />
-      <workItem from="1629810412007" duration="6630000" />
+      <workItem from="1629810412007" duration="12944000" />
     </task>
     <servers />
   </component>
@@ -139,21 +174,21 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1259" height="176" key="GridCell.Tab.0.bottom" timestamp="1629812025845">
+    <state width="1259" height="237" key="GridCell.Tab.0.bottom" timestamp="1629822412409">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1259" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1629812025845" />
-    <state width="1259" height="176" key="GridCell.Tab.0.center" timestamp="1629812025844">
+    <state width="1259" height="237" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1629822412409" />
+    <state width="1259" height="237" key="GridCell.Tab.0.center" timestamp="1629822412409">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1259" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1629812025844" />
-    <state width="1259" height="176" key="GridCell.Tab.0.left" timestamp="1629812025842">
+    <state width="1259" height="237" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1629822412409" />
+    <state width="1259" height="237" key="GridCell.Tab.0.left" timestamp="1629822412409">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1259" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1629812025842" />
-    <state width="1259" height="176" key="GridCell.Tab.0.right" timestamp="1629812025844">
+    <state width="1259" height="237" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1629822412409" />
+    <state width="1259" height="237" key="GridCell.Tab.0.right" timestamp="1629822412409">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1259" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1629812025844" />
+    <state width="1259" height="237" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1629822412409" />
   </component>
 </project>

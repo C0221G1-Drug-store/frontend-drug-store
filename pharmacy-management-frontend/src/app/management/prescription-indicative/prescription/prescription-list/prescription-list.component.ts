@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PrescriptionDto} from '../../../../model/prescriptionDto';
+import {Prescription} from '../../../../model/prescription';
 import {PrescriptionService} from '../../../../service/prescription.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PrescriptionDeleteComponent} from '../prescription-delete/prescription-delete.component';
@@ -14,9 +14,9 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PrescriptionListComponent implements OnInit {
   idEdit: number;
-  prescriptions: PrescriptionDto[] = [];
+  prescriptions: Prescription[] = [];
   pages: Array<any> = [];
-  prescription: PrescriptionDto;
+  prescription: Prescription;
   prescriptionName = '';
   prescriptionCode = '';
   object = '';
@@ -73,11 +73,11 @@ export class PrescriptionListComponent implements OnInit {
     }
   }
 
-  getPres(p: PrescriptionDto) {
+  getPres(p: Prescription) {
     this.prescription = p;
   }
 
-  onDeleteHandler(prescription: PrescriptionDto): void {
+  onDeleteHandler(prescription: Prescription): void {
     if (this.idEdit == null) {
       this.showErrorDelete();
     } else {
