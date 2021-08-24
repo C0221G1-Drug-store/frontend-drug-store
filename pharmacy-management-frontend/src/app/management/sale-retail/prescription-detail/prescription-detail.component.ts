@@ -47,7 +47,7 @@ export class PrescriptionDetailComponent implements OnInit {
     // });
   }
   getAll() {
-    this.drugService.getAll().subscribe(next => {
+    this.drugService.getAllNormal().subscribe(next => {
       this.drugs = next;
     });
   }

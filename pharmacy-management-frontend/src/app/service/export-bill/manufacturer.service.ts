@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ManufacturerService {
-  private API_MANUFACTURE = "http://localhost:8080/api/manufacturer";
+  private API_MANUFACTURE = 'http://localhost:8080/api/manufacturer';
   constructor(private http : HttpClient) { }
 
   // @ts-ignore

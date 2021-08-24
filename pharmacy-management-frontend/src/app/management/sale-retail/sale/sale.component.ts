@@ -26,8 +26,9 @@ export class SaleComponent implements OnInit {
     }
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.data.length; i++) {
-      this.total += this.data[i].quantity * this.data[i].drug.price;
+      this.total += this.data[i].quantity * this.data[i].drug.retailProfitRate;
     }
+
   }
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class SaleComponent implements OnInit {
   }
 
   getAllDrug() {
-    this.drugService.getAll().subscribe(next => {
+    this.drugService.getAllNormal().subscribe(next => {
       this.drugs = next;
     });
   }
@@ -55,7 +56,7 @@ export class SaleComponent implements OnInit {
     this.total = 0;
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.data.length; i++) {
-      this.total += this.data[i].quantity * this.data[i].drug.price;
+      this.total += this.data[i].quantity * this.data[i].drug.retailProfitRate;
     }
   }
 }
