@@ -35,7 +35,7 @@ export class DrugCreateComponent implements OnInit {
     conversionUnit: new FormControl('', [Validators.required]),
     manufacturer: new FormControl('', [Validators.maxLength(25)]),
     origin: new FormControl('', [Validators.required]),
-    drugGroup: new FormControl(null, Validators.required),
+    drugGroup: new FormControl(null, [Validators.required]),
     note: new FormControl('', [Validators.maxLength(250)])
   });
   // select = null;
@@ -47,9 +47,6 @@ export class DrugCreateComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    $(() => {
-      $('.select2').select2();
-    });
     this.getAllDrugGroup();
   }
 
@@ -63,7 +60,9 @@ export class DrugCreateComponent implements OnInit {
             drugImageDetailUrl: this.urlImage[i],
             drug: data,
           };
+          console.log(drugImage);
           this.drugService.saveImage(drugImage).subscribe(() => {
+
           }, error => {
             alert("Tạo ảnh thất bại!")
           })
