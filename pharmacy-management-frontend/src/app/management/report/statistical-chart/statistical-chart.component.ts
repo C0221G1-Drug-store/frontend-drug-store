@@ -60,28 +60,7 @@ export class StatisticalChartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   document.getElementById('load1').style.display = 'block';
-    //   setTimeout(() => {
-    //     document.getElementById('load2').style.display = 'block';
-    //     setTimeout(() => {
-    //       document.getElementById('load3').style.display = 'block';
-    //       setTimeout(() => {
-    //         document.getElementById('load4').style.display = 'block';
-    //         setTimeout(() => {
-    //           document.getElementById('load5').style.display = 'block';
-    //           setTimeout(() => {
-    //             // document.getElementById('load5').style.display = 'none';
-    //             // document.getElementById('load4').style.display = 'none';
-    //             // document.getElementById('load3').style.display = 'none';
-    //             // document.getElementById('load2').style.display = 'none';
-    //             // document.getElementById('load1').style.display = 'none';
-    //           }, 600);
-    //         }, 300);
-    //       }, 300);
-    //     }, 300);
-    //   }, 300);
-    // }, 300);
+
   }
 
 
