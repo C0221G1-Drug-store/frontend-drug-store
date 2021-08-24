@@ -10,7 +10,7 @@ import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {Drug} from '../../../../model/drug';
 import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
-
+declare var $: any;
 @Component({
   selector: 'app-drug-edit',
   templateUrl: './drug-edit.component.html',
@@ -39,6 +39,9 @@ export class DrugEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(() => {
+      $('.select2').select2();
+    });
     this.getAllDrugGroup();
   }
   compareFn(c1: Drug, c2: Drug): boolean {
@@ -59,7 +62,7 @@ export class DrugEditComponent implements OnInit {
         unit: new FormControl(drug.unit, [Validators.required]),
         conversionUnit: new FormControl(drug.conversionUnit, [Validators.required]),
         manufacturer: new FormControl(drug.manufacturer, [Validators.maxLength(25)]),
-        origin: new FormControl(drug.origin, [Validators.required]),
+        origin: new FormControl('',[Validators.required]),
         drugGroup: new FormControl(drug.drugGroup, [Validators.required]),
         note: new FormControl(drug.note, [Validators.maxLength(250)])
       });
@@ -67,9 +70,7 @@ export class DrugEditComponent implements OnInit {
   }
   updateDrug() {
     this.drugService.update(this.drugId, this.drugCode,this.drugForm.value).subscribe(data => {
-      // alert('Cập nhật thành công');
-      // this.dialogRef.close();
-      // console.log(data);
+
       this.dialogRef.close();
       this.edited = true;
       this.notificationDialog();
