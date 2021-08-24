@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Customer} from '../../../../model/customer';
 import {CustomerGroup} from '../../../../model/CustomerGroup';
-import {CustomerServiceService} from '../customer-service.service';
+import {CustomerService} from '../../../../service/customer.service';
 
 @Component({
   selector: 'app-create-customer',
@@ -14,6 +14,7 @@ export class CreateCustomerComponent implements OnInit {
   customerGroup: CustomerGroup[] = [];
   messageName = '';
   checkUpLoad: true;
+
 
   customerForm: FormGroup = new FormGroup({
     customerId: new FormControl(),
@@ -26,14 +27,20 @@ export class CreateCustomerComponent implements OnInit {
   });
   constructor(
     private route: Router,
-    private customerService: CustomerServiceService
+    private customerService: CustomerService
   ) { }
 
   ngOnInit(): void {
+    this.customerService.getCustomerGroup().subscribe(data => {
+      this.customerGroup = data;
+    });
   }
 
   submit() {
+    const code = Math.floor(Math.random() * 10000);
+    const customerCode = 'KHS-' + code;
     const customer: Customer = this.customerForm.value;
+    customer.customerCode = customerCode;
     console.log(customer);
     this.customerService.saveCustomer(customer).subscribe(data => {
       console.log('Add Success ' + data);
@@ -48,6 +55,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   cancelSubmit() {
-    this.route.navigateByUrl('/create');
+    this.route.navigateByUrl('/management/management-information');
   }
+
 }

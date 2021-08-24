@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'management',
+    path: '',
     loadChildren: () => import('./management/management.module').then(module => module.ManagementModule)
   },
   {
@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then(module => module.UserModule)
   },
-  {
-    path: 'management',
-    loadChildren: () => import('./management/management.module').then(module => module.ManagementModule)
-  }
 ];
 
 @NgModule({

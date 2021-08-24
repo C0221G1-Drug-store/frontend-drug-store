@@ -19,11 +19,7 @@
                   </option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="id">Mã Khách Hàng <span class="text-danger">*</span></label>
-                <input formControlName="customerCode" id="id" type="text" class="form-control" disabled="disabled">
 
-              </div>
               <div class="form-group">
                 <label for="customer">Tên Khách hàng <span class="text-danger">*</span></label>
                 <input formControlName="customerName" type="text" class="form-control" id="customer" required/>
@@ -63,9 +59,9 @@
               <div class="form-group">
                 <label for="phone">Điện Thoại <span class="text-danger"></span></label>
                 <input formControlName="customerPhone" type="text" class="form-control" id="phone" required/>
-                <p *ngIf="customerForm.controls.phone.touched" class="msgError">
-                  <span *ngIf="customerForm.controls.phone.errors?.required">Phone is required</span>
-                  <span *ngIf="customerForm.controls.phone.errors?.pattern">Phone must have 10-12 digits</span>
+                <p *ngIf="customerForm.controls.customerPhone.touched" class="msgError">
+                  <span *ngIf="customerForm.controls.customerPhone.errors?.required">Phone is required</span>
+                  <span *ngIf="customerForm.controls.customerPhone.errors?.pattern">Phone must have 10-12 digits</span>
                 </p>
               </div>
               <input type="reset" class="btn btn-secondary" (click)="cancelSubmit()" value="Trờ về" style="min-width: 70px;">
