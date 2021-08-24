@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CartService} from '../../service/cart.service';
 import {Currency} from '../../model/cart/currency';
 import {DrugCart} from "../../model/cart/drug-cart";
 
 const CART_KEY = 'drug-cart-id';
-
+const USER_KEY = 'auth-user';
 //#region USD100 >> 100 USD
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {logger} from "codelyzer/util/logger";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {Voucher} from "../../model/cart/voucher";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -25,17 +25,11 @@ declare let paypal: any;
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  //#region DATA TEST
-  listVoucher = [
-    {id: 1, code: '1234567890', money: '100000'},
-    {id: 2, code: '1234567891', money: '200000'},
-    {id: 3, code: '1234567892', money: '150000'},
-    {id: 4, code: '1234567893', money: '50000'},
-  ];
-  account = {
-    accountName: "Khánh Phan",
-    email: "khanhphan900@gmail.com"
-  };
+  //#region DATA TEST 1
+  // account = {
+  //   accountName: "Khánh Phan",
+  //   email: "khanhphan900@gmail.com"
+  // };
   // #endregion
 
   //#region CART
@@ -76,7 +70,8 @@ export class CartComponent implements OnInit {
       return actions.payment.create({
         payment: {
           transactions: [
-            {amount: {total: this.finalAccount, currency: 'USD'}}
+            // {amount: {total: this.moneyPayPal, currency: 'USD'}}
+            {amount: {total: 1, currency: 'USD'}}
           ]
         }
       });
@@ -89,8 +84,14 @@ export class CartComponent implements OnInit {
         this.drugCartListShow = [];
         localStorage.removeItem(CART_KEY);
         this.showMessageSuccess();
+        // Xóa Voucher
+        this.cartService.removeVoucher(this.voucherListIdUsed.toString()).subscribe(success => {
+          console.log("ok");
+        }, error => {
+          console.log("error");
+        });
         // Send email.
-        this.cartService.sendEmail().subscribe(e => {
+        this.cartService.sendEmail(this.user.accountName, this.user.email).subscribe(e => {
           console.log('ok');
         }, error => {
           console.log('error');
@@ -102,28 +103,46 @@ export class CartComponent implements OnInit {
 //   #endregion
 
   //#region VOUCHER
+  voucherList: Voucher[] = [];
   voucherMsg = '';
+  isVoucher = false;
   voucherForm = this.fb.group({
     code: ['', [Validators.maxLength(10)]]
   });
-  isVoucher = true;
+  voucherListIdUsed: number[] = [];
   voucherMoney = 0;
 
   // #endregion
 
+  //#region EMAIL
+  user = {
+    accountName: '',
+    email: '',
+  };
+
+  //#endregion
   constructor(private cartService: CartService,
               private fb: FormBuilder,
               private toastrService: ToastrService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private cdref: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
     this.getDrugCartList();
-    this.postTotalCartLocalStorage();
+    // localStorage.setItem(USER_KEY, JSON.stringify(this.account));
+    this.getAccount();
+    this.getVoucherList();
   }
 
-  postTotalCartLocalStorage() {
+  getVoucherList() {
+    this.cartService.findAllVoucher().subscribe(data => {
+      this.voucherList = data;
+    })
+  }
 
+  getAccount() {
+    this.user = JSON.parse(localStorage.getItem(USER_KEY));
   }
 
   getDrugCartList() {
@@ -177,7 +196,6 @@ export class CartComponent implements OnInit {
   delMedicine(i) {
     this.drugCartListShow.splice(i, 1);
     localStorage.setItem(CART_KEY, JSON.stringify(this.drugCartListShow));
-    this.postTotalCartLocalStorage();
   }
 
   getTotal() {
@@ -189,7 +207,7 @@ export class CartComponent implements OnInit {
       }
     }
     this.moneyPayVN = this.moneyTotal + 30000 - this.voucherMoney;
-    if (this.moneyPayVN <0 ) {
+    if (this.moneyPayVN < 0) {
       this.moneyPayVN = 0;
     }
     this.convertUsdCurrency(this.moneyPayVN);
@@ -201,11 +219,10 @@ export class CartComponent implements OnInit {
     this.moneyPayPal = 0;
     this.getTotal();
     localStorage.setItem(CART_KEY, JSON.stringify(this.drugCartListShow));
-    this.postTotalCartLocalStorage();
     if (!this.moneyTotal) {
       this.showMessageNotFound();
     }
-    this.getPaypPal()
+    this.getPaypPal();
   }
 
   // #endregion
@@ -219,8 +236,11 @@ export class CartComponent implements OnInit {
       this.currencyDateNow = this.currency.date;
       this.currencyMoney = vnd / usd;
       this.moneyPayPal = usd * VND / vnd;
+    }, (error: HttpErrorResponse) => {
+      console.log(error.error);
     });
   }
+
   // #endregion
 
   //#region Paypal
@@ -248,21 +268,34 @@ export class CartComponent implements OnInit {
   //#region Voucher
   checkVoucher() {
     this.isVoucher = false;
-    for (let i = 0; i < this.listVoucher.length; i++) {
-      if (this.listVoucher[i].code == this.voucherForm.value.code) {
-        this.voucherMoney += parseInt(this.listVoucher[i].money);
+    if(!this.voucherList){
+      this.voucherList = [];
+    }
+    for (let i = 0; i < this.voucherList.length; i++) {
+      if (this.voucherList[i].code == this.voucherForm.value.code) {
+        for (let j = 0; j < this.voucherList.length; j++) {
+          if (this.voucherListIdUsed[j] == this.voucherList[i].id) {
+            this.voucherMsg = 'Mã phiếu đã nhập';
+            return;
+          }
+        }
+        this.voucherMoney += parseInt(this.voucherList[i].money);
         this.voucherMsg = 'Mã trị giá: ' +
-          this.listVoucher[i].money.split('').reverse().reduce((prev, next, index) => {
+          // Thêm , cho số
+          this.voucherList[i].money.toString().split('').reverse().reduce((prev, next, index) => {
             return ((index % 3) ? next : (next + ',')) + prev;
           });
+        this.voucherListIdUsed.push(this.voucherList[i].id);
         this.update();
-        this.listVoucher.splice(i, 1);
         this.isVoucher = true;
-        console.log(this.voucherMoney);
         return;
       }
     }
     this.voucherMsg = 'Mã phiếu ưu đãi không tồn tại';
+  }
+
+  removeVoucherUsed(voucherIndexUse: number[]) {
+
   }
 
   // #endregion

@@ -85,7 +85,7 @@ export class HeaderClientComponent implements OnInit, AfterViewChecked {
       this.totalProduct += this.drugCartList[i].count;
     }
     // fix error expressionchangedafterithasbeencheckederror
-    this.cdref.detectChanges();
+      this.cdref.detectChanges();
   }
 
 }
