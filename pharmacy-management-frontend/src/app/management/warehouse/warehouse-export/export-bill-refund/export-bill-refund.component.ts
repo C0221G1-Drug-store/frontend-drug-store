@@ -16,6 +16,7 @@ import {take, takeUntil} from 'rxjs/operators';
 import jsPDF from 'jspdf'
 import {ExportbillService} from '../../../../service/export-bill/exportbill.service';
 import autoTable from 'jspdf-autotable';
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -54,7 +55,8 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
               private snackBar: MatSnackBar,
               private dialogService: DialogService,
               private exportbillService : ExportbillService,
-              private router: Router) {
+              private router: Router,
+              private toastr : ToastrService) {
     this.createForm();
     this.exportbillService.getEmployee().subscribe(data => {
       this.exportBillForm.get('employee').setValue(data.employeeName);
@@ -162,7 +164,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
       this.total += (res.importAmount * res.importPrice) - (res.discountRate * res.importPrice * res.importAmount / 100) - (res.importAmount * res.importPrice * res.vat / 100);
       this.getListDrug();
     }else {
-      this.warn("Bạn chưa chọn thuốc")
+      this.toastr.warning("Bạn chưa chọn thuốc!!!","Cảnh báo!!!")
     }
   }
   getDateNow(): string {
@@ -181,13 +183,13 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
 
   deleteDrug() {
       if (this.idDrug == null) {
-        this.warn('Bạn chưa chọn thuốc');
+        this.toastr.warning("Bạn chưa chọn thuốc!!!","Cảnh báo!!!")
       } else {
         this.dialogService.openConfirm('Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách').afterClosed().subscribe(res => {
           if (res === true) {
             console.log(res);
             this.drugRefund = this.drugRefund.filter(item => item.importBillDrugId !== this.idDrug);
-            this.success('Bạn đã xóa thuốc thành công');
+            this.toastr.success('Bạn đã xóa thuốc thành công');
             this.idDrug = null;
           }
           this.total = 0;
@@ -195,7 +197,7 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
             this.total += (this.drugRefund[i].importAmount * this.drugRefund[i].importPrice) - (this.drugRefund[i].discountRate * this.drugRefund[i].importPrice / 100) - (this.drugRefund[i].importAmount * this.drugRefund[i].importPrice * this.drugRefund[i].vat / 100);
           }
         }, error => {
-          this.warn('Bạn chưa chọn thuốc');
+          this.toastr.warning('Bạn chưa chọn thuốc');
         });
       }}
 

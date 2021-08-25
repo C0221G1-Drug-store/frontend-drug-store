@@ -11,6 +11,10 @@ const routes: Routes = [
   },
   {
     path: "customer-list",component: CustomerListComponent
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then(module => module.AccountModule)
   }
 ];
 

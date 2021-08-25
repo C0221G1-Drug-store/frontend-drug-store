@@ -26,21 +26,14 @@ export class SalesInvoiceComponent implements OnInit {
   pages: Array<any>;
   page = 0;
 
-  public searchForm: FormGroup = new FormGroup({
-    search1: new FormControl('', [Validators.required, Validators.pattern(/^(19|20)?[0-9]{2}[- /.](0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])$/)]),
-    search2: new FormControl('', [Validators.required, Validators.pattern(/^(19|20)?[0-9]{2}[- /.](0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])$/)]),
-    search3: new FormControl('', [Validators.required, Validators.pattern(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]),
-    search4: new FormControl('', [Validators.required, Validators.pattern(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]),
-    search5: new FormControl(''),
-    search6: new FormControl('')
-  });
+
+
 
   constructor(private billSaleService: BillSaleService, public dialog: MatDialog) {
     this.getAll();
   }
 
   ngOnInit(): void {
-
   }
 
   getAll() {
@@ -186,17 +179,6 @@ export class SalesInvoiceComponent implements OnInit {
     }
   }
 
-  get searchValue1() {
-    return this.searchForm.get('search1');
-  }
-  get searchValue2() {
-    return this.searchForm.get('search2');
-  }
-  get searchValue3() {
-    return this.searchForm.get('search3');
-  }
-  get searchValue4() {
-    return this.searchForm.get('search4');
-  }
+
 
 }

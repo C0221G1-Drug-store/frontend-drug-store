@@ -15,6 +15,7 @@ import {ExportbillService} from '../../../../service/export-bill/exportbill.serv
 
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-export-bill-destroy',
@@ -44,7 +45,8 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
               private  exportbillService: ExportbillService,
               private route: Router,
               private dialogService: DialogService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private toast : ToastrService) {
     this.getExportBillType();
     this.importbilldrugService.getAllImportBillDrug().subscribe(data => {
       this.drugs = data;
@@ -202,7 +204,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
 
   deleteDrug() {
     if (this.idDrug == null) {
-      this.warn('Bạn chưa chọn thuốc');
+      this.toast.warning('Bạn chưa chọn thuốc');
     } else {
 
       this.dialogService.openConfirm('Bạn có muốn xóa thuốc ' + this.nameDrug + ' khỏi danh sách').afterClosed().subscribe(result => {
@@ -216,10 +218,10 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
               }
             );
             this.idDrug = null;
-            this.success('Xóa thuốc thành công');
+            this.toast.success('Xóa thuốc thành công');
           }
         }, error => {
-          this.warn('Bạn chưa chon thuốc');
+          this.toast.warning('Bạn chưa chon thuốc');
         },
         () => {
           this.bankCtrl.setValue('');
@@ -230,7 +232,7 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
 
   createExportBill() {
     if (!this.exportBillForm.valid || this.drugDestroys.length == 0) {
-      this.warn('Bạn phải nhập đủ thông tin hóa đơn');
+      this.toast.warning('Bạn phải nhập đủ thông tin hóa đơn');
     } else {
       let exportBill = this.exportBillForm.value;
       this.exportbillService.createExportBill(exportBill).subscribe(data => {
@@ -242,10 +244,10 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
           this.exportbillService.createExportBillDetail(exportBillDetail).subscribe(() => {
           });
         }
-        this.success('Tạo hóa đơn thành công');
+        this.toast.success('Tạo hóa đơn thành công');
         this.route.navigateByUrl('/management/warehouse/warehouse-export/export-bill');
       }, error => {
-        this.warn('Tạo hóa đơn thất bại');
+        this.toast.warning('Tạo hóa đơn thất bại');
       });
     }
   }

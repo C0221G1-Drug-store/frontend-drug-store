@@ -27,6 +27,7 @@ import {registerLocaleData} from '@angular/common';
 import {WholesaleModule} from './management/wholesale/wholesale.module';
 import {ClientModule} from "./client/client.module";
 import {SaleRetailModule} from "./management/sale-retail/sale-retail.module";
+import {AccountModule} from "./management/management-information/account/account.module";
 
 registerLocaleData(localeVi, 'vi-VN');
 
@@ -42,6 +43,7 @@ registerLocaleData(localeVi, 'vi-VN');
     ManagementModule,
     CommonModule,
     SaleRetailModule,
+    AccountModule,
     HttpClientModule,
     MatDialogModule,
     DrugModule,

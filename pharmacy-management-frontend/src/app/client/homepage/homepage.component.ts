@@ -34,7 +34,9 @@ export class HomepageComponent implements OnInit {
   }
 
   getDrugByDrugGroup(drugGroupName) {
-    return this.drugs.filter(drug => drug.drugGroup == drugGroupName);
+    if (this.drugs !== null){
+      return this.drugs.filter(drug => drug.drugGroup == drugGroupName);
+    }
   }
 
 

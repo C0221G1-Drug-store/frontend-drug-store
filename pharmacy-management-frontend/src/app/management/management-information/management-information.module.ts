@@ -5,15 +5,17 @@ import {DrugGroupModule} from './drug-group/drug-group.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
+import {FormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [CustomerListComponent],
-  imports: [
-    CommonModule,
-    ManagementInformationRoutingModule,
-    DrugGroupModule,
-  ]
+    imports: [
+        CommonModule,
+        ManagementInformationRoutingModule,
+        DrugGroupModule,
+        FormsModule,
+    ]
 })
 export class ManagementInformationModule { }

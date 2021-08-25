@@ -1,70 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Quản lí hóa đơn</title>
 
-</head>
-<body>
+
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 right-content ">
   <h1 style="text-align: center">Quản lí hóa đơn bán hàng</h1>
   <div class="container pt3">
-    <form class="p-3" [formGroup]="searchForm">
+    <form class="p-3" >
       <div class="row">
         <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
           <div class="form-group" style="justify-content: flex-start">
             <label>Từ Ngày</label>
-            <input type="date" [(ngModel)]="search1" name="search1" formControlName="search1">
-            <div  class="alert alert-danger" role="alert" *ngIf="!searchValue1.valid && (searchValue1.dirty || searchValue1.touched)">
-              <div [hidden]="!searchValue1.errors.required">
-                <p style="color: red">ngày không được để trống</p>
-              </div>
-              <div [hidden]="!searchValue1.errors.pattern">
-                <p style="color: red"> chưa đúng định dạng yyyy/MM/dd </p>
-              </div>
-            </div>
+            <input type="date"  name="search1" >
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-3">
           <div class="form-group">
             <label>Đến ngày</label>
-            <input type="date" [(ngModel)]="search2" name="search2" formControlName="search2">
-            <div  class="alert alert-danger" role="alert" *ngIf="!searchValue2.valid && (searchValue2.dirty || searchValue2.touched)">
-              <div [hidden]="!searchValue2.errors.required">
-                <p style="color: red">ngày không được để trống</p>
-              </div>
-              <div [hidden]="!searchValue2.errors.pattern">
-                <p style="color: red"> chưa đúng định dạng yyyy/MM/dd </p>
-              </div>
-            </div>
+            <input type="date"  name="search2" >
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-3">
           <div class="form-group">
             <label>Từ giờ </label>
-            <input type="time" style="width: 162px" [(ngModel)]="search3" name="search3" formControlName="search3">
-            <div  class="alert alert-danger" role="alert" *ngIf="!searchValue3.valid && (searchValue3.dirty || searchValue3.touched)">
-              <div [hidden]="!searchValue3.errors.required">
-                <p style="color: red">giờ không được để trống</p>
-              </div>
-              <div [hidden]="!searchValue3.errors.pattern">
-                <p style="color: red"> chưa đúng định giờ HH/MM </p>
-              </div>
-            </div>
+            <input type="time" style="width: 162px"  name="search3" >
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-3">
           <div class="form-group">
             <label>Đến giờ</label>
-            <input type="time" style="width: 162px" [(ngModel)]="search4" name="search4" formControlName="search4">
-            <div  class="alert alert-danger" role="alert" *ngIf="!searchValue4.valid && (searchValue4.dirty || searchValue4.touched)">
-              <div [hidden]="!searchValue4.errors.required">
-                <p style="color: red">giờ không được để trống</p>
-              </div>
-              <div [hidden]="!searchValue1.errors.pattern">
-                <p style="color: red"> chưa đúng định giờ HH/MM  </p>
-              </div>
-            </div>
+            <input type="time" style="width: 162px"  name="search4" >
           </div>
         </div>
       </div>
@@ -74,7 +36,7 @@
         <div class="col-6 col-sm-6 col-md-4 col-lg-3">
           <div class="form-group" style="justify-content: flex-start">
             <label style="margin-right: 3px">Hiển thị</label>
-            <select [(ngModel)]="search5" name="search5" formControlName="search5">
+            <select  name="search5" >
               <option value="bán lẻ" selected>Bán lẻ</option>
               <option value="bán theo đơn">Bán theo đơn</option>
               <option value="bán sỉ">Bán sỉ</option>
@@ -86,7 +48,7 @@
         <div class="col-6 col-sm-6 col-md-4 col-lg-3">
           <div class="form-group">
             <label style="margin-right: 10px">Sắp xếp</label>
-            <select [(ngModel)]="search6" name="search6" formControlName="search6">
+            <select  name="search6" >
               <option value="1" selected>Mã hóa đơn</option>
               <option value="2">Tên khách hàng</option>
               <option value="3">Ngày lập Giờ lập</option>
@@ -98,7 +60,7 @@
         </div>
         <div class="col-6 col-sm-6 col-md-4 col-lg-6">
           <div class="form-group d-flex justify-content-end">
-            <button class="btn search " style="width: 162px ; margin-right: 30px" [disabled]="!searchForm.valid" (click)="search()">
+            <button class="btn search " style="width: 162px ; margin-right: 30px" (click)="search()">
               <i class="fa fa-search"></i>
               Xem
             </button>
@@ -131,7 +93,7 @@
             <td>{{billSale.billSaleCode}}</td>
             <td>{{billSale.billSaleType}}</td>
             <td>{{billSale.customer.customerName}}</td>
-            <td>{{billSale.date |date:"dd-MM-yyyy"}}</td>
+            <td>{{billSale.date}}</td>
             <td>{{billSale.time}}</td>
             <td>{{billSale.employee.employeeName}}</td>
             <td>{{billSale.totalMoney}}</td>
@@ -182,8 +144,7 @@
 
 </div>
 
-</body>
-</html>
+
 
 
 

@@ -7,6 +7,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Prescription} from '../../../../model/prescription';
 import {Indicative} from '../../../../model/indicative';
 import {ToastrService} from 'ngx-toastr';
+import {DrugService} from "../../../../service/drug.service";
 
 @Component({
   selector: 'app-prescription-edit',
@@ -14,7 +15,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./prescription-edit.component.css']
 })
 export class PrescriptionEditComponent implements OnInit {
-  drugs = ['Aspirin', 'Panadol', 'Ampicilin'];
+  drugs;
   prescription: Prescription;
   indicativeList: Indicative[];
   drinkDay: number;
@@ -27,6 +28,7 @@ export class PrescriptionEditComponent implements OnInit {
               private router: Router,
               public dialogRef: MatDialogRef<PrescriptionEditComponent>,
               private  toastr: ToastrService,
+              private drugService: DrugService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.getIndicative();
     this.ngOnInit();
@@ -40,6 +42,7 @@ export class PrescriptionEditComponent implements OnInit {
       this.prescription = prescriptions;
       this.prescriptionForm.patchValue(this.prescription);
     });
+    this.getAllDrug();
     this.prescriptionForm = new FormGroup({
       prescriptionCode: new FormControl('', [Validators.required]),
       prescriptionName: new FormControl('', [Validators.required]),
@@ -56,7 +59,11 @@ export class PrescriptionEditComponent implements OnInit {
       })])
     });
   }
-
+  getAllDrug() {
+    this.drugService.getAllNormal().subscribe(value => {
+      this.drugs = value;
+    });
+  }
   getIndicative() {
     this.prescriptionService.getIdicative(this.data.id).subscribe(ind => {
       this.indicativeList = ind;
@@ -65,8 +72,6 @@ export class PrescriptionEditComponent implements OnInit {
         // @ts-ignore
         this.indicatives.push(ind[i]);
       }
-      console.log('indicative');
-      console.log(ind);
     });
   }
 
