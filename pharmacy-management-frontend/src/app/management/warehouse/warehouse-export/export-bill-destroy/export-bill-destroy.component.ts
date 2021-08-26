@@ -15,6 +15,7 @@ import {ExportbillService} from '../../../../service/export-bill/exportbill.serv
 
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import {TokenStorageService} from "../../../../user/user-service/token-storage.service";
 
 @Component({
   selector: 'app-export-bill-destroy',
@@ -44,7 +45,8 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
               private  exportbillService: ExportbillService,
               private route: Router,
               private dialogService: DialogService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private tokenStorageService: TokenStorageService) {
     this.getExportBillType();
     this.importbilldrugService.getAllImportBillDrug().subscribe(data => {
       this.drugs = data;
@@ -111,10 +113,12 @@ export class ExportBillDestroyComponent implements OnInit, AfterViewInit, OnDest
 
   setValueForm() {
     this.exportbillService.createCodeExportBillDestroy().subscribe(data => {
+      console.log(this.tokenStorageService.getUser());
       this.exportBillForm.patchValue({
         exportBillCode: data[0],
         exportBillDate: this.getDateNow(),
-        employee: this.employeeName
+        employee : this.employeeName
+        // employee: this.tokenStorageService.getUser().username
       });
     }, error => {
       console.log(error);

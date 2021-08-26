@@ -19,6 +19,10 @@ export interface Drug {
   origin?: string;
   note?: string;
   drugSideEffect?: string;
+  drugAmount?;
+  flag?: true;
   drugGroup?: any;
-  flag?: boolean;
+  wholesalePrice?: number;
+  retailPrice?: number;
+  drugImageDetails?: string;
 }

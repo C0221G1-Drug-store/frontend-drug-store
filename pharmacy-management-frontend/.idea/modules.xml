@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/angular-case-study.iml" filepath="$PROJECT_DIR$/.idea/angular-case-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pharmacy-management-frontend.iml" filepath="$PROJECT_DIR$/.idea/pharmacy-management-frontend.iml" />
     </modules>
   </component>
 </project>

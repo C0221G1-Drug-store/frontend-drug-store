@@ -6,12 +6,12 @@ import {DrugDeleteComponent} from '../drug-delete/drug-delete.component';
 import {formatDate} from '@angular/common';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {DrugGroupService} from '../../../../service/drug-group.service';
 import {DrugGroup} from '../../../../model/drugGroup';
 import {Drug} from '../../../../model/drug';
 import {DrugGroupDto} from '../../../../model/drug-group';
 
 import {DrugNotificationComponent} from '../drug-notification/drug-notification.component';
+import {DrugGroupService} from "../../../../service/drug-group.service";
 declare var $: any;
 @Component({
   selector: 'app-drug-edit',
