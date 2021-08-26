@@ -18,7 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {Overlay} from '@angular/cdk/overlay';
 import localeVi from '@angular/common/locales/vi';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 
 registerLocaleData(localeVi, 'vi-VN');
 
@@ -46,8 +46,9 @@ registerLocaleData(localeVi, 'vi-VN');
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+
   ],
-  providers: [MatDialog ,Overlay],
+  providers: [MatDialog ,Overlay,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

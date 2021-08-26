@@ -25,9 +25,10 @@
                     <div class="col-6 col-md-6 col-sm-12">
                       <div class="form-group">
                         <label>Nhà Cung Cấp :</label>
-                        <select  formControlName="manufacturer"  style="width: 300px" #n  [compareWith]="compareFn1" (ngModelChange)="changeName(n.value)">
+                        <select  formControlName="manufacturer"  style="width: 300px" #n  [compareWith]="compareFn1" (change)="changeName($event)">
                           <option selected [ngValue]="null" disabled>--Công Ty Dược Phẩm--</option>
-                          <option *ngFor="let manuObj of manufacturer" [ngValue]="manuObj" [value]="manuObj.manufacturerId">{{manuObj.manufacturerName}}</option>
+                          <option *ngFor="let manuObj of manufacturer" [value]="manuObj.manufacturerId"
+                                  >{{manuObj.manufacturerName}}</option>
                         </select>
                         <div class='text-danger' style="padding-left: 120px;" *ngIf='exportBillForm.controls.manufacturer.touched || exportBillForm.controls.manufacturer.dirty' >
                           <div *ngIf="exportBillForm.controls.manufacturer.hasError('required')">
@@ -119,7 +120,7 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <mat-select style="background-color: #62b8ff;min-width:200px;height: 40px;line-height: 40px;text-align: center;font-weight: bold" placeholder="Mời Chọn Thuốc" [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
+                    <mat-select  style="background-color: #62b8ff;min-width:200px;height: 40px;line-height: 40px;text-align: center;font-weight: bold" placeholder="Mời Chọn Thuốc" [formControl]="bankCtrl" #drugSelect (selectionChange)="selectDrug()">
                       <mat-option style="min-width: 100px">
                         <ngx-mat-select-search style="width: 60px !important;" [noEntriesFoundLabel]="'Không có thuốc bạn tìm'" [placeholderLabel] ="'Tìm thuốc....'" [formControl]="bankFilterCtrl"></ngx-mat-select-search>
                       </mat-option>

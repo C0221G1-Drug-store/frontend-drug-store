@@ -7,10 +7,15 @@ import {Observable} from 'rxjs';
 })
 export class ManufacturerService {
   private API_MANUFACTURE = "http://localhost:8080/api/manufacturer";
+
   constructor(private http : HttpClient) { }
 
   // @ts-ignore
   getAllManufacturer(): Observable<any> {
     return this.http.get(this.API_MANUFACTURE);
+  }
+
+  getManufacturerById(id: number): Observable<any> {
+    return this.http.get(`${this.API_MANUFACTURE}/${id}`)
   }
 }
