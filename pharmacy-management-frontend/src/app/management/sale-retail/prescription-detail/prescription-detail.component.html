@@ -30,16 +30,16 @@
 
     </div>
     <div class="mb-3">
-      <ul *ngFor="let drugOfBill of drugOfbills , let i = index" >
+      <ul *ngFor="let drugOfBill of indicatives , let i = index" >
         <li class="mb-3 ">
           <div class="d-flex justify-content-between">
             <label>{{i+1}}</label>
             <select class="select" >
               <option [selected] [hidden]="true"  >{{drugOfBill.drug.name}}</option>
-              <option *ngFor="let drug of drugs" [value]="drug">{{drug.name}}</option>
+              <option *ngFor="let drug of drugs" [value]="drug">{{drug.drugName}}</option>
             </select>
             <div>
-              <input [value]="drugOfBill.quantity" class="vien" type="text"> Viên
+              <input [value]="drugOfBill.totalPill" class="vien" type="text"> Viên
             </div>
 
             <i class="fa fa-trash text-danger " (click)="openDeleteDialog(drugOfBill)"></i>
@@ -51,7 +51,7 @@
     <div class="d-flex flex-row-reverse pt-4 pb-5">
       <button class=" btn btn-danger huy" type="button" routerLink="/sale" ><i class="fa fa-close"></i> Hủy</button>
       <button class="mr-4 btn btn-print" type="button" printTitle="print-me" printSectionId="print-me" ngxPrint ><i class="fa fa-print"></i> In toa</button>
-      <button (click)="addToBill(drugOfbills)" class="mr-4 btn btn-success" type="button" ><i class="fa fa-plus"></i> Thêm vào hóa đơn</button>
+      <button (click)="addToBill(indicatives)" class="mr-4 btn btn-success" type="button" ><i class="fa fa-plus"></i> Thêm vào hóa đơn</button>
     </div>
 
   </form>

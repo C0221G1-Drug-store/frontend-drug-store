@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {PrescriptionComponent} from '../prescription/prescription.component';
-import {DrugOfBill} from '../../../model/drug-of-bill';
+import {Indicative} from '../../../model/indicative';
 
 @Component({
   selector: 'app-delete',
@@ -9,7 +9,7 @@ import {DrugOfBill} from '../../../model/drug-of-bill';
   styleUrls: ['./delete.component.css']
 })
 export class DeleteComponent implements OnInit {
-  drugOfBills: DrugOfBill[] = [];
+  drugOfBills: Indicative[] = [];
 
   // @ts-ignore
   constructor(@Inject(MAT_DIALOG_DATA) public data) {

@@ -1,10 +1,14 @@
+import {PrescriptionIndicative} from './prescription-indicative';
+import {Indicative} from './indicative';
+
 export interface Prescription {
   prescriptionId?: number;
   prescriptionCode?: string;
   prescriptionName?: string;
-  customerType?: string;
   symptom?: string;
-  note?: string;
-  numberOfDay?: number;
   object?: string;
+  flag?: boolean;
+  numberOfDay?: number;
+  note?: string;
+  indicatives: Indicative[];
 }

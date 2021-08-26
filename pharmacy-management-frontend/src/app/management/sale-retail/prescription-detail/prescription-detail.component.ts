@@ -7,7 +7,7 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {Drug} from '../../../model/drug';
 import {Prescription} from '../../../model/prescription';
 import {DeleteComponent} from '../delete/delete.component';
-import {DrugOfBill} from '../../../model/drug-of-bill';
+import {Indicative} from '../../../model/indicative';
 
 @Component({
   selector: 'app-prescription-detail',
@@ -16,7 +16,7 @@ import {DrugOfBill} from '../../../model/drug-of-bill';
 })
 export class PrescriptionDetailComponent implements OnInit {
   drugs: Drug[] = [];
-  drugOfbills: DrugOfBill[];
+  indicatives: Indicative[];
   id: number;
   prescription: Prescription;
   fromPrescription: FormGroup;
@@ -45,7 +45,7 @@ export class PrescriptionDetailComponent implements OnInit {
   openDeleteDialog(drugOfBill) {
     const dialog = this.dialog.open(DeleteComponent , {
       height: '250px' , width: '300px',
-      data: [this.drugOfbills,  {drugOfBill}]
+      data: [this.indicatives,  {drugOfBill}]
     });
     console.log(drugOfBill);
   }
@@ -56,9 +56,10 @@ export class PrescriptionDetailComponent implements OnInit {
   }
   getDrugOfBills() {
     this.prescriptionService.findAll(this.id).subscribe(next => {
-      this.drugOfbills = next;
+      this.indicatives = next;
+      console.log(next);
     });
-    console.log(this.drugOfbills);
+    console.log(this.indicatives);
   }
   getPrescription() {
     this.prescriptionService.findPrescriptionById(this.id).subscribe( next => {
@@ -66,8 +67,8 @@ export class PrescriptionDetailComponent implements OnInit {
     });
   }
 
-  addToBill(drugOfBills) {
-    const navigationExtras: NavigationExtras = {state: {data: drugOfBills}};
+  addToBill(indicatives) {
+    const navigationExtras: NavigationExtras = {state: {data: indicatives}};
     this.router.navigate(['/sale'] , navigationExtras);
   }
 

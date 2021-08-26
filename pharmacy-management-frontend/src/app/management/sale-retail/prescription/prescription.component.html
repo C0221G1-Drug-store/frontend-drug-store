@@ -37,7 +37,7 @@
         <tr id="{{i}}" (click)="showView(p.prescriptionId) " (click) = "showChoose(p)" [class.selected] = "p === pres">
           <td>{{p.prescriptionCode + p.prescriptionId}}</td>
           <td>{{p.prescriptionName}}</td>
-          <td>{{p.customerType}}</td>
+          <td>{{p.object}}</td>
           <td>{{p.symptom}}</td>
           <td>{{p.note}}</td>
         </tr>

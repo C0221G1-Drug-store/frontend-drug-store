@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ManufacturerShowComponent } from './manufacturer-show.component';
+
+
 
 describe('ManufacturerShowComponent', () => {
   let component: ManufacturerShowComponent;

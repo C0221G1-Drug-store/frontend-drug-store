@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router, NavigationExtras} from '@angular/router';
 import {DrugService} from '../../../service/drug.service';
-import {DrugOfBill} from '../../../model/drug-of-bill';
+import {Indicative} from '../../../model/indicative';
 import {Drug} from '../../../model/drug';
 import { DeleteComponent } from '../delete/delete.component';
-import {BillSale} from '../../../model/billSale';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {ToastrService} from 'ngx-toastr';
 import {formatDate} from '@angular/common';
+import {DrugOfBill} from '../../../model/drug-of-bill';
+import {BillSale} from '../../../model/bill-sale';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class SaleComponent implements OnInit {
     }
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.drugOfBills.length; i++) {
-      this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+      this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.retailPrice;
     }
     this.dateSetBill = this.todaysDataTime;
     this.billSaleCode = 'TT00' + this.numRandom;
@@ -53,22 +54,10 @@ export class SaleComponent implements OnInit {
     this.getAllDrug();
   }
   getAllDrug() {
-    this.drugService.getAll().subscribe(next => {
+    this.drugService.getAllNormal().subscribe(next => {
       this.drugs = next;
     });
   }
-
-  getDrug(tam) {
-    this.drugOfBill = {drug: tam , quantity : 5};
-    this.drugOfBills.push(this.drugOfBill);
-    // tslint:disable-next-line:prefer-for-of
-    this.total = 0;
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.drugOfBills.length; i++) {
-      this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
-    }
-  }
-
   send(drugOfBill, i) {
     this.drugOfBill = drugOfBill;
     this.index = i;
@@ -86,7 +75,7 @@ export class SaleComponent implements OnInit {
         this.total = 0;
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.drugOfBills.length; i++) {
-          this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+          this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.retailProfitRate;
         }
       });
       this.drugOfBill = undefined;
@@ -105,13 +94,13 @@ export class SaleComponent implements OnInit {
       this.total = 0;
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < this.drugOfBills.length; i++) {
-        this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.price;
+        this.total += this.drugOfBills[i].quantity * this.drugOfBills[i].drug.retailProfitRate;
       }
     }
     this.drugOfBill = undefined;
   }
 
-  showChoose(drugOfBill: DrugOfBill) {
+  showChoose(drugOfBill: Indicative) {
     this.drugOf = drugOfBill;
   }
 
@@ -120,9 +109,9 @@ export class SaleComponent implements OnInit {
       this.toast.success('bạn chưa thêm thuốc vào hóa đơn');
     } else {
       this.bill = {
-        code: this.billSaleCode,
-        customer: 'khách lẻ',
-        employee: 'tam',
+        billSaleCode: this.billSaleCode,
+        customer: null,
+        employee: null,
         totalMoney: this.total,
         invoiceDate: this.todaysDataTime,
         billSaleNote: this.note
@@ -133,7 +122,7 @@ export class SaleComponent implements OnInit {
             this.bill = bil;
             // tslint:disable-next-line:prefer-for-of
             for (let i = 0; i < this.drugOfBills.length; i++) {
-              this.drugOfBills[i].bill = this.bill;
+              this.drugOfBills[i].billSale = this.bill;
               this.prescriptionService.save(this.drugOfBills[i]).subscribe();
             }
             const navigationExtras: NavigationExtras = {state: {data: this.bill}};

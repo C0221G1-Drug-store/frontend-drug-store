@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css', '../../../app.component.css']
 })
 export class HomeComponent implements OnInit {
-
   constructor(private toast: ToastrService,
               private router: Router) {
     const state = this.router.getCurrentNavigation().extras.state as { data };
@@ -19,5 +18,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

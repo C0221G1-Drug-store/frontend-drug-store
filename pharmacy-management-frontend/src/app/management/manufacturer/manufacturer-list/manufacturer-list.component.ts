@@ -1,11 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {ManufacturerUpdateComponent} from "../manufacturer-update/manufacturer-update.component";
 import {ManufacturerDeleteComponent} from "../manufacturer-delete/manufacturer-delete.component";
 import {ManufacturerService} from "../../../service/manufacturer.service";
+import { Manufacturer } from 'src/app/model/manufacturer';
+import {ToastrService} from "ngx-toastr";
+import {ManufacturerCreateComponent} from "../manufacturer-create/manufacturer-create.component";
+import {WarehouseImportPaymentComponent} from '../../warehouse/warehouse-import/warehouse-import-payment/warehouse-import-payment.component';
 
-// @ts-ignore
-import styled from 'styled-components'
+
 
 @Component({
   selector: 'app-manufacturer-list',
@@ -24,9 +27,12 @@ export class ManufacturerListComponent implements OnInit {
   max: number;
   idDialog: any;
   nameDialog: any;
+  background: string;
 
 
-  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService) {
+
+
+  constructor(private dialog: MatDialog, private manufacturerService: ManufacturerService,private  toastr:ToastrService) {
 
   }
 
@@ -39,9 +45,9 @@ export class ManufacturerListComponent implements OnInit {
     this.manufacturerService.getAll(this.page, this.search, this.selects, this.sort).subscribe(manufacturer => {
       this.manufacturers = manufacturer['content'];
       this.pages = new Array(manufacturer['totalPages']);
-      console.log(this.manufacturers)
-
-
+      if(this.manufacturers.length==0){
+        this.toastr.error("Không tìm thấy nhà cung cấp nào.", 'Danh sách')
+      }
     });
   }
 
@@ -49,7 +55,8 @@ export class ManufacturerListComponent implements OnInit {
     const id = this.idDialog;
     const name = this.nameDialog;
     let dialogRef = this.dialog.open(ManufacturerUpdateComponent, {
-        data: {id, name}
+        data: {id, name},
+        width:'750px'
       }
     );
     dialogRef.afterClosed().subscribe(() => {
@@ -70,9 +77,8 @@ export class ManufacturerListComponent implements OnInit {
   }
 
   previous() {
-
     if (this.page <= 0) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang.", 'Trang trước')
     } else {
       this.page = this.page - 1;
       this.getAll();
@@ -80,10 +86,9 @@ export class ManufacturerListComponent implements OnInit {
   }
 
   next() {
-
     this.max = this.pages.length;
     if (this.page + 2 > this.max) {
-      alert("không tìm thấy trang")
+      this.toastr.error("Không tìm thấy trang.", 'Trang sau')
     } else {
       this.page = this.page + 1;
       this.getAll();
@@ -91,7 +96,7 @@ export class ManufacturerListComponent implements OnInit {
   }
 
 
-  setPage(i: number) {
+  setPage(i: number): void {
     this.page = i;
     this.getAll();
   }
@@ -103,9 +108,29 @@ export class ManufacturerListComponent implements OnInit {
   sortManufacturer() {
     this.getAll();
   }
-
-  getId(manufacturerId: any, manufacturerName: any) {
+selectedMovie: Manufacturer;
+  getId(manufacturerId: any, manufacturerName: any,movie:Manufacturer): void {
     this.idDialog = manufacturerId;
     this.nameDialog = manufacturerName;
+   this.selectedMovie=movie;
+  }
+
+  dialogCreate() {
+    let dialogRef = this.dialog.open(ManufacturerCreateComponent, {
+      width:'750px'
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAll()
+    });
+  }
+
+  dialogPayment() {
+    let dialogRef = this.dialog.open(WarehouseImportPaymentComponent, {
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAll()
+    });
   }
 }

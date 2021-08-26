@@ -74,7 +74,7 @@
             <td>
               <select [(ngModel)]="drug"   >
                 <option [ngValue]="null"  [selected]="true" [hidden]="true"   >Thêm thuốc</option>
-                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.name}}</option>
+                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.drugName}}</option>
               </select>
             </td>
             <td></td>
@@ -86,11 +86,11 @@
           </tbody>
           <tbody *ngFor="let drugOfBill of drugOfBills , let i = index">
           <tr id="{{i}}" (click)="send(drugOfBill,i) "  (click)="showChoose(drugOfBill)" [class.selected] = "drugOfBill === drugOf">
-            <td>{{drugOfBill.drug.name}}</td>
+            <td>{{drugOfBill.drug.drugName}}</td>
             <td>vỉ</td>
             <td>{{drugOfBill.quantity}}</td>
-            <td>{{drugOfBill.drug.price}}</td>
-            <td>{{drugOfBill.drug.price * drugOfBill.quantity}} VND</td>
+            <td>{{drugOfBill.drug.retailProfitRate}}</td>
+            <td>{{drugOfBill.drug.retailProfitRate * drugOfBill.quantity}} VND</td>
           </tr>
 
           </tbody>
