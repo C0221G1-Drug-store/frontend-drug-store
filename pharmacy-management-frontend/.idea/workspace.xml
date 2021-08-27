@@ -142,7 +142,7 @@
       <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_horizontal_menu/styles.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_html_01/FileCSS/practices_01.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Bai_Tap_Css/practices_html_01/practices_01.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C0221G1_CV_Version1.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../C0221G1_CV_Nguyễn Anh Tấn_Version1 .docx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HamCoSan/.idea/HamCoSan.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Landing Page/.idea/Landing Page.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Module 1_BaiThi/.idea/Module 1_BaiThi.iml" afterDir="false" />
@@ -448,6 +448,7 @@
       <change afterPath="$PROJECT_DIR$/../Sprint_2_Prototype/font-awesome-4.7.0/scss/_stacked.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Sprint_2_Prototype/font-awesome-4.7.0/scss/_variables.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Sprint_2_Prototype/font-awesome-4.7.0/scss/font-awesome.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Sprint_2_Prototype/image/pngtree-logo-travel-airplane-vector-template-png-image_2132708.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Sprint_2_Prototype/quan_ly_chuyen_bay.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Sprint_2_Quan ly phong ban ve may bay_SRS_v1.2.docx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../angular-test/src/app/components/benhan/benhan-list/benhan-list.component.css" afterDir="false" />
@@ -536,6 +537,7 @@
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ImportBillDrugImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ImportBillServiceImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pharmacy_management/src/main/java/com/backend/pharmacy_management/model/service/impl/ManufactureImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pngtree-logo-travel-airplane-vector-template-png-image_2132708.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_1.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Array/BaiTap_LuyenTap1/BaiTap_3.html" beforeDir="false" />
@@ -818,7 +820,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sprint_2_Prototype" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -915,6 +917,9 @@
       <workItem from="1629894973575" duration="1986000" />
       <workItem from="1629940267756" duration="2267000" />
       <workItem from="1629966835727" duration="4944000" />
+      <workItem from="1629981221195" duration="3035000" />
+      <workItem from="1630031685668" duration="3533000" />
+      <workItem from="1630045518705" duration="2074000" />
     </task>
     <servers />
   </component>
@@ -925,25 +930,25 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1629940314245">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1630045572882">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629940314245" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629910709340">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1630045572882" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629989822264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629910709340" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629910709340">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1629989822264" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1629989822264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629910709340" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629910709340">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1629989822264" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1629989822264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629910709340" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629910709340">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1629989822264" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1629989822264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629910709340" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1629989822264" />
   </component>
 </project>

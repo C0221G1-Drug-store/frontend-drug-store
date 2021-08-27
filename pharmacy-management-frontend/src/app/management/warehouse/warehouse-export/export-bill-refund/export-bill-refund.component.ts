@@ -327,10 +327,10 @@ export class ExportBillRefundComponent implements OnInit, AfterViewInit, OnDestr
         },
       },);
       doc.setTextColor('red');
-      doc.text('Tổng tiền : ' + this.formatter.format(this.total), 230, this.drugRefund.length * 7.5 + 125);
+      doc.text('Tổng tiền : ' + this.formatter.format(this.total), 230, this.drugRefund.length * 8.5 + 125);
       doc.setTextColor('black');
-      doc.text('Đà Nẵng , Ngày......Tháng.......Năm.......', 15, this.drugRefund.length * 7.5 + 125);
-      doc.text('Nhân viên kí tên', 25, this.drugRefund.length * 7.5 + 135);
+      doc.text('Đà Nẵng , Ngày......Tháng.......Năm.......', 15, this.drugRefund.length * 8.5 + 125);
+      doc.text('Người lập phiếu', 28, this.drugRefund.length * 7.5 + 140);
       doc.save('Hóa đơn xuất kho ' + this.getDateNow() + '.pdf');
     }
 
