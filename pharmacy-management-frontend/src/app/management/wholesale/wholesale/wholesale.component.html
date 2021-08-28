@@ -31,7 +31,7 @@
               <div class="row mt-3 ">
                 <label for="selectEmployee" class="label-text">Khách hàng<i class="text-danger">*</i></label>
                 <select formControlName="customer" id="selectEmployee" type="text">
-                  <option *ngFor="let customer of customerList" [ngValue]="customer">{{customer.name}}</option>
+                  <option *ngFor="let customer of customerList" [ngValue]="customer">{{customer.customerName}}</option>
                 </select>
                 &nbsp;&nbsp;
                 <a href="#"><i class="fa fa-plus mt-2" aria-hidden="true"></i></a>

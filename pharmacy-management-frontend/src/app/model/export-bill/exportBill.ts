@@ -11,4 +11,5 @@ export interface ExportBill {
   exportBillType?: Exportbilltype;
   employee?: Employee;
   manufacturer?: Manufacturer;
+
 }

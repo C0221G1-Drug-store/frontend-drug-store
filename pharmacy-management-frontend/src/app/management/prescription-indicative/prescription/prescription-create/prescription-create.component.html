@@ -87,7 +87,7 @@
             <span class="ml-5 mt-2">{{indicativeIndex + 1}}</span>
             <div class=" col-6">
               <select class="select form-control" formControlName="drug">
-                <option *ngFor="let d of drugs " value="{{d.idDrug}}}" [selected]="true">{{d.drugName}}</option>
+                <option *ngFor="let d of drugs " [ngValue]="d" >{{d.drugName}}</option>
               </select>
             </div>
             <div class="col-2 d-flex">

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7c7ed46f-5344-4dbb-967c-bdf82b30c812" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/app/client/cart/cart.component.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/client/cart/cart.component.html" afterDir="false" />
@@ -138,6 +139,63 @@
       <change beforePath="$PROJECT_DIR$/src/app/model/employee/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/employee/employee.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/user-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/user-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/user.module.ts" afterDir="false" />
+=======
+    <list default="true" id="4ac4ff7c-9fac-4613-bea7-3425219b760d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-edit/account-edit.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-edit/account-edit.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-edit/account-edit.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-edit/account-edit.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-list/account-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-list/account-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-list/account-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-list/account-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/account.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/dialog/dialog.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/dialog/dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/dialog/dialog.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/management-information/account/dialog/dialog.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/report-detail/report.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/report-detail/report.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/report-detail/report.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/statistical-chart/statistical-chart.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/statistical-chart/statistical-chart.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/management/report/statistical-chart/statistical-chart.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/account/account.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/account/role.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/model/statistical-chart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/account/account.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/account/account.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/account/role.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/account/role.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/service/report.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/client/homepage/homepage.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/client/homepage/homepage.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/common.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/common.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/common/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/employee/employee-create/employee-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/information-lookup/lookup/lookup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/information-lookup/lookup/lookup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/management-information/management-information.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-create/prescription-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-edit/prescription-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/prescription-indicative/prescription/prescription-edit/prescription-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/report/report-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/report/report-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/report/report.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/report/report.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-management.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice-management.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/sales-invoice-management/sales-invoice/sales-invoice.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-destroy/export-bill-destroy.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/management/warehouse/warehouse-export/export-bill-refund/export-bill-refund.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/lookup/customer-lookup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/lookup/customer-lookup.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/user/user-component/login-register/login-register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/user-component/login-register/login-register.component.html" afterDir="false" />
+>>>>>>> origin/HoangNV
       <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +220,21 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+<<<<<<< HEAD
     <property name="ts.external.directory.path" value="D:\C0221G1-project\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
+=======
+    <property name="ts.external.directory.path" value="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\service" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\model" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management\management-information" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management\report" />
+      <recent name="C:\Users\ADMIN\Desktop\clone\frontend-drug-store\pharmacy-management-frontend\src\app\management" />
+    </key>
+>>>>>>> origin/HoangNV
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (pharmacy-management-frontend)" type="JavaScriptTestRunnerKarma">
@@ -203,9 +275,21 @@
       <created>1629819531869</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1629819531869</updated>
       <workItem from="1629819545359" duration="4253000" />
       <workItem from="1629854196956" duration="4356000" />
+=======
+      <updated>1629035720586</updated>
+      <workItem from="1629035723373" duration="1834000" />
+      <workItem from="1629445672240" duration="512000" />
+      <workItem from="1629561499308" duration="647000" />
+      <workItem from="1629793018215" duration="3852000" />
+      <workItem from="1629800495414" duration="3250000" />
+      <workItem from="1629804337239" duration="493000" />
+      <workItem from="1629810412007" duration="20196000" />
+      <workItem from="1629845519284" duration="9040000" />
+>>>>>>> origin/HoangNV
     </task>
     <servers />
   </component>
@@ -213,6 +297,7 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1629881339984">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -233,5 +318,27 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1629820080896" />
+=======
+    <state x="371" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1629851357216">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="371" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1629851357216" />
+    <state width="1259" height="187" key="GridCell.Tab.0.bottom" timestamp="1629858230919">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1259" height="187" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1629858230919" />
+    <state width="1259" height="187" key="GridCell.Tab.0.center" timestamp="1629858230919">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1259" height="187" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1629858230919" />
+    <state width="1259" height="187" key="GridCell.Tab.0.left" timestamp="1629858230919">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1259" height="187" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1629858230919" />
+    <state width="1259" height="187" key="GridCell.Tab.0.right" timestamp="1629858230919">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1259" height="187" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1629858230919" />
+>>>>>>> origin/HoangNV
   </component>
 </project>

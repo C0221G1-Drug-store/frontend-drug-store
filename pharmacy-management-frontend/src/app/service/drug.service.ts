@@ -23,8 +23,8 @@ export class DrugService {
 
   getAll(): Observable<any> {
     return this.http.get(this.URl + '/not-pagination');
-
   }
+
   getAllNormal(): Observable<any> {
     return this.http.get(this.URl + '/get-normal');
 

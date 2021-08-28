@@ -11,4 +11,8 @@ export interface BillSale {
   totalMoney?: number;
   employee?: Employee;
   customer?: Customer;
+  date?: string;
+  time?: string;
+
+
 }

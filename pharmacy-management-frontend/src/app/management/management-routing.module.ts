@@ -41,6 +41,18 @@ const routes: Routes = [
   {
     path: 'employee',
     loadChildren: () => import('./employee/employee.module').then(module => module.EmployeeModule)
+  },
+  {
+    path: "customer",
+    loadChildren: () => import('./management-information/management-information.module').then(module => module.ManagementInformationModule)
+  },
+  {
+    path: "sale-retail",
+    loadChildren: () => import('./sale-retail/sale-retail.module').then(module => module.SaleRetailModule)
+  },
+  {
+    path: 'sales',
+    loadChildren: () => import('./sales-invoice-management/sales-invoice-management-routing.module').then(module => module.SalesInvoiceManagementRoutingModule)
   }
 ];
 

@@ -4,9 +4,11 @@ import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validat
 import {Router} from '@angular/router';
 import {IndicativeService} from '../../../../service/indicative.service';
 import {ToastrService} from 'ngx-toastr';
-import {PrescriptionDto} from '../../../../model/prescriptionDto';
+import {Prescription} from '../../../../model/prescription';
 import {DrugService} from "../../../../service/drug.service";
-import {Drug} from "../../../../model/drug";
+
+
+
 
 @Component({
   selector: 'app-prescription-create',
@@ -14,13 +16,14 @@ import {Drug} from "../../../../model/drug";
   styleUrls: ['./prescription-create.component.css']
 })
 export class PrescriptionCreateComponent implements OnInit {
-  drugs ;
+  drugs;
   drinkDay: number;
   drinkTime: number;
   totalPill = this.drinkDay * this.drinkTime;
-  pres: PrescriptionDto[];
+  pres: Prescription[];
   code = 'TT001';
   lastId: number;
+
   constructor(private prescriptionService: PrescriptionService,
               private fb: FormBuilder,
               private indicativeService: IndicativeService,
@@ -59,6 +62,7 @@ export class PrescriptionCreateComponent implements OnInit {
       })])
     });
   }
+
   get indicatives() {
     return this.prescriptionForm.get('indicatives') as FormArray;
   }
@@ -76,11 +80,13 @@ export class PrescriptionCreateComponent implements OnInit {
   deleteIndicative(index) {
     this.indicatives.removeAt(index);
   }
-  getAllDrug(){
+
+  getAllDrug() {
     this.drugService.getAllNormal().subscribe(value => {
       this.drugs = value;
     });
   }
+
   submit() {
     const prescription = this.prescriptionForm.value;
     console.log(prescription);

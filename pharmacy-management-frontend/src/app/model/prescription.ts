@@ -1,7 +1,7 @@
 import {PrescriptionIndicative} from './prescription-indicative';
 import {Indicative} from './indicative';
 
-export interface PrescriptionDto {
+export interface Prescription {
   prescriptionId?: number;
   prescriptionCode?: string;
   prescriptionName?: string;
