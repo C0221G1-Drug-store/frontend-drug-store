@@ -7,4 +7,5 @@ export interface Manufacturer {
   manufacturerPhoneNumber? :string;
   manufacturerDebts? :number;
   manufacturerNote? :string;
+  flag?: number;
 }

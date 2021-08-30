@@ -9,12 +9,14 @@ import { PrescriptionDetailComponent } from './prescription-detail/prescription-
 import { DeleteComponent } from './delete/delete.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPrintModule} from 'ngx-print';
+import { PresComponent } from './pres/pres.component';
+import {WarehouseExportModule} from "../warehouse/warehouse-export/warehouse-export.module";
 
 
 
 
 @NgModule({
-  declarations: [ SaleComponent, PrescriptionComponent, PrescriptionDetailComponent, DeleteComponent],
+  declarations: [ SaleComponent, PrescriptionComponent, PrescriptionDetailComponent, DeleteComponent, PresComponent],
   exports: [
   ],
     imports: [
@@ -23,7 +25,8 @@ import {NgxPrintModule} from 'ngx-print';
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule,
-        NgxPrintModule
+        NgxPrintModule,
+        WarehouseExportModule
     ]
 })
 export class SaleRetailModule { }

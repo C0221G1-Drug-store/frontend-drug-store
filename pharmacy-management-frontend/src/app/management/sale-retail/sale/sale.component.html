@@ -9,11 +9,11 @@
           <div class="d-flex flex-column">
             <div class="mb-3">
               <label class="label-text">Số Phiếu (<i class="text-danger text-under">* </i>)</label>
-              <input class="width-input form-control" disabled placeholder="HDL0001">
+              <input class="width-input form-control" *ngIf="billSaleLast != null" disabled value="{{'HDBL'+ (billSaleLast.billSaleId + 1)}}">
             </div>
             <div class="mb-3">
               <label class="label-text">Nhân viên (<i class="text-danger text-under">* </i>)</label>
-              <input class="width-input form-control" disabled type="text" placeholder="Trần Đại Huy"><br>
+              <input class="width-input form-control" disabled type="text" value="{{user.employee.employeeName}}"><br>
             </div>
             <div class="mb-3">
               <label class="label-text" >Ngày lặp (<i class="text-danger text-under">* </i>)</label>
@@ -44,7 +44,7 @@
 
 
             </div>
-            <button class="btn btn-success" type="submit" routerLink="/prescription" >Nhập thuốc từ toa sẵn</button>
+            <button class="btn btn-success" type="submit" routerLink="/pres" >Nhập thuốc từ toa sẵn</button>
           </div>
         </div>
       </form>
@@ -74,7 +74,7 @@
             <td>
               <select [(ngModel)]="drug"   >
                 <option [ngValue]="null"  [selected]="true" [hidden]="true"   >Thêm thuốc</option>
-                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.name}}</option>
+                <option  *ngFor="let drug of drugs" [ngValue]="drug"  >{{drug.drugName}}</option>
               </select>
             </td>
             <td></td>
@@ -86,11 +86,11 @@
           </tbody>
           <tbody *ngFor="let drugOfBill of drugOfBills , let i = index">
           <tr id="{{i}}" (click)="send(drugOfBill,i) "  (click)="showChoose(drugOfBill)" [class.selected] = "drugOfBill === drugOf">
-            <td>{{drugOfBill.drug.name}}</td>
+            <td>{{drugOfBill.drug.drugName}}</td>
             <td>vỉ</td>
             <td>{{drugOfBill.quantity}}</td>
-            <td>{{drugOfBill.drug.price}}</td>
-            <td>{{drugOfBill.drug.price * drugOfBill.quantity}} VND</td>
+            <td>{{drugOfBill.drug.retailPrice | currencyVND}}</td>
+            <td>{{drugOfBill.drug.retailPrice * drugOfBill.quantity | currencyVND}}</td>
           </tr>
 
           </tbody>
@@ -100,14 +100,14 @@
 
       <div class="d-flex  justify-content-end mt-3 ">
         <label class="mr-3 mt-2 ">Tổng tiền </label>
-        <input   value="{{total}}" class="form-control col-3" type="text">
+        <input   value="{{total | currencyVND}}" class="form-control col-3" type="text">
       </div>
     </div>
     <div class="d-flex justify-content-end pt-4 pb-5">
       <button class="mr-5 btn btn-pay" type="button" (click)="saveBill()" ><i class="fa fa-plus"></i> Thanh toán</button>
-      <button class="mr-5 btn btn-print" type="button" printTitle="print-me" printSectionId="print-me" ngxPrint ><i class="fa fa-print"></i> In phiếu</button>
+      <button class="mr-5 btn btn-print" type="button" (click)="htmlToPDF()" ><i class="fa fa-print"></i> In phiếu</button>
       <button class="mr-5 btn btn-danger" type="button" (click)="openDeleteDialog()" ><i class="fa fa-trash"></i> xóa thuôc </button>
-      <button class="mr-5 btn btn-edit" type="button" routerLink="/" ><i class="fa fa-undo"></i> Trở về </button>
+      <button class=" btn btn-edit" type="button" routerLink="/" ><i class="fa fa-undo"></i> Trở về </button>
     </div>
   </div>
 </div>

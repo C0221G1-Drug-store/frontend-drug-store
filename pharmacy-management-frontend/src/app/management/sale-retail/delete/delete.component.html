@@ -1,12 +1,18 @@
-<!--<p>delete works!</p>-->
-<!--<p *ngIf="data[1].drugOfBill != null">{{data[1].drugOfBill.name}}</p>-->
-<!--<button  (click)="delete()" class="btn btn-danger" mat-dialog-close="">delete</button>-->
-
-<h2>Bạn có muốn xóa</h2>
-<p mat-dialog-title></p>
-<mat-dialog-content>Name : {{data[1].drug.name}} </mat-dialog-content>
-<mat-dialog-actions class="d-flex justify-content-between mt-5">
-  <button class="btn btn-danger"  mat-button mat-dialog-close="" (click)="delete()">delete</button>
-  <button class="btn btn-success" mat-button mat-dialog-close="">cancel</button>
-</mat-dialog-actions>
+<div class="modal-header">
+  <h3 class="modal-title font-weight-bold" >Xóa thuốc</h3>
+  <button type="button" class="close" aria-hidden="true" mat-dialog-close="">&times;</button>
+</div>
+<div class="modal-body" *ngIf="data != null">
+  <input hidden type="text" name="drugId" id="customerId">
+  <p>Bạn có chắc muốn xóa  thuốc: <span class="text-danger font-weight-bold" >{{data[1].drug.drugName}}</span></p>
+  <p class="text-warning"><small>Hành đồng này có thể không thể hoàn lại</small></p>
+</div>
+<div class="modal-footer">
+  <button class=" btn btn-return button " style="font-size: 14px; width: 85px" type="button" mat-dialog-close=""><i
+    class="fa fa-reply"></i> Trở về
+  </button>
+  <button class="mr-3 btn btn-danger button" style="font-size: 14px; width: 85px" (click)="delete() " mat-dialog-close=""><i
+    class="fa fa-trash-o"></i> Xóa
+  </button>
+</div>
 

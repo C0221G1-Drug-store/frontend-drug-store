@@ -14,9 +14,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
+
 @NgModule({
   declarations: [ManufacturerListComponent, ManufacturerUpdateComponent, ManufacturerDeleteComponent, ManufacturerShowComponent, ImportBillShowComponent, ManufacturerCreateComponent],
   imports: [
+
     CommonModule,
     ManufacturerRoutingModule,
     MatDialogModule,

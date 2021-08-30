@@ -3,8 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PrescriptionService} from '../../../service/prescription.service';
-import {DrugOfBill} from '../../../model/drug-of-bill';
 import {Prescription} from '../../../model/prescription';
+
+
 
 
 
@@ -16,7 +17,6 @@ import {Prescription} from '../../../model/prescription';
 })
 export class PrescriptionComponent implements OnInit {
   id: number;
-  drugOfBills: DrugOfBill[] = [] ;
   prescriptions: Prescription[] = [];
   pres: Prescription;
   fieldSearch = '';
