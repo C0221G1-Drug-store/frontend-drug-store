@@ -1,19 +1,28 @@
-import {DrugGroup} from './drug-group';
+
+
+import {DrugGroup} from './drugGroup';
+import {DrugImageDetail} from './drugImageDetail';
 
 export interface Drug {
-  drugId?;
-  drugCode?;
-  drugName?;
-  activeElement?;
+  drugId?: number;
+  drugCode?: number;
+  drugName?: string;
+  drugFaculty?: string;
+  activeElement?: string;
+  // drugImageDetails?: DrugImageDetail[];
+  unit?: string;
+  conversionUnit?: string;
+  conversionRate?: string;
+  wholesaleProfitRate?: number;
+  retailProfitRate?: number;
+  manufacturer?: string;
+  origin?: string;
+  note?: string;
+  drugSideEffect?: string;
   drugAmount?;
-  unit?;
-  conversionUnit?;
-  conversionRate?;
-  wholesaleProfitRate?;
-  retailProfitRate?;
-  drugFaculty?;
-  drugSideEffect?;
-  price?;
   flag?: true;
-  drugGroup?: DrugGroup;
+  drugGroup?: any;
+  wholesalePrice?: number;
+  retailPrice?: number;
+  drugImageDetails?: string;
 }

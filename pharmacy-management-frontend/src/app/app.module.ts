@@ -3,12 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SaleRetailModule} from './management/sale-retail/sale-retail.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ManagementModule} from './management/management.module';
 import {CommonModule} from './management/common/common.module';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
+import {DrugModule} from './management/warehouse/drug/drug.module';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {ManufacturerModule} from './management/manufacturer/manufacturer.module';
+import {ToastrModule} from 'ngx-toastr';
+import {WarehouseExportModule} from './management/warehouse/warehouse-export/warehouse-export.module';
+import {MatSelectModule} from '@angular/material/select';
+import {NgxPrintModule} from 'ngx-print';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {Overlay} from '@angular/cdk/overlay';
+import localeVi from '@angular/common/locales/vi';
+import {registerLocaleData} from '@angular/common';
+import {WholesaleModule} from './management/wholesale/wholesale.module';
+import {ClientModule} from "./client/client.module";
+import {SaleRetailModule} from "./management/sale-retail/sale-retail.module";
+import {AccountModule} from "./management/management-information/account/account.module";
+
+registerLocaleData(localeVi, 'vi-VN');
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,14 +38,39 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SaleRetailModule,
+    WholesaleModule,
     BrowserAnimationsModule,
     ManagementModule,
     CommonModule,
-    MatDialogModule,
+    SaleRetailModule,
+    AccountModule,
     HttpClientModule,
+    MatDialogModule,
+    DrugModule,
+    HttpClientModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ManufacturerModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+    }),
+    HttpClientModule,
+    WarehouseExportModule,
+    MatSelectModule,
+    NgxPrintModule,
+    MatSelectModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NgxPrintModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    HttpClientModule,
+    ClientModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [MatDialog , Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

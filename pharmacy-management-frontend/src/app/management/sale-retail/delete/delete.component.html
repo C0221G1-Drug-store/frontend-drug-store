@@ -1,0 +1,12 @@
+<!--<p>delete works!</p>-->
+<!--<p *ngIf="data[1].drugOfBill != null">{{data[1].drugOfBill.name}}</p>-->
+<!--<button  (click)="delete()" class="btn btn-danger" mat-dialog-close="">delete</button>-->
+
+<h2>Bạn có muốn xóa</h2>
+<p mat-dialog-title></p>
+<mat-dialog-content>Name : {{data[1].drug.name}} </mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-between mt-5">
+  <button class="btn btn-danger"  mat-button mat-dialog-close="" (click)="delete()">delete</button>
+  <button class="btn btn-success" mat-button mat-dialog-close="">cancel</button>
+</mat-dialog-actions>
+

@@ -3,8 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PrescriptionService} from '../../../service/prescription.service';
-import {DrugOfBill} from '../../../model/drug-of-bill';
 import {Prescription} from '../../../model/prescription';
+
+
+
 
 
 
@@ -15,8 +17,10 @@ import {Prescription} from '../../../model/prescription';
 })
 export class PrescriptionComponent implements OnInit {
   id: number;
-  drugOfBills: DrugOfBill[] = [] ;
   prescriptions: Prescription[] = [];
+  pres: Prescription;
+  fieldSearch = '';
+  valueSearch = '';
   constructor(private http: HttpClient,
               private prescriptionService: PrescriptionService,
               private dialog: MatDialog,
@@ -30,7 +34,6 @@ export class PrescriptionComponent implements OnInit {
     this.prescriptionService.getAll().subscribe(next => {
       this.prescriptions = next;
     });
-    console.log(this.prescriptions);
   }
 
 
@@ -43,4 +46,13 @@ export class PrescriptionComponent implements OnInit {
   }
 
 
+  showChoose(p: Prescription) {
+    this.pres = p;
+  }
+
+  search() {
+    this.prescriptionService.search(this.fieldSearch, this.valueSearch).subscribe( next => {
+      this.prescriptions = next;
+    });
+  }
 }
